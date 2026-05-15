@@ -1,0 +1,7 @@
+{
+  "permissions": {
+    "allow": [
+      "PowerShell($lines = Get-Content 'c:\\\\Users\\\\diego\\\\OneDrive\\\\Desktop\\\\nigthpass\\\\FITORA-2\\\\dashboard.html' -Encoding UTF8; Write-Host \"Total lines: $\\($lines.Length\\)\")"
+    ]
+  }
+}

@@ -8,10 +8,10 @@
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;700;900&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
 :root{
-  --cyan:#00d4d4;--green:#7fff00;--yellow:#d4ff00;
+  --cyan:#00d4d4;--green:#00d4ff;--yellow:#0066ff;
   --red:#ff4545;--orange:#ff8c00;
-  --grad:linear-gradient(90deg,#00d4d4,#7fff00,#d4ff00);
-  --grad-t:linear-gradient(100deg,#00d4d4 0%,#7fff00 50%,#d4ff00 100%);
+  --grad:linear-gradient(90deg,#00d4d4,#00d4ff,#0066ff);
+  --grad-t:linear-gradient(100deg,#00d4d4 0%,#00d4ff 50%,#0066ff 100%);
   --dark:#080808;--dark2:#101010;--dark3:#181818;--dark4:#1e1e1e;
   --border:rgba(255,255,255,.07);--bc:rgba(0,212,212,.2);
   --white:#fff;--muted:rgba(255,255,255,.32);--dim:rgba(255,255,255,.55);
@@ -246,6 +246,7 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:0 clam
 /* ══ STATE ══ */
 let cfg = { sport:null, sportName:'', sportIcon:'', level:null, dur:null };
 let checkin = { score:65, energy:3 };
+let lastWorkoutData = null;
 
 document.getElementById('navDate').textContent =
   new Date().toLocaleDateString('it-IT',{weekday:'short',day:'numeric',month:'short'}).toUpperCase();
@@ -255,7 +256,7 @@ document.getElementById('navDate').textContent =
   // Check-in
   try {
     const ci = JSON.parse(sessionStorage.getItem('fitora_checkin'));
-    if (ci) { checkin.score = ci.score||65; checkin.energy = ci.energy||3; }
+    if (ci) { checkin.score = ci.score||65; checkin.energy = ci.energy||3; checkin.pain = ci.pain||[]; }
   } catch(e) {}
 
   const score = checkin.score;
@@ -632,6 +633,14 @@ function generate() {
   let main = [...data.main[level]];
   const cd = data.cooldown;
 
+  // INJECT PRE-HAB based on pain reported
+  let prehabInjected = [];
+  if (checkin.pain && !checkin.pain.includes('none')) {
+    checkin.pain.forEach(p => {
+      if (PREHAB_DB[p]) prehabInjected.push(PREHAB_DB[p]);
+    });
+  }
+
   // Reduce if recovery
   if (score < 40) {
     main = main.slice(0, Math.ceil(main.length * 0.5));
@@ -640,7 +649,7 @@ function generate() {
   }
 
   // Calculate times
-  const wuMin = Math.round(wu.length * 1.5);
+  const wuMin = Math.round((wu.length + prehabInjected.length) * 1.5);
   const cdMin = Math.round(cd.length * 1.5);
   const mainMin = dur - wuMin - cdMin;
   const multip = score < 40 ? 0.5 : score < 60 ? 0.75 : score < 80 ? 1.0 : 1.15;
@@ -650,10 +659,33 @@ function generate() {
   const levelColors = {beginner:'pill-green',mid:'pill-cyan',advanced:'pill-yellow'};
 
   const phases = [
-    { label:'RISCALDAMENTO', cls:'phase-warmup', dur: wuMin+' min', exs: wu },
+    { label:'RISCALDAMENTO + PRE-HAB', cls:'phase-warmup', dur: wuMin+' min', exs: [...prehabInjected, ...wu] },
     { label:'ALLENAMENTO PRINCIPALE', cls:'phase-main', dur: mainMin+' min', exs: main },
     { label:'DEFATICAMENTO', cls:'phase-cooldown', dur: cdMin+' min', exs: cd },
   ];
+
+  // Salva i dati strutturati per il piano mensile
+  lastWorkoutData = {
+    id: Date.now(),
+    date: new Date().toISOString().split('T')[0],
+    day: new Date().getDate(),
+    month: new Date().toLocaleDateString('it-IT',{month:'short'}).toUpperCase(),
+    sport: cfg.sportName,
+    sportIcon: cfg.sportIcon,
+    level: level,
+    levelLabel: levelLabels[level],
+    dur: dur,
+    kcal: kcal,
+    score: score,
+    intensityLabel: intensityLabel,
+    phases: phases.map(ph => ({
+      type: ph.cls,
+      label: ph.label,
+      dur: ph.dur,
+      exercises: ph.exs
+    }))
+  };
+  localStorage.setItem('fitora_last_workout', JSON.stringify(lastWorkoutData));
 
   const phasesHtml = phases.map(ph => `
     <div class="phase-block">
@@ -703,7 +735,8 @@ function generate() {
       <div class="wt-cell"><div class="wt-val" style="color:var(--cyan)">${checkin.score}</div><div class="wt-label">check-in score</div></div>
     </div>
 
-    <a href="dashboard.html" class="btn-go-dash" style="margin-top:16px">▶ Vai alla Dashboard</a>
+    <button id="savePlanBtn" onclick="saveWorkoutToPlan()" style="display:block;width:100%;text-align:center;background:transparent;color:var(--cyan);font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:1rem;letter-spacing:4px;text-transform:uppercase;border:1px solid var(--cyan);cursor:pointer;padding:17px;margin-top:16px;clip-path:polygon(12px 0,100% 0,calc(100% - 12px) 100%,0 100%);transition:all .2s;">💾 Salva nel Piano Mensile</button>
+    <a href="dashboard.html" class="btn-go-dash" style="margin-top:8px">▶ Vai alla Dashboard</a>
     <button class="btn-new" onclick="location.reload()">↺ Rigenera allenamento</button>
   `;
 
@@ -711,6 +744,36 @@ function generate() {
   out.innerHTML = html;
   out.classList.add('show');
   out.scrollIntoView({behavior:'smooth', block:'start'});
+
+  // Controlla se piano pieno
+  try {
+    const plan = JSON.parse(localStorage.getItem('fitora_monthly_plan')||'[]');
+    if (plan.length >= 3) {
+      const btn = document.getElementById('savePlanBtn');
+      btn.textContent = '⚠️ Piano pieno (max 3) — Vai nel Diario e cancella un piano';
+      btn.style.color = 'var(--orange)'; btn.style.borderColor = 'var(--orange)';
+      btn.disabled = true; btn.style.opacity = '.75';
+    }
+  } catch(e) {}
+}
+
+function saveWorkoutToPlan() {
+  if (!lastWorkoutData) return;
+  try {
+    const plan = JSON.parse(localStorage.getItem('fitora_monthly_plan')||'[]');
+    const btn  = document.getElementById('savePlanBtn');
+    if (plan.length >= 3) {
+      btn.textContent = '⚠️ Piano pieno (max 3) — Vai nel Diario e cancella un piano';
+      btn.style.color = 'var(--orange)'; btn.style.borderColor = 'var(--orange)';
+      btn.disabled = true; btn.style.opacity = '.75';
+      return;
+    }
+    plan.unshift(lastWorkoutData);
+    localStorage.setItem('fitora_monthly_plan', JSON.stringify(plan));
+    btn.textContent = '✅ Salvato nel Piano!';
+    btn.disabled = true; btn.style.color = 'var(--green)';
+    btn.style.borderColor = 'var(--green)'; btn.style.opacity = '.7';
+  } catch(e) { alert('Errore: ' + e.message); }
 }
 </script>
 </body>

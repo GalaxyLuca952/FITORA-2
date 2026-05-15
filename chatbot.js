@@ -623,6 +623,29 @@
       return 'Per accedere a **FITORA** usa il pulsante **Dashboard ⚡** nel menu in alto.\n\nSe hai dimenticato la password, dalla pagina di login trovi il link *"Password dimenticata?"* per resettarla via email 🔐';
     }
 
+    /* ── Coaching Tecnico 10K ── */
+    if (/miglior.*10k|migliorare.*10k|piano.*10k|preparazione.*10k/.test(msg)) {
+      updateChips(['Allenamento oggi', 'PT per allenarsi', 'Check-in']);
+      return 'Per migliorare il tuo tempo sui **10K**, ho preparato per te un **Piano Strategico di 8 Settimane**:\n\n' +
+             '**Settimana 1-2: Base Aerobica**\n- 3 corse lente (Z2) da 5-7km per costruire resistenza.\n\n' +
+             '**Settimana 3-4: Potenza e Ritmo**\n- Introduciamo ripetute (es: 6x800m a ritmo gara) e una corsa lunga da 12km.\n\n' +
+             '**Settimana 5-6: Picco di Intensità**\n- Allenamenti "Tempo Run" (8km a ritmo sostenuto) e fartlek esplosivi.\n\n' +
+             '**Settimana 7-8: Tapering e Gara**\n- Riduciamo il volume del 30% per scaricare la fatica e arriviamo al test finale freschi.\n\n' +
+             '**Consiglio Tecnico:** Monitora il tuo *Biomechanical Health Index* nella dashboard per assicurarti che la tecnica non cali con la stanchezza. Vuoi iniziare la prima sessione oggi?';
+    }
+
+    /* ── VISION & BUSINESS (Investor Logic) ── */
+    if (/investire|mercato|business|giuria|perché fitora|unicità|competitor/.test(msg)) {
+      updateChips(['Biomechanical Health Index', 'Computer Vision', 'Modello B2B']);
+      return 'FITORA non è un\'app di fitness, è un **asset di prevenzione sanitaria digitale** 🛡️\n\n**Perché investire?**\n1. **Proprietary Data**: Calcoliamo il BHI (Biomechanical Health Index), un dato unico che nessun competitor ha.\n2. **De-risking**: Riduciamo i costi per le assicurazioni monitorando la tecnica in tempo reale.\n3. **Scalabilità**: Integriamo il welfare aziendale con test di prontezza neurale (CNS) per ridurre l\'assenteismo da infortunio.\n\nSiamo pronti per la rivoluzione della *Longevity Tech*.';
+    }
+
+    /* ── Aiuto Tecnico Prevenzione ── */
+    if (/consigli tecnici|prevenzione infortuni|male|dolore|idratazione/.test(msg)) {
+      updateChips(['Analisi Biomeccanica', 'Idratazione Tecnica', 'Check-in']);
+      return 'La mia analisi tecnica si concentra su tre pilastri per proteggerti:\n\n1. **Analisi Biomeccanica**: In base ai dolori che segnali nel check-in, ti suggerisco modifiche immediate al movimento.\n2. **Idratazione Calcolata**: Monitoriamo l\'acqua in base al tuo peso corporeo per mantenere i tessuti elastici.\n3. **Gestione del Carico**: Se lo score è basso, riduco il volume per evitare sovraccarichi tendinei.\n\nControlla la tua Dashboard per vedere i consigli attivi per oggi!';
+    }
+
     /* Notifiche */
     if (/notifich|reminder|avvisi|promemoria/.test(msg)) {
       updateChips(CHIPS_AFTER_FEATURES);
@@ -711,12 +734,12 @@
       }
       .cb-pt-info { flex: 1; min-width: 0; }
       .cb-pt-name { font-size: 13px; font-weight: 700; color: #e8e8e8; }
-      .cb-pt-role { font-size: 10.5px; color: #00e676; margin: 2px 0 4px; }
+      .cb-pt-role { font-size: 10.5px; color: #00d4ff; margin: 2px 0 4px; }
       .cb-pt-bio  { font-size: 11px; color: #aaa; line-height: 1.45; margin-bottom: 6px; }
       .cb-pt-tags { display: flex; flex-wrap: wrap; gap: 4px; margin-bottom: 8px; }
       .cb-pt-tag {
         font-size: 9.5px; padding: 2px 7px; border-radius: 20px;
-        background: rgba(0,230,118,0.09); border: 1px solid rgba(0,230,118,0.22); color: #00e676;
+        background: rgba(0,212,255,0.09); border: 1px solid rgba(0,212,255,0.22); color: #00d4ff;
       }
       .cb-pt-wa {
         display: inline-flex; align-items: center; gap: 5px;
@@ -739,7 +762,7 @@
       .cb-nav-item:hover { background: rgba(0,255,136,0.07); border-color: rgba(0,255,136,0.22); }
       .cb-nav-icon  { font-size: 16px; width: 22px; text-align: center; flex-shrink: 0; }
       .cb-nav-label { flex: 1; font-size: 12.5px; font-weight: 600; }
-      .cb-nav-arrow { color: #00e676; font-size: 13px; }
+      .cb-nav-arrow { color: #00d4ff; font-size: 13px; }
     `;
     document.head.appendChild(style);
   }

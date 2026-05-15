@@ -7,20 +7,18 @@
 <meta name="theme-color" content="#080808">
 <title>FITORA – Dashboard</title>
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;700;900&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <style>
 /* ══════════════════════════════════
   VARS & RESET
 ══════════════════════════════════ */
 :root {
   --cyan:    #00d4d4;
-  --green:   #7fff00;
-  --yellow:  #d4ff00;
+  --green:   #00d4ff;
+  --yellow:  #0066ff;
   --red:     #ff4545;
   --orange:  #ff8c00;
-  --grad:    linear-gradient(90deg, #00d4d4, #7fff00, #d4ff00);
-  --grad-t:  linear-gradient(100deg, #00d4d4 0%, #7fff00 50%, #d4ff00 100%);
+  --grad:    linear-gradient(90deg, #00d4d4, #00d4ff, #0066ff);
+  --grad-t:  linear-gradient(100deg, #00d4d4 0%, #00d4ff 50%, #0066ff 100%);
   --dark:    #080808;
   --dark2:   #101010;
   --dark3:   #181818;
@@ -70,19 +68,6 @@ body::after {
   font-family:'Barlow Condensed',sans-serif; font-weight:900;
   font-size:1.45rem; letter-spacing:6px; text-transform:uppercase;
 }
-.nav-center {
-  display:flex; align-items:center; gap:8px;
-  font-size:.6rem; font-weight:600; letter-spacing:3px;
-  text-transform:uppercase; color:var(--muted);
-}
-.state-dot {
-  width:7px; height:7px; border-radius:50%;
-  background:var(--muted); transition:background .3s, box-shadow .3s;
-}
-.state-dot.active  { background:var(--green); box-shadow:0 0 8px var(--green); animation:blink 1.5s ease-in-out infinite; }
-.state-dot.paused  { background:var(--orange); box-shadow:0 0 8px var(--orange); }
-.state-dot.error   { background:var(--red); }
-@keyframes blink { 0%,100%{opacity:1} 50%{opacity:.3} }
 .nav-date { font-size:.6rem; letter-spacing:2px; color:var(--muted); text-transform:uppercase; }
 
 /* ══════════════════════════════════
@@ -235,207 +220,6 @@ body::after {
 }
 .btn-start-cta:hover { filter:brightness(1.1); }
 
-/* Last run */
-.last-run {
-  display:flex; gap:12px; align-items:center;
-  padding:14px 16px; background:var(--dark3); border:1px solid var(--border);
-}
-.lr-date-block {
-  width:44px; height:44px; flex-shrink:0;
-  background:rgba(0,212,212,.08); border:1px solid rgba(0,212,212,.2);
-  display:flex; flex-direction:column; align-items:center; justify-content:center;
-}
-.lr-day {
-  font-family:'Barlow Condensed',sans-serif; font-weight:900;
-  font-size:1.2rem; line-height:1; color:var(--cyan);
-}
-.lr-mon { font-size:.5rem; letter-spacing:2px; color:var(--muted); text-transform:uppercase; }
-.lr-info { flex:1; }
-.lr-title { font-weight:600; font-size:.88rem; margin-bottom:3px; }
-.lr-stats { font-size:.7rem; color:var(--muted); }
-.lr-dist {
-  font-family:'Barlow Condensed',sans-serif; font-weight:900;
-  font-size:1.5rem; line-height:1;
-}
-.lr-dist-unit { font-size:.55rem; letter-spacing:2px; color:var(--muted); text-transform:uppercase; }
-
-/* ══════════════════════════════════
-   PAGE 2: CORRI (GPS + TIMER)
-══════════════════════════════════ */
-
-/* GPS Banner */
-.gps-banner {
-  display:flex; align-items:center; gap:10px; padding:11px 16px;
-  font-size:.68rem; letter-spacing:2px; text-transform:uppercase; font-weight:600;
-  transition:all .4s; border:1px solid transparent;
-}
-.gps-banner.idle   { background:rgba(0,212,212,.05); border-color:rgba(0,212,212,.1); color:var(--dim); }
-.gps-banner.active { background:rgba(127,255,0,.05); border-color:rgba(127,255,0,.18); color:var(--green); }
-.gps-banner.paused { background:rgba(255,140,0,.05); border-color:rgba(255,140,0,.18); color:var(--orange); }
-.gps-banner.error  { background:rgba(255,69,69,.07); border-color:rgba(255,69,69,.22); color:var(--red); }
-.banner-text { flex:1; }
-.acc-badge { font-size:.58rem; padding:2px 7px; border:1px solid currentColor; opacity:.6; }
-/* Stats strip */
-.stats-strip {
-  display:grid; grid-template-columns:repeat(4,1fr); gap:1px;
-  background:rgba(0,212,212,.05); border:1px solid rgba(0,212,212,.08);
-}
-.stat-cell {
-  background:var(--dark2); padding:clamp(12px,2vw,18px) 8px; text-align:center;
-  position:relative; overflow:hidden; transition:background .3s;
-}
-.stat-cell::before {
-  content:''; position:absolute; bottom:0; left:0; right:0; height:2px;
-  background:var(--grad); opacity:0; transition:opacity .4s;
-}
-.stat-cell.live::before { opacity:.5; }
-.stat-val {
-  font-family:'Barlow Condensed',sans-serif; font-weight:900;
-  font-size:clamp(1.5rem,3.5vw,2.2rem); line-height:1; transition:color .3s;
-}
-.stat-unit { font-size:.56rem; letter-spacing:2px; text-transform:uppercase; color:var(--muted); margin-top:3px; }
-
-/* Map */
-.map-wrap {
-  position:relative; height:clamp(240px,40vw,380px);
-  background:#060f0f; overflow:hidden;
-}
-#map { width:100%; height:100%; background:#080808; cursor:crosshair; }
-.map-idle {
-  position:absolute; inset:0; display:flex; flex-direction:column;
-  align-items:center; justify-content:center; gap:10px; pointer-events:none; z-index:10;
-}
-.map-idle-icon { font-size:2.5rem; opacity:.12; }
-.map-idle-text { font-size:.68rem; letter-spacing:3px; text-transform:uppercase; color:var(--muted); text-align:center; line-height:1.8; }
-
-.map-hud {
-  position:absolute; bottom:0; left:0; right:0;
-  background:rgba(8,8,8,.92); border-top:1px solid var(--bc);
-  padding:clamp(12px,1.8vw,18px); z-index:1000;
-  display:flex; align-items:center; justify-content:space-between; gap:10px;
-  backdrop-filter:blur(8px);
-}
-.hud-metrics { display:flex; gap:clamp(14px,3vw,26px); }
-.hud-val {
-  font-family:'Barlow Condensed',sans-serif; font-weight:900;
-  font-size:clamp(1.4rem,3vw,2rem); line-height:1;
-}
-.hud-label { font-size:.55rem; letter-spacing:3px; text-transform:uppercase; color:var(--muted); margin-top:2px; }
-
-/* Controls */
-.controls { display:flex; gap:8px; flex-shrink:0; }
-.ctrl-btn {
-  font-family:'Barlow Condensed',sans-serif; font-weight:900;
-  font-size:clamp(.75rem,1.2vw,.88rem); letter-spacing:2px; text-transform:uppercase;
-  border:none; cursor:pointer;
-  padding:clamp(10px,1.5vw,14px) clamp(12px,2vw,20px);
-  clip-path:polygon(8px 0,100% 0,calc(100% - 8px) 100%,0 100%);
-  transition:filter .2s, transform .2s, opacity .2s;
-  white-space:nowrap; min-width:72px; min-height:44px;
-  box-shadow:0 4px 15px rgba(0,0,0,.4);
-}
-.ctrl-btn:disabled { opacity:.35; cursor:not-allowed; filter:grayscale(1); }
-.ctrl-btn:not(:disabled):hover { filter:brightness(1.15); transform:scale(1.02); }
-.ctrl-btn:not(:disabled):active { transform:scale(.97); }
-.btn-go   { background:var(--grad) !important; color:#000 !important; font-weight:900 !important; }
-.btn-go.pulse { animation:glow 1.5s ease-in-out infinite; }
-@keyframes glow { 0%,100%{filter:brightness(1)} 50%{filter:brightness(1.25) drop-shadow(0 0 10px rgba(127,255,0,.5))} }
-.btn-pause-c { background:#FF8C00 !important; color:#000 !important; font-weight:900; }
-.btn-stop-c  { background:#FF4545 !important; color:#fff !important; font-weight:900; }
-.btn-reset-c { background:rgba(255,255,255,.06); color:rgba(255,255,255,.5); border:1px solid rgba(255,255,255,.1); }
-
-/* Timer */
-.timer-big {
-  font-family:'Barlow Condensed',sans-serif; font-weight:900;
-  font-size:clamp(2.8rem,7vw,4.5rem); text-align:center;
-  line-height:1; letter-spacing:-3px; padding:clamp(16px,2.5vw,24px) 0;
-}
-.timer-row {
-  display:grid; grid-template-columns:1fr 1fr; gap:1px;
-  background:rgba(255,255,255,.04);
-}
-.tc { background:var(--dark2); padding:12px; text-align:center; }
-.tc-val {
-  font-family:'Barlow Condensed',sans-serif; font-weight:700;
-  font-size:clamp(.9rem,2vw,1.1rem);
-}
-.tc-label { font-size:.55rem; letter-spacing:2px; text-transform:uppercase; color:var(--muted); margin-top:2px; }
-
-/* Pace chart */
-#paceChart { width:100%; height:72px; display:none; }
-.chart-empty {
-  text-align:center; padding:24px 0;
-  font-size:.65rem; letter-spacing:3px; text-transform:uppercase; color:var(--muted);
-}
-
-/* Summary */
-.summary-card {
-  display:none; padding:clamp(18px,3vw,26px); text-align:center;
-  background:linear-gradient(135deg,rgba(0,212,212,.07),rgba(127,255,0,.03));
-  border:1px solid rgba(0,212,212,.2);
-}
-.summary-card.show { display:block; animation:fadeIn .5s ease; }
-@keyframes fadeIn { from{opacity:0;transform:translateY(10px)} to{opacity:1;transform:none} }
-.sum-title {
-  font-family:'Barlow Condensed',sans-serif; font-weight:900;
-  font-size:clamp(1.4rem,4vw,2rem); text-transform:uppercase; margin-bottom:6px;
-}
-.sum-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:10px; margin:18px 0; }
-.sum-val {
-  font-family:'Barlow Condensed',sans-serif; font-weight:900;
-  font-size:clamp(1.2rem,2.5vw,1.6rem);
-}
-.sum-label { font-size:.58rem; letter-spacing:2px; text-transform:uppercase; color:var(--muted); margin-top:2px; }
-.save-btn {
-  background:var(--grad); color:#000;
-  font-family:'Barlow Condensed',sans-serif; font-weight:900;
-  font-size:.9rem; letter-spacing:3px; text-transform:uppercase;
-  border:none; cursor:pointer; padding:14px 32px;
-  clip-path:polygon(10px 0,100% 0,calc(100% - 10px) 100%,0 100%);
-  transition:filter .2s;
-}
-.save-btn:hover { filter:brightness(1.1); }
-
-/* ══════════════════════════════════
-   PAGE 3: STORICO
-══════════════════════════════════ */
-.hist-empty {
-  text-align:center; padding:clamp(40px,8vw,60px) 20px;
-  font-size:.7rem; letter-spacing:3px; text-transform:uppercase; color:var(--muted);
-}
-.hist-empty-icon { font-size:3rem; margin-bottom:14px; opacity:.2; }
-.hist-item {
-  display:flex; align-items:center; gap:12px;
-  padding:14px 16px; background:var(--dark3); border:1px solid var(--border);
-  animation:fadeIn .3s ease;
-}
-.hi-date-block {
-  width:40px; height:40px; flex-shrink:0;
-  background:rgba(0,212,212,.07); border:1px solid rgba(0,212,212,.15);
-  display:flex; flex-direction:column; align-items:center; justify-content:center;
-}
-.hi-day { font-family:'Barlow Condensed',sans-serif; font-weight:900; font-size:1.1rem; line-height:1; color:var(--cyan); }
-.hi-mon { font-size:.45rem; letter-spacing:2px; color:var(--muted); text-transform:uppercase; }
-.hi-body { flex:1; }
-.hi-name { font-weight:600; font-size:.85rem; margin-bottom:2px; }
-.hi-sub  { font-size:.65rem; color:var(--muted); }
-.hi-metrics { display:flex; gap:14px; flex-shrink:0; text-align:right; }
-.hi-m {
-  font-family:'Barlow Condensed',sans-serif; font-weight:700;
-  font-size:.9rem;
-}
-.hi-ml { font-size:.52rem; color:var(--muted); letter-spacing:2px; text-transform:uppercase; }
-
-.hist-actions {
-  display:flex; align-items:center; justify-content:space-between;
-  padding:10px 0;
-}
-.hist-count { font-size:.65rem; letter-spacing:2px; color:var(--muted); text-transform:uppercase; }
-.btn-clear {
-  font-size:.62rem; letter-spacing:2px; text-transform:uppercase; color:var(--red);
-  background:none; border:none; cursor:pointer; opacity:.6; transition:opacity .2s;
-}
-.btn-clear:hover { opacity:1; }
 
 /* ══════════════════════════════════
    PAGE 4: MUSICA
@@ -523,50 +307,81 @@ body::after {
 .badge-name { font-size:.5rem; letter-spacing:1.5px; text-transform:uppercase; color:var(--muted); line-height:1.3; }
 .badge-item.earned .badge-name { color:var(--dim); }
 
-/* ══════════════════════════════════
-   PERMISSION OVERLAY
-══════════════════════════════════ */
-.perm-overlay {
-  display:none; position:fixed; inset:0; z-index:5000;
-  background:rgba(0,0,0,.94); align-items:center; justify-content:center;
-  backdrop-filter:blur(10px);
+
+/* ══ CALENDARIO ══ */
+.cal-grid {
+  display:grid; grid-template-columns:repeat(7,1fr); gap:2px;
 }
-.perm-overlay.show { display:flex; }
-.perm-box {
-  position: relative;
-  background:var(--dark2); border:1px solid var(--bc);
-  padding:clamp(24px,4vw,40px); max-width:360px; width:calc(100% - 32px);
-  text-align:center;
-  .esci-gps {
-  position: absolute;
-  top: 14px;
-  left: 16px;
-  font-size: .75rem;
-  font-weight: 700;
-  letter-spacing: 2px;
-  color: var(--muted);
-  cursor: pointer;
-  padding: 4px 8px;
-  border: 1px solid var(--border);
-  transition: color .2s, border-color .2s;
+.cal-header-cell {
+  text-align:center; font-size:.46rem; letter-spacing:1.5px;
+  text-transform:uppercase; color:var(--muted); padding:5px 2px;
 }
-.esci-gps:hover { color: var(--red); border-color: var(--red); }
+.cal-day {
+  min-height:64px; background:var(--dark3); border:1px solid var(--border);
+  display:flex; flex-direction:column; align-items:center; padding:4px 2px 4px;
+  overflow:hidden; transition:background .2s; cursor:default; gap:1px;
 }
-.perm-icon { font-size:2.5rem; margin-bottom:14px; }
-.perm-title {
+.cal-day.empty { background:transparent; border-color:transparent; }
+.cal-day.today { border-color:rgba(0,212,212,.5); background:rgba(0,212,212,.05); }
+.cal-day.has-workout { cursor:pointer; border-color:rgba(0,212,212,.18); }
+.cal-day.has-workout:hover { background:rgba(0,212,212,.08); }
+.cal-day.done-100 { background:rgba(0,212,212,.1); border-color:rgba(0,212,212,.4); }
+.cal-day-num {
   font-family:'Barlow Condensed',sans-serif; font-weight:900;
-  font-size:1.4rem; text-transform:uppercase; margin-bottom:10px;
+  font-size:.7rem; line-height:1; color:var(--muted); align-self:flex-start; padding-left:3px;
 }
-.perm-text { font-size:.82rem; color:var(--dim); line-height:1.7; margin-bottom:22px; }
-.perm-btn {
-  background:var(--grad); color:#000;
+.cal-day.today .cal-day-num  { color:var(--cyan); }
+.cal-day.has-workout .cal-day-num { color:var(--white); }
+.cal-sport { font-size:.82rem; line-height:1; }
+.cal-sport-nm {
+  font-size:.34rem; letter-spacing:.5px; text-transform:uppercase;
+  color:rgba(255,255,255,.45); text-align:center; line-height:1.2;
+  overflow:hidden; text-overflow:ellipsis; white-space:nowrap;
+  max-width:100%; padding:0 2px;
+}
+.cal-pct-txt {
   font-family:'Barlow Condensed',sans-serif; font-weight:900;
-  font-size:.95rem; letter-spacing:3px; text-transform:uppercase;
-  border:none; cursor:pointer; padding:15px 36px; width:100%;
-  clip-path:polygon(10px 0,100% 0,calc(100% - 10px) 100%,0 100%);
-  transition:filter .2s;
+  font-size:.58rem; text-align:center; line-height:1;
 }
-.perm-btn:hover { filter:brightness(1.1); }
+/* Selezionata */
+.cal-day.selected { outline:2px solid var(--cyan); outline-offset:-1px; }
+/* Giorno passato nel calendario */
+.cal-day.past-workout { opacity:.7; }
+
+/* ══ ACCORDION DIARIO ══ */
+.diary-accord {
+  background:var(--dark3); border:1px solid var(--border); overflow:hidden;
+}
+.diary-accord-head {
+  display:flex; align-items:center; gap:12px;
+  padding:13px 16px; cursor:pointer; transition:background .2s;
+  -webkit-tap-highlight-color:transparent;
+}
+.diary-accord-head:hover { background:rgba(0,212,212,.04); }
+.diary-accord-body { display:none; border-top:1px solid rgba(255,255,255,.04); }
+.diary-accord-body.open { display:block; animation:fadeInDown .2s ease; }
+@keyframes fadeInDown { from{opacity:0;transform:translateY(-6px)} to{opacity:1;transform:none} }
+.diary-accord-foot {
+  display:flex; gap:8px; padding:10px 16px;
+  border-top:1px solid rgba(255,255,255,.04); flex-wrap:wrap;
+}
+
+/* ══ PIANO LIMITE ══ */
+.plan-full-notice {
+  display:flex; align-items:center; gap:10px; padding:12px 16px;
+  background:rgba(255,140,0,.07); border:1px solid rgba(255,140,0,.25);
+  font-size:.68rem; letter-spacing:2px; text-transform:uppercase; color:var(--orange);
+}
+
+/* ══ BHI DETAIL ══ */
+.bhi-detail-row {
+  display:flex; justify-content:space-between; align-items:center;
+  padding:6px 0; border-bottom:1px solid rgba(255,255,255,.04);
+  font-size:.7rem;
+}
+.bhi-detail-row:last-child { border-bottom:none; }
+.bhi-detail-label { color:var(--muted); }
+.bhi-detail-val { font-weight:700; }
 
 /* ══════════════════════════════════
    TOAST
@@ -592,24 +407,111 @@ body::after {
   .badge-grid { grid-template-columns:repeat(4,1fr); }
 }
 @media (max-width: 380px) {
-  .hud-val { font-size:1.3rem; }
-  .ctrl-btn { padding:10px 10px; min-width:58px; font-size:.7rem; letter-spacing:1px; }
   .tab-btn .tab-label { font-size:.48rem; }
+}
+
+/* ══ PIANO / DIARIO ══ */
+.plan-card {
+  background:var(--dark3); border:1px solid var(--border);
+  overflow:hidden;
+}
+.plan-card-head {
+  display:flex; align-items:center; gap:12px;
+  padding:13px 16px; cursor:pointer;
+  transition:background .2s;
+}
+.plan-card-head:hover { background:rgba(0,212,212,.04); }
+.plan-date-block {
+  width:40px; height:40px; flex-shrink:0;
+  background:rgba(0,212,212,.07); border:1px solid rgba(0,212,212,.15);
+  display:flex; flex-direction:column; align-items:center; justify-content:center;
+}
+.pdb-day { font-family:'Barlow Condensed',sans-serif; font-weight:900; font-size:1.1rem; line-height:1; color:var(--cyan); }
+.pdb-mon { font-size:.45rem; letter-spacing:2px; color:var(--muted); text-transform:uppercase; }
+.plan-info { flex:1; }
+.plan-sport { font-weight:700; font-size:.88rem; margin-bottom:2px; }
+.plan-meta  { font-size:.65rem; color:var(--muted); }
+.plan-chevron { font-size:.8rem; color:var(--muted); transition:transform .25s; }
+.plan-chevron.open { transform:rotate(180deg); }
+.plan-detail { display:none; border-top:1px solid rgba(255,255,255,.04); }
+.plan-detail.open { display:block; }
+.plan-phase-label {
+  font-size:.6rem; font-weight:700; letter-spacing:3px; text-transform:uppercase;
+  padding:8px 16px; border-left:3px solid var(--cyan);
+}
+.plan-phase-label.warmup { border-color:var(--orange); color:var(--orange); background:rgba(255,140,0,.05); }
+.plan-phase-label.main   { border-color:var(--cyan);   color:var(--cyan);   background:rgba(0,212,212,.04); }
+.plan-phase-label.cooldown { border-color:var(--green); color:var(--green); background:rgba(0,212,212,.03); }
+
+/* Checkbox esercizi */
+.ex-check-row {
+  display:flex; align-items:center; gap:12px;
+  padding:11px 16px; border-top:1px solid rgba(255,255,255,.03);
+  cursor:pointer; transition:background .15s;
+}
+.ex-check-row:hover { background:rgba(255,255,255,.02); }
+.ex-check-row.done { opacity:.55; }
+.ex-check-row.locked { cursor:default; pointer-events:none; }
+.diary-accord.past-plan .diary-accord-head { cursor:pointer; }
+.diary-accord.past-plan .past-label { font-size:.52rem; letter-spacing:2px; color:var(--muted); text-transform:uppercase; }
+.ex-checkbox {
+  width:20px; height:20px; flex-shrink:0;
+  border:2px solid rgba(255,255,255,.2); border-radius:3px;
+  display:flex; align-items:center; justify-content:center;
+  transition:all .2s; font-size:.75rem;
+}
+.ex-check-row.done .ex-checkbox { background:var(--cyan); border-color:var(--cyan); color:#000; }
+.ex-check-body { flex:1; }
+.ex-check-name { font-size:.82rem; font-weight:600; }
+.ex-check-detail { font-size:.63rem; color:var(--muted); margin-top:1px; }
+.ex-check-spec { font-size:.65rem; color:var(--cyan); font-weight:700; flex-shrink:0; }
+
+/* Bottoni diario */
+.btn-check-all {
+  display:block; width:100%; text-align:center;
+  background:rgba(0,212,212,.08); color:var(--cyan);
+  font-family:'Barlow Condensed',sans-serif; font-weight:900;
+  font-size:.9rem; letter-spacing:3px; text-transform:uppercase;
+  border:1px solid rgba(0,212,212,.25); cursor:pointer; padding:13px;
+  clip-path:polygon(10px 0,100% 0,calc(100% - 10px) 100%,0 100%);
+  transition:all .2s; margin:8px 16px 0; width:calc(100% - 32px);
+}
+.btn-check-all:hover { background:rgba(0,212,212,.15); }
+.btn-save-day {
+  display:block; width:calc(100% - 32px); text-align:center;
+  background:var(--grad); color:#000;
+  font-family:'Barlow Condensed',sans-serif; font-weight:900;
+  font-size:.9rem; letter-spacing:3px; text-transform:uppercase;
+  border:none; cursor:pointer; padding:13px;
+  clip-path:polygon(10px 0,100% 0,calc(100% - 10px) 100%,0 100%);
+  transition:filter .2s; margin:6px 16px 16px;
+}
+.btn-save-day:hover { filter:brightness(1.1); }
+.btn-del-plan {
+  background:none; border:none; color:rgba(255,69,69,.5);
+  font-size:.6rem; letter-spacing:2px; text-transform:uppercase;
+  cursor:pointer; padding:4px 8px; transition:color .2s;
+}
+.btn-del-plan:hover { color:var(--red); }
+
+/* Progress bar diario */
+.diary-progress-bar {
+  height:3px; background:rgba(255,255,255,.05); margin:0 16px;
+}
+.diary-progress-fill { height:100%; background:var(--grad); transition:width .4s; }
+
+/* Log entry */
+.log-entry {
+  display:flex; align-items:center; gap:12px;
+  padding:12px 16px; background:var(--dark3); border:1px solid var(--border);
+}
+.log-entry-pct {
+  font-family:'Barlow Condensed',sans-serif; font-weight:900;
+  font-size:1.4rem; flex-shrink:0; min-width:48px; text-align:right;
 }
 </style>
 </head>
 <body>
-
-<!-- PERMISSION OVERLAY -->
-<div class="perm-overlay" id="permOverlay">
-  <div class="perm-box">
-    <div class="esci-gps" onclick="document.getElementById('permOverlay').classList.remove('show')">X</div>
-    <div class="perm-icon">📍</div>
-    <div class="perm-title">Accesso GPS</div>
-    <p class="perm-text">FITORA usa il GPS per tracciare il percorso in tempo reale. La posizione viene usata solo durante la sessione.</p>
-    <button class="perm-btn" onclick="requestGPS()">Abilita GPS</button>
-  </div>
-</div>
 
 <!-- TOAST -->
 <div class="toast" id="toast"></div>
@@ -619,10 +521,6 @@ body::after {
   <a href="index.html" style="font-size:.62rem;font-weight:700;letter-spacing:2px;color:var(--muted);border:1px solid var(--border);padding:5px 10px;transition:color .2s" onmouseover="this.style.color='var(--cyan)'" onmouseout="this.style.color='var(--muted)'">← HOME</a>
   <div class="nav-logo gt">FITORA</div>
   <div style="display:flex;align-items:center;gap:14px">
-    <div class="nav-center">
-      <div class="state-dot" id="stateDot"></div>
-      <span id="stateLabel">PRONTO</span>
-    </div>
     <div class="nav-date" id="navDate"></div>
   </div>
 </header>
@@ -664,49 +562,95 @@ body::after {
         </div>
       </div>
 
-      <!-- Quick stats -->
+      <!-- MONITORAGGIO TECNICO E PREVENZIONE -->
       <div>
-        <div class="section-label">Sessione attiva</div>
+        <div class="section-label">// Monitoraggio Tecnico & Prevenzione</div>
+        <div class="card" style="margin-bottom: 8px;">
+          <div class="card-head">
+            <div class="card-title">🛡️ Analisi Biomeccanica</div>
+            <div class="card-badge" id="preventionStatus">Check-in richiesto</div>
+          </div>
+          <div class="card-body" id="preventionTip">
+            <p style="font-size: 0.75rem; color: var(--dim);">Esegui il check-in per ricevere consigli tecnici sulla prevenzione infortuni basati sul tuo stato fisico attuale.</p>
+          </div>
+        </div>
+
+        <!-- Tracker Idratazione -->
+        <div class="card">
+          <div class="card-head">
+            <div class="card-title">💧 Idratazione Tecnica</div>
+            <div class="card-badge" id="waterCount">0.0 / 3.0 L</div>
+          </div>
+          <div class="card-body">
+            <div style="display: flex; align-items: center; gap: 15px;">
+              <div style="flex: 1; height: 8px; background: rgba(255,255,255,0.05); border-radius: 4px; overflow: hidden;">
+                <div id="waterBar" style="height: 100%; width: 0%; background: var(--cyan); transition: width 0.3s;"></div>
+              </div>
+              <div style="display: flex; gap: 5px;">
+                <button onclick="addWater(-0.25)" style="background: var(--dark3); border: 1px solid var(--border); color: var(--white); padding: 5px 10px; cursor: pointer;">-</button>
+                <button onclick="addWater(0.25)" style="background: var(--dark3); border: 1px solid var(--border); color: var(--white); padding: 5px 10px; cursor: pointer;">+</button>
+              </div>
+            </div>
+            <p style="font-size: 0.65rem; color: var(--muted); margin-top: 10px; text-transform: uppercase; letter-spacing: 1px;">
+              Obiettivo calcolato sulla base del tuo peso corporeo per prevenire crampi e infiammazioni.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- BIOMECHANICAL HEALTH INDEX (BHI) - INVESTOR FEATURE -->
+      <div class="card" style="background: linear-gradient(135deg, #080808 0%, #001a1a 100%); border: 1px solid var(--cyan);">
+        <div class="card-head">
+          <div class="card-title">🔬 Biomechanical Health Index</div>
+          <div class="card-badge" style="color: var(--cyan); font-weight: 900;">AI AUDIT ACTIVE</div>
+        </div>
+        <div class="card-body">
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 15px;">
+            <div>
+              <div style="font-size: 2.5rem; font-family: 'Barlow Condensed', sans-serif; font-weight: 900;" class="gt" id="bhiScore">84.2</div>
+              <div style="font-size: 0.6rem; letter-spacing: 2px; color: var(--muted); text-transform: uppercase;">Punteggio Integrità Tecnica</div>
+            </div>
+            <div style="text-align: right;">
+              <div style="font-size: 0.8rem; font-weight: 700;" id="bhiRisk">—</div>
+              <div style="font-size: 0.55rem; color: var(--dim);">Rispetto alla media nazionale</div>
+            </div>
+          </div>
+          <div style="height: 4px; background: rgba(255,255,255,0.05); border-radius: 2px;">
+            <div id="bhiBar" style="width: 0%; height: 100%; background: var(--grad); border-radius: 2px; transition: width 1s cubic-bezier(.22,1,.36,1);"></div>
+          </div>
+          <p style="font-size: 0.65rem; color: var(--muted); margin-top: 12px; line-height: 1.5;">
+            <span style="color: var(--cyan); font-weight: 700;">VALORE B2B:</span> Questo score certifica la tua idoneità tecnica per programmi di welfare aziendale e sconti assicurativi.
+          </p>
+        </div>
+      </div>
+
+      <!-- Quick stats mensili -->
+      <div>
+        <div class="section-label">// Questo mese</div>
         <div class="quick-stats">
           <div class="qs-cell">
-            <div class="qs-val gt" id="qs-dist">0.00</div>
-            <div class="qs-label">km</div>
+            <div class="qs-val gt" id="qs-workouts">0</div>
+            <div class="qs-label">workout</div>
           </div>
           <div class="qs-cell">
-            <div class="qs-val" style="color:var(--green)" id="qs-cal">0</div>
-            <div class="qs-label">kcal</div>
+            <div class="qs-val" style="color:var(--green)" id="qs-kcal">0</div>
+            <div class="qs-label">kcal stimate</div>
           </div>
           <div class="qs-cell">
-            <div class="qs-val" style="color:var(--yellow)" id="qs-pace">—'—"</div>
-            <div class="qs-label">ritmo</div>
+            <div class="qs-val" style="color:var(--yellow)" id="qs-exercises">0</div>
+            <div class="qs-label">esercizi</div>
           </div>
           <div class="qs-cell">
-            <div class="qs-val" style="color:var(--cyan)" id="qs-time">00:00</div>
-            <div class="qs-label">tempo</div>
+            <div class="qs-val" style="color:var(--cyan)" id="qs-days">0</div>
+            <div class="qs-label">giorni attivi</div>
           </div>
         </div>
       </div>
 
-      <!-- Start CTA -->
-      <button class="btn-start-cta" onclick="switchTab('run'); setTimeout(handleStart,100)">
-        ▶ Avvia Allenamento
-      </button>
-
-      <!-- Last run -->
-      <div id="lastRunWrap" style="display:none">
-        <div class="section-label">Ultima corsa</div>
-        <div class="last-run" id="lastRunCard"></div>
-      </div>
-
-      <!-- No history tip -->
-      <div id="noHistoryTip" class="card">
-        <div class="card-body" style="text-align:center;padding:24px">
-          <div style="font-size:1.8rem;margin-bottom:10px;opacity:.3">🏃</div>
-          <div style="font-size:.68rem;letter-spacing:3px;text-transform:uppercase;color:var(--muted);line-height:1.8">
-            Nessuna corsa salvata ancora<br>Avvia il tuo primo allenamento
-          </div>
-        </div>
-      </div>
+      <!-- CTA workout -->
+      <a href="workout.html" class="btn-start-cta" style="display:block;text-decoration:none;text-align:center;">
+        ⚡ Genera Allenamento di Oggi
+      </a>
 
       <!-- Tool Cards -->
       <div>
@@ -749,138 +693,69 @@ body::after {
     </div>
   </div>
 
-  <!-- ════════ PAGE: CORRI ════════ -->
+  <!-- ════════ PAGE: PIANO MENSILE ════════ -->
   <div class="page" id="page-run">
     <div class="page-inner">
 
-      <!-- Banner GPS -->
-      <div class="gps-banner idle" id="gpsBanner">
-        <span>🛰️</span>
-        <span class="banner-text" id="bannerText">GPS in attesa · Premi Avvia</span>
-        <span class="acc-badge" id="accBadge">— m</span>
+      <div class="card-head" style="border:1px solid var(--border);background:var(--dark2)">
+        <div class="card-title">📅 Piano Mensile</div>
+        <div class="card-badge" id="planCount">0 / 3</div>
       </div>
 
-      <!-- Stats strip -->
-      <div class="stats-strip">
-        <div class="stat-cell" id="cellDist">
-          <div class="stat-val gt" id="totalDist">0.00</div>
-          <div class="stat-unit">km</div>
-        </div>
-        <div class="stat-cell" id="cellCal">
-          <div class="stat-val" style="color:var(--green)" id="totalCal">0</div>
-          <div class="stat-unit">kcal</div>
-        </div>
-        <div class="stat-cell" id="cellPace">
-          <div class="stat-val" style="color:var(--yellow)" id="avgPace">—'—"</div>
-          <div class="stat-unit">ritmo</div>
-        </div>
-        <div class="stat-cell" id="cellSpeed">
-          <div class="stat-val" style="color:var(--cyan)" id="currentSpeed">0.0</div>
-          <div class="stat-unit">km/h</div>
-        </div>
+      <!-- Avviso piano pieno -->
+      <div id="planFullNotice" class="plan-full-notice" style="display:none">
+        ⚠️ Piano completo — elimina un allenamento per aggiungerne uno nuovo
       </div>
 
-      <!-- Map card -->
-      <div class="card">
-        <div class="card-head">
-          <div class="card-title">📍 Percorso GPS Live</div>
-          <div class="card-badge" id="pointCount">0 punti</div>
-        </div>
-        <div class="map-wrap">
-          <div id="map"></div>
-          <div class="map-idle" id="mapIdle">
-            <div class="map-idle-icon">🗺️</div>
-            <div class="map-idle-text">Il percorso<br>apparirà qui</div>
-          </div>
-          <div class="map-hud">
-            <div class="hud-metrics">
-              <div>
-                <div class="hud-val gt" id="hudDist">0.00</div>
-                <div class="hud-label">km totali</div>
-              </div>
-              <div>
-                <div class="hud-val" style="color:var(--yellow)" id="hudPace">—'—"</div>
-                <div class="hud-label" id="hudPaceLabel">ritmo</div>
-              </div>
-            </div>
-            <div class="controls">
-              <button class="ctrl-btn btn-go" id="startBtn" onclick="handleStart()">▶ Avvia</button>
-              <button class="ctrl-btn btn-pause-c" id="pauseBtn" onclick="handlePause()" disabled>⏸</button>
-              <button class="ctrl-btn btn-stop-c"  id="stopBtn"  onclick="handleStop()"  disabled>⏹</button>
-            </div>
+      <!-- Stato vuoto -->
+      <div id="noPlanState" class="card">
+        <div class="card-body" style="text-align:center;padding:36px 20px">
+          <div style="font-size:2.5rem;margin-bottom:12px;opacity:.2">📋</div>
+          <div style="font-size:.68rem;letter-spacing:3px;text-transform:uppercase;color:var(--muted);line-height:1.9">
+            Nessun allenamento nel piano<br>Genera e salva il tuo primo workout
           </div>
         </div>
       </div>
 
-      <!-- Timer card -->
-      <div class="card">
-        <div class="card-head">
-          <div class="card-title">⏱ Cronometro</div>
-          <div class="card-badge" id="timerState">IN ATTESA</div>
-        </div>
-        <div class="card-body" style="padding-top:0">
-          <div class="timer-big gt" id="timerDisplay">00:00:00</div>
-          <div class="timer-row">
-            <div class="tc">
-              <div class="tc-val" style="color:var(--green)" id="lapDist">0.00 km</div>
-              <div class="tc-label">distanza</div>
-            </div>
-            <div class="tc">
-              <div class="tc-val" style="color:var(--yellow)" id="lapCal">0 kcal</div>
-              <div class="tc-label">calorie</div>
-            </div>
-          </div>
-        </div>
-      </div>
+      <!-- Lista piani -->
+      <div id="planList" style="display:flex;flex-direction:column;gap:6px"></div>
 
-      <!-- Pace chart card -->
-      <div class="card">
-        <div class="card-head">
-          <div class="card-title">📈 Ritmo nel Tempo</div>
-          <div class="card-badge" id="paceChartLabel">—</div>
-        </div>
-        <div class="card-body" style="padding:12px 14px">
-          <canvas id="paceChart"></canvas>
-          <div class="chart-empty" id="paceEmpty">Inizia a correre per vedere il grafico</div>
-        </div>
-      </div>
-
-      <!-- Summary (post-run) -->
-      <div class="summary-card" id="summaryCard">
-        <div class="sum-title gt">🎉 Sessione Completata!</div>
-        <p style="font-size:.78rem;color:var(--dim);margin-bottom:4px" id="summarySubtitle">Ottimo lavoro!</p>
-        <div class="sum-grid">
-          <div><div class="sum-val gt" id="sumDist">—</div><div class="sum-label">km</div></div>
-          <div><div class="sum-val" style="color:var(--yellow)" id="sumTime">—</div><div class="sum-label">tempo</div></div>
-          <div><div class="sum-val" style="color:var(--green)" id="sumCal">—</div><div class="sum-label">kcal</div></div>
-          <div><div class="sum-val" style="color:var(--cyan)" id="sumPace">—</div><div class="sum-label">ritmo</div></div>
-          <div><div class="sum-val" style="color:var(--orange)" id="sumSpeed">—</div><div class="sum-label">vel. max</div></div>
-          <div><div class="sum-val" style="color:var(--cyan)" id="sumElev">—</div><div class="sum-label">dislivello</div></div>
-        </div>
-        <button class="save-btn" onclick="saveSession()">💾 Salva in Storico</button>
-      </div>
+      <!-- Bottone genera -->
+      <a href="workout.html" id="planGenLink" style="display:block;width:100%;text-align:center;background:var(--grad);color:#000;font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:1rem;letter-spacing:4px;text-transform:uppercase;padding:17px;clip-path:polygon(12px 0,100% 0,calc(100% - 12px) 100%,0 100%);text-decoration:none;margin-top:4px;transition:opacity .2s;">
+        ⚡ Genera Nuovo Allenamento
+      </a>
 
     </div>
   </div>
 
-  <!-- ════════ PAGE: STORICO ════════ -->
+  <!-- ════════ PAGE: DIARIO ════════ -->
   <div class="page" id="page-history">
     <div class="page-inner">
 
-      <div class="card-head" style="border:1px solid var(--border);background:var(--dark2);margin-bottom:0">
-        <div class="card-title">📜 Storico Corse</div>
-        <div style="display:flex;align-items:center;gap:12px">
-          <div class="hist-count" id="histCount">0 corse</div>
-          <button class="btn-clear" onclick="clearHistory()">Cancella tutto</button>
+      <!-- Header -->
+      <div class="card-head" style="border:1px solid var(--border);background:var(--dark2)">
+        <div class="card-title">📓 Diario Allenamenti</div>
+        <div class="card-badge" id="diaryTodayLabel">—</div>
+      </div>
+
+      <!-- Calendario mensile -->
+      <div class="card">
+        <div class="card-head">
+          <div class="card-title">📅 <span id="calMonthLabel"></span></div>
+        </div>
+        <div class="card-body" style="padding:8px">
+          <div class="cal-grid" id="calGrid"></div>
         </div>
       </div>
 
-      <div id="historyList">
-        <div class="hist-empty">
-          <div class="hist-empty-icon">🏃</div>
-          <div>Nessuna corsa salvata</div>
-        </div>
-      </div>
+      <!-- Dettaglio giorno selezionato -->
+      <div id="diaryDayDetail" style="display:none"></div>
+
+      <!-- Allenamento di oggi con checkboxes -->
+      <div id="diaryTodaySection"></div>
+
+      <!-- Cronologia giorni passati -->
+      <div id="diaryLogSection" style="display:flex;flex-direction:column;gap:6px"></div>
 
     </div>
   </div>
@@ -982,19 +857,19 @@ body::after {
         <div class="card-body" style="display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border);padding:0">
           <div style="background:var(--dark2);padding:16px;text-align:center">
             <div style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:1.8rem" class="gt" id="statTotalRuns">0</div>
-            <div style="font-size:.58rem;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-top:3px">Corse Totali</div>
+            <div style="font-size:.58rem;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-top:3px">Workout Totali</div>
           </div>
           <div style="background:var(--dark2);padding:16px;text-align:center">
-            <div style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:1.8rem;color:var(--green)" id="statTotalKm">0.0</div>
-            <div style="font-size:.58rem;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-top:3px">Km Totali</div>
-          </div>
-          <div style="background:var(--dark2);padding:16px;text-align:center">
-            <div style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:1.8rem;color:var(--yellow)" id="statTotalCal">0</div>
+            <div style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:1.8rem;color:var(--green)" id="statTotalKm">0</div>
             <div style="font-size:.58rem;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-top:3px">Kcal Totali</div>
           </div>
           <div style="background:var(--dark2);padding:16px;text-align:center">
-            <div style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:1.8rem;color:var(--cyan)" id="statBestDist">0.0</div>
-            <div style="font-size:.58rem;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-top:3px">Km Migliore</div>
+            <div style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:1.8rem;color:var(--yellow)" id="statTotalCal">0</div>
+            <div style="font-size:.58rem;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-top:3px">Giorni Attivi</div>
+          </div>
+          <div style="background:var(--dark2);padding:16px;text-align:center">
+            <div style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:1.8rem;color:var(--cyan)" id="statBestDist">0</div>
+            <div style="font-size:.58rem;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-top:3px">Esercizi Totali</div>
           </div>
         </div>
       </div>
@@ -1011,12 +886,12 @@ body::after {
     <span class="tab-label">Home</span>
   </button>
   <button class="tab-btn" id="tab-run" onclick="switchTab('run')">
-    <span class="tab-icon">🏃</span>
-    <span class="tab-label">Corri</span>
+    <span class="tab-icon">📅</span>
+    <span class="tab-label">Piano</span>
   </button>
   <button class="tab-btn" id="tab-history" onclick="switchTab('history')">
-    <span class="tab-icon">📜</span>
-    <span class="tab-label">Storico</span>
+    <span class="tab-icon">📓</span>
+    <span class="tab-label">Diario</span>
   </button>
   <button class="tab-btn" id="tab-music" onclick="switchTab('music')">
     <span class="tab-icon">🎵</span>
@@ -1032,32 +907,14 @@ body::after {
 /* ══════════════════════════
    CONSTANTS
 ══════════════════════════ */
-const MET_RUNNING        = 8.0;
-const LS_KEY             = 'fitora_session_v3';
-const LS_HIST            = 'fitora_history_v1';
-const LS_MUSIC           = 'fitora_music_id';
-const PACE_SAMPLES       = 40;
-const ACCURACY_THRESHOLD = 60;   // m — limite di accuratezza accettabile
-const ROLLING_PACE_WIN   = 30;   // s — rolling window for current pace
+const LS_MUSIC = 'fitora_music_id';
+const LS_PLAN  = 'fitora_monthly_plan';
+const LS_LOG   = 'fitora_workout_log';
 
 /* ══════════════════════════
    STATE
 ══════════════════════════ */
-let appState = 'idle';
-let watchId  = null;
-let timerInterval = null;
 let clockInterval = null;
-let map = null;
-let polyline = null;
-let userMarker = null;
-let accuracyCircle = null;
-let wakeLock = null;
-
-let session = {
-  startTime: null, elapsedBefore: 0, pausedAt: null,
-  coords: [], totalDist: 0, maxSpeed: 0, paceHistory: [],
-  elevGain: 0, splits: []
-};
 
 /* ══════════════════════════
    TABS
@@ -1067,11 +924,8 @@ function switchTab(name) {
   document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
   document.getElementById('page-' + name).classList.add('active');
   document.getElementById('tab-' + name).classList.add('active');
-
-  if (name === 'run') {
-    setTimeout(() => { if (map) map.invalidateSize(); }, 100);
-  }
-  if (name === 'history') renderHistory();
+  if (name === 'run')     renderPlan();
+  if (name === 'history') renderDiary();
   if (name === 'community') renderCommunity();
 }
 
@@ -1079,49 +933,6 @@ function switchTab(name) {
    UTILS
 ══════════════════════════ */
 function pad(n) { return String(Math.floor(n)).padStart(2,'0'); }
-function formatHMS(s) { return `${pad(s/3600)}:${pad((s%3600)/60)}:${pad(s%60)}`; }
-function formatMS(s)  { return `${pad(s/60)}:${pad(s%60)}`; }
-function formatPace(spm) {
-  if (!spm || !isFinite(spm) || spm <= 0) return "—'—\"";
-  return `${Math.floor(spm/60)}'${pad(spm%60)}"`;
-}
-function haversine(a,b,c,d) {
-  const R=6371, dL=(c-a)*Math.PI/180, dG=(d-b)*Math.PI/180;
-  const x=Math.sin(dL/2)**2+Math.cos(a*Math.PI/180)*Math.cos(c*Math.PI/180)*Math.sin(dG/2)**2;
-  return R*2*Math.atan2(Math.sqrt(x),Math.sqrt(1-x));
-}
-function calcCalories(km) {
-  // Recupera il peso reale dell'utente dal profilo, altrimenti usa 70kg di default
-  let userWeight = 70;
-  try {
-    const profile = JSON.parse(localStorage.getItem('fitora_profile'));
-    if (profile && profile.weight) userWeight = parseFloat(profile.weight);
-  } catch(e) {}
-
-  // Formula scientifica realistica per la corsa: 0.9 kcal per kg di peso per km.
-  // È il gold standard utilizzato dalle app professionali per atleti.
-  return 0.9 * userWeight * km;
-}
-function getElapsed() {
-  if (!session.startTime) return session.elapsedBefore;
-  return session.elapsedBefore + Math.floor((Date.now()-session.startTime)/1000);
-}
-function getRollingPace() {
-  if (session.coords.length<2) return 0;
-  const cutoff = Date.now() - ROLLING_PACE_WIN*1000;
-  const recent = session.coords.filter(c=>c.ts>=cutoff);
-  if (recent.length<2) return 0;
-  let dist=0;
-  for (let i=1;i<recent.length;i++) dist+=haversine(recent[i-1].lat,recent[i-1].lng,recent[i].lat,recent[i].lng);
-  const elapsed=(recent[recent.length-1].ts-recent[0].ts)/1000;
-  return dist>0.01&&elapsed>5 ? elapsed/dist : 0;
-}
-async function requestWakeLock() {
-  try { if ('wakeLock' in navigator) wakeLock=await navigator.wakeLock.request('screen'); } catch(e) {}
-}
-function releaseWakeLock() {
-  if (wakeLock) { wakeLock.release().catch(()=>{}); wakeLock=null; }
-}
 
 /* ══════════════════════════
    CLOCK
@@ -1144,7 +955,12 @@ function setNavDate() {
 ══════════════════════════ */
 function loadCheckin() {
   const raw = sessionStorage.getItem('fitora_checkin');
-  if (!raw) return;
+  if (!raw) {
+    // Se non ci sono dati di check-in, assicurati che la card sia nascosta e i valori siano di default
+    document.getElementById('checkinCard').style.display = 'none';
+    document.getElementById('greetingSub').textContent = 'Completa il check-in per una raccomandazione personalizzata.';
+    return;
+  }
   try {
     const ci = JSON.parse(raw);
     const score = ci.score || 0;
@@ -1164,432 +980,580 @@ function loadCheckin() {
     document.getElementById('ciBarFill').style.width  = score+'%';
     document.getElementById('ciBarFill').style.background = colors[key];
     document.getElementById('checkinCard').style.display = 'block';
+    
+    // Generazione consiglio tecnico prevenzione
+    const prevTip = document.getElementById('preventionTip');
+    const prevStatus = document.getElementById('preventionStatus');
+    let tipText = "Il tuo stato biomeccanico è ottimale. Mantieni una buona tecnica.";
+    
+    if (ci.pain && ci.pain.length > 0 && !ci.pain.includes('none')) {
+      prevStatus.textContent = "ATTENZIONE TECNICA";
+      prevStatus.style.color = "var(--orange)";
+      
+      const tips = [];
+      if (ci.pain.includes('back')) tips.push("Esegui 2 minuti di 'Cat-Cow' prima di iniziare per mobilizzare le vertebre.");
+      if (ci.pain.includes('knees')) tips.push("Riduci l'ampiezza degli affondi e focalizzati sulla stabilità della caviglia.");
+      if (ci.pain.includes('shoulders')) tips.push("Evita carichi sopra la testa. Focus su extrarotatori della spalla.");
+      if (ci.pain.includes('legs')) tips.push("Possibile affaticamento muscolare: prediligi lo stretching dinamico al posto di scatti esplosivi.");
+      
+      tipText = `<ul style="list-style: none; display: flex; flex-direction: column; gap: 8px;">
+        ${tips.map(t => `<li style="font-size: 0.78rem; color: var(--orange); display: flex; gap: 8px;"><span>⚠️</span> ${t}</li>`).join('')}
+      </ul>`;
+    } else {
+      prevStatus.textContent = "SICURO";
+      prevStatus.style.color = "var(--green)";
+    }
+    prevTip.innerHTML = tipText;
 
     // Update greeting sub
     document.getElementById('greetingSub').textContent = descs[key];
+  } catch(e) {
+    console.error("Errore durante il parsing del check-in da sessionStorage:", e);
+    // In caso di errore, pulisci i dati corrotti e ripristina lo stato iniziale
+    sessionStorage.removeItem('fitora_checkin');
+    document.getElementById('checkinCard').style.display = 'none';
+    document.getElementById('greetingSub').textContent = 'Errore nel check-in. Riprova.';
+  }
+}
+
+/* ══ IDRATAZIONE ══ */
+let currentWater = parseFloat(localStorage.getItem('fitora_water')) || 0;
+if (isNaN(currentWater)) currentWater = 0;
+
+function addWater(amount) {
+  let userWeight = 70;
+  try {
+    const profile = JSON.parse(localStorage.getItem('fitora_profile'));
+    if (profile && profile.weight) {
+      userWeight = parseFloat(profile.weight) || 70;
+    }
   } catch(e) {}
+  
+  const target = parseFloat((userWeight * 0.035).toFixed(1)) || 2.5; // 35ml per kg o 2.5L default
+  currentWater = Math.max(0, currentWater + amount);
+  localStorage.setItem('fitora_water', currentWater);
+  
+  const pct = target > 0 ? Math.min(100, (currentWater / target) * 100) : 0;
+  document.getElementById('waterBar').style.width = pct + '%';
+  document.getElementById('waterCount').textContent = `${currentWater.toFixed(2)} / ${target} L`;
+  
+  if (pct >= 100) document.getElementById('waterCount').style.color = "var(--green)";
 }
 
 /* ══════════════════════════
-   PERSISTENCE
+   BIOMECHANICAL HEALTH INDEX
 ══════════════════════════ */
-function saveToStorage() {
+function updateBHI() {
+  // 1. Check-in giornaliero (max 40 punti)
+  let dailyPts = 20, painPenalty = 0;
   try {
-    localStorage.setItem(LS_KEY, JSON.stringify({
-      appState,
-      session: { ...session, startTime:null, elapsedBefore:getElapsed() }
-    }));
+    const ci = JSON.parse(sessionStorage.getItem('fitora_checkin'));
+    if (ci) {
+      dailyPts = (ci.score || 0) * 0.4;
+      if (ci.pain && !ci.pain.includes('none'))
+        painPenalty = Math.min(20, ci.pain.filter(p => p !== 'none').length * 10);
+    }
   } catch(e) {}
-}
-function loadFromStorage() {
-  try {
-    const data = JSON.parse(localStorage.getItem(LS_KEY));
-    if (!data) return false;
-    if (data.appState==='done') { localStorage.removeItem(LS_KEY); return false; }
-    session = { ...data.session, startTime:null };
-    appState = 'paused';
-    return true;
-  } catch(e) { return false; }
-}
-function getHistory() {
-  try { return JSON.parse(localStorage.getItem(LS_HIST))||[]; } catch(e) { return []; }
-}
-function saveHistory(arr) {
-  try { localStorage.setItem(LS_HIST, JSON.stringify(arr)); } catch(e) {}
+
+  // 2. Analisi compliance esercizi reali
+  const plan = getPlan();
+  const log  = getWorkoutLog();
+  let wUp=0,wDn=0, cUp=0,cDn=0, mUp=0,mDn=0;
+
+  plan.forEach(w => {
+    const dayLog = log[w.date] || {};
+    w.phases.forEach((ph, pi) => {
+      const isW = ph.type.includes('warmup');
+      const isC = ph.type.includes('cooldown');
+      ph.exercises.forEach((ex, ei) => {
+        const done = !!dayLog[`p${pi}_e${ei}`];
+        if (isW)      { wUp++; if(done) wDn++; }
+        else if (isC) { cUp++; if(done) cDn++; }
+        else          { mUp++; if(done) mDn++; }
+      });
+    });
+  });
+
+  // Compliance ratios (default neutro se nessun dato)
+  const wCmp = wUp > 0 ? wDn/wUp : 0.5;
+  const cCmp = cUp > 0 ? cDn/cUp : 0.5;
+  const mCmp = mUp > 0 ? mDn/mUp : 0.5;
+
+  // 3. Punteggi componenti
+  const consistencyPts = Math.min(20, plan.length * 5);     // 0-20 (4 WO → 20 pts)
+  const warmupPts      = Math.round(wCmp * 20);             // 0-20: riscaldamento = meno infortuni
+  const cooldownPts    = Math.round(cCmp * 10);             // 0-10: defaticamento
+  const mainPts        = Math.round(mCmp * 10);             // 0-10: completamento esercizi
+
+  const bhi = Math.round(Math.min(100, Math.max(0,
+    10 + dailyPts + consistencyPts + warmupPts + cooldownPts + mainPts - painPenalty
+  )));
+
+  // Risk text — avviso specifico se compliance bassa
+  let riskText, riskColor;
+  if (wUp > 0 && wCmp < 0.35) {
+    riskText = '+20% Rischio — Salta il Riscaldamento!';
+    riskColor = 'var(--red)';
+  } else if (cUp > 0 && cCmp < 0.35) {
+    riskText = '+12% Rischio — Salta il Defaticamento!';
+    riskColor = 'var(--orange)';
+  } else if (bhi >= 85) {
+    riskText = '-18% Rischio Infortuni';    riskColor = 'var(--green)';
+  } else if (bhi >= 70) {
+    riskText = '-10% Rischio Infortuni';    riskColor = 'var(--cyan)';
+  } else if (bhi >= 55) {
+    riskText = 'Rischio Nella Norma';       riskColor = 'var(--yellow)';
+  } else {
+    riskText = '+8% Rischio Infortuni';     riskColor = 'var(--orange)';
+  }
+
+  document.getElementById('bhiScore').textContent = bhi + '.0';
+  document.getElementById('bhiBar').style.width   = bhi + '%';
+  document.getElementById('bhiRisk').textContent  = riskText;
+  document.getElementById('bhiRisk').style.color  = riskColor;
 }
 
 /* ══════════════════════════
-   GPS
+   STORAGE HELPERS
 ══════════════════════════ */
-function requestGPS() {
-  document.getElementById('permOverlay').classList.remove('show');
-  startGPSWatch();
+function getPlan() {
+  try { return JSON.parse(localStorage.getItem(LS_PLAN)) || []; } catch(e) { return []; }
 }
-function initMap() {
-  if (map) return;
-  map = L.map('map',{zoomControl:false,attributionControl:false}).setView([41.9028,12.4964],13);
-  L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png',{maxZoom:19,opacity:.9}).addTo(map);
-  polyline = L.polyline([],{color:'#00d4d4',weight:5,opacity:.8}).addTo(map);
-  // marker/circle created on first GPS fix, not here
-  setTimeout(() => map.invalidateSize(),500);
+function savePlanData(arr) {
+  try { localStorage.setItem(LS_PLAN, JSON.stringify(arr)); } catch(e) {}
 }
-function startGPSWatch() {
-  if (!navigator.geolocation) { setBanner('error','❌ GPS non supportato'); return; }
-  
-  if (watchId !== null) stopGPSWatch();
-
-  setBanner('idle','🛰️ Ricerca segnale GPS…');
-  
-  // Opzioni ottimizzate per stabilità cross-device
-  const gpsOptions = {
-    enableHighAccuracy: true,
-    maximumAge: 0,         // Forza il chip a leggere una nuova posizione, non usare cache
-    timeout: 10000         // Attendi max 10 secondi per il fix
-  };
-
-  watchId = navigator.geolocation.watchPosition(onGPSUpdate, onGPSError, gpsOptions);
+function getWorkoutLog() {
+  try { return JSON.parse(localStorage.getItem(LS_LOG)) || {}; } catch(e) { return {}; }
 }
-function stopGPSWatch() {
-  if (watchId!==null) { navigator.geolocation.clearWatch(watchId); watchId=null; }
+function saveWorkoutLog(log) {
+  try { localStorage.setItem(LS_LOG, JSON.stringify(log)); } catch(e) {}
 }
-function onGPSUpdate(pos) {
-  const {latitude,longitude,accuracy,speed,altitude,altitudeAccuracy} = pos.coords;
 
-  // Accuracy badge with color coding
-  const accEl = document.getElementById('accBadge');
-  accEl.textContent = `±${Math.round(accuracy)}m`;
-  accEl.style.color = accuracy<10 ? 'var(--green)' : accuracy<20 ? 'var(--yellow)' : accuracy<40 ? 'var(--orange)' : 'var(--red)';
+/* ══════════════════════════
+   HOME STATS
+══════════════════════════ */
+function updateHomeStats() {
+  const plan = getPlan();
+  const log  = getWorkoutLog();
+  const now  = new Date();
+  const thisMonth = `${now.getFullYear()}-${String(now.getMonth()+1).padStart(2,'0')}`;
+  const monthPlan = plan.filter(w => w.date && w.date.startsWith(thisMonth));
+  const totalKcal = monthPlan.reduce((a,w) => a + (w.kcal||0), 0);
+  const totalEx   = monthPlan.reduce((a,w) => a + w.phases.reduce((b,ph) => b + ph.exercises.length, 0), 0);
+  const activeDays = Object.keys(log).filter(d => d.startsWith(thisMonth) && Object.values(log[d]).some(v=>v)).length;
+  document.getElementById('qs-workouts').textContent  = monthPlan.length;
+  document.getElementById('qs-kcal').textContent      = totalKcal;
+  document.getElementById('qs-exercises').textContent = totalEx;
+  document.getElementById('qs-days').textContent      = activeDays;
+}
+/* ══════════════════════════
+   PIANO MENSILE
+══════════════════════════ */
+function renderPlan() {
+  const plan = getPlan();
+  const log  = getWorkoutLog();
+  const listEl = document.getElementById('planList');
+  const noEl   = document.getElementById('noPlanState');
+  const full   = plan.length >= 3;
+  document.getElementById('planCount').textContent = `${plan.length} / 3`;
+  document.getElementById('planFullNotice').style.display = full ? '' : 'none';
+  const genLink = document.getElementById('planGenLink');
+  if (full) {
+    genLink.style.opacity = '.35';
+    genLink.style.pointerEvents = 'none';
+    genLink.textContent = '🔒 Piano Completo — Elimina un allenamento';
+  } else {
+    genLink.style.opacity = '';
+    genLink.style.pointerEvents = '';
+    genLink.textContent = '⚡ Genera Nuovo Allenamento';
+  }
+  if (!plan.length) { noEl.style.display=''; listEl.innerHTML=''; return; }
+  noEl.style.display = 'none';
+  listEl.innerHTML = plan.map(w => {
+    const planKeys = [];
+    w.phases.forEach((ph,pi) => ph.exercises.forEach((_,ei) => planKeys.push(`p${pi}_e${ei}`)));
+    const totalEx = planKeys.length;
+    const dayLog  = log[w.date] || {};
+    const done    = planKeys.filter(k => dayLog[k]).length;
+    const pct     = totalEx > 0 ? Math.round(done/totalEx*100) : 0;
+    const statusColor = pct===100 ? 'var(--green)' : pct>0 ? 'var(--cyan)' : 'var(--muted)';
+    const statusText  = pct===100 ? '✓ Completato' : pct>0 ? pct+'% fatto' : '';
+    const phasesHtml = w.phases.map(ph => {
+      const tc = ph.type.replace('phase-','');
+      return `
+        <div class="plan-phase-label ${tc}">${ph.label}<span style="float:right;font-weight:400;opacity:.6">${ph.dur}</span></div>
+        ${ph.exercises.map((ex,i) => `
+          <div style="display:flex;align-items:center;gap:12px;padding:10px 16px;border-top:1px solid rgba(255,255,255,.03)">
+            <span style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:.8rem;color:var(--muted);width:22px">${String(i+1).padStart(2,'0')}</span>
+            <div style="flex:1"><div style="font-size:.82rem;font-weight:600">${ex.n}</div>${ex.d?`<div style="font-size:.63rem;color:var(--muted)">${ex.d}</div>`:''}</div>
+            <span style="font-size:.62rem;font-weight:700;color:var(--cyan)">${ex.spec}</span>
+          </div>`).join('')}`;
+    }).join('');
+    return `
+      <div class="plan-card" id="pc-${w.id}">
+        <div class="plan-card-head" onclick="togglePlanDetail(${w.id})">
+          <div class="plan-date-block"><div class="pdb-day">${w.day}</div><div class="pdb-mon">${w.month}</div></div>
+          <div class="plan-info">
+            <div class="plan-sport">${w.sportIcon} ${w.sport}</div>
+            <div class="plan-meta">${w.dur} min · ${totalEx} esercizi · ~${w.kcal} kcal</div>
+          </div>
+          <div style="display:flex;flex-direction:column;align-items:flex-end;gap:4px">
+            ${statusText?`<span style="font-size:.62rem;color:${statusColor};font-weight:700">${statusText}</span>`:''}
+            <span class="plan-chevron" id="chev-${w.id}">▼</span>
+          </div>
+        </div>
+        <div class="plan-detail" id="pd-${w.id}">
+          ${phasesHtml}
+          <div style="display:flex;align-items:center;justify-content:space-between;padding:10px 16px;border-top:1px solid rgba(255,255,255,.04)">
+            <span style="font-size:.62rem;color:var(--muted);letter-spacing:2px;text-transform:uppercase">${w.levelLabel||''} · Score ${w.score}</span>
+            <button class="btn-del-plan" onclick="deletePlanItem(${w.id})">🗑️ Rimuovi</button>
+          </div>
+        </div>
+      </div>`;
+  }).join('');
+}
+function togglePlanDetail(id) {
+  document.getElementById('pd-'+id).classList.toggle('open');
+  document.getElementById('chev-'+id).classList.toggle('open');
+}
+function deletePlanItem(id) {
+  if (!confirm('Rimuovere questo allenamento dal piano?')) return;
+  savePlanData(getPlan().filter(w => w.id !== id));
+  renderPlan(); updateHomeStats(); showToast('🗑️ Rimosso');
+}
 
-  // Always update marker (even poor accuracy) — circle shows uncertainty
-  if (map) {
-    const ll=[latitude,longitude];
-    if (!userMarker) {
-      accuracyCircle = L.circle(ll,{radius:accuracy,color:'#00d4d4',fillColor:'#00d4d4',fillOpacity:.08,weight:1,interactive:false}).addTo(map);
-      userMarker = L.circleMarker(ll,{radius:8,fillColor:'#7fff00',color:'#fff',weight:2,fillOpacity:1}).addTo(map);
-      document.getElementById('mapIdle').style.display='none';
+/* ══════════════════════════
+   DIARIO + CALENDARIO
+══════════════════════════ */
+function renderDiary() {
+  const plan  = getPlan();
+  const log   = getWorkoutLog();
+  const today = new Date().toISOString().split('T')[0];
+  const now   = new Date();
+  document.getElementById('diaryTodayLabel').textContent =
+    now.toLocaleDateString('it-IT',{weekday:'short',day:'numeric',month:'short'}).toUpperCase();
+  document.getElementById('calMonthLabel').textContent =
+    now.toLocaleDateString('it-IT',{month:'long',year:'numeric'}).toUpperCase();
+
+  renderCalendar(plan, log, today);
+
+  const container = document.getElementById('diaryTodaySection');
+  document.getElementById('diaryDayDetail').style.display = 'none';
+  document.getElementById('diaryLogSection').innerHTML = '';
+
+  if (!plan.length) {
+    container.innerHTML = `<div class="section-label">// I tuoi piani (0 / 3)</div>
+      <div class="card"><div class="card-body" style="text-align:center;padding:28px 20px">
+        <div style="font-size:2rem;margin-bottom:10px;opacity:.2">📋</div>
+        <div style="font-size:.68rem;letter-spacing:3px;text-transform:uppercase;color:var(--muted);line-height:1.9">Nessun piano salvato<br>Genera e salva il tuo workout</div>
+        <a href="workout.html" style="display:inline-block;margin-top:16px;background:var(--grad);color:#000;font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:.85rem;letter-spacing:3px;text-transform:uppercase;padding:11px 28px;clip-path:polygon(8px 0,100% 0,calc(100% - 8px) 100%,0 100%);text-decoration:none">⚡ Genera ora</a>
+      </div></div>`;
+    return;
+  }
+
+  // Ordina: oggi prima, poi per data decrescente
+  const sorted = [...plan].sort((a,b) => {
+    if (a.date === today) return -1;
+    if (b.date === today) return 1;
+    return b.date.localeCompare(a.date);
+  });
+  container.innerHTML = `<div class="section-label">// I tuoi piani (${plan.length} / 3)</div>` +
+    sorted.map(w => buildDiaryAccordion(w, log[w.date]||{}, w.date === today)).join('');
+}
+
+function buildDiaryAccordion(w, dayLog, startOpen) {
+  const date    = w.date;
+  const today   = new Date().toISOString().split('T')[0];
+  const isPast  = date < today;
+  // Conta solo le chiavi degli esercizi di QUESTO piano
+  const planKeys = [];
+  w.phases.forEach((ph,pi) => ph.exercises.forEach((_,ei) => planKeys.push(`p${pi}_e${ei}`)));
+  const totalEx = planKeys.length;
+  const done    = planKeys.filter(k => dayLog[k]).length;
+  const pct     = totalEx>0 ? Math.round(done/totalEx*100) : 0;
+  const color   = pct===100?'var(--green)':pct>0?'var(--cyan)':'var(--muted)';
+  const d       = new Date(date+'T12:00:00');
+
+  const phasesHtml = w.phases.map((ph,pi) => {
+    const tc = ph.type.replace('phase-','');
+    return `<div class="plan-phase-label ${tc}">${ph.label}<span style="float:right;font-weight:400;opacity:.6">${ph.dur}</span></div>
+      ${ph.exercises.map((ex,ei) => {
+        const key = `p${pi}_e${ei}`;
+        const chk = !!dayLog[key];
+        // Piani passati: esercizi bloccati (read-only)
+        const rowClass = `ex-check-row ${chk?'done':''} ${isPast?'locked':''}`;
+        const click    = isPast ? '' : `onclick="toggleExercise('${date}','${key}')"`;
+        return `<div class="${rowClass}" id="ecr-${date}-${key}" ${click}>
+          <div class="ex-checkbox">${chk?'✓':''}</div>
+          <div class="ex-check-body"><div class="ex-check-name">${ex.n}</div>${ex.d?`<div class="ex-check-detail">${ex.d}</div>`:''}</div>
+          <span class="ex-check-spec">${ex.spec}</span>
+        </div>`;
+      }).join('')}`;
+  }).join('');
+
+  const pastLabel = isPast ? `<span class="past-label">🔒 Giorno passato</span>` : '';
+  const foot = isPast
+    ? `<div class="diary-accord-foot">
+        ${pastLabel}
+        <button class="btn-del-plan" style="margin-left:auto;padding:10px 14px;border:1px solid rgba(255,69,69,.25);font-size:.65rem" onclick="deletePlanFromDiary(${w.id})">🗑️ Elimina</button>
+      </div>`
+    : `<div class="diary-accord-foot">
+        <button class="btn-check-all" style="flex:1;margin:0" onclick="checkAllForDate('${date}')">✓ Tutto completato</button>
+        <button class="btn-del-plan" style="padding:10px 14px;border:1px solid rgba(255,69,69,.25);font-size:.65rem" onclick="deletePlanFromDiary(${w.id})">🗑️ Elimina</button>
+      </div>`;
+
+  return `<div class="diary-accord ${isPast?'past-plan':''}" id="da-${w.id}">
+    <div class="diary-accord-head" onclick="toggleDiaryAccord('${w.id}')">
+      <div class="plan-date-block">
+        <div class="pdb-day">${d.getDate()}</div>
+        <div class="pdb-mon">${d.toLocaleDateString('it-IT',{month:'short'}).toUpperCase()}</div>
+      </div>
+      <div style="flex:1;min-width:0">
+        <div class="plan-sport">${w.sportIcon} ${w.sport}</div>
+        <div class="plan-meta">${w.dur} min · ${totalEx} esercizi · ~${w.kcal} kcal</div>
+      </div>
+      <div style="display:flex;flex-direction:column;align-items:flex-end;gap:4px;flex-shrink:0">
+        <span id="dapct-${date}" style="font-size:.65rem;font-weight:700;color:${color}">${pct}%</span>
+        <span class="plan-chevron ${startOpen?'open':''}" id="dachev-${w.id}">▼</span>
+      </div>
+    </div>
+    <div style="height:3px;background:rgba(255,255,255,.04)">
+      <div id="da-bar-${date}" style="height:100%;width:${pct}%;background:var(--grad);transition:width .4s"></div>
+    </div>
+    <div class="diary-accord-body ${startOpen?'open':''}" id="dab-${w.id}">
+      ${phasesHtml}
+      ${foot}
+    </div>
+  </div>`;
+}
+
+function toggleDiaryAccord(id) {
+  document.getElementById('dab-'+id).classList.toggle('open');
+  document.getElementById('dachev-'+id).classList.toggle('open');
+}
+
+function deletePlanFromDiary(id) {
+  if (!confirm('Eliminare questo piano dal diario?')) return;
+  savePlanData(getPlan().filter(w => w.id !== id));
+  updateHomeStats(); updateBHI();
+  renderDiary();
+  showToast('🗑️ Piano eliminato');
+}
+
+function renderCalendar(plan, log, today) {
+  const now   = new Date();
+  const year  = now.getFullYear();
+  const month = now.getMonth();
+  // Raggruppa più piani per la stessa data in un array
+  const planMap = {};
+  plan.forEach(w => {
+    if (!planMap[w.date]) planMap[w.date] = [];
+    planMap[w.date].push(w);
+  });
+
+  const daysInMonth = new Date(year, month+1, 0).getDate();
+  const firstDow    = new Date(year, month, 1).getDay();
+  const startOffset = firstDow === 0 ? 6 : firstDow - 1; // Mon=0
+
+  const headers = ['Lun','Mar','Mer','Gio','Ven','Sab','Dom'];
+  let html = headers.map(h=>`<div class="cal-header-cell">${h}</div>`).join('');
+  for (let i=0; i<startOffset; i++) html += `<div class="cal-day empty"></div>`;
+
+  for (let d=1; d<=daysInMonth; d++) {
+    const ds  = `${year}-${String(month+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`;
+    const plans = planMap[ds];
+    const isT   = ds === today;
+    const isPast= ds < today;
+    let cls     = 'cal-day' + (isT?' today':'') + (isPast?' past-workout':'');
+
+    if (plans) {
+      const dayLog = log[ds]||{};
+      // Aggrega le chiavi uniche di tutti i piani per questa data
+      const allKeys = new Set();
+      plans.forEach(w => w.phases.forEach((ph,pi) => ph.exercises.forEach((_,ei) => allKeys.add(`p${pi}_e${ei}`))));
+      const totalEx = allKeys.size;
+      const doneEx  = [...allKeys].filter(k => dayLog[k]).length;
+      const pct     = totalEx>0 ? Math.round(doneEx/totalEx*100) : 0;
+      const pctColor= pct===100?'var(--green)':pct>0?'var(--cyan)':'rgba(255,255,255,.3)';
+      if (pct===100) cls += ' done-100';
+      cls += ' has-workout';
+      const rep = plans[0]; // usa il primo piano per icona/nome
+      html += `<div class="${cls}" id="calday-${ds}" onclick="showCalDay('${ds}')">
+        <div class="cal-day-num">${d}</div>
+        <div class="cal-sport">${rep.sportIcon}</div>
+        <div class="cal-sport-nm">${rep.sport}</div>
+        <div class="cal-pct-txt" id="calpct-${ds}" style="color:${pctColor};${pct>0?'':'display:none'}">${pct}%</div>
+      </div>`;
     } else {
-      userMarker.setLatLng(ll);
-      if (accuracyCircle) { accuracyCircle.setLatLng(ll); accuracyCircle.setRadius(accuracy); }
-    }
-    map.panTo(ll);
-  }
-
-  if (appState!=='tracking') return;
-
-  // Poor accuracy: update position but skip route/distance recording
-  if (accuracy > ACCURACY_THRESHOLD) {
-    setBanner('active',`🛰️ Segnale debole (±${Math.round(accuracy)}m)…`);
-    return;
-  }
-  setBanner('active',`🛰️ GPS attivo · ±${Math.round(accuracy)}m`);
-
-  const prev = session.coords[session.coords.length-1];
-  const gpsSpeed = speed ? speed*3.6 : null;
-  const pt = {lat:latitude,lng:longitude,ts:pos.timestamp,accuracy,speed:gpsSpeed,alt:altitude};
-
-  if (prev) {
-    const seg = haversine(prev.lat,prev.lng,latitude,longitude);
-    const timeDiff = (pos.timestamp - prev.ts) / 1000;
-    const calcSpeed = timeDiff > 0 ? (seg * 3600) / timeDiff : 0;
-
-    // FILTRI PER DATI REALI:
-    // 1. seg >= 0.001 -> Almeno 1 metro (elimina il "rumore" mentre si è fermi)
-    // 2. calcSpeed < 35 -> Ignora picchi impossibili (oltre i 35km/h non è corsa)
-    // 3. timeDiff > 0.4 -> Evita aggiornamenti troppo frequenti e rumorosi
-    if (seg >= 0.001 && calcSpeed < 35 && timeDiff > 0.4) {
-      session.totalDist += seg;
-      if (gpsSpeed&&gpsSpeed>session.maxSpeed) session.maxSpeed=gpsSpeed;
-
-      // Elevation gain (only when altitudeAccuracy is reasonable)
-      if (altitude!==null&&prev.alt!==null&&(altitudeAccuracy===null||altitudeAccuracy<20)) {
-        const dAlt = altitude - prev.alt;
-        if (dAlt>0.5) session.elevGain += dAlt;
-      }
-
-      // Per-km split notification
-      const prevKm = Math.floor(session.totalDist - seg);
-      const curKm  = Math.floor(session.totalDist);
-      if (curKm>prevKm&&curKm>0) {
-        const el=getElapsed();
-        const splitPace = el/session.totalDist;
-        session.splits.push({km:curKm,elapsed:el,pace:splitPace});
-        showToast(`🏃 ${curKm} km — ${formatPace(splitPace)}/km`);
-      }
-
-      const el=getElapsed();
-      if (session.totalDist>0&&el>0) {
-        session.paceHistory.push({t:el,pace:el/session.totalDist});
-        if (session.paceHistory.length>PACE_SAMPLES) session.paceHistory.shift();
-        updatePaceChart();
-      }
+      html += `<div class="${cls}"><div class="cal-day-num">${d}</div></div>`;
     }
   }
-  polyline.addLatLng([latitude,longitude]);
-  session.coords.push(pt);
-  document.getElementById('pointCount').textContent = session.coords.length+' punti';
-  updateMetrics();
-  saveToStorage();
-}
-function onGPSError(err) {
-  const msgs={1:'Permesso GPS negato',2:'Posizione non disponibile',3:'Timeout GPS'};
-  setBanner('error',`❌ ${msgs[err.code]||'Errore GPS'}`);
-  document.getElementById('stateDot').classList.add('error');
-  showToast(`GPS: ${msgs[err.code]||'Errore'}`);
+  document.getElementById('calGrid').innerHTML = html;
 }
 
-/* ══════════════════════════
-   CONTROLS
-══════════════════════════ */
-function handleStart() {
-  if (appState==='idle') {
-    if (!navigator.geolocation) { showToast('GPS non supportato!'); return; }
-    session = {startTime:Date.now(),elapsedBefore:0,pausedAt:null,coords:[],totalDist:0,maxSpeed:0,paceHistory:[],elevGain:0,splits:[]};
-    appState='tracking';
-    localStorage.removeItem(LS_KEY);
-    startGPSWatch(); startTimer(); setUIState('tracking'); requestWakeLock();
-    document.getElementById('mapIdle').style.display='none';
-    showToast('🏃 Tracking avviato!');
-  } else if (appState==='paused') {
-    session.startTime=Date.now(); session.pausedAt=null; appState='tracking';
-    startGPSWatch(); startTimer(); setUIState('tracking'); requestWakeLock();
-    showToast('▶ Ripreso!');
+let _calSelectedDate = null;
+function showCalDay(date) {
+  // Rimuovi selezione precedente
+  if (_calSelectedDate) {
+    const prev = document.getElementById('calday-'+_calSelectedDate);
+    if (prev) prev.classList.remove('selected');
   }
-}
-function handlePause() {
-  if (appState!=='tracking') return;
-  session.elapsedBefore=getElapsed(); session.startTime=null;
-  stopGPSWatch(); clearInterval(timerInterval); releaseWakeLock();
-  appState='paused'; setUIState('paused'); saveToStorage();
-  showToast('⏸ In pausa');
-}
-function handleStop() {
-  if (appState!=='tracking'&&appState!=='paused') return;
-  session.elapsedBefore=getElapsed(); session.startTime=null;
-  stopGPSWatch(); clearInterval(timerInterval); releaseWakeLock();
-  appState='done'; setUIState('done'); showSummary();
-  if (map&&polyline.getLatLngs().length>0) map.fitBounds(polyline.getBounds(),{padding:[40,40]});
-  localStorage.removeItem(LS_KEY);
-  showToast('⏹ Sessione terminata');
-}
-function handleReset() {
-  stopGPSWatch(); clearInterval(timerInterval);
-  if (userMarker) { userMarker.remove(); userMarker=null; }
-  if (accuracyCircle) { accuracyCircle.remove(); accuracyCircle=null; }
-  session={startTime:null,elapsedBefore:0,pausedAt:null,coords:[],totalDist:0,maxSpeed:0,paceHistory:[],elevGain:0,splits:[]};
-  appState='idle'; setUIState('idle'); resetUI();
-  localStorage.removeItem(LS_KEY);
-  showToast('🔄 Reset');
-}
+  if (_calSelectedDate === date) { _calSelectedDate = null; return; }
+  _calSelectedDate = date;
+  const cell = document.getElementById('calday-'+date);
+  if (cell) cell.classList.add('selected');
 
-/* ══════════════════════════
-   TIMER
-══════════════════════════ */
-function startTimer() {
-  clearInterval(timerInterval);
-  timerInterval = setInterval(() => {
-    const el=getElapsed();
-    document.getElementById('timerDisplay').textContent=formatHMS(el);
-    updateMetrics();
-  },1000);
-}
-
-/* ══════════════════════════
-   METRICS
-══════════════════════════ */
-function updateMetrics() {
-  const el   = getElapsed();
-  const dist = session.totalDist;
-  const cal  = dist>0 ? calcCalories(dist) : 0;
-  const pace = dist>0.05 ? el/dist : 0;
-
-  // Prefer GPS-reported speed; fall back to calculated average
-  const lastCoord = session.coords[session.coords.length-1];
-  const spd = (lastCoord&&lastCoord.speed) ? lastCoord.speed : (el>0 ? dist/(el/3600) : 0);
-
-  // Rolling pace for HUD (last 30s), fall back to session average
-  const rolling = appState==='tracking' ? getRollingPace() : 0;
-  const hudPaceVal = rolling>0 ? rolling : pace;
-
-  // Run page
-  document.getElementById('totalDist').textContent    = dist.toFixed(2);
-  document.getElementById('totalCal').textContent     = Math.round(cal);
-  document.getElementById('avgPace').textContent      = formatPace(pace);
-  document.getElementById('currentSpeed').textContent = spd.toFixed(1);
-  document.getElementById('hudDist').textContent      = dist.toFixed(2);
-  document.getElementById('hudPace').textContent      = formatPace(hudPaceVal);
-  document.getElementById('hudPaceLabel').textContent = (rolling>0&&appState==='tracking') ? 'ritmo att.' : 'ritmo medio';
-  document.getElementById('lapDist').textContent      = dist.toFixed(2)+' km';
-  document.getElementById('lapCal').textContent       = Math.round(cal)+' kcal';
-
-  // Home quick stats
-  document.getElementById('qs-dist').textContent = dist.toFixed(2);
-  document.getElementById('qs-cal').textContent  = Math.round(cal);
-  document.getElementById('qs-pace').textContent = formatPace(pace);
-  document.getElementById('qs-time').textContent = formatMS(el);
-
-  // Pulse
-  ['cellDist','cellCal','cellPace','cellSpeed'].forEach(id => {
-    const el2=document.getElementById(id);
-    el2.classList.remove('live'); void el2.offsetWidth; el2.classList.add('live');
-  });
-}
-
-/* ══════════════════════════
-   PACE CHART
-══════════════════════════ */
-function smoothPaces(arr) {
-  return arr.map((v,i,a)=>{
-    const s=Math.max(0,i-1), e=Math.min(a.length-1,i+1);
-    let sum=0,cnt=0; for(let j=s;j<=e;j++){sum+=a[j];cnt++;} return sum/cnt;
-  });
-}
-function updatePaceChart() {
-  const data=session.paceHistory;
-  if (data.length<2) return;
-  document.getElementById('paceEmpty').style.display='none';
-  const canvas=document.getElementById('paceChart');
-  canvas.style.display='block';
-  const ctx=canvas.getContext('2d');
-  canvas.width=canvas.offsetWidth||300; canvas.height=72;
-  const paces=smoothPaces(data.map(d=>d.pace));
-  const minP=Math.min(...paces)*.95, maxP=Math.max(...paces)*1.05;
-  ctx.clearRect(0,0,canvas.width,canvas.height);
-  const ag=ctx.createLinearGradient(0,0,0,canvas.height);
-  ag.addColorStop(0,'rgba(0,212,212,.15)'); ag.addColorStop(1,'rgba(0,212,212,0)');
-  ctx.beginPath();
-  paces.forEach((p,i) => {
-    const x=(i/(paces.length-1))*canvas.width;
-    const y=canvas.height-((p-minP)/(maxP-minP))*canvas.height*.85-5;
-    i===0?ctx.moveTo(x,y):ctx.lineTo(x,y);
-  });
-  ctx.lineTo(canvas.width,canvas.height); ctx.lineTo(0,canvas.height); ctx.closePath();
-  ctx.fillStyle=ag; ctx.fill();
-  ctx.beginPath();
-  paces.forEach((p,i) => {
-    const x=(i/(paces.length-1))*canvas.width;
-    const y=canvas.height-((p-minP)/(maxP-minP))*canvas.height*.85-5;
-    i===0?ctx.moveTo(x,y):ctx.lineTo(x,y);
-  });
-  ctx.strokeStyle='#00d4d4'; ctx.lineWidth=2; ctx.stroke();
-  const avgP=paces.reduce((a,b)=>a+b,0)/paces.length;
-  document.getElementById('paceChartLabel').textContent=formatPace(avgP)+' medio';
-}
-
-/* ══════════════════════════
-   SUMMARY
-══════════════════════════ */
-function showSummary() {
-  const el=session.elapsedBefore, dist=session.totalDist;
-  const cal=dist>0?calcCalories(dist):0, pace=dist>0.05?el/dist:0;
-  document.getElementById('sumDist').textContent  = dist.toFixed(2);
-  document.getElementById('sumTime').textContent  = formatHMS(el);
-  document.getElementById('sumCal').textContent   = Math.round(cal);
-  document.getElementById('sumPace').textContent  = formatPace(pace);
-  document.getElementById('sumSpeed').textContent = (session.maxSpeed>0?session.maxSpeed:dist/(el/3600)).toFixed(1)+' km/h';
-  document.getElementById('sumElev').textContent  = Math.round(session.elevGain||0)+' m';
-  const msgs=['Ottimo lavoro!','Continua così!','Fantastico! 🔥','Sei inarrestabile!'];
-  document.getElementById('summarySubtitle').textContent=msgs[Math.floor(Math.random()*msgs.length)];
-  document.getElementById('summaryCard').classList.add('show');
-}
-
-function saveSession() {
-  const el=session.elapsedBefore, dist=session.totalDist;
-  const cal=dist>0?calcCalories(dist):0, pace=dist>0.05?el/dist:0;
-  const d=new Date();
-  const record={
-    id:Date.now(),
-    date:d.toLocaleDateString('it-IT'),
-    day:d.getDate(), mon:d.toLocaleDateString('it-IT',{month:'short'}).toUpperCase(),
-    time:d.toLocaleTimeString('it-IT',{hour:'2-digit',minute:'2-digit'}),
-    dist:+dist.toFixed(2), elapsed:el, cal:Math.round(cal), pace, points:session.coords.length,
-    elev:Math.round(session.elevGain||0), splits:session.splits||[]
-  };
-  const hist=getHistory(); hist.unshift(record);
-  if (hist.length>50) hist.pop();
-  saveHistory(hist);
-  document.getElementById('summaryCard').classList.remove('show');
-  handleReset();
-  loadLastRun();
-  showToast('✅ Sessione salvata!');
-}
-
-/* ══════════════════════════
-   HISTORY
-══════════════════════════ */
-function renderHistory() {
-  const hist=getHistory();
-  const list=document.getElementById('historyList');
-  document.getElementById('histCount').textContent=hist.length+' corse';
-  if (!hist.length) {
-    list.innerHTML=`<div class="hist-empty"><div class="hist-empty-icon">🏃</div><div>Nessuna corsa salvata</div></div>`;
-    return;
+  // Trova il piano per questa data e apri il suo accordion
+  const w = getPlan().find(w => w.date === date);
+  if (!w) return;
+  const body  = document.getElementById('dab-'+w.id);
+  const chev  = document.getElementById('dachev-'+w.id);
+  const card  = document.getElementById('da-'+w.id);
+  if (body && !body.classList.contains('open')) {
+    body.classList.add('open');
+    if (chev) chev.classList.add('open');
   }
-  list.innerHTML=hist.map(h=>`
-    <div class="hist-item">
-      <div class="hi-date-block">
-        <div class="hi-day">${h.day||'—'}</div>
-        <div class="hi-mon">${h.mon||'—'}</div>
-      </div>
-      <div class="hi-body">
-        <div class="hi-name">Corsa · ${h.time}</div>
-        <div class="hi-sub">${h.points} waypoint GPS · ${h.date}</div>
-      </div>
-      <div class="hi-metrics">
-        <div>
-          <div class="hi-m gt">${h.dist} km</div>
-          <div class="hi-ml">distanza</div>
-        </div>
-        <div>
-          <div class="hi-m" style="color:var(--yellow)">${formatHMS(h.elapsed)}</div>
-          <div class="hi-ml">tempo</div>
-        </div>
-        <div>
-          <div class="hi-m" style="color:var(--green)">${h.cal} kcal</div>
-          <div class="hi-ml">kcal</div>
-        </div>
-      </div>
-    </div>
-  `).join('');
+  if (card) card.scrollIntoView({behavior:'smooth', block:'start'});
 }
 
-function clearHistory() {
-  if (confirm('Cancellare tutto lo storico corse?')) {
-    saveHistory([]); renderHistory(); loadLastRun(); showToast('🗑️ Storico cancellato');
+function buildDiaryWorkout(w, dayLog, dateOverride) {
+  const today = dateOverride || new Date().toISOString().split('T')[0];
+  const planKeys = [];
+  w.phases.forEach((ph,pi) => ph.exercises.forEach((_,ei) => planKeys.push(`p${pi}_e${ei}`)));
+  const totalEx = planKeys.length;
+  const done = planKeys.filter(k => dayLog[k]).length;
+  const pct  = totalEx>0 ? Math.round(done/totalEx*100) : 0;
+  const phasesHtml = w.phases.map((ph,pi) => {
+    const tc = ph.type.replace('phase-','');
+    return `
+      <div class="plan-phase-label ${tc}">${ph.label}<span style="float:right;font-weight:400;opacity:.6">${ph.dur}</span></div>
+      ${ph.exercises.map((ex,ei) => {
+        const key = `p${pi}_e${ei}`;
+        const checked = !!dayLog[key];
+        return `<div class="ex-check-row ${checked?'done':''}" id="ecr-${today}-${key}" onclick="toggleExercise('${today}','${key}')">
+          <div class="ex-checkbox">${checked?'✓':''}</div>
+          <div class="ex-check-body"><div class="ex-check-name">${ex.n}</div>${ex.d?`<div class="ex-check-detail">${ex.d}</div>`:''}</div>
+          <span class="ex-check-spec">${ex.spec}</span>
+        </div>`;
+      }).join('')}`;
+  }).join('');
+  return `<div class="card" style="overflow:hidden">
+    <div class="card-head">
+      <div style="font-weight:700;font-size:.9rem">${w.sportIcon} ${w.sport} · ${w.dur} min</div>
+      <div style="font-size:.7rem;color:var(--cyan);font-weight:700" id="diary-pct-${today}">${pct}% completato</div>
+    </div>
+    <div style="height:4px;background:rgba(255,255,255,.04)"><div id="diary-bar-${today}" style="height:100%;width:${pct}%;background:var(--grad);transition:width .4s"></div></div>
+    ${phasesHtml}
+    <button class="btn-check-all" onclick="checkAllForDate('${today}')">✓ Segna tutto completato</button>
+    <button class="btn-save-day" onclick="saveDayLog('${today}')">💾 Salva giornata</button>
+  </div>`;
+}
+
+function toggleExercise(date, key) {
+  const log = getWorkoutLog();
+  if (!log[date]) log[date]={};
+  log[date][key] = !log[date][key];
+  saveWorkoutLog(log);
+  const row = document.getElementById(`ecr-${date}-${key}`);
+  if (row) {
+    row.classList.toggle('done', !!log[date][key]);
+    row.querySelector('.ex-checkbox').textContent = log[date][key]?'✓':'';
   }
+  updateDiaryProgress(date);
+  updateBHI();
 }
-
-function loadLastRun() {
-  const hist=getHistory();
-  const wrap=document.getElementById('lastRunWrap');
-  const tip=document.getElementById('noHistoryTip');
-  if (!hist.length) { wrap.style.display='none'; tip.style.display=''; return; }
-  tip.style.display='none'; wrap.style.display='';
-  const h=hist[0];
-  document.getElementById('lastRunCard').innerHTML=`
-    <div class="lr-date-block">
-      <div class="lr-day">${h.day||'—'}</div>
-      <div class="lr-mon">${h.mon||'—'}</div>
-    </div>
-    <div class="lr-info">
-      <div class="lr-title">${h.date} · ${h.time}</div>
-      <div class="lr-stats">${formatHMS(h.elapsed)} · ${h.cal} kcal · ${h.points} punti GPS</div>
-    </div>
-    <div style="text-align:right">
-      <div class="lr-dist gt">${h.dist}</div>
-      <div class="lr-dist-unit">km</div>
-    </div>
-  `;
+function updateDiaryProgress(date) {
+  // Aggiorna badge e barra dell'accordion dalla fonte DOM
+  const rows  = Array.from(document.querySelectorAll(`[id^="ecr-${date}-"]`));
+  if (rows.length) {
+    const done  = rows.filter(r => r.classList.contains('done')).length;
+    const pct   = Math.round(done/rows.length*100);
+    const color = pct===100?'var(--green)':pct>0?'var(--cyan)':'var(--muted)';
+    const pA = document.getElementById(`dapct-${date}`);
+    const bA = document.getElementById(`da-bar-${date}`);
+    if (pA) { pA.textContent = pct+'%'; pA.style.color = color; }
+    if (bA) bA.style.width = pct+'%';
+    const pB = document.getElementById(`diary-pct-${date}`);
+    const bB = document.getElementById(`diary-bar-${date}`);
+    if (pB) pB.textContent = pct+'% completato';
+    if (bB) bB.style.width = pct+'%';
+  }
+  // Aggiorna la cella del calendario leggendo sempre da localStorage (fonte autorevole)
+  _updateCalCell(date);
+}
+function _updateCalCell(date) {
+  const calCell = document.getElementById('calday-'+date);
+  if (!calCell) return;
+  const log    = getWorkoutLog();
+  const dayLog = log[date]||{};
+  const plans  = getPlan().filter(w => w.date === date);
+  if (!plans.length) return;
+  // Chiavi uniche aggregate su tutti i piani della data
+  const allKeys = new Set();
+  plans.forEach(w => w.phases.forEach((ph,pi) => ph.exercises.forEach((_,ei) => allKeys.add(`p${pi}_e${ei}`))));
+  const totalEx = allKeys.size;
+  const doneEx  = [...allKeys].filter(k => dayLog[k]).length;
+  const pct     = totalEx>0 ? Math.round(doneEx/totalEx*100) : 0;
+  const color   = pct===100?'var(--green)':pct>0?'var(--cyan)':'rgba(255,255,255,.3)';
+  const calPct  = document.getElementById('calpct-'+date);
+  if (calPct) {
+    calPct.textContent   = pct+'%';
+    calPct.style.color   = color;
+    calPct.style.display = pct>0 ? '' : 'none';
+  }
+  calCell.classList.toggle('done-100', pct===100);
+}
+function checkAllForDate(date) {
+  const log = getWorkoutLog();
+  if (!log[date]) log[date]={};
+  document.querySelectorAll(`[id^="ecr-${date}-"]`).forEach(row => {
+    const key = row.id.replace(`ecr-${date}-`,'');
+    log[date][key] = true;
+    row.classList.add('done');
+    row.querySelector('.ex-checkbox').textContent='✓';
+  });
+  saveWorkoutLog(log);
+  updateDiaryProgress(date);
+  updateBHI();
+  showToast('✅ Tutto completato!');
+}
+function saveDayLog(date) {
+  const log = getWorkoutLog();
+  const done = Object.values(log[date]||{}).filter(v=>v).length;
+  updateHomeStats(); updateBHI();
+  showToast(`💾 Giornata salvata! ${done} esercizi completati`);
 }
 
 /* ══════════════════════════
    COMMUNITY
 ══════════════════════════ */
 const BADGES = [
-  {icon:'🏃',name:'Prima Corsa',req:r=>r>=1},
-  {icon:'🔥',name:'5 Corse',req:r=>r>=5},
-  {icon:'🏅',name:'10 Corse',req:r=>r>=10},
-  {icon:'🌟',name:'25 Corse',req:r=>r>=25},
-  {icon:'📏',name:'5 km',req:(r,km)=>km>=5},
-  {icon:'🚀',name:'10 km',req:(r,km)=>km>=10},
-  {icon:'💪',name:'50 km',req:(r,km)=>km>=50},
-  {icon:'👑',name:'100 km',req:(r,km)=>km>=100},
+  {icon:'💪',name:'Primo WO',req:(r)=>r>=1},
+  {icon:'🔥',name:'5 WO',req:(r)=>r>=5},
+  {icon:'🏅',name:'10 WO',req:(r)=>r>=10},
+  {icon:'🌟',name:'25 WO',req:(r)=>r>=25},
+  {icon:'⚡',name:'500 kcal',req:(r,k)=>k>=500},
+  {icon:'🚀',name:'2000 kcal',req:(r,k)=>k>=2000},
+  {icon:'🏆',name:'5000 kcal',req:(r,k)=>k>=5000},
+  {icon:'👑',name:'10000 kcal',req:(r,k)=>k>=10000},
 ];
 function renderCommunity() {
-  const hist=getHistory();
-  const totalRuns=hist.length;
-  const totalKm=hist.reduce((a,h)=>a+h.dist,0);
-  const totalCal=hist.reduce((a,h)=>a+h.cal,0);
-  const bestDist=hist.reduce((a,h)=>Math.max(a,h.dist),0);
+  const plan = getPlan();
+  const log  = getWorkoutLog();
+  const totalWorkouts = plan.length;
+  const totalKcal = plan.reduce((a,w)=>a+(w.kcal||0),0);
+  const activeDays = Object.keys(log).filter(d=>Object.values(log[d]).some(v=>v)).length;
+  const totalEx = plan.reduce((a,w)=>a+w.phases.reduce((b,ph)=>b+ph.exercises.length,0),0);
 
-  document.getElementById('statTotalRuns').textContent = totalRuns;
-  document.getElementById('statTotalKm').textContent   = totalKm.toFixed(1);
-  document.getElementById('statTotalCal').textContent  = totalCal;
-  document.getElementById('statBestDist').textContent  = bestDist.toFixed(1);
+  document.getElementById('statTotalRuns').textContent = totalWorkouts;
+  document.getElementById('statTotalKm').textContent   = totalKcal;
+  document.getElementById('statTotalCal').textContent  = activeDays;
+  document.getElementById('statBestDist').textContent  = totalEx;
 
-  const earned = BADGES.filter(b=>b.req(totalRuns,totalKm)).length;
+  const earned = BADGES.filter(b=>b.req(totalWorkouts,totalKcal)).length;
   document.getElementById('badgeCount').textContent = earned+' / '+BADGES.length;
   document.getElementById('badgeGrid').innerHTML = BADGES.map(b=>`
-    <div class="badge-item ${b.req(totalRuns,totalKm)?'earned':''}">
+    <div class="badge-item ${b.req(totalWorkouts,totalKcal)?'earned':''}">
       <div class="badge-icon">${b.icon}</div>
       <div class="badge-name">${b.name}</div>
     </div>
@@ -1624,85 +1588,13 @@ function shareToWhatsApp(type) {
   if (type==='invite') {
     text=encodeURIComponent(`Sto usando FITORA per i miei allenamenti. Provalo: ${base}`);
   } else {
-    const dist=session.totalDist>0?session.totalDist.toFixed(2):'?';
-    text=encodeURIComponent(`Ti sfido su FITORA! Ho appena percorso ${dist} km. Riesci a fare di meglio? ${base}`);
+    const plan=getPlan();
+    const kcal=plan.reduce((a,w)=>a+(w.kcal||0),0);
+    text=encodeURIComponent(`Ti sfido su FITORA! Ho bruciato ${kcal} kcal con ${plan.length} allenamenti. Riesci a fare di meglio? ${base}`);
   }
   window.open('https://wa.me/?text='+text,'_blank');
 }
 
-/* ══════════════════════════
-   UI STATE
-══════════════════════════ */
-function setUIState(state) {
-  const dot=document.getElementById('stateDot'), lbl=document.getElementById('stateLabel');
-  const ts=document.getElementById('timerState');
-  const sb=document.getElementById('startBtn'), pb=document.getElementById('pauseBtn'), stop=document.getElementById('stopBtn');
-  dot.className='state-dot';
-
-  if (state==='tracking') {
-    dot.classList.add('active'); lbl.textContent='IN CORSO';
-    ts.textContent='● LIVE'; ts.style.color='var(--cyan)';
-    sb.textContent='▶'; sb.disabled=true; pb.disabled=false; stop.disabled=false;
-    sb.classList.add('pulse');
-    setBanner('active','🛰️ GPS attivo…');
-  } else if (state==='paused') {
-    dot.classList.add('paused'); lbl.textContent='IN PAUSA';
-    ts.textContent='⏸ PAUSA'; ts.style.color='var(--orange)';
-    sb.textContent='▶ Riprendi'; sb.disabled=false; pb.disabled=true; stop.disabled=false;
-    sb.classList.remove('pulse');
-    setBanner('paused','⏸ In pausa');
-  } else if (state==='done') {
-    lbl.textContent='COMPLETATA'; ts.textContent='✓ FINE'; ts.style.color='var(--green)';
-    sb.disabled=true; pb.disabled=true; stop.disabled=true; sb.classList.remove('pulse');
-    setBanner('idle','✓ Sessione terminata');
-    let rb=document.getElementById('resetBtn');
-    if (!rb) {
-      rb=document.createElement('button'); rb.id='resetBtn';
-      rb.className='ctrl-btn btn-reset-c'; rb.textContent='↺';
-      rb.onclick=handleReset; document.querySelector('.controls').appendChild(rb);
-    }
-    rb.style.display='';
-  } else {
-    lbl.textContent='PRONTO'; ts.textContent='IN ATTESA'; ts.style.color='var(--muted)';
-    sb.textContent='▶ Avvia'; sb.disabled=false; pb.disabled=true; stop.disabled=true;
-    sb.classList.remove('pulse');
-    setBanner('idle','🛰️ GPS in attesa · Premi Avvia');
-    const rb=document.getElementById('resetBtn'); if(rb) rb.style.display='none';
-  }
-  if (map) setTimeout(()=>map.invalidateSize(),200);
-}
-
-function resetUI() {
-  ['timerDisplay'].forEach(id=>{ document.getElementById(id).textContent='00:00:00'; });
-  document.getElementById('totalDist').textContent='0.00';
-  document.getElementById('totalCal').textContent='0';
-  document.getElementById('avgPace').textContent="—'—\"";
-  document.getElementById('currentSpeed').textContent='0.0';
-  document.getElementById('hudDist').textContent='0.00';
-  document.getElementById('hudPace').textContent="—'—\"";
-  document.getElementById('hudPaceLabel').textContent='ritmo';
-  document.getElementById('lapDist').textContent='0.00 km';
-  document.getElementById('lapCal').textContent='0 kcal';
-  document.getElementById('pointCount').textContent='0 punti';
-  const ab=document.getElementById('accBadge'); ab.textContent='— m'; ab.style.color='';
-  document.getElementById('mapIdle').style.display='';
-  document.getElementById('paceEmpty').style.display='';
-  document.getElementById('paceChart').style.display='none';
-  document.getElementById('paceChartLabel').textContent='—';
-  document.getElementById('summaryCard').classList.remove('show');
-  document.getElementById('qs-dist').textContent='0.00';
-  document.getElementById('qs-cal').textContent='0';
-  document.getElementById('qs-pace').textContent="—'—\"";
-  document.getElementById('qs-time').textContent='00:00';
-  if (polyline) polyline.setLatLngs([]);
-  ['cellDist','cellCal','cellPace','cellSpeed'].forEach(id=>document.getElementById(id).classList.remove('live'));
-}
-
-function setBanner(type,text) {
-  const b=document.getElementById('gpsBanner');
-  b.className='gps-banner '+type;
-  document.getElementById('bannerText').textContent=text;
-}
 
 /* ══════════════════════════
    TOAST
@@ -1714,66 +1606,24 @@ function showToast(msg) {
   clearTimeout(toastTimer); toastTimer=setTimeout(()=>t.classList.remove('show'),2800);
 }
 
-/* ══════════════════════════
-   RESIZE
-══════════════════════════ */
-window.addEventListener('resize',()=>{ if(map) map.invalidateSize(); updatePaceChart(); });
 
 /* ══════════════════════════
    INIT
 ══════════════════════════ */
-window.onload = function() {
-  document.getElementById('paceChart').style.display='none';
+window.addEventListener('load', function() {
   setNavDate();
   updateClock();
-  clockInterval = setInterval(updateClock,30000);
+  clockInterval = setInterval(updateClock, 30000);
   loadCheckin();
-  initMap();
-
-  const restored=loadFromStorage();
-  if (restored) {
-    setUIState('paused');
-    document.getElementById('timerDisplay').textContent=formatHMS(session.elapsedBefore);
-    updateMetrics();
-    if (session.coords.length>0) {
-      document.getElementById('mapIdle').style.display='none';
-      session.coords.forEach(p=>polyline.addLatLng([p.lat,p.lng]));
-      setTimeout(()=>map.fitBounds(polyline.getBounds()),500);
-      const lc=session.coords[session.coords.length-1];
-      const llc=[lc.lat,lc.lng];
-      accuracyCircle = L.circle(llc,{radius:lc.accuracy||20,color:'#00d4d4',fillColor:'#00d4d4',fillOpacity:.08,weight:1,interactive:false}).addTo(map);
-      userMarker = L.circleMarker(llc,{radius:8,fillColor:'#7fff00',color:'#fff',weight:2,fillOpacity:1}).addTo(map);
-    }
-    document.getElementById('pointCount').textContent=session.coords.length+' punti';
-  } else {
-    if (navigator.geolocation&&navigator.permissions) {
-      navigator.permissions.query({name:'geolocation'}).then(r=>{
-        if (r.state==='granted') setUIState('idle');
-        else if (r.state==='denied') {
-          document.querySelector('.perm-title').textContent='GPS Disattivato';
-          document.querySelector('.perm-text').innerHTML='Vai nelle impostazioni del browser per consentire l\'accesso al GPS.';
-          document.getElementById('permOverlay').classList.add('show');
-        } else {
-          document.getElementById('permOverlay').classList.add('show');
-        }
-      });
-    } else if (!navigator.geolocation) {
-      setBanner('error','❌ GPS non supportato'); document.getElementById('startBtn').disabled=true;
-    }
-    setUIState('idle');
+  addWater(0);
+  updateBHI();
+  updateHomeStats();
+  const savedMusic = localStorage.getItem(LS_MUSIC);
+  if (savedMusic) {
+    document.getElementById('spotifyUrl').value = savedMusic;
+    try { updateMusic(); } catch(e) {}
   }
-
-  const savedMusic=localStorage.getItem(LS_MUSIC);
-  if (savedMusic) { document.getElementById('spotifyUrl').value=savedMusic; updateMusic(); }
-
-  loadLastRun();
-
-  document.addEventListener('visibilitychange',()=>{
-    if (document.visibilityState==='visible'&&appState==='tracking') requestWakeLock();
-  });
-};
+});
 </script>
 <script src="chatbot.js"></script>
 </body>
-
-
