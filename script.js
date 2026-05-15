@@ -1,41 +1,59 @@
-// Nav scroll
-const nav = document.getElementById('mainNav');
+// Header scroll effect
+const header = document.getElementById('mainHeader');
 window.addEventListener('scroll', () => {
-  nav.classList.toggle('scrolled', window.scrollY > 60);
+  header.classList.toggle('scrolled', window.scrollY > 40);
 }, { passive: true });
 
-// Hamburger / mobile menu
-const hamburger = document.getElementById('hamburger');
-const mobileMenu = document.getElementById('mobileMenu');
+// Mobile menu toggle
+const navToggle = document.getElementById('navToggle');
+const mobileOverlay = document.getElementById('mobileOverlay');
 
-function openMenu() {
-  mobileMenu.classList.add('open');
-  hamburger.classList.add('open');
-  document.body.style.overflow = 'hidden';
+// Inserisce le 3 linee per l'animazione dell'hamburger
+if (navToggle) {
+  navToggle.innerHTML = '<span></span><span></span><span></span>';
 }
 
-function closeMenu() {
-  mobileMenu.classList.remove('open');
-  hamburger.classList.remove('open');
-  document.body.style.overflow = '';
+const toggleMenu = () => {
+  navToggle.classList.toggle('active');
+  mobileOverlay.classList.toggle('active');
+  document.body.style.overflow = mobileOverlay.classList.contains('active') ? 'hidden' : '';
+};
+
+navToggle.addEventListener('click', toggleMenu);
+
+// Profile Modal Toggle
+const profileTrigger = document.getElementById('profileTrigger');
+const mobileProfileTrigger = document.getElementById('mobileProfileTrigger');
+const profileModal = document.getElementById('profileModal');
+const closeProfile = document.getElementById('closeProfile');
+
+if(profileTrigger) {
+  profileTrigger.addEventListener('click', () => {
+    profileModal.classList.add('active');
+  });
+}
+if(mobileProfileTrigger) {
+  mobileProfileTrigger.addEventListener('click', () => {
+    toggleMenu(); // Chiude il menu hamburger
+    profileModal.classList.add('active'); // Apre il modal profilo
+  });
+}
+if(closeProfile) {
+  closeProfile.addEventListener('click', () => {
+    profileModal.classList.remove('active');
+  });
 }
 
-hamburger.addEventListener('click', () => {
-  mobileMenu.classList.contains('open') ? closeMenu() : openMenu();
+// Close menu on link click
+mobileOverlay.querySelectorAll('a').forEach(link => {
+  link.addEventListener('click', () => {
+    navToggle.classList.remove('active');
+    mobileOverlay.classList.remove('active');
+    document.body.style.overflow = '';
+  });
 });
 
-document.addEventListener('click', e => {
-  if (mobileMenu.classList.contains('open') &&
-      !nav.contains(e.target) && !mobileMenu.contains(e.target)) closeMenu();
-});
 
-document.addEventListener('keydown', e => { if (e.key === 'Escape') closeMenu(); });
-
-let lastScrollY = window.scrollY;
-window.addEventListener('scroll', () => {
-  if (mobileMenu.classList.contains('open') && Math.abs(window.scrollY - lastScrollY) > 60) closeMenu();
-  lastScrollY = window.scrollY;
-}, { passive: true });
 
 // Intersection Observer
 const observer = new IntersectionObserver((entries) => {
