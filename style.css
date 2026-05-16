@@ -247,17 +247,21 @@ body::after {
   color: var(--white);
   font-size: 2rem;
   cursor: pointer;
-  padding: 5px;
+  padding: 1px 15px;
+  border-radius: 1000px;
 }
 
 .close-modal:hover{
   color: var(--cyan);
-  background-color: rgba(128, 128, 128, 0.577);
+  background-color: rgba(128, 128, 128, 0.2 );
 }
 
 .profile-avatar-edit {
-  text-align: center;
-  margin-bottom: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  margin: 10px 0;
 }
 
 .profile-avatar-edit img {
@@ -265,7 +269,7 @@ body::after {
   height: 80px;
   border-radius: 50%;
   border: 2px solid var(--cyan);
-  margin-bottom: 10px;
+  object-fit:cover;
 }
 
 .edit-avatar-btn {
@@ -274,7 +278,7 @@ body::after {
   background: none;
   border: 1px solid var(--cyan);
   color: var(--cyan);
-  font-size: 0.6rem;
+  font-size: 0.9rem;
   padding: 6px 14px;
   text-transform: uppercase;
   cursor: pointer;
@@ -1074,7 +1078,7 @@ body::after {
   transform: translate(-50%, -50%);
   width: 300px;
   height: 300px;
-  background: radial-gradient(ellipse, rgba(58, 90, 64, 0.1) 0%, transparent 70%);
+  background: radial-gradient(ellipse, rgba(58, 90, 64, 0.2) 0%, transparent 70%);
   border-radius: 50%;
   animation: glowPulse 4s ease-in-out infinite;
 }
@@ -1097,7 +1101,7 @@ body::after {
   width: clamp(200px, 28vw, 260px);
   aspect-ratio: 1/2;
   background: #e8ede4;
-  border: 2px solid rgba(58, 90, 64, 0.3);
+  border: 2px solid rgba(58, 90, 64, 1);
   border-radius: 36px;
   overflow: hidden;
   position: relative;
@@ -1121,7 +1125,7 @@ body::after {
   top: 0;
   left: 50%;
   transform: translateX(-50%);
-  width: 56px;
+  width: 100px;
   height: 12px;
   background: var(--white);
   border-radius: 0 0 10px 10px;
