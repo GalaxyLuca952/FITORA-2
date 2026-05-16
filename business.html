@@ -1,0 +1,849 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FITORA – Business Plan</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* ── PAGE LAYOUT ── */
+    .biz-hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 120px 24px 60px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .biz-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 80% 60% at 50% 30%, rgba(58, 90, 64, 0.12) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .biz-tag {
+      display: inline-block;
+      font-size: .65rem;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--cyan);
+      border: 1px solid var(--cyan);
+      padding: 5px 14px;
+      border-radius: 20px;
+      margin-bottom: 24px;
+    }
+
+    .biz-hero-title {
+      font-size: clamp(2.8rem, 7vw, 6rem);
+      font-weight: 900;
+      line-height: 1;
+      color: var(--white);
+      margin-bottom: 16px;
+    }
+
+    .grad-text {
+      background: linear-gradient(120deg, #3a5a40, #a3b18a);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .biz-hero-sub {
+      font-size: clamp(1rem, 2vw, 1.25rem);
+      color: #3a5a40;
+      opacity: .8;
+      max-width: 560px;
+      margin: 0 auto 40px;
+    }
+
+    /* ── KPI STRIP ── */
+    .kpi-strip {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 16px;
+      padding: 0 24px 80px;
+    }
+
+    .kpi-card {
+      background: var(--dark2);
+      border: 1px solid var(--dark3);
+      border-radius: 16px;
+      padding: 24px 32px;
+      min-width: 140px;
+      text-align: center;
+      transition: transform .2s, border-color .2s;
+    }
+
+    .kpi-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--cyan);
+    }
+
+    .kpi-val {
+      font-size: 2rem;
+      font-weight: 900;
+      background: linear-gradient(120deg, #3a5a40, #a3b18a);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .kpi-label {
+      font-size: .7rem;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: #3a5a40;
+      opacity: .7;
+      margin-top: 4px;
+    }
+
+    /* ── SECTIONS ── */
+    .biz-section {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 60px 24px;
+    }
+
+    .section-tag {
+      display: block;
+      font-size: .65rem;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--cyan);
+      margin-bottom: 12px;
+    }
+
+    .section-title {
+      font-size: clamp(1.8rem, 4vw, 3rem) !important;
+      font-weight: 900;
+      line-height: 1.1;
+      color: var(--white);
+      margin-bottom: 32px;
+    }
+
+    /* ── TWO-COL ── */
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+
+    @media(max-width:640px) {
+      .two-col {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* ── INFO CARD ── */
+    .info-card {
+      background: var(--dark2);
+      border: 1px solid var(--dark3);
+      border-radius: 16px;
+      padding: 24px;
+    }
+
+    .info-card h4 {
+      font-size: .75rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--cyan);
+      margin-bottom: 12px;
+    }
+
+    .info-card p,
+    .info-card li {
+      font-size: .95rem;
+      line-height: 1.6;
+      color: var(--white);
+      opacity: .8;
+    }
+
+    .info-card ul {
+      list-style: none;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .info-card li::before {
+      content: '→ ';
+      color: var(--cyan);
+      font-weight: 700;
+    }
+
+    /* ── PRICING ── */
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+    }
+
+    .price-card {
+      background: var(--dark2);
+      border: 1px solid var(--dark3);
+      border-radius: 16px;
+      padding: 24px;
+      text-align: center;
+      transition: border-color .2s, transform .2s;
+    }
+
+    .price-card.featured {
+      border-color: var(--cyan);
+      background: linear-gradient(160deg, rgba(58, 90, 64, .08), var(--dark2));
+    }
+
+    .price-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--cyan);
+    }
+
+    .price-name {
+      font-size: .65rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--cyan);
+      margin-bottom: 10px;
+    }
+
+    .price-val {
+      font-size: 1.7rem;
+      font-weight: 900;
+      color: var(--white);
+    }
+
+    .price-period {
+      font-size: .75rem;
+      color: var(--white);
+      opacity: .5;
+    }
+
+    .price-note {
+      font-size: .8rem;
+      color: var(--white);
+      opacity: .6;
+      margin-top: 10px;
+    }
+
+    /* ── PROJECTION TABLE ── */
+    .proj-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: .9rem;
+    }
+
+    .proj-table th {
+      background: var(--dark3);
+      color: var(--white);
+      font-size: .65rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 12px 16px;
+      text-align: left;
+    }
+
+    .proj-table th:first-child {
+      border-radius: 8px 0 0 0;
+    }
+
+    .proj-table th:last-child {
+      border-radius: 0 8px 0 0;
+    }
+
+    .proj-table td {
+      padding: 12px 16px;
+      border-bottom: 1px solid var(--dark3);
+      color: var(--white);
+      opacity: .85;
+    }
+
+    .proj-table tr:last-child td {
+      border-bottom: none;
+      font-weight: 700;
+    }
+
+    .proj-table tr:hover td {
+      background: var(--dark2);
+    }
+
+    .highlight-row td {
+      color: var(--cyan) !important;
+      opacity: 1 !important;
+      font-weight: 700 !important;
+    }
+
+    /* ── FUND BARS ── */
+    .fund-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .fund-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .fund-label {
+      min-width: 200px;
+      font-size: .85rem;
+      color: var(--white);
+      opacity: .8;
+    }
+
+    .fund-bar-wrap {
+      flex: 1;
+      background: var(--dark3);
+      border-radius: 6px;
+      height: 8px;
+      overflow: hidden;
+    }
+
+    .fund-bar-fill {
+      height: 100%;
+      border-radius: 6px;
+      background: linear-gradient(90deg, #3a5a40, #a3b18a);
+      transition: width .6s ease;
+    }
+
+    .fund-pct {
+      min-width: 36px;
+      font-size: .8rem;
+      font-weight: 700;
+      color: var(--cyan);
+      text-align: right;
+    }
+
+    /* ── RISK CHIPS ── */
+    .risk-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 12px;
+    }
+
+    .risk-item {
+      background: var(--dark2);
+      border-left: 3px solid var(--cyan);
+      border-radius: 0 10px 10px 0;
+      padding: 14px 16px;
+    }
+
+    .risk-title {
+      font-size: .8rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 4px;
+    }
+
+    .risk-fix {
+      font-size: .75rem;
+      color: var(--cyan);
+      opacity: .8;
+    }
+
+    /* ── CTA BLOCK ── */
+    .biz-cta {
+      text-align: center;
+      padding: 80px 24px;
+      background: var(--dark2);
+      border-top: 1px solid var(--dark3);
+    }
+
+    .btn-cta {
+      display: inline-block;
+      background: var(--cyan);
+      color: #f4f6f1 !important;
+      font-weight: 700;
+      font-size: .85rem;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      padding: 14px 32px;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: opacity .2s, transform .2s;
+    }
+
+    .btn-cta:hover {
+      opacity: .85;
+      transform: translateY(-2px);
+    }
+
+    .btn-ghost {
+      display: inline-block;
+      border: 1.5px solid var(--cyan);
+      color: var(--cyan) !important;
+      font-weight: 700;
+      font-size: .85rem;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      padding: 14px 32px;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: background .2s, color .2s;
+    }
+
+    .cta-btns {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .btn-ghost:hover {
+      background: var(--cyan);
+      color: #f4f6f1 !important;
+    }
+
+    hr.biz-divider {
+      border: none;
+      border-top: 1px solid var(--dark3);
+      max-width: 960px;
+      margin: 0 auto;
+    }
+
+    /* ── BACK NAV ── */
+    .biz-nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 60px;
+      background: rgba(244, 246, 241, .92);
+      backdrop-filter: blur(12px);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 32px;
+      border-bottom: 1px solid var(--dark3);
+      z-index: 100;
+    }
+
+    .biz-nav-logo {
+      font-size: .85rem;
+      font-weight: 900;
+      letter-spacing: 3px;
+    }
+
+    .biz-nav-back {
+      font-size: .65rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--cyan);
+      border: 1px solid var(--dark3);
+      padding: 6px 14px;
+      border-radius: 6px;
+      transition: border-color .2s;
+    }
+
+    .biz-nav-back:hover {
+      border-color: var(--cyan);
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAV -->
+  <nav class="biz-nav">
+    <a href="index.html" class="biz-nav-back">← Home</a>
+    <div class="biz-nav-logo grad-text">FITORA</div>
+    <span class="biz-tag" style="margin:0;font-size:.6rem">Business Plan 2026</span>
+  </nav>
+
+  <!-- ══ HERO ══ -->
+  <section class="biz-hero">
+    <span class="biz-tag">Documento Riservato · 2026</span>
+    <h1 class="biz-hero-title">
+      <span class="grad-text">FITORA</span><br>
+      AI Fitness App
+    </h1>
+    <p class="biz-hero-sub">
+      Il personal trainer virtuale che corregge i tuoi movimenti in tempo reale, solo con la fotocamera del tuo smartphone.
+    </p>
+  </section>
+
+  <!-- ══ KPI STRIP ══ -->
+  <div class="kpi-strip">
+    <div class="kpi-card">
+      <div class="kpi-val">€55K</div>
+      <div class="kpi-label">Fatturato Anno 1</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-val">€10K</div>
+      <div class="kpi-label">Utile Lordo</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-val">15%</div>
+      <div class="kpi-label">ROI Atteso</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-val">500</div>
+      <div class="kpi-label">Utenti Paganti</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-val">€4.5M</div>
+      <div class="kpi-label">Ricavi Anno 3</div>
+    </div>
+  </div>
+
+  <hr class="biz-divider">
+
+  <!-- ══ PRODOTTO ══ -->
+  <section class="biz-section">
+    <span class="section-tag">01 · Prodotto</span>
+    <h2 class="section-title">Cosa facciamo</h2>
+    <div class="two-col">
+      <div class="info-card">
+        <h4>Free</h4>
+        <ul>
+          <li>Schede di allenamento base</li>
+          <li>Piani alimentari standard</li>
+          <li>Tracking manuale serie & carichi</li>
+          <li>Community e progressi base</li>
+        </ul>
+      </div>
+      <div class="info-card">
+        <h4>Premium · Computer Vision AI</h4>
+        <ul>
+          <li>Rilevamento esoscheletro in tempo reale</li>
+          <li>Correzione vocale durante l'esercizio</li>
+          <li>Piano alimentare adattivo ai progressi</li>
+          <li>Report video automatici delle sessioni</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <hr class="biz-divider">
+
+  <!-- ══ MODELLO DI BUSINESS ══ -->
+  <section class="biz-section">
+    <span class="section-tag">02 · Modello di Business</span>
+    <h2 class="section-title">Doppio canale,<br>ricavi ricorrenti</h2>
+    <div class="pricing-grid">
+      <div class="price-card">
+        <div class="price-name">Free B2C</div>
+        <div class="price-val">0€</div>
+        <div class="price-note">Top of funnel · acquisizione</div>
+      </div>
+      <div class="price-card featured">
+        <div class="price-name">Premium B2C</div>
+        <div class="price-val">19,99€</div>
+        <div class="price-period">/ mese</div>
+        <div class="price-note">99€/anno — fidelizzazione</div>
+      </div>
+      <div class="price-card featured">
+        <div class="price-name">SaaS Personal Trainer</div>
+        <div class="price-val">49€</div>
+        <div class="price-period">/ mese B2B</div>
+        <div class="price-note">Dashboard PT + clienti inclusi</div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="biz-divider">
+
+  <!-- ══ PROIEZIONI ══ -->
+  <section class="biz-section">
+    <span class="section-tag">03 · Finanza</span>
+    <h2 class="section-title">Proiezioni a 3 anni</h2>
+    <div class="info-card" style="padding:0;overflow:hidden">
+      <table class="proj-table">
+        <thead>
+          <tr>
+            <th>Voce</th>
+            <th>Anno 1</th>
+            <th>Anno 2</th>
+            <th>Anno 3</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Utenti paganti B2C</td>
+            <td>500</td>
+            <td>~6.000</td>
+            <td>~50.000+</td>
+          </tr>
+          <tr>
+            <td>Personal Trainer B2B</td>
+            <td>~9</td>
+            <td>~80</td>
+            <td>~400</td>
+          </tr>
+          <tr>
+            <td>Ricavi totali</td>
+            <td>≈ €55K</td>
+            <td>≈ €600K</td>
+            <td>≈ €4,5M</td>
+          </tr>
+          <tr>
+            <td>Costi totali</td>
+            <td>≈ €45K</td>
+            <td>≈ €380K</td>
+            <td>≈ €2,9M</td>
+          </tr>
+          <tr class="highlight-row">
+            <td>EBITDA</td>
+            <td>≈ €10K · 18%</td>
+            <td>≈ €220K · 37%</td>
+            <td>≈ €1,6M · 35%</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <hr class="biz-divider">
+
+  <!-- ══ INVESTIMENTO ══ -->
+  <section class="biz-section">
+    <span class="section-tag">04 · Investimento</span>
+    <h2 class="section-title">Utilizzo dei fondi</h2>
+    <div class="info-card">
+      <div class="fund-list">
+        <div class="fund-item">
+          <span class="fund-label">Sviluppo prodotto (App + AI)</span>
+          <div class="fund-bar-wrap"><div class="fund-bar-fill" style="width:40%"></div></div>
+          <span class="fund-pct">40%</span>
+        </div>
+        <div class="fund-item">
+          <span class="fund-label">Marketing & acquisizione utenti</span>
+          <div class="fund-bar-wrap"><div class="fund-bar-fill" style="width:30%"></div></div>
+          <span class="fund-pct">30%</span>
+        </div>
+        <div class="fund-item">
+          <span class="fund-label">Infrastruttura cloud + tooling</span>
+          <div class="fund-bar-wrap"><div class="fund-bar-fill" style="width:10%"></div></div>
+          <span class="fund-pct">10%</span>
+        </div>
+        <div class="fund-item">
+          <span class="fund-label">Spese societarie & operative</span>
+          <div class="fund-bar-wrap"><div class="fund-bar-fill" style="width:10%"></div></div>
+          <span class="fund-pct">10%</span>
+        </div>
+        <div class="fund-item">
+          <span class="fund-label">Riserva strategica / pivot</span>
+          <div class="fund-bar-wrap"><div class="fund-bar-fill" style="width:10%"></div></div>
+          <span class="fund-pct">10%</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="biz-divider">
+
+  <!-- ══ RISCHI ══ -->
+  <section class="biz-section">
+    <span class="section-tag">05 · Rischi & Mitigazioni</span>
+    <h2 class="section-title">Cosa abbiamo<br>già considerato</h2>
+    <div class="risk-grid">
+      <div class="risk-item">
+        <div class="risk-title">Conversione free→premium lenta</div>
+        <div class="risk-fix">A/B test prezzi · trial 7 giorni</div>
+      </div>
+      <div class="risk-item">
+        <div class="risk-title">Accuratezza AI insufficiente</div>
+        <div class="risk-fix">Open-source affidabili + training continuo</div>
+      </div>
+      <div class="risk-item">
+        <div class="risk-title">Aumento costi cloud in scala</div>
+        <div class="risk-fix">Architettura asincrona + reserved instances</div>
+      </div>
+      <div class="risk-item">
+        <div class="risk-title">Big player (Apple Fitness, Nike)</div>
+        <div class="risk-fix">Verticalizzazione + canale B2B difensivo</div>
+      </div>
+      <div class="risk-item">
+        <div class="risk-title">Churn elevato B2C mensile</div>
+        <div class="risk-fix">Push piano annuale · gamification</div>
+      </div>
+      <div class="risk-item">
+        <div class="risk-title">Commissioni store 15-30%</div>
+        <div class="risk-fix">Abbonamenti via web (Stripe) quando possibile</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ CTA ══ -->
+  <div class="biz-cta">
+    <span class="section-tag" style="display:block;margin-bottom:16px">Prossimi passi</span>
+    <h2 class="section-title" style="margin-bottom:12px">Pronto a costruire<br><span class="grad-text">il futuro del fitness?</span></h2>
+    <p style="max-width:480px;margin:0 auto 32px;opacity:.7;font-size:.95rem">
+      MVP in 6-12 mesi · Break-even Anno 1 · Exit naturale Anno 3 tramite acquisizione strategica o IPO wellness.
+    </p>
+    <div class="cta-btns">
+      <a href="index.html" class="btn-cta">Esplora l'App</a>
+      <a href="check-in.html" class="btn-ghost">Prova il Prodotto</a>
+    </div>
+  </div>
+
+  <!-- ══ FONTI ══ -->
+  <footer style="background:var(--dark2);border-top:1px solid var(--dark3);padding:48px 0 32px;">
+
+    <div style="text-align:center;font-size:.65rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--cyan);margin-bottom:24px;padding:0 24px;">
+      Fonti di Mercato
+    </div>
+
+    <!-- CAROUSEL TRACK -->
+    <div class="sources-viewport">
+      <div class="sources-track" id="sourcesTrack">
+
+        <!-- card 1 -->
+        <div class="source-card">
+          <div class="source-name">Grand View Research</div>
+          <div class="source-stat">Mercato globale fitness app ~$13B nel 2026, proiettato a $45B entro il 2035 (CAGR 14%)</div>
+          <a href="https://www.grandviewresearch.com/industry-analysis/fitness-app-market" target="_blank" rel="noopener" class="source-link">grandviewresearch.com ↗</a>
+        </div>
+
+        <!-- card 2 -->
+        <div class="source-card">
+          <div class="source-name">Statista — Worldwide</div>
+          <div class="source-stat">345 milioni di utenti nel 2024 · 850 milioni di download · penetrazione 9,76%</div>
+          <a href="https://www.statista.com/outlook/hmo/digital-health/digital-fitness-well-being/health-wellness-coaching/fitness-apps/worldwide" target="_blank" rel="noopener" class="source-link">statista.com ↗</a>
+        </div>
+
+        <!-- card 3 -->
+        <div class="source-card">
+          <div class="source-name">Statista — Italia</div>
+          <div class="source-stat">Ricavi fitness app Italia: $142M nel 2024, proiettati a $200M entro il 2029 (CAGR 7%)</div>
+          <a href="https://www.statista.com/outlook/hmo/digital-health/digital-fitness-well-being/health-wellness-coaching/fitness-apps/italy" target="_blank" rel="noopener" class="source-link">statista.com/italy ↗</a>
+        </div>
+
+        <!-- card 4 -->
+        <div class="source-card">
+          <div class="source-name">Toward Healthcare</div>
+          <div class="source-stat">Digital health tracking app: $16B nel 2024, $18.7B nel 2025, CAGR 15,9% fino al 2034</div>
+          <a href="https://www.towardshealthcare.com/insights/fitness-app-market-sizing" target="_blank" rel="noopener" class="source-link">towardshealthcare.com ↗</a>
+        </div>
+
+        <!-- card 5 -->
+        <div class="source-card">
+          <div class="source-name">Precedence Research</div>
+          <div class="source-stat">Mercato digital health globale proiettato a $1.171 miliardi entro il 2035</div>
+          <a href="https://www.precedenceresearch.com/digital-health-market" target="_blank" rel="noopener" class="source-link">precedenceresearch.com ↗</a>
+        </div>
+
+        <!-- duplicates for seamless loop -->
+        <div class="source-card">
+          <div class="source-name">Grand View Research</div>
+          <div class="source-stat">Mercato globale fitness app ~$13B nel 2026, proiettato a $45B entro il 2035 (CAGR 14%)</div>
+          <a href="https://www.grandviewresearch.com/industry-analysis/fitness-app-market" target="_blank" rel="noopener" class="source-link">grandviewresearch.com ↗</a>
+        </div>
+        <div class="source-card">
+          <div class="source-name">Statista — Worldwide</div>
+          <div class="source-stat">345 milioni di utenti nel 2024 · 850 milioni di download · penetrazione 9,76%</div>
+          <a href="https://www.statista.com/outlook/hmo/digital-health/digital-fitness-well-being/health-wellness-coaching/fitness-apps/worldwide" target="_blank" rel="noopener" class="source-link">statista.com ↗</a>
+        </div>
+        <div class="source-card">
+          <div class="source-name">Statista — Italia</div>
+          <div class="source-stat">Ricavi fitness app Italia: $142M nel 2024, proiettati a $200M entro il 2029 (CAGR 7%)</div>
+          <a href="https://www.statista.com/outlook/hmo/digital-health/digital-fitness-well-being/health-wellness-coaching/fitness-apps/italy" target="_blank" rel="noopener" class="source-link">statista.com/italy ↗</a>
+        </div>
+        <div class="source-card">
+          <div class="source-name">Toward Healthcare</div>
+          <div class="source-stat">Digital health tracking app: $16B nel 2024, $18.7B nel 2025, CAGR 15,9% fino al 2034</div>
+          <a href="https://www.towardshealthcare.com/insights/fitness-app-market-sizing" target="_blank" rel="noopener" class="source-link">towardshealthcare.com ↗</a>
+        </div>
+        <div class="source-card">
+          <div class="source-name">Precedence Research</div>
+          <div class="source-stat">Mercato digital health globale proiettato a $1.171 miliardi entro il 2035</div>
+          <a href="https://www.precedenceresearch.com/digital-health-market" target="_blank" rel="noopener" class="source-link">precedenceresearch.com ↗</a>
+        </div>
+
+      </div>
+    </div>
+
+    <div style="text-align:center;font-size:.65rem;opacity:.4;letter-spacing:2px;border-top:1px solid var(--dark3);padding-top:20px;margin-top:32px;padding-left:24px;padding-right:24px;">
+      © 2026 FITORA — Documento riservato · Non distribuire
+    </div>
+  </footer>
+
+  <style>
+    .sources-viewport {
+      overflow: hidden;
+      width: 100%;
+      position: relative;
+      /* fade edges */
+      -webkit-mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
+      mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
+    }
+
+    .sources-track {
+      display: flex;
+      gap: 16px;
+      width: max-content;
+      animation: scrollSources 28s linear infinite;
+      padding: 4px 0 8px;
+    }
+
+    .sources-viewport:hover .sources-track {
+      animation-play-state: paused;
+    }
+
+    @keyframes scrollSources {
+      0%   { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    .source-card {
+      background: var(--dark3);
+      border: 1px solid transparent;
+      border-radius: 12px;
+      padding: 18px 20px;
+      width: 260px;
+      flex-shrink: 0;
+      transition: border-color .2s, transform .2s;
+      cursor: default;
+    }
+
+    .source-card:hover {
+      border-color: var(--cyan);
+      transform: translateY(-3px);
+    }
+
+    .source-name {
+      font-size: .7rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 6px;
+    }
+
+    .source-stat {
+      font-size: .75rem;
+      color: var(--white);
+      opacity: .7;
+      line-height: 1.5;
+      margin-bottom: 10px;
+    }
+
+    .source-link {
+      font-size: .65rem;
+      color: var(--cyan);
+      word-break: break-all;
+      text-decoration: none;
+    }
+
+    .source-link:hover {
+      text-decoration: underline;
+    }
+  </style>
+
+</body>
+
+</html>
