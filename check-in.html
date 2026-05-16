@@ -1,491 +1,521 @@
 <!DOCTYPE html>
 <html lang="it">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<meta name="theme-color" content="#080808">
-<title>FITORA – Come stai oggi?</title>
-<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;700;900&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="check-in.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="theme-color" content="#080808">
+  <title>FITORA – Come stai oggi?</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;700;900&family=Barlow:wght@400;500;600&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link rel="stylesheet" href="check-in.css">
 </head>
+
 <body>
 
-<!-- NAV -->
-<nav>
-  <a href="index.html" class="btn-back">← HOME</a>
-  <div class="nav-logo gt">FITORA</div>
-  <div style="font-size:.65rem;letter-spacing:3px;color:rgba(255,255,255,.3);text-transform:uppercase" id="navDate"></div>
-</nav>
+  <!-- NAV -->
+  <nav>
+    <a href="index.html" class="btn-back">← HOME</a>
+    <div class="nav-logo gt">FITORA</div>
+    <div style="font-size:.65rem;letter-spacing:3px;color:rgba(255,255,255,.3);text-transform:uppercase" id="navDate">
+    </div>
+  </nav>
 
-<div class="wrapper">
+  <div class="wrapper">
 
-  <!-- HEADER -->
-  <div class="checkin-header" id="checkinHeader">
-    <div class="checkin-tag">Check-In Giornaliero</div>
-    <h1 class="checkin-title">Come stai<br><span class="gt">oggi?</span></h1>
-    <p class="checkin-sub">
-      In 60 secondi capiamo quanto puoi spingere oggi e come strutturare il tuo allenamento per massimizzare i risultati senza rischiare infortuni.
-    </p>
-  </div>
-
-  <!-- PROGRESS -->
-  <div class="progress-wrap" id="progressWrap">
-    <div class="progress-bar"><div class="progress-fill" id="progressFill" style="width:0%"></div></div>
-    <div class="progress-label" id="progressLabel">0 / 5</div>
-  </div>
-
-  <!-- STEPS -->
-  <div class="steps" id="stepsContainer">
-
-    <!-- STEP 1: ENERGIA -->
-    <div class="step active" id="step1">
-      <div class="q-card">
-        <div class="q-icon"><i class="fa-solid fa-bolt" style="color: #facc15;"></i></div>
-        <div class="q-label">Livello di Energia</div>
-        <div class="q-hint">Come ti senti fisicamente in questo momento? Sii onesto — è l'input più importante.</div>
-        <div class="emoji-scale" id="energy-scale">
-          <button class="emoji-btn" data-val="1" onclick="selectEmoji('energy',1,this)">
-            <span class="emoji"><i class="fa-solid fa-bed" style="color: #3f51b5;"></i></span><span class="label">Esausto</span>
-          </button>
-          <button class="emoji-btn" data-val="2" onclick="selectEmoji('energy',2,this)">
-            <span class="emoji"><i class="fa-solid fa-face-frown" style="color: #f44336;"></i></span><span class="label">Stanco</span>
-          </button>
-          <button class="emoji-btn" data-val="3" onclick="selectEmoji('energy',3,this)">
-            <span class="emoji"><i class="fa-solid fa-face-meh" style="color: #ffeb3b;"></i></span><span class="label">Normale</span>
-          </button>
-          <button class="emoji-btn" data-val="4" onclick="selectEmoji('energy',4,this)">
-            <span class="emoji"><i class="fa-solid fa-face-smile" style="color: #4caf50;"></i></span><span class="label">Buono</span>
-          </button>
-          <button class="emoji-btn" data-val="5" onclick="selectEmoji('energy',5,this)">
-            <span class="emoji"><i class="fa-solid fa-fire" style="color: #ff5722;"></i></span><span class="label">Al Top</span>
-          </button>
-        </div>
-      </div>
-      <div class="step-nav">
-        <button class="btn-next" id="next1" onclick="goNext(2)" disabled>Avanti →</button>
-      </div>
+    <!-- HEADER -->
+    <div class="checkin-header" id="checkinHeader">
+      <div class="checkin-tag">Check-In Giornaliero</div>
+      <h1 class="checkin-title">Come stai<br><span class="gt">oggi?</span></h1>
+      <p class="checkin-sub">
+        In 60 secondi capiamo quanto puoi spingere oggi e come strutturare il tuo allenamento per massimizzare i
+        risultati senza rischiare infortuni.
+      </p>
     </div>
 
-    <!-- STEP 2: SONNO -->
-    <div class="step" id="step2">
-      <div class="q-card">
-        <div class="q-icon"><i class="fa-solid fa-moon" style="color: #3f51b5;"></i></div>
-        <div class="q-label">Sonno della Notte Scorsa</div>
-        <div class="q-hint">Il recupero muscolare avviene principalmente durante il sonno. Questo dato è cruciale.</div>
-        <div class="option-list">
-          <div class="option-card" onclick="selectOption('sleep','less5',this)">
-            <span class="opt-icon"><i class="fa-solid fa-face-dizzy" style="color: #f44336;"></i></span>
-            <div class="opt-text">
-              <div class="opt-name">Meno di 5 ore</div>
-              <div class="opt-desc">Recupero gravemente compromesso</div>
-            </div>
-            <div class="opt-check"></div>
-          </div>
-          <div class="option-card" onclick="selectOption('sleep','5to6',this)">
-            <span class="opt-icon"><i class="fa-solid fa-bed" style="color: #3f51b5;"></i></span>
-            <div class="opt-text">
-              <div class="opt-name">5–6 ore</div>
-              <div class="opt-desc">Recupero parziale</div>
-            </div>
-            <div class="opt-check"></div>
-          </div>
-          <div class="option-card" onclick="selectOption('sleep','7to8',this)">
-            <span class="opt-icon"><i class="fa-solid fa-face-smile" style="color: #4caf50;"></i></span>
-            <div class="opt-text">
-              <div class="opt-name">7–8 ore</div>
-              <div class="opt-desc">Recupero ottimale</div>
-            </div>
-            <div class="opt-check"></div>
-          </div>
-          <div class="option-card" onclick="selectOption('sleep','9plus',this)">
-            <span class="opt-icon"><i class="fa-solid fa-wand-magic-sparkles" style="color: #ffeb3b;"></i></span>
-            <div class="opt-text">
-              <div class="opt-name">9+ ore</div>
-              <div class="opt-desc">Riposo abbondante</div>
-            </div>
-            <div class="opt-check"></div>
+    <!-- PROGRESS -->
+    <div class="progress-wrap" id="progressWrap">
+      <div class="progress-bar">
+        <div class="progress-fill" id="progressFill" style="width:0%"></div>
+      </div>
+      <div class="progress-label" id="progressLabel">0 / 5</div>
+    </div>
+
+    <!-- STEPS -->
+    <div class="steps" id="stepsContainer">
+
+      <!-- STEP 1: ENERGIA -->
+      <div class="step active" id="step1">
+        <div class="q-card">
+          <div class="q-icon"><i class="fa-solid fa-bolt" style="color: #facc15;"></i></div>
+          <div class="q-label">Livello di Energia</div>
+          <div class="q-hint">Come ti senti fisicamente in questo momento? Sii onesto - è l'input più importante.</div>
+          <div class="emoji-scale" id="energy-scale">
+            <button class="emoji-btn" data-val="1" onclick="selectEmoji('energy',1,this)">
+              <span class="emoji"><i class="fa-solid fa-bed" style="color: #3f51b5;"></i></span><span
+                class="label">Esausto</span>
+            </button>
+            <button class="emoji-btn" data-val="2" onclick="selectEmoji('energy',2,this)">
+              <span class="emoji"><i class="fa-solid fa-face-frown" style="color: #f44336;"></i></span><span
+                class="label">Stanco</span>
+            </button>
+            <button class="emoji-btn" data-val="3" onclick="selectEmoji('energy',3,this)">
+              <span class="emoji"><i class="fa-solid fa-face-meh" style="color: #ffeb3b;"></i></span><span
+                class="label">Normale</span>
+            </button>
+            <button class="emoji-btn" data-val="4" onclick="selectEmoji('energy',4,this)">
+              <span class="emoji"><i class="fa-solid fa-face-smile" style="color: #4caf50;"></i></span><span
+                class="label">Buono</span>
+            </button>
+            <button class="emoji-btn" data-val="5" onclick="selectEmoji('energy',5,this)">
+              <span class="emoji"><i class="fa-solid fa-fire" style="color: #ff5722;"></i></span><span class="label">Al
+                Top</span>
+            </button>
           </div>
         </div>
-      </div>
-      <div class="step-nav">
-        <button class="btn-prev" onclick="goBack(1)">← Indietro</button>
-        <button class="btn-next" id="next2" onclick="goNext(3)" disabled>Avanti →</button>
-      </div>
-    </div>
-
-    <!-- STEP 3: DOLORI MUSCOLARI -->
-    <div class="step" id="step3">
-      <div class="q-card">
-        <div class="q-icon"><i class="fa-solid fa-dumbbell" style="color: #9c27b0;"></i></div>
-        <div class="q-label">Dolori Muscolari o Articolari</div>
-        <div class="q-hint">Seleziona tutto ciò che senti. L'app eviterà di sovraccaricare le zone già affaticate.</div>
-        <div class="checkbox-grid" id="pain-grid">
-          <div class="check-card" onclick="toggleCheck('pain','none',this)" id="pain-none">
-            <div class="cc-box"></div><span class="cc-text"><i class="fa-solid fa-check" style="color: #4caf50;"></i> Nessun dolore</span>
-          </div>
-          <div class="check-card" onclick="toggleCheck('pain','legs',this)">
-            <div class="cc-box"></div><span class="cc-text"><i class="fa-solid fa-bone" style="color: #ffeb3b;"></i> Gambe / Cosce</span>
-          </div>
-          <div class="check-card" onclick="toggleCheck('pain','back',this)">
-            <div class="cc-box"></div><span class="cc-text"><i class="fa-solid fa-arrow-left" style="color: #ffffff;"></i> Schiena</span>
-          </div>
-          <div class="check-card" onclick="toggleCheck('pain','shoulders',this)">
-            <div class="cc-box"></div><span class="cc-text"><i class="fa-solid fa-person-circle-question" style="color: #9e9e9e;"></i> Spalle / Collo</span>
-          </div>
-          <div class="check-card" onclick="toggleCheck('pain','arms',this)">
-            <div class="cc-box"></div><span class="cc-text"><i class="fa-solid fa-dumbbell" style="color: #9c27b0;"></i> Braccia / Polsi</span>
-          </div>
-          <div class="check-card" onclick="toggleCheck('pain','knees',this)">
-            <div class="cc-box"></div><span class="cc-text"><i class="fa-solid fa-bone" style="color: #ffeb3b;"></i> Ginocchia / Caviglie</span>
-          </div>
+        <div class="step-nav">
+          <button class="btn-next" id="next1" onclick="goNext(2)" disabled>Avanti →</button>
         </div>
       </div>
-      <div class="step-nav">
-        <button class="btn-prev" onclick="goBack(2)">← Indietro</button>
-        <button class="btn-next" id="next3" onclick="goNext(4)">Avanti →</button>
-      </div>
-    </div>
 
-    <!-- STEP 4: STRESS -->
-    <div class="step" id="step4">
-      <div class="q-card">
-        <div class="q-icon"><i class="fa-solid fa-brain" style="color: #e91e63;"></i></div>
-        <div class="q-label">Livello di Stress Mentale</div>
-        <div class="q-hint">Lo stress cronico alza il cortisolo, rallenta il recupero e aumenta il rischio di infortuni.</div>
-        <div class="emoji-scale" id="stress-scale">
-          <button class="emoji-btn" data-val="1" onclick="selectEmoji('stress',1,this)">
-            <span class="emoji"><i class="fa-solid fa-person-praying" style="color: #e91e63;"></i></span><span class="label">Zero</span>
-          </button>
-          <button class="emoji-btn" data-val="2" onclick="selectEmoji('stress',2,this)">
-            <span class="emoji"><i class="fa-solid fa-face-smile" style="color: #4caf50;"></i></span><span class="label">Basso</span>
-          </button>
-          <button class="emoji-btn" data-val="3" onclick="selectEmoji('stress',3,this)">
-            <span class="emoji"><i class="fa-solid fa-face-meh" style="color: #ffeb3b;"></i></span><span class="label">Medio</span>
-          </button>
-          <button class="emoji-btn" data-val="4" onclick="selectEmoji('stress',4,this)">
-            <span class="emoji"><i class="fa-solid fa-face-angry" style="color: #f44336;"></i></span><span class="label">Alto</span>
-          </button>
-          <button class="emoji-btn" data-val="5" onclick="selectEmoji('stress',5,this)">
-            <span class="emoji"><i class="fa-solid fa-head-side-virus" style="color: #ff5722;"></i></span><span class="label">Massimo</span>
-          </button>
-        </div>
-      </div>
-      <div class="step-nav">
-        <button class="btn-prev" onclick="goBack(3)">← Indietro</button>
-        <button class="btn-next" id="next4" onclick="goNext(5)" disabled>Avanti →</button>
-      </div>
-    </div>
-
-    <!-- STEP 5: ULTIMO ALLENAMENTO -->
-    <div class="step" id="step5">
-      <div class="q-card">
-        <div class="q-icon"><i class="fa-regular fa-calendar" style="color: #03a9f4;"></i></div>
-        <div class="q-label">Ultimo Allenamento Intenso</div>
-        <div class="q-hint">Il recupero muscolare completo richiede 24–72 ore a seconda dell'intensità.</div>
-        <div class="option-list">
-          <div class="option-card" onclick="selectOption('lastwork','today',this)">
-            <span class="opt-icon"><i class="fa-solid fa-circle" style="color: #f44336;"></i></span>
-            <div class="opt-text">
-              <div class="opt-name">Oggi / Stamattina</div>
-              <div class="opt-desc">Recupero ancora in corso</div>
-            </div>
-            <div class="opt-check"></div>
+      <!-- STEP 2: SONNO -->
+      <div class="step" id="step2">
+        <div class="q-card">
+          <div class="q-icon"><i class="fa-solid fa-moon" style="color: #3f51b5;"></i></div>
+          <div class="q-label">Sonno della Notte Scorsa</div>
+          <div class="q-hint">Il recupero muscolare avviene principalmente durante il sonno. Questo dato è cruciale.
           </div>
-          <div class="option-card" onclick="selectOption('lastwork','yesterday',this)">
-            <span class="opt-icon">🟠</span>
-            <div class="opt-text">
-              <div class="opt-name">Ieri</div>
-              <div class="opt-desc">Recupero parziale (~24h)</div>
+          <div class="option-list">
+            <div class="option-card" onclick="selectOption('sleep','less5',this)">
+              <span class="opt-icon"><i class="fa-solid fa-face-dizzy" style="color: #f44336;"></i></span>
+              <div class="opt-text">
+                <div class="opt-name">Meno di 5 ore</div>
+                <div class="opt-desc">Recupero gravemente compromesso</div>
+              </div>
+              <div class="opt-check"></div>
             </div>
-            <div class="opt-check"></div>
-          </div>
-          <div class="option-card" onclick="selectOption('lastwork','2days',this)">
-            <span class="opt-icon">🟡</span>
-            <div class="opt-text">
-              <div class="opt-name">2 giorni fa</div>
-              <div class="opt-desc">Recupero quasi completo</div>
+            <div class="option-card" onclick="selectOption('sleep','5to6',this)">
+              <span class="opt-icon"><i class="fa-solid fa-bed" style="color: #3f51b5;"></i></span>
+              <div class="opt-text">
+                <div class="opt-name">5–6 ore</div>
+                <div class="opt-desc">Recupero parziale</div>
+              </div>
+              <div class="opt-check"></div>
             </div>
-            <div class="opt-check"></div>
-          </div>
-          <div class="option-card" onclick="selectOption('lastwork','3plus',this)">
-            <span class="opt-icon">🟢</span>
-            <div class="opt-text">
-              <div class="opt-name">3+ giorni fa o mai</div>
-              <div class="opt-desc">Muscoli completamente riposati</div>
+            <div class="option-card" onclick="selectOption('sleep','7to8',this)">
+              <span class="opt-icon"><i class="fa-solid fa-face-smile" style="color: #4caf50;"></i></span>
+              <div class="opt-text">
+                <div class="opt-name">7–8 ore</div>
+                <div class="opt-desc">Recupero ottimale</div>
+              </div>
+              <div class="opt-check"></div>
             </div>
-            <div class="opt-check"></div>
+            <div class="option-card" onclick="selectOption('sleep','9plus',this)">
+              <span class="opt-icon"><i class="fa-solid fa-wand-magic-sparkles" style="color: #ffeb3b;"></i></span>
+              <div class="opt-text">
+                <div class="opt-name">9+ ore</div>
+                <div class="opt-desc">Riposo abbondante</div>
+              </div>
+              <div class="opt-check"></div>
+            </div>
           </div>
         </div>
+        <div class="step-nav">
+          <button class="btn-prev" onclick="goBack(1)">← Indietro</button>
+          <button class="btn-next" id="next2" onclick="goNext(3)" disabled>Avanti →</button>
+        </div>
       </div>
-      <div class="step-nav">
-        <button class="btn-prev" onclick="goBack(4)">← Indietro</button>
-        <button class="btn-next" id="next5" onclick="calcResult()" disabled>Analizza →</button>
+
+      <!-- STEP 3: DOLORI MUSCOLARI -->
+      <div class="step" id="step3">
+        <div class="q-card">
+          <div class="q-icon"><i class="fa-solid fa-dumbbell" style="color: #9c27b0;"></i></div>
+          <div class="q-label">Dolori Muscolari o Articolari</div>
+          <div class="q-hint">Seleziona tutto ciò che senti. L'app eviterà di sovraccaricare le zone già affaticate.
+          </div>
+          <div class="checkbox-grid" id="pain-grid">
+            <div class="check-card" onclick="toggleCheck('pain','none',this)" id="pain-none">
+              <div class="cc-box"></div><span class="cc-text"><i class="fa-solid fa-shield-heart" style="color: #4caf50;"></i>
+                Nessun dolore</span>
+            </div>
+            <div class="check-card" onclick="toggleCheck('pain','legs',this)">
+              <div class="cc-box"></div><span class="cc-text"><i class="fa-solid fa-person-walking" style="color: #ffeb3b;"></i>
+                Gambe / Cosce</span>
+            </div>
+            <div class="check-card" onclick="toggleCheck('pain','back',this)">
+              <div class="cc-box"></div><span class="cc-text"><i class="fa-solid fa-child-reaching"
+                  style="color: #ffffff;"></i> Schiena</span>
+            </div>
+            <div class="check-card" onclick="toggleCheck('pain','shoulders',this)">
+              <div class="cc-box"></div><span class="cc-text"><i class="fa-solid fa-user-injured"
+                  style="color: #9e9e9e;"></i> Spalle / Collo</span>
+            </div>
+            <div class="check-card" onclick="toggleCheck('pain','arms',this)">
+              <div class="cc-box"></div><span class="cc-text"><i class="fa-solid fa-hand-fist"
+                  style="color: #9c27b0;"></i> Braccia / Polsi</span>
+            </div>
+            <div class="check-card" onclick="toggleCheck('pain','knees',this)">
+              <div class="cc-box"></div><span class="cc-text"><i class="fa-solid fa-shoe-prints" style="color: #ffeb3b;"></i>
+                Ginocchia / Caviglie</span>
+            </div>
+          </div>
+        </div>
+        <div class="step-nav">
+          <button class="btn-prev" onclick="goBack(2)">← Indietro</button>
+          <button class="btn-next" id="next3" onclick="goNext(4)">Avanti →</button>
+        </div>
       </div>
+
+      <!-- STEP 4: STRESS -->
+      <div class="step" id="step4">
+        <div class="q-card">
+          <div class="q-icon"><i class="fa-solid fa-brain" style="color: #e91e63;"></i></div>
+          <div class="q-label">Livello di Stress Mentale</div>
+          <div class="q-hint">Lo stress cronico alza il cortisolo, rallenta il recupero e aumenta il rischio di
+            infortuni.</div>
+          <div class="emoji-scale" id="stress-scale">
+            <button class="emoji-btn" data-val="1" onclick="selectEmoji('stress',1,this)">
+              <span class="emoji"><i class="fa-solid fa-person-praying" style="color: #e91e63;"></i></span><span
+                class="label">Zero</span>
+            </button>
+            <button class="emoji-btn" data-val="2" onclick="selectEmoji('stress',2,this)">
+              <span class="emoji"><i class="fa-solid fa-face-smile" style="color: #4caf50;"></i></span><span
+                class="label">Basso</span>
+            </button>
+            <button class="emoji-btn" data-val="3" onclick="selectEmoji('stress',3,this)">
+              <span class="emoji"><i class="fa-solid fa-face-meh" style="color: #ffeb3b;"></i></span><span
+                class="label">Medio</span>
+            </button>
+            <button class="emoji-btn" data-val="4" onclick="selectEmoji('stress',4,this)">
+              <span class="emoji"><i class="fa-solid fa-face-angry" style="color: #f44336;"></i></span><span
+                class="label">Alto</span>
+            </button>
+            <button class="emoji-btn" data-val="5" onclick="selectEmoji('stress',5,this)">
+              <span class="emoji"><i class="fa-solid fa-head-side-virus" style="color: #ff5722;"></i></span><span
+                class="label">Massimo</span>
+            </button>
+          </div>
+        </div>
+        <div class="step-nav">
+          <button class="btn-prev" onclick="goBack(3)">← Indietro</button>
+          <button class="btn-next" id="next4" onclick="goNext(5)" disabled>Avanti →</button>
+        </div>
+      </div>
+
+      <!-- STEP 5: ULTIMO ALLENAMENTO -->
+      <div class="step" id="step5">
+        <div class="q-card">
+          <div class="q-icon"><i class="fa-regular fa-calendar" style="color: #03a9f4;"></i></div>
+          <div class="q-label">Ultimo Allenamento Intenso</div>
+          <div class="q-hint">Il recupero muscolare completo richiede 24–72 ore a seconda dell'intensità.</div>
+          <div class="option-list">
+            <div class="option-card" onclick="selectOption('lastwork','today',this)">
+              <span class="opt-icon"><i class="fa-solid fa-circle" style="color: #f44336;"></i></span>
+              <div class="opt-text">
+                <div class="opt-name">Oggi / Stamattina</div>
+                <div class="opt-desc">Recupero ancora in corso</div>
+              </div>
+              <div class="opt-check"></div>
+            </div>
+            <div class="option-card" onclick="selectOption('lastwork','yesterday',this)">
+              <span class="opt-icon"><i class="fa-solid fa-circle" style="color: #ff9800;"></i></span>
+              <div class="opt-text">
+                <div class="opt-name">Ieri</div>
+                <div class="opt-desc">Recupero parziale (~24h)</div>
+              </div>
+              <div class="opt-check"></div>
+            </div>
+            <div class="option-card" onclick="selectOption('lastwork','2days',this)">
+              <span class="opt-icon"><i class="fa-solid fa-circle" style="color: #ffeb3b;"></i></span>
+              <div class="opt-text">
+                <div class="opt-name">2 giorni fa</div>
+                <div class="opt-desc">Recupero quasi completo</div>
+              </div>
+              <div class="opt-check"></div>
+            </div>
+            <div class="option-card" onclick="selectOption('lastwork','3plus',this)">
+              <span class="opt-icon"><i class="fa-solid fa-circle" style="color: #4caf50;"></i></span>
+              <div class="opt-text">
+                <div class="opt-name">3+ giorni fa o mai</div>
+                <div class="opt-desc">Muscoli completamente riposati</div>
+              </div>
+              <div class="opt-check"></div>
+            </div>
+          </div>
+        </div>
+        <div class="step-nav">
+          <button class="btn-prev" onclick="goBack(4)">← Indietro</button>
+          <button class="btn-next" id="next5" onclick="calcResult()" disabled>Analizza →</button>
+        </div>
+      </div>
+
+    </div><!-- /steps -->
+
+    <!-- RESULT SCREEN -->
+    <div class="result-screen" id="resultScreen">
+
+      <div class="result-badge">
+        <div class="result-icon-ring" id="resultRing"></div>
+        <div class="result-level" id="resultLevel"></div>
+        <div class="result-intensity-bar">
+          <div class="intensity-fill" id="intensityFill"></div>
+        </div>
+        <p class="result-desc" id="resultDesc"></p>
+      </div>
+
+      <div class="result-metrics" id="resultMetrics"></div>
+
+      <div class="result-tips">
+        <div class="tips-title">// Raccomandazioni per oggi</div>
+        <ul class="tips-list" id="tipsList"></ul>
+      </div>
+
+      <a href="dashboard.html" class="btn-go" id="goBtn"><i class="fa-solid fa-bolt" style="color: #facc15;"></i> Inizia
+        l'Allenamento</a>
+
     </div>
 
-  </div><!-- /steps -->
+    <div class="skip-link" onclick="skipToResult()" id="skipLink">Salta il check-in →</div>
 
-  <!-- RESULT SCREEN -->
-  <div class="result-screen" id="resultScreen">
+  </div><!-- /wrapper -->
 
-    <div class="result-badge">
-      <div class="result-icon-ring" id="resultRing"></div>
-      <div class="result-level" id="resultLevel"></div>
-      <div class="result-intensity-bar">
-        <div class="intensity-fill" id="intensityFill"></div>
-      </div>
-      <p class="result-desc" id="resultDesc"></p>
-    </div>
+  <script>
+    /* ══ STATE ══ */
+    const answers = {
+      energy: null,
+      sleep: null,
+      pain: [],
+      stress: null,
+      lastwork: null
+    };
 
-    <div class="result-metrics" id="resultMetrics"></div>
+    let currentStep = 1;
+    const TOTAL_STEPS = 5;
 
-    <div class="result-tips">
-      <div class="tips-title">// Raccomandazioni per oggi</div>
-      <ul class="tips-list" id="tipsList"></ul>
-    </div>
+    /* ══ NAV DATE ══ */
+    const d = new Date();
+    document.getElementById('navDate').textContent =
+      d.toLocaleDateString('it-IT', { weekday: 'short', day: 'numeric', month: 'short' }).toUpperCase();
 
-    <a href="dashboard.html" class="btn-go" id="goBtn"><i class="fa-solid fa-bolt" style="color: #facc15;"></i> Inizia l'Allenamento</a>
-
-  </div>
-
-  <div class="skip-link" onclick="skipToResult()" id="skipLink">Salta il check-in →</div>
-
-</div><!-- /wrapper -->
-
-<script>
-/* ══ STATE ══ */
-const answers = {
-  energy: null,
-  sleep: null,
-  pain: [],
-  stress: null,
-  lastwork: null
-};
-
-let currentStep = 1;
-const TOTAL_STEPS = 5;
-
-/* ══ NAV DATE ══ */
-const d = new Date();
-document.getElementById('navDate').textContent =
-  d.toLocaleDateString('it-IT', {weekday:'short', day:'numeric', month:'short'}).toUpperCase();
-
-/* ══ PROGRESS ══ */
-function updateProgress(step) {
-  const pct = Math.round((step - 1) / TOTAL_STEPS * 100);
-  document.getElementById('progressFill').style.width = pct + '%';
-  document.getElementById('progressLabel').textContent = (step - 1) + ' / ' + TOTAL_STEPS;
-}
-
-/* ══ NAVIGATION ══ */
-function goNext(step) {
-  document.getElementById('step' + currentStep).classList.remove('active');
-  currentStep = step;
-  document.getElementById('step' + currentStep).classList.add('active');
-  updateProgress(currentStep);
-  window.scrollTo({ top: 0, behavior: 'smooth' });
-}
-
-function goBack(step) {
-  document.getElementById('step' + currentStep).classList.remove('active');
-  currentStep = step;
-  document.getElementById('step' + currentStep).classList.add('active');
-  updateProgress(currentStep);
-  window.scrollTo({ top: 0, behavior: 'smooth' });
-}
-
-/* ══ INPUT HANDLERS ══ */
-function selectEmoji(key, val, el) {
-  answers[key] = val;
-  el.closest('.emoji-scale').querySelectorAll('.emoji-btn').forEach(b => b.classList.remove('selected'));
-  el.classList.add('selected');
-
-  if (key === 'energy') document.getElementById('next1').disabled = false;
-  if (key === 'stress') document.getElementById('next4').disabled = false;
-}
-
-function selectOption(key, val, el) {
-  answers[key] = val;
-  el.closest('.option-list').querySelectorAll('.option-card').forEach(c => c.classList.remove('selected'));
-  el.classList.add('selected');
-
-  if (key === 'sleep') document.getElementById('next2').disabled = false;
-  if (key === 'lastwork') document.getElementById('next5').disabled = false;
-}
-
-function toggleCheck(key, val, el) {
-  if (val === 'none') {
-    // Exclusive: deselect all others
-    document.querySelectorAll('#pain-grid .check-card').forEach(c => c.classList.remove('selected'));
-    answers.pain = [];
-    el.classList.add('selected');
-    answers.pain = ['none'];
-  } else {
-    document.getElementById('pain-none').classList.remove('selected');
-    answers.pain = answers.pain.filter(v => v !== 'none');
-    el.classList.toggle('selected');
-    if (el.classList.contains('selected')) {
-      answers.pain.push(val);
-    } else {
-      answers.pain = answers.pain.filter(v => v !== val);
+    /* ══ PROGRESS ══ */
+    function updateProgress(step) {
+      const pct = Math.round((step - 1) / TOTAL_STEPS * 100);
+      document.getElementById('progressFill').style.width = pct + '%';
+      document.getElementById('progressLabel').textContent = (step - 1) + ' / ' + TOTAL_STEPS;
     }
-  }
-}
 
-/* ══ ALGORITHM ══ */
-function calcResult() {
-  // Score: 0 = terrible, 100 = perfect
-  let score = 0;
+    /* ══ NAVIGATION ══ */
+    function goNext(step) {
+      document.getElementById('step' + currentStep).classList.remove('active');
+      currentStep = step;
+      document.getElementById('step' + currentStep).classList.add('active');
+      updateProgress(currentStep);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
 
-  // Energy (0-30)
-  const energyScore = { 1: 0, 2: 7, 3: 15, 4: 23, 5: 30 };
-  score += energyScore[answers.energy] || 15;
+    function goBack(step) {
+      document.getElementById('step' + currentStep).classList.remove('active');
+      currentStep = step;
+      document.getElementById('step' + currentStep).classList.add('active');
+      updateProgress(currentStep);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
 
-  // Sleep (0-25)
-  const sleepScore = { less5: 0, '5to6': 8, '7to8': 25, '9plus': 20 };
-  score += sleepScore[answers.sleep] || 12;
+    /* ══ INPUT HANDLERS ══ */
+    function selectEmoji(key, val, el) {
+      answers[key] = val;
+      el.closest('.emoji-scale').querySelectorAll('.emoji-btn').forEach(b => b.classList.remove('selected'));
+      el.classList.add('selected');
 
-  // Pain (0 or penalty)
-  const painCount = answers.pain.filter(p => p !== 'none').length;
-  score -= painCount * 8;
+      if (key === 'energy') document.getElementById('next1').disabled = false;
+      if (key === 'stress') document.getElementById('next4').disabled = false;
+    }
 
-  // Stress (0-20, inverted — high stress = low score)
-  const stressScore = { 1: 20, 2: 16, 3: 10, 4: 4, 5: 0 };
-  score += stressScore[answers.stress] || 10;
+    function selectOption(key, val, el) {
+      answers[key] = val;
+      el.closest('.option-list').querySelectorAll('.option-card').forEach(c => c.classList.remove('selected'));
+      el.classList.add('selected');
 
-  // Last workout (0-25)
-  const workScore = { today: 0, yesterday: 8, '2days': 18, '3plus': 25 };
-  score += workScore[answers.lastwork] || 12;
+      if (key === 'sleep') document.getElementById('next2').disabled = false;
+      if (key === 'lastwork') document.getElementById('next5').disabled = false;
+    }
 
-  score = Math.max(0, Math.min(100, score));
+    function toggleCheck(key, val, el) {
+      if (val === 'none') {
+        // Exclusive: deselect all others
+        document.querySelectorAll('#pain-grid .check-card').forEach(c => c.classList.remove('selected'));
+        answers.pain = [];
+        el.classList.add('selected');
+        answers.pain = ['none'];
+      } else {
+        document.getElementById('pain-none').classList.remove('selected');
+        answers.pain = answers.pain.filter(v => v !== 'none');
+        el.classList.toggle('selected');
+        if (el.classList.contains('selected')) {
+          answers.pain.push(val);
+        } else {
+          answers.pain = answers.pain.filter(v => v !== val);
+        }
+      }
+    }
 
-  showResult(score);
-}
+    /* ══ ALGORITHM ══ */
+    function calcResult() {
+      // Score: 0 = terrible, 100 = perfect
+      let score = 0;
 
-function showResult(score) {
-  // Hide steps, show result
-  document.getElementById('stepsContainer').style.display = 'none';
-  document.getElementById('progressWrap').style.display = 'none';
-  document.getElementById('checkinHeader').style.display = 'none';
-  document.getElementById('skipLink').style.display = 'none';
+      // Energy (0-30)
+      const energyScore = { 1: 0, 2: 7, 3: 15, 4: 23, 5: 30 };
+      score += energyScore[answers.energy] || 15;
 
-  const rs = document.getElementById('resultScreen');
-  rs.classList.add('show');
+      // Sleep (0-25)
+      const sleepScore = { less5: 0, '5to6': 8, '7to8': 25, '9plus': 20 };
+      score += sleepScore[answers.sleep] || 12;
 
-  // Determine level
-  let level, icon, desc, color, tips, goLabel;
+      // Pain (0 or penalty)
+      const painCount = answers.pain.filter(p => p !== 'none').length;
+      score -= painCount * 8;
 
-  if (score >= 80) {
-    level = 'Giornata Ideale';
-    icon = '<i class="fa-solid fa-fire" style="color: #ff5722;"></i>';
-    desc = 'Sei al massimo della forma. Il tuo corpo è pronto per un allenamento intenso. Spingi forte, batti i tuoi record.';
-    color = 'var(--green)';
-    tips = [
-      'Aumenta i pesi o l\'intensità rispetto all\'ultima sessione',
-      'Lavora sui gruppi muscolari che richiedono più energia',
-      'Ottimo momento per provare nuovi esercizi o aumentare il volume',
-      'Idratati bene — oggi brucerai di più',
-    ];
-    goLabel = '<i class="fa-solid fa-fire" style="color: #ff5722;"></i> Inizia al Massimo';
-  } else if (score >= 60) {
-    level = 'Buona Giornata';
-    icon = '<i class="fa-solid fa-bolt" style="color: #facc15;"></i>';
-    desc = 'Sei in buone condizioni. Allenamento completo consigliato con qualche attenzione ai segnali del corpo.';
-    color = 'var(--cyan)';
-    tips = [
-      'Allenati normalmente, rispetta il piano stabilito',
-      'Se senti affaticamento a metà sessione, riduci l\'intensità del 15%',
-      'Dedica 10 minuti extra al riscaldamento',
-      'Ascolta il corpo — se un esercizio fa male, sostituiscilo',
-    ];
-    goLabel = '<i class="fa-solid fa-bolt" style="color: #facc15;"></i> Inizia l\'Allenamento';
-  } else if (score >= 40) {
-    level = 'Allenamento Moderato';
-    icon = '<i class="fa-solid fa-triangle-exclamation" style="color: #ff9800;"></i>';
-    desc = 'Il tuo corpo ha bisogno di attenzione. Allenati, ma riduci l\'intensità e ascolta i segnali di recupero.';
-    color = 'var(--yellow)';
-    tips = [
-      'Riduci i pesi del 20-30% rispetto al solito',
-      'Evita esercizi ad alto impatto (salti, sprint, carichi massimali)',
-      'Allunga la fase di riscaldamento a 15 minuti',
-      'Inserisci pause più lunghe tra le serie',
-      'Idratazione e alimentazione sono priorità oggi',
-    ];
-    goLabel = '<i class="fa-solid fa-triangle-exclamation" style="color: #ff9800;"></i> Allenamento Moderato';
-  } else {
-    level = 'Giorno di Recupero';
-    icon = '<i class="fa-solid fa-shield" style="color: #03a9f4;"></i>';
-    desc = 'Il tuo corpo sta chiedendo riposo. Forza eccessiva oggi aumenta il rischio di infortuni. Recupera attivamente.';
-    color = 'var(--orange)';
-    tips = [
-      'Evita allenamenti ad alta intensità — rischio infortuni elevato',
-      'Cammina 20-30 minuti a passo moderato per attivare la circolazione',
-      'Stretching e mobilità: 20-30 minuti di lavoro articolare',
-      'Idratati abbondantemente e punta su una notte di sonno di qualità',
-      'Considera un massaggio o una sessione di foam rolling',
-    ];
-    goLabel = '<i class="fa-solid fa-shield" style="color: #03a9f4;"></i> Vai al Recupero Attivo';
-  }
+      // Stress (0-20, inverted - high stress = low score)
+      const stressScore = { 1: 20, 2: 16, 3: 10, 4: 4, 5: 0 };
+      score += stressScore[answers.stress] || 10;
 
-  // Render
-  document.getElementById('resultRing').textContent = icon;
-  document.getElementById('resultRing').style.background = `radial-gradient(circle, rgba(0,0,0,0.4), transparent)`;
-  document.getElementById('resultRing').style.border = `2px solid ${color}`;
+      // Last workout (0-25)
+      const workScore = { today: 0, yesterday: 8, '2days': 18, '3plus': 25 };
+      score += workScore[answers.lastwork] || 12;
 
-  const levelEl = document.getElementById('resultLevel');
-  levelEl.textContent = level;
-  levelEl.style.background = color.startsWith('var') ? 'var(--grad-text)' : color;
-  levelEl.style.webkitBackgroundClip = 'text';
-  levelEl.style.webkitTextFillColor = 'transparent';
-  levelEl.style.backgroundClip = 'text';
+      score = Math.max(0, Math.min(100, score));
 
-  document.getElementById('resultDesc').textContent = desc;
-  document.getElementById('intensityFill').style.width = score + '%';
-  document.getElementById('intensityFill').style.background =
-    score >= 80 ? 'var(--grad)' :
-    score >= 60 ? 'linear-gradient(90deg,#00d4d4,#7fff00)' :
-    score >= 40 ? 'linear-gradient(90deg,#d4ff00,#ff8c00)' :
-    'linear-gradient(90deg,#ff8c00,#ff4545)';
+      showResult(score);
+    }
 
-  // Metrics
-  const sleepLabel = { less5:'< 5h', '5to6':'5–6h', '7to8':'7–8h', '9plus':'9+ h' };
-  const workLabel  = { today:'Oggi', yesterday:'Ieri', '2days':'2gg fa', '3plus':'3+ gg fa' };
-  document.getElementById('resultMetrics').innerHTML = `
+    function showResult(score) {
+      // Hide steps, show result
+      document.getElementById('stepsContainer').style.display = 'none';
+      document.getElementById('progressWrap').style.display = 'none';
+      document.getElementById('checkinHeader').style.display = 'none';
+      document.getElementById('skipLink').style.display = 'none';
+
+      const rs = document.getElementById('resultScreen');
+      rs.classList.add('show');
+
+      // Determine level
+      let level, icon, desc, color, tips, goLabel;
+
+      if (score >= 80) {
+        level = 'Giornata Ideale';
+        icon = '<i class="fa-solid fa-fire" style="color: #ff5722;"></i>';
+        desc = 'Sei al massimo della forma. Il tuo corpo è pronto per un allenamento intenso. Spingi forte, batti i tuoi record.';
+        color = 'var(--green)';
+        tips = [
+          'Aumenta i pesi o l\'intensità rispetto all\'ultima sessione',
+          'Lavora sui gruppi muscolari che richiedono più energia',
+          'Ottimo momento per provare nuovi esercizi o aumentare il volume',
+          'Idratati bene - oggi brucerai di più',
+        ];
+        goLabel = '<i class="fa-solid fa-fire" style="color: #ff5722;"></i> Inizia al Massimo';
+      } else if (score >= 60) {
+        level = 'Buona Giornata';
+        icon = '<i class="fa-solid fa-bolt" style="color: #facc15;"></i>';
+        desc = 'Sei in buone condizioni. Allenamento completo consigliato con qualche attenzione ai segnali del corpo.';
+        color = 'var(--cyan)';
+        tips = [
+          'Allenati normalmente, rispetta il piano stabilito',
+          'Se senti affaticamento a metà sessione, riduci l\'intensità del 15%',
+          'Dedica 10 minuti extra al riscaldamento',
+          'Ascolta il corpo - se un esercizio fa male, sostituiscilo',
+        ];
+        goLabel = '<i class="fa-solid fa-bolt" style="color: #facc15;"></i> Inizia l\'Allenamento';
+      } else if (score >= 40) {
+        level = 'Allenamento Moderato';
+        icon = '<i class="fa-solid fa-triangle-exclamation" style="color: #ff9800;"></i>';
+        desc = 'Il tuo corpo ha bisogno di attenzione. Allenati, ma riduci l\'intensità e ascolta i segnali di recupero.';
+        color = 'var(--yellow)';
+        tips = [
+          'Riduci i pesi del 20-30% rispetto al solito',
+          'Evita esercizi ad alto impatto (salti, sprint, carichi massimali)',
+          'Allunga la fase di riscaldamento a 15 minuti',
+          'Inserisci pause più lunghe tra le serie',
+          'Idratazione e alimentazione sono priorità oggi',
+        ];
+        goLabel = '<i class="fa-solid fa-triangle-exclamation" style="color: #ff9800;"></i> Allenamento Moderato';
+      } else {
+        level = 'Giorno di Recupero';
+        icon = '<i class="fa-solid fa-shield" style="color: #03a9f4;"></i>';
+        desc = 'Il tuo corpo sta chiedendo riposo. Forza eccessiva oggi aumenta il rischio di infortuni. Recupera attivamente.';
+        color = 'var(--orange)';
+        tips = [
+          'Evita allenamenti ad alta intensità - rischio infortuni elevato',
+          'Cammina 20-30 minuti a passo moderato per attivare la circolazione',
+          'Stretching e mobilità: 20-30 minuti di lavoro articolare',
+          'Idratati abbondantemente e punta su una notte di sonno di qualità',
+          'Considera un massaggio o una sessione di foam rolling',
+        ];
+        goLabel = '<i class="fa-solid fa-shield" style="color: #03a9f4;"></i> Vai al Recupero Attivo';
+      }
+
+      // Render
+      document.getElementById('resultRing').innerHTML = icon;
+      document.getElementById('resultRing').style.background = `radial-gradient(circle, rgba(0,0,0,0.4), transparent)`;
+      document.getElementById('resultRing').style.border = `2px solid ${color}`;
+
+      const levelEl = document.getElementById('resultLevel');
+      levelEl.textContent = level;
+      levelEl.style.background = color.startsWith('var') ? 'var(--grad-text)' : color;
+      levelEl.style.webkitBackgroundClip = 'text';
+      levelEl.style.webkitTextFillColor = 'transparent';
+      levelEl.style.backgroundClip = 'text';
+
+      document.getElementById('resultDesc').textContent = desc;
+      document.getElementById('intensityFill').style.width = score + '%';
+      document.getElementById('intensityFill').style.background =
+        score >= 80 ? 'var(--grad)' :
+          score >= 60 ? 'linear-gradient(90deg,#00d4d4,#7fff00)' :
+            score >= 40 ? 'linear-gradient(90deg,#d4ff00,#ff8c00)' :
+              'linear-gradient(90deg,#ff8c00,#ff4545)';
+
+      // Metrics
+      const sleepLabel = { less5: '< 5h', '5to6': '5–6h', '7to8': '7–8h', '9plus': '9+ h' };
+      const workLabel = { today: 'Oggi', yesterday: 'Ieri', '2days': '2gg fa', '3plus': '3+ gg fa' };
+      document.getElementById('resultMetrics').innerHTML = `
     <div class="rm-cell">
       <div class="rm-val" style="color:${color}">${score}</div>
       <div class="rm-label">Score / 100</div>
     </div>
     <div class="rm-cell">
-      <div class="rm-val" style="color:var(--cyan)">${sleepLabel[answers.sleep] || '—'}</div>
+      <div class="rm-val" style="color:var(--cyan)">${sleepLabel[answers.sleep] || '-'}</div>
       <div class="rm-label">Sonno</div>
     </div>
     <div class="rm-cell">
-      <div class="rm-val" style="color:var(--yellow)">${workLabel[answers.lastwork] || '—'}</div>
+      <div class="rm-val" style="color:var(--yellow)">${workLabel[answers.lastwork] || '-'}</div>
       <div class="rm-label">Ult. Training</div>
     </div>
   `;
 
-  // Tips
-  document.getElementById('tipsList').innerHTML =
-    tips.map(t => `<li>${t}</li>`).join('');
+      // Tips
+      document.getElementById('tipsList').innerHTML =
+        tips.map(t => `<li>${t}</li>`).join('');
 
-  document.getElementById('goBtn').textContent = goLabel;
+      document.getElementById('goBtn').innerHTML = goLabel;
 
-  // Save to sessionStorage for dashboard
-  sessionStorage.setItem('fitora_checkin', JSON.stringify({ score, level, energy: answers.energy }));
+      // Save to sessionStorage for dashboard
+      sessionStorage.setItem('fitora_checkin', JSON.stringify({ score, level, energy: answers.energy }));
 
-  window.scrollTo({ top: 0, behavior: 'smooth' });
-}
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
 
-function skipToResult() {
-  // Use neutral defaults
-  answers.energy   = answers.energy   || 3;
-  answers.sleep    = answers.sleep    || '7to8';
-  answers.stress   = answers.stress   || 3;
-  answers.lastwork = answers.lastwork || '2days';
-  if (!answers.pain.length) answers.pain = ['none'];
-  calcResult();
-}
-</script>
+    function skipToResult() {
+      // Use neutral defaults
+      answers.energy = answers.energy || 3;
+      answers.sleep = answers.sleep || '7to8';
+      answers.stress = answers.stress || 3;
+      answers.lastwork = answers.lastwork || '2days';
+      if (!answers.pain.length) answers.pain = ['none'];
+      calcResult();
+    }
+  </script>
 </body>
+
 </html>

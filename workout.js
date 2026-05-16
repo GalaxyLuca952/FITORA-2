@@ -179,7 +179,7 @@ const DB = {
         ],
         main: {
             beginner: [
-                { n: 'Endurance continua', d: 'Zona 2 — puoi parlare senza fatica', spec: '20–25 min' },
+                { n: 'Endurance continua', d: 'Zona 2 - puoi parlare senza fatica', spec: '20–25 min' },
                 { n: 'Accelerazioni brevi', d: '15 sec a ritmo elevato, recupero 45 sec', spec: '5 serie' },
             ],
             mid: [
@@ -375,7 +375,7 @@ function generate() {
     let intensityLabel, intensityClass, alertHtml = '';
     if (score < 40) {
         intensityLabel = 'RECUPERO ATTIVO'; intensityClass = 'pill-orange';
-        alertHtml = `<div class="recovery-alert"><div class="ra-icon"><i class="fa-solid fa-triangle-exclamation" style="color: #ff9800;"></i></div><div class="ra-text"><strong>Score basso (${score}/100)</strong> — Il tuo corpo è affaticato. L'allenamento è adattato a un'intensità ridotta. Ascolta i segnali del corpo e non forzare. Recupero completo domani.</div></div>`;
+        alertHtml = `<div class="recovery-alert"><div class="ra-icon"><i class="fa-solid fa-triangle-exclamation" style="color: #ff9800;"></i></div><div class="ra-text"><strong>Score basso (${score}/100)</strong> - Il tuo corpo è affaticato. L'allenamento è adattato a un'intensità ridotta. Ascolta i segnali del corpo e non forzare. Recupero completo domani.</div></div>`;
     } else if (score < 60) {
         intensityLabel = 'MODERATA'; intensityClass = 'pill-yellow';
     } else if (score < 80) {
@@ -506,7 +506,7 @@ function generate() {
         const plan = JSON.parse(localStorage.getItem('fitora_monthly_plan') || '[]');
         if (plan.length >= 3) {
             const btn = document.getElementById('savePlanBtn');
-            btn.textContent = '<i class="fa-solid fa-triangle-exclamation" style="color: #ff9800;"></i> Piano pieno (max 3) — Vai nel Diario e cancella un piano';
+            btn.innerHTML = '<i class="fa-solid fa-triangle-exclamation" style="color: #ff9800;"></i> Piano pieno (max 3) - Vai nel Diario e cancella un piano';
             btn.style.color = 'var(--orange)'; btn.style.borderColor = 'var(--orange)';
             btn.disabled = true; btn.style.opacity = '.75';
         }
@@ -519,14 +519,14 @@ function saveWorkoutToPlan() {
         const plan = JSON.parse(localStorage.getItem('fitora_monthly_plan') || '[]');
         const btn = document.getElementById('savePlanBtn');
         if (plan.length >= 3) {
-            btn.textContent = '<i class="fa-solid fa-triangle-exclamation" style="color: #ff9800;"></i> Piano pieno (max 3) — Vai nel Diario e cancella un piano';
+            btn.innerHTML = '<i class="fa-solid fa-triangle-exclamation" style="color: #ff9800;"></i> Piano pieno (max 3) - Vai nel Diario e cancella un piano';
             btn.style.color = 'var(--orange)'; btn.style.borderColor = 'var(--orange)';
             btn.disabled = true; btn.style.opacity = '.75';
             return;
         }
         plan.unshift(lastWorkoutData);
         localStorage.setItem('fitora_monthly_plan', JSON.stringify(plan));
-        btn.textContent = '<i class="fa-solid fa-check" style="color: #4caf50;"></i> Salvato nel Piano!';
+        btn.innerHTML = '<i class="fa-solid fa-check" style="color: #4caf50;"></i> Salvato nel Piano!';
         btn.disabled = true; btn.style.color = 'var(--green)';
         btn.style.borderColor = 'var(--green)'; btn.style.opacity = '.7';
     } catch (e) { alert('Errore: ' + e.message); }

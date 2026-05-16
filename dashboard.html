@@ -1,693 +1,779 @@
 <!DOCTYPE html>
 <html lang="it">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="theme-color" content="#080808">
-<title>FITORA – Dashboard</title>
-<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;700;900&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="dashboard.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="theme-color" content="#080808">
+  <title>FITORA – Dashboard</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;700;900&family=Barlow:wght@400;500;600&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link rel="stylesheet" href="dashboard.css">
 </head>
+
 <body>
 
-<!-- TOAST -->
-<div class="toast" id="toast"></div>
+  <!-- TOAST -->
+  <div class="toast" id="toast"></div>
 
-<!-- TOP NAV -->
-<header class="top-nav">
-  <a href="index.html" style="font-size:.62rem;font-weight:700;letter-spacing:2px;color:var(--muted);border:1px solid var(--border);padding:5px 10px;transition:color .2s" onmouseover="this.style.color='var(--cyan)'" onmouseout="this.style.color='var(--muted)'">← HOME</a>
-  <div class="nav-logo gt">FITORA</div>
-  <div style="display:flex;align-items:center;gap:14px">
-    <div class="nav-date" id="navDate"></div>
-  </div>
-</header>
+  <!-- TOP NAV -->
+  <header class="top-nav">
+    <a href="index.html"
+      style="font-size:.62rem;font-weight:700;letter-spacing:2px;color:var(--muted);border:1px solid var(--border);padding:5px 10px;transition:color .2s"
+      onmouseover="this.style.color='var(--cyan)'" onmouseout="this.style.color='var(--muted)'">← HOME</a>
+    <div class="nav-logo gt">FITORA</div>
+    <div style="display:flex;align-items:center;gap:14px">
+      <div class="nav-date" id="navDate"></div>
+    </div>
+  </header>
 
-<!-- SCROLLABLE BODY -->
-<div class="app-body">
+  <!-- SCROLLABLE BODY -->
+  <div class="app-body">
 
-  <!-- ════════ PAGE: HOME ════════ -->
-  <div class="page active" id="page-home">
-    <div class="page-inner">
+    <!-- ════════ PAGE: HOME ════════ -->
+    <div class="page active" id="page-home">
+      <div class="page-inner">
 
-      <!-- Greeting -->
-      <div class="home-greeting">
-        <div class="greeting-text">
-          <div class="greeting-sup">// Dashboard</div>
-          <div class="greeting-title gt" id="greetingTitle">Buongiorno</div>
-          <div class="greeting-sub" id="greetingSub">Pronto per allenarsi?</div>
-        </div>
-        <div>
-          <div class="greeting-time gt" id="clockDisplay">--:--</div>
-          <div style="font-size:.5rem;letter-spacing:2px;color:var(--muted);text-transform:uppercase;text-align:right;margin-top:3px" id="navDate2"></div>
-        </div>
-      </div>
-
-      <!-- Check-in result -->
-      <div id="checkinCard" style="display:none">
-        <div class="section-label">Stato di oggi</div>
-        <div class="checkin-result">
-          <div class="ci-icon" id="ciIcon"><i class="fa-solid fa-bolt" style="color: #facc15;"></i></div>
-          <div class="ci-body">
-            <div class="ci-level gt" id="ciLevel">—</div>
-            <div class="ci-desc" id="ciDesc">Completa il check-in per vedere la raccomandazione</div>
-            <div class="ci-bar"><div class="ci-bar-fill" id="ciBarFill" style="width:0%"></div></div>
+        <!-- Greeting -->
+        <div class="home-greeting">
+          <div class="greeting-text">
+            <div class="greeting-sup">// Dashboard</div>
+            <div class="greeting-title gt" id="greetingTitle">Buongiorno</div>
+            <div class="greeting-sub" id="greetingSub">Pronto per allenarsi?</div>
           </div>
           <div>
-            <div class="ci-score gt" id="ciScore">—</div>
-            <div class="ci-score-label">/ 100</div>
-          </div>
-        </div>
-      </div>
-
-      <!-- MONITORAGGIO TECNICO E PREVENZIONE -->
-      <div>
-        <div class="section-label">// Monitoraggio Tecnico & Prevenzione</div>
-        <div class="card" style="margin-bottom: 8px;">
-          <div class="card-head">
-            <div class="card-title"><i class="fa-solid fa-shield" style="color: #03a9f4;"></i> Analisi Biomeccanica</div>
-            <div class="card-badge" id="preventionStatus">Check-in richiesto</div>
-          </div>
-          <div class="card-body" id="preventionTip">
-            <p style="font-size: 0.75rem; color: var(--dim);">Esegui il check-in per ricevere consigli tecnici sulla prevenzione infortuni basati sul tuo stato fisico attuale.</p>
+            <div class="greeting-time gt" id="clockDisplay">--:--</div>
+            <div
+              style="font-size:.5rem;letter-spacing:2px;color:var(--muted);text-transform:uppercase;text-align:right;margin-top:3px"
+              id="navDate2"></div>
           </div>
         </div>
 
-        <!-- Tracker Idratazione -->
-        <div class="card">
-          <div class="card-head">
-            <div class="card-title"><i class="fa-solid fa-droplet" style="color: #00bcd4;"></i> Idratazione Tecnica</div>
-            <div class="card-badge" id="waterCount">0.0 / 3.0 L</div>
-          </div>
-          <div class="card-body">
-            <div style="display: flex; align-items: center; gap: 15px;">
-              <div style="flex: 1; height: 8px; background: rgba(255,255,255,0.05); border-radius: 4px; overflow: hidden;">
-                <div id="waterBar" style="height: 100%; width: 0%; background: var(--cyan); transition: width 0.3s;"></div>
-              </div>
-              <div style="display: flex; gap: 5px;">
-                <button onclick="addWater(-0.25)" style="background: var(--dark3); border: 1px solid var(--border); color: var(--white); padding: 5px 10px; cursor: pointer;">-</button>
-                <button onclick="addWater(0.25)" style="background: var(--dark3); border: 1px solid var(--border); color: var(--white); padding: 5px 10px; cursor: pointer;">+</button>
+        <!-- Check-in result -->
+        <div id="checkinCard" style="display:none">
+          <div class="section-label">Stato di oggi</div>
+          <div class="checkin-result">
+            <div class="ci-icon" id="ciIcon"><i class="fa-solid fa-bolt" style="color: #facc15;"></i></div>
+            <div class="ci-body">
+              <div class="ci-level gt" id="ciLevel">-</div>
+              <div class="ci-desc" id="ciDesc">Completa il check-in per vedere la raccomandazione</div>
+              <div class="ci-bar">
+                <div class="ci-bar-fill" id="ciBarFill" style="width:0%"></div>
               </div>
             </div>
-            <p style="font-size: 0.65rem; color: var(--muted); margin-top: 10px; text-transform: uppercase; letter-spacing: 1px;">
-              Obiettivo calcolato sulla base del tuo peso corporeo per prevenire crampi e infiammazioni.
+            <div>
+              <div class="ci-score gt" id="ciScore">-</div>
+              <div class="ci-score-label">/ 100</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- MONITORAGGIO TECNICO E PREVENZIONE -->
+        <div>
+          <div class="section-label">// Monitoraggio Tecnico & Prevenzione</div>
+          <div class="card" style="margin-bottom: 8px;">
+            <div class="card-head">
+              <div class="card-title"><i class="fa-solid fa-shield" style="color: #03a9f4;"></i> Analisi Biomeccanica
+              </div>
+              <div class="card-badge" id="preventionStatus">Check-in richiesto</div>
+            </div>
+            <div class="card-body" id="preventionTip">
+              <p style="font-size: 0.75rem; color: var(--dim);">Esegui il check-in per ricevere consigli tecnici sulla
+                prevenzione infortuni basati sul tuo stato fisico attuale.</p>
+            </div>
+          </div>
+
+          <!-- Tracker Idratazione -->
+          <div class="card">
+            <div class="card-head">
+              <div class="card-title"><i class="fa-solid fa-droplet" style="color: #00bcd4;"></i> Idratazione Tecnica
+              </div>
+              <div class="card-badge" id="waterCount">0.0 / 3.0 L</div>
+            </div>
+            <div class="card-body">
+              <div style="display: flex; align-items: center; gap: 15px;">
+                <div
+                  style="flex: 1; height: 8px; background: rgba(255,255,255,0.05); border-radius: 4px; overflow: hidden;">
+                  <div id="waterBar" style="height: 100%; width: 0%; background: var(--cyan); transition: width 0.3s;">
+                  </div>
+                </div>
+                <div style="display: flex; gap: 5px;">
+                  <button onclick="addWater(-0.25)"
+                    style="background: var(--dark3); border: 1px solid var(--border); color: var(--white); padding: 5px 10px; cursor: pointer;">-</button>
+                  <button onclick="addWater(0.25)"
+                    style="background: var(--dark3); border: 1px solid var(--border); color: var(--white); padding: 5px 10px; cursor: pointer;">+</button>
+                </div>
+              </div>
+              <p
+                style="font-size: 0.65rem; color: var(--muted); margin-top: 10px; text-transform: uppercase; letter-spacing: 1px;">
+                Obiettivo calcolato sulla base del tuo peso corporeo per prevenire crampi e infiammazioni.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- BIOMECHANICAL HEALTH INDEX (BHI) - INVESTOR FEATURE -->
+        <div class="card"
+          style="background: linear-gradient(135deg, #080808 0%, #001a1a 100%); border: 1px solid var(--cyan);">
+          <div class="card-head">
+            <div class="card-title"><i class="fa-solid fa-microscope" style="color: #9c27b0;"></i> Biomechanical Health
+              Index</div>
+            <div class="card-badge" style="color: var(--cyan); font-weight: 900;">AI AUDIT ACTIVE</div>
+          </div>
+          <div class="card-body">
+            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 15px;">
+              <div>
+                <div style="font-size: 2.5rem; font-family: 'Barlow Condensed', sans-serif; font-weight: 900;"
+                  class="gt" id="bhiScore">84.2</div>
+                <div style="font-size: 0.6rem; letter-spacing: 2px; color: var(--muted); text-transform: uppercase;">
+                  Punteggio Integrità Tecnica</div>
+              </div>
+              <div style="text-align: right;">
+                <div style="font-size: 0.8rem; font-weight: 700;" id="bhiRisk">-</div>
+                <div style="font-size: 0.55rem; color: var(--dim);">Rispetto alla media nazionale</div>
+              </div>
+            </div>
+            <div style="height: 4px; background: rgba(255,255,255,0.05); border-radius: 2px;">
+              <div id="bhiBar"
+                style="width: 0%; height: 100%; background: var(--grad); border-radius: 2px; transition: width 1s cubic-bezier(.22,1,.36,1);">
+              </div>
+            </div>
+            <p style="font-size: 0.65rem; color: var(--muted); margin-top: 12px; line-height: 1.5;">
+              <span style="color: var(--cyan); font-weight: 700;">VALORE B2B:</span> Questo score certifica la tua
+              idoneità tecnica per programmi di welfare aziendale e sconti assicurativi.
             </p>
           </div>
         </div>
-      </div>
 
-      <!-- BIOMECHANICAL HEALTH INDEX (BHI) - INVESTOR FEATURE -->
-      <div class="card" style="background: linear-gradient(135deg, #080808 0%, #001a1a 100%); border: 1px solid var(--cyan);">
-        <div class="card-head">
-          <div class="card-title"><i class="fa-solid fa-microscope" style="color: #9c27b0;"></i> Biomechanical Health Index</div>
-          <div class="card-badge" style="color: var(--cyan); font-weight: 900;">AI AUDIT ACTIVE</div>
-        </div>
-        <div class="card-body">
-          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 15px;">
-            <div>
-              <div style="font-size: 2.5rem; font-family: 'Barlow Condensed', sans-serif; font-weight: 900;" class="gt" id="bhiScore">84.2</div>
-              <div style="font-size: 0.6rem; letter-spacing: 2px; color: var(--muted); text-transform: uppercase;">Punteggio Integrità Tecnica</div>
+        <!-- Quick stats mensili -->
+        <div>
+          <div class="section-label">// Questo mese</div>
+          <div class="quick-stats">
+            <div class="qs-cell">
+              <div class="qs-val gt" id="qs-workouts">0</div>
+              <div class="qs-label"><i class="fa-solid fa-dumbbell" style="color:var(--muted)"></i> workout</div>
             </div>
-            <div style="text-align: right;">
-              <div style="font-size: 0.8rem; font-weight: 700;" id="bhiRisk">—</div>
-              <div style="font-size: 0.55rem; color: var(--dim);">Rispetto alla media nazionale</div>
+            <div class="qs-cell">
+              <div class="qs-val" style="color:var(--green)" id="qs-kcal">0</div>
+              <div class="qs-label"><i class="fa-solid fa-fire" style="color:var(--green)"></i> kcal stimate</div>
+            </div>
+            <div class="qs-cell">
+              <div class="qs-val" style="color:var(--yellow)" id="qs-exercises">0</div>
+              <div class="qs-label"><i class="fa-solid fa-person-running" style="color:var(--yellow)"></i> esercizi
+              </div>
+            </div>
+            <div class="qs-cell">
+              <div class="qs-val" style="color:var(--cyan)" id="qs-days">0</div>
+              <div class="qs-label"><i class="fa-solid fa-calendar-check" style="color:var(--cyan)"></i> giorni attivi
+              </div>
             </div>
           </div>
-          <div style="height: 4px; background: rgba(255,255,255,0.05); border-radius: 2px;">
-            <div id="bhiBar" style="width: 0%; height: 100%; background: var(--grad); border-radius: 2px; transition: width 1s cubic-bezier(.22,1,.36,1);"></div>
-          </div>
-          <p style="font-size: 0.65rem; color: var(--muted); margin-top: 12px; line-height: 1.5;">
-            <span style="color: var(--cyan); font-weight: 700;">VALORE B2B:</span> Questo score certifica la tua idoneità tecnica per programmi di welfare aziendale e sconti assicurativi.
-          </p>
         </div>
-      </div>
 
-      <!-- Quick stats mensili -->
-      <div>
-        <div class="section-label">// Questo mese</div>
-        <div class="quick-stats">
-          <div class="qs-cell">
-            <div class="qs-val gt" id="qs-workouts">0</div>
-            <div class="qs-label">workout</div>
-          </div>
-          <div class="qs-cell">
-            <div class="qs-val" style="color:var(--green)" id="qs-kcal">0</div>
-            <div class="qs-label">kcal stimate</div>
-          </div>
-          <div class="qs-cell">
-            <div class="qs-val" style="color:var(--yellow)" id="qs-exercises">0</div>
-            <div class="qs-label">esercizi</div>
-          </div>
-          <div class="qs-cell">
-            <div class="qs-val" style="color:var(--cyan)" id="qs-days">0</div>
-            <div class="qs-label">giorni attivi</div>
+        <!-- CTA workout -->
+        <a href="workout.html" class="btn-start-cta" style="display:block;text-decoration:none;text-align:center;">
+          <i class="fa-solid fa-bolt" style="color: #facc15;"></i> Genera Allenamento di Oggi
+        </a>
+
+        <!-- Tool Cards -->
+        <div>
+          <div class="section-label">// Strumenti FITORA</div>
+          <div style="display:flex;flex-direction:column;gap:8px;">
+
+            <!-- Workout -->
+            <a href="workout.html"
+              style="display:flex;align-items:center;gap:14px;padding:16px 18px;background:linear-gradient(135deg,rgba(0,212,212,.07),rgba(0,212,212,.02));border:1px solid rgba(0,212,212,.25);text-decoration:none;border-radius:10px;transition:background .2s,box-shadow .2s;"
+              onmouseover="this.style.background='linear-gradient(135deg,rgba(0,212,212,.13),rgba(0,212,212,.05))';this.style.boxShadow='0 4px 20px rgba(0,212,212,.15)'"
+              onmouseout="this.style.background='linear-gradient(135deg,rgba(0,212,212,.07),rgba(0,212,212,.02))';this.style.boxShadow='none'">
+              <div
+                style="width:46px;height:46px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:1.6rem;background:rgba(0,212,212,.1);border:1px solid rgba(0,212,212,.3);">
+                <i class="fa-solid fa-bolt" style="color: #facc15;"></i>
+              </div>
+              <div style="flex:1">
+                <div
+                  style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:1rem;text-transform:uppercase;letter-spacing:1px;margin-bottom:3px;">
+                  Allenamento di Oggi</div>
+                <div style="font-size:.7rem;color:var(--dim);line-height:1.45;">Workout su misura in base al tuo
+                  check-in e allo sport che pratichi.</div>
+              </div>
+              <div style="font-size:1.1rem;color:var(--cyan);flex-shrink:0;">→</div>
+            </a>
+
+            <!-- Nutrition -->
+            <a href="nutrition.html"
+              style="display:flex;align-items:center;gap:14px;padding:16px 18px;background:linear-gradient(135deg,rgba(127,255,0,.06),rgba(127,255,0,.02));border:1px solid rgba(127,255,0,.22);text-decoration:none;border-radius:10px;transition:background .2s,box-shadow .2s;"
+              onmouseover="this.style.background='linear-gradient(135deg,rgba(127,255,0,.11),rgba(127,255,0,.04))';this.style.boxShadow='0 4px 20px rgba(127,255,0,.12)'"
+              onmouseout="this.style.background='linear-gradient(135deg,rgba(127,255,0,.06),rgba(127,255,0,.02))';this.style.boxShadow='none'">
+              <div
+                style="width:46px;height:46px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:1.6rem;background:rgba(127,255,0,.1);border:1px solid rgba(127,255,0,.28);">
+                <i class="fa-solid fa-apple-whole" style="color: #f44336;"></i>
+              </div>
+              <div style="flex:1">
+                <div
+                  style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:1rem;text-transform:uppercase;letter-spacing:1px;margin-bottom:3px;">
+                  Piano Alimentare</div>
+                <div style="font-size:.7rem;color:var(--dim);line-height:1.45;">Calcola BMR + TDEE, macros e piano pasti
+                  giornaliero su misura.</div>
+              </div>
+              <div style="font-size:1.1rem;color:var(--green);flex-shrink:0;">→</div>
+            </a>
+
+            <!-- Sport Quiz -->
+            <a href="sport-quiz.html"
+              style="display:flex;align-items:center;gap:14px;padding:16px 18px;background:linear-gradient(135deg,rgba(212,255,0,.05),rgba(212,255,0,.01));border:1px solid rgba(212,255,0,.18);text-decoration:none;border-radius:10px;transition:background .2s,box-shadow .2s;"
+              onmouseover="this.style.background='linear-gradient(135deg,rgba(212,255,0,.1),rgba(212,255,0,.03))';this.style.boxShadow='0 4px 18px rgba(212,255,0,.1)'"
+              onmouseout="this.style.background='linear-gradient(135deg,rgba(212,255,0,.05),rgba(212,255,0,.01))';this.style.boxShadow='none'">
+              <div
+                style="width:46px;height:46px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:1.6rem;background:rgba(212,255,0,.08);border:1px solid rgba(212,255,0,.25);">
+                <i class="fa-solid fa-trophy" style="color: #ffc107;"></i>
+              </div>
+              <div style="flex:1">
+                <div
+                  style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:1rem;text-transform:uppercase;letter-spacing:1px;margin-bottom:3px;">
+                  Il Tuo Sport Perfetto</div>
+                <div style="font-size:.7rem;color:var(--dim);line-height:1.45;">Incrocia desideri e capacità fisiche. 6
+                  domande → 3 sport su misura.</div>
+              </div>
+              <div style="font-size:1.1rem;color:var(--yellow);flex-shrink:0;">→</div>
+            </a>
+
           </div>
         </div>
+
       </div>
+    </div>
 
-      <!-- CTA workout -->
-      <a href="workout.html" class="btn-start-cta" style="display:block;text-decoration:none;text-align:center;">
-        <i class="fa-solid fa-bolt" style="color: #facc15;"></i> Genera Allenamento di Oggi
-      </a>
+    <!-- ════════ PAGE: PIANO MENSILE ════════ -->
+    <div class="page" id="page-run">
+      <div class="page-inner">
 
-      <!-- Tool Cards -->
-      <div>
-        <div class="section-label">// Strumenti FITORA</div>
-        <div style="display:flex;flex-direction:column;gap:8px;">
+        <div class="card-head" style="border:1px solid var(--border);background:var(--dark2)">
+          <div class="card-title"><i class="fa-regular fa-calendar" style="color: #03a9f4;"></i> Piano Mensile</div>
+          <div class="card-badge" id="planCount">0 / 3</div>
+        </div>
 
-          <!-- Workout -->
-          <a href="workout.html" style="display:flex;align-items:center;gap:14px;padding:16px 18px;background:linear-gradient(135deg,rgba(0,212,212,.07),rgba(0,212,212,.02));border:1px solid rgba(0,212,212,.25);text-decoration:none;border-radius:10px;transition:background .2s,box-shadow .2s;" onmouseover="this.style.background='linear-gradient(135deg,rgba(0,212,212,.13),rgba(0,212,212,.05))';this.style.boxShadow='0 4px 20px rgba(0,212,212,.15)'" onmouseout="this.style.background='linear-gradient(135deg,rgba(0,212,212,.07),rgba(0,212,212,.02))';this.style.boxShadow='none'">
-            <div style="width:46px;height:46px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:1.6rem;background:rgba(0,212,212,.1);border:1px solid rgba(0,212,212,.3);"><i class="fa-solid fa-bolt" style="color: #facc15;"></i></div>
-            <div style="flex:1">
-              <div style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:1rem;text-transform:uppercase;letter-spacing:1px;margin-bottom:3px;">Allenamento di Oggi</div>
-              <div style="font-size:.7rem;color:var(--dim);line-height:1.45;">Workout su misura in base al tuo check-in e allo sport che pratichi.</div>
+        <!-- Avviso piano pieno -->
+        <div id="planFullNotice" class="plan-full-notice" style="display:none">
+          <i class="fa-solid fa-triangle-exclamation" style="color: #ff9800;"></i> Piano completo - elimina un
+          allenamento per aggiungerne uno nuovo
+        </div>
+
+        <!-- Stato vuoto -->
+        <div id="noPlanState" class="card">
+          <div class="card-body" style="text-align:center;padding:36px 20px">
+            <div style="font-size:2.5rem;margin-bottom:12px;opacity:.2"><i class="fa-solid fa-clipboard-list"
+                style="color: #ffeb3b;"></i></div>
+            <div
+              style="font-size:.68rem;letter-spacing:3px;text-transform:uppercase;color:var(--muted);line-height:1.9">
+              Nessun allenamento nel piano<br>Genera e salva il tuo primo workout
             </div>
-            <div style="font-size:1.1rem;color:var(--cyan);flex-shrink:0;">→</div>
-          </a>
+          </div>
+        </div>
 
-          <!-- Nutrition -->
-          <a href="nutrition.html" style="display:flex;align-items:center;gap:14px;padding:16px 18px;background:linear-gradient(135deg,rgba(127,255,0,.06),rgba(127,255,0,.02));border:1px solid rgba(127,255,0,.22);text-decoration:none;border-radius:10px;transition:background .2s,box-shadow .2s;" onmouseover="this.style.background='linear-gradient(135deg,rgba(127,255,0,.11),rgba(127,255,0,.04))';this.style.boxShadow='0 4px 20px rgba(127,255,0,.12)'" onmouseout="this.style.background='linear-gradient(135deg,rgba(127,255,0,.06),rgba(127,255,0,.02))';this.style.boxShadow='none'">
-            <div style="width:46px;height:46px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:1.6rem;background:rgba(127,255,0,.1);border:1px solid rgba(127,255,0,.28);"><i class="fa-solid fa-apple-whole" style="color: #f44336;"></i></div>
-            <div style="flex:1">
-              <div style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:1rem;text-transform:uppercase;letter-spacing:1px;margin-bottom:3px;">Piano Alimentare</div>
-              <div style="font-size:.7rem;color:var(--dim);line-height:1.45;">Calcola BMR + TDEE, macros e piano pasti giornaliero su misura.</div>
+        <!-- Lista piani -->
+        <div id="planList" style="display:flex;flex-direction:column;gap:6px"></div>
+
+        <!-- Bottone genera -->
+        <a href="workout.html" id="planGenLink"
+          style="display:block;width:100%;text-align:center;background:var(--grad);color:#000;font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:1rem;letter-spacing:4px;text-transform:uppercase;padding:17px;border-radius:10px;text-decoration:none;margin-top:4px;transition:opacity .2s,box-shadow .2s;"
+          onmouseover="this.style.boxShadow='0 6px 28px rgba(0,212,212,.4)'" onmouseout="this.style.boxShadow='none'">
+          <i class="fa-solid fa-bolt" style="color: #facc15;"></i> Genera Nuovo Allenamento
+        </a>
+
+      </div>
+    </div>
+
+    <!-- ════════ PAGE: DIARIO ════════ -->
+    <div class="page" id="page-history">
+      <div class="page-inner">
+
+        <!-- Header -->
+        <div class="card-head" style="border:1px solid var(--border);background:var(--dark2)">
+          <div class="card-title"><i class="fa-solid fa-book" style="color: #795548;"></i> Diario Allenamenti</div>
+          <div class="card-badge" id="diaryTodayLabel">-</div>
+        </div>
+
+        <!-- Calendario mensile -->
+        <div class="card">
+          <div class="card-head">
+            <div class="card-title"><i class="fa-regular fa-calendar" style="color: #03a9f4;"></i> <span
+                id="calMonthLabel"></span></div>
+          </div>
+          <div class="card-body" style="padding:8px">
+            <div class="cal-grid" id="calGrid"></div>
+          </div>
+        </div>
+
+        <!-- Dettaglio giorno selezionato -->
+        <div id="diaryDayDetail" style="display:none"></div>
+
+        <!-- Allenamento di oggi con checkboxes -->
+        <div id="diaryTodaySection"></div>
+
+        <!-- Cronologia giorni passati -->
+        <div id="diaryLogSection" style="display:flex;flex-direction:column;gap:6px"></div>
+
+      </div>
+    </div>
+
+    <!-- ════════ PAGE: MUSICA ════════ -->
+    <div class="page" id="page-music">
+      <div class="page-inner">
+
+        <!-- Header -->
+        <div class="card">
+          <div class="card-head">
+            <div class="card-title"><i class="fa-solid fa-music" style="color: #e91e63;"></i> Spotify Hub</div>
+            <div style="font-size:.6rem;letter-spacing:2px;color:#1DB954;font-weight:700">SPOTIFY</div>
+          </div>
+          <div class="card-body" style="display:flex;flex-direction:column;gap:12px">
+            <div class="music-input-row">
+              <input type="text" id="spotifyUrl" class="music-input"
+                placeholder="Incolla Link Brano o Playlist Spotify…">
+              <button class="btn-ok" onclick="updateMusic()">OK</button>
             </div>
-            <div style="font-size:1.1rem;color:var(--green);flex-shrink:0;">→</div>
-          </a>
-
-          <!-- Sport Quiz -->
-          <a href="sport-quiz.html" style="display:flex;align-items:center;gap:14px;padding:16px 18px;background:linear-gradient(135deg,rgba(212,255,0,.05),rgba(212,255,0,.01));border:1px solid rgba(212,255,0,.18);text-decoration:none;border-radius:10px;transition:background .2s,box-shadow .2s;" onmouseover="this.style.background='linear-gradient(135deg,rgba(212,255,0,.1),rgba(212,255,0,.03))';this.style.boxShadow='0 4px 18px rgba(212,255,0,.1)'" onmouseout="this.style.background='linear-gradient(135deg,rgba(212,255,0,.05),rgba(212,255,0,.01))';this.style.boxShadow='none'">
-            <div style="width:46px;height:46px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:1.6rem;background:rgba(212,255,0,.08);border:1px solid rgba(212,255,0,.25);"><i class="fa-solid fa-trophy" style="color: #ffc107;"></i></div>
-            <div style="flex:1">
-              <div style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:1rem;text-transform:uppercase;letter-spacing:1px;margin-bottom:3px;">Il Tuo Sport Perfetto</div>
-              <div style="font-size:.7rem;color:var(--dim);line-height:1.45;">Incrocia desideri e capacità fisiche. 6 domande → 3 sport su misura.</div>
+            <div class="music-meta">
+              <span class="music-meta-label">Sorgente attiva</span>
+              <span class="music-meta-val" id="musicLabel">Playlist predefinita</span>
             </div>
-            <div style="font-size:1.1rem;color:var(--yellow);flex-shrink:0;">→</div>
-          </a>
-
+          </div>
         </div>
-      </div>
 
+        <!-- Player -->
+        <div class="card">
+          <div class="card-head">
+            <div class="card-title">▶ Player</div>
+          </div>
+          <div class="player-wrap">
+            <iframe id="musicPlayer" src="https://open.spotify.com/embed/playlist/37i9dQZF1DX76W9SwwE3Y4"
+              allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture">
+            </iframe>
+          </div>
+        </div>
+
+        <!-- Actions -->
+        <button class="btn-share-music" onclick="sharePlaylist()"><i class="fa-solid fa-link"
+            style="color: #9e9e9e;"></i> Copia Link Playlist</button>
+
+        <!-- Tips -->
+        <div class="card">
+          <div class="card-head">
+            <div class="card-title"><i class="fa-solid fa-lightbulb" style="color: #ffeb3b;"></i> Suggerimento</div>
+          </div>
+          <div class="card-body">
+            <p style="font-size:.78rem;color:var(--dim);line-height:1.7">
+              Incolla il link di qualsiasi brano, album o playlist Spotify per ascoltarlo durante la corsa. La playlist
+              viene salvata automaticamente per la prossima sessione.
+            </p>
+          </div>
+        </div>
+
+      </div>
     </div>
-  </div>
 
-  <!-- ════════ PAGE: PIANO MENSILE ════════ -->
-  <div class="page" id="page-run">
-    <div class="page-inner">
+    <!-- ════════ PAGE: COMMUNITY ════════ -->
+    <div class="page" id="page-community">
+      <div class="page-inner">
 
-      <div class="card-head" style="border:1px solid var(--border);background:var(--dark2)">
-        <div class="card-title"><i class="fa-regular fa-calendar" style="color: #03a9f4;"></i> Piano Mensile</div>
-        <div class="card-badge" id="planCount">0 / 3</div>
-      </div>
+        <!-- Hero -->
+        <div class="comm-hero">
+          <div class="comm-hero-title">Mai<br><span class="gt">Soli</span></div>
+          <p class="comm-hero-sub">Sfida i tuoi amici, condividi i progressi, cresci insieme.</p>
+        </div>
 
-      <!-- Avviso piano pieno -->
-      <div id="planFullNotice" class="plan-full-notice" style="display:none">
-        <i class="fa-solid fa-triangle-exclamation" style="color: #ff9800;"></i> Piano completo — elimina un allenamento per aggiungerne uno nuovo
-      </div>
+        <!-- Match card -->
 
-      <!-- Stato vuoto -->
-      <div id="noPlanState" class="card">
-        <div class="card-body" style="text-align:center;padding:36px 20px">
-          <div style="font-size:2.5rem;margin-bottom:12px;opacity:.2"><i class="fa-solid fa-clipboard-list" style="color: #ffeb3b;"></i></div>
-          <div style="font-size:.68rem;letter-spacing:3px;text-transform:uppercase;color:var(--muted);line-height:1.9">
-            Nessun allenamento nel piano<br>Genera e salva il tuo primo workout
+
+        <!-- Social buttons -->
+        <div style="display:flex;flex-direction:column;gap:8px">
+          <div class="section-label">Condividi</div>
+          <div class="social-btn" onclick="shareToWhatsApp('invite')">
+            <span class="sb-icon"><i class="fa-regular fa-message" style="color: #03a9f4;"></i></span>
+            <div class="sb-body">
+              <div class="sb-title">Invita su WhatsApp</div>
+              <div class="sb-desc">Condividi FITORA con un amico</div>
+            </div>
+            <span class="sb-arrow">→</span>
+          </div>
+          <button class="btn-challenge-big" onclick="shareToWhatsApp('challenge')">
+            <i class="fa-solid fa-bolt" style="color: #facc15;"></i> Sfida un Amico Ora
+          </button>
+        </div>
+
+        <!-- Badges -->
+        <div class="card">
+          <div class="card-head">
+            <div class="card-title"><i class="fa-solid fa-medal" style="color: #ffc107;"></i> Badges</div>
+            <div class="card-badge" id="badgeCount">0 / 8</div>
+          </div>
+          <div class="card-body">
+            <div class="badge-grid" id="badgeGrid"></div>
           </div>
         </div>
+
+        <!-- Stats -->
+        <div class="card">
+          <div class="card-head">
+            <div class="card-title"><i class="fa-solid fa-chart-simple" style="color: #03a9f4;"></i> Le Tue Statistiche
+            </div>
+          </div>
+          <div class="card-body"
+            style="display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border);padding:0">
+            <div style="background:var(--dark2);padding:16px;text-align:center">
+              <div style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:1.8rem" class="gt"
+                id="statTotalRuns">0</div>
+              <div
+                style="font-size:.58rem;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-top:3px">
+                <i class="fa-solid fa-dumbbell" style="color:var(--muted)"></i> Workout Totali
+              </div>
+            </div>
+            <div style="background:var(--dark2);padding:16px;text-align:center">
+              <div style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:1.8rem;color:var(--green)"
+                id="statTotalKm">0</div>
+              <div
+                style="font-size:.58rem;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-top:3px">
+                <i class="fa-solid fa-fire" style="color:var(--green)"></i> Kcal Totali
+              </div>
+            </div>
+            <div style="background:var(--dark2);padding:16px;text-align:center">
+              <div
+                style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:1.8rem;color:var(--yellow)"
+                id="statTotalCal">0</div>
+              <div
+                style="font-size:.58rem;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-top:3px">
+                <i class="fa-solid fa-calendar-check" style="color:var(--yellow)"></i> Giorni Attivi
+              </div>
+            </div>
+            <div style="background:var(--dark2);padding:16px;text-align:center">
+              <div style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:1.8rem;color:var(--cyan)"
+                id="statBestDist">0</div>
+              <div
+                style="font-size:.58rem;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-top:3px">
+                <i class="fa-solid fa-person-running" style="color:var(--cyan)"></i> Esercizi Totali
+              </div>
+            </div>
+          </div>
+        </div>
+
       </div>
-
-      <!-- Lista piani -->
-      <div id="planList" style="display:flex;flex-direction:column;gap:6px"></div>
-
-      <!-- Bottone genera -->
-      <a href="workout.html" id="planGenLink" style="display:block;width:100%;text-align:center;background:var(--grad);color:#000;font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:1rem;letter-spacing:4px;text-transform:uppercase;padding:17px;border-radius:10px;text-decoration:none;margin-top:4px;transition:opacity .2s,box-shadow .2s;" onmouseover="this.style.boxShadow='0 6px 28px rgba(0,212,212,.4)'" onmouseout="this.style.boxShadow='none'">
-        <i class="fa-solid fa-bolt" style="color: #facc15;"></i> Genera Nuovo Allenamento
-      </a>
-
     </div>
-  </div>
 
-  <!-- ════════ PAGE: DIARIO ════════ -->
-  <div class="page" id="page-history">
-    <div class="page-inner">
+  </div><!-- /app-body -->
 
-      <!-- Header -->
-      <div class="card-head" style="border:1px solid var(--border);background:var(--dark2)">
-        <div class="card-title"><i class="fa-solid fa-book" style="color: #795548;"></i> Diario Allenamenti</div>
-        <div class="card-badge" id="diaryTodayLabel">—</div>
-      </div>
+  <!-- BOTTOM TAB BAR -->
+  <nav class="tab-bar">
+    <button class="tab-btn active" id="tab-home" onclick="switchTab('home')">
+      <span class="tab-icon"><i class="fa-solid fa-house" style="color: #795548;"></i></span>
+      <span class="tab-label">Home</span>
+    </button>
+    <button class="tab-btn" id="tab-run" onclick="switchTab('run')">
+      <span class="tab-icon"><i class="fa-regular fa-calendar" style="color: #03a9f4;"></i></span>
+      <span class="tab-label">Piano</span>
+    </button>
+    <button class="tab-btn" id="tab-history" onclick="switchTab('history')">
+      <span class="tab-icon"><i class="fa-solid fa-book" style="color: #795548;"></i></span>
+      <span class="tab-label">Diario</span>
+    </button>
+    <button class="tab-btn" id="tab-music" onclick="switchTab('music')">
+      <span class="tab-icon"><i class="fa-solid fa-music" style="color: #e91e63;"></i></span>
+      <span class="tab-label">Musica</span>
+    </button>
+    <button class="tab-btn" id="tab-community" onclick="switchTab('community')">
+      <span class="tab-icon"><i class="fa-solid fa-users" style="color: #03a9f4;"></i></span>
+      <span class="tab-label">Comunità</span>
+    </button>
+  </nav>
 
-      <!-- Calendario mensile -->
-      <div class="card">
-        <div class="card-head">
-          <div class="card-title"><i class="fa-regular fa-calendar" style="color: #03a9f4;"></i> <span id="calMonthLabel"></span></div>
-        </div>
-        <div class="card-body" style="padding:8px">
-          <div class="cal-grid" id="calGrid"></div>
-        </div>
-      </div>
+  <script>
+    /* ══════════════════════════
+       CONSTANTS
+    ══════════════════════════ */
+    const LS_MUSIC = 'fitora_music_id';
+    const LS_PLAN = 'fitora_monthly_plan';
+    const LS_LOG = 'fitora_workout_log';
 
-      <!-- Dettaglio giorno selezionato -->
-      <div id="diaryDayDetail" style="display:none"></div>
+    /* ══════════════════════════
+       STATE
+    ══════════════════════════ */
+    let clockInterval = null;
 
-      <!-- Allenamento di oggi con checkboxes -->
-      <div id="diaryTodaySection"></div>
+    /* ══════════════════════════
+       TABS
+    ══════════════════════════ */
+    function switchTab(name) {
+      document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      document.getElementById('page-' + name).classList.add('active');
+      document.getElementById('tab-' + name).classList.add('active');
+      if (name === 'run') renderPlan();
+      if (name === 'history') renderDiary();
+      if (name === 'community') renderCommunity();
+    }
 
-      <!-- Cronologia giorni passati -->
-      <div id="diaryLogSection" style="display:flex;flex-direction:column;gap:6px"></div>
+    /* ══════════════════════════
+       UTILS
+    ══════════════════════════ */
+    function pad(n) { return String(Math.floor(n)).padStart(2, '0'); }
 
-    </div>
-  </div>
+    /* ══════════════════════════
+       CLOCK
+    ══════════════════════════ */
+    function updateClock() {
+      const now = new Date();
+      const h = now.getHours(), m = now.getMinutes();
+      document.getElementById('clockDisplay').textContent = `${pad(h)}:${pad(m)}`;
+      const greet = h < 6 ? 'Buonanotte' : h < 12 ? 'Buongiorno' : h < 18 ? 'Buon Pomeriggio' : 'Buonasera';
+      document.getElementById('greetingTitle').textContent = greet;
+    }
+    function setNavDate() {
+      const d = new Date();
+      const s = d.toLocaleDateString('it-IT', { weekday: 'short', day: 'numeric', month: 'short' }).toUpperCase();
+      ['navDate', 'navDate2'].forEach(id => { const el = document.getElementById(id); if (el) el.textContent = s; });
+    }
 
-  <!-- ════════ PAGE: MUSICA ════════ -->
-  <div class="page" id="page-music">
-    <div class="page-inner">
+    /* ══════════════════════════
+       CHECK-IN CARD
+    ══════════════════════════ */
+    function loadCheckin() {
+      const raw = sessionStorage.getItem('fitora_checkin');
+      if (!raw) {
+        // Se non ci sono dati di check-in, assicurati che la card sia nascosta e i valori siano di default
+        document.getElementById('checkinCard').style.display = 'none';
+        document.getElementById('greetingSub').textContent = 'Completa il check-in per una raccomandazione personalizzata.';
+        return;
+      }
+      try {
+        const ci = JSON.parse(raw);
+        const score = ci.score || 0;
+        const icons = { 0: '<i class="fa-solid fa-shield" style="color: #03a9f4;"></i>', 40: '<i class="fa-solid fa-triangle-exclamation" style="color: #ff9800;"></i>', 60: '<i class="fa-solid fa-bolt" style="color: #facc15;"></i>', 80: '<i class="fa-solid fa-fire" style="color: #ff5722;"></i>' };
+        const colors = { 0: 'var(--orange)', 40: 'var(--yellow)', 60: 'var(--cyan)', 80: 'var(--green)' };
+        const descs = {
+          0: 'Giorno di recupero - allenamento leggero',
+          40: 'Allenamento moderato - riduci l\'intensità',
+          60: 'Buona giornata - allenamento completo',
+          80: 'Giornata ideale - spingi al massimo'
+        };
+        const key = score >= 80 ? 80 : score >= 60 ? 60 : score >= 40 ? 40 : 0;
+        document.getElementById('ciIcon').innerHTML = icons[key];
+        document.getElementById('ciLevel').textContent = ci.level || '-';
+        document.getElementById('ciDesc').textContent = descs[key];
+        document.getElementById('ciScore').textContent = score;
+        document.getElementById('ciBarFill').style.width = score + '%';
+        document.getElementById('ciBarFill').style.background = colors[key];
+        document.getElementById('checkinCard').style.display = 'block';
 
-      <!-- Header -->
-      <div class="card">
-        <div class="card-head">
-          <div class="card-title"><i class="fa-solid fa-music" style="color: #e91e63;"></i> Spotify Hub</div>
-          <div style="font-size:.6rem;letter-spacing:2px;color:#1DB954;font-weight:700">SPOTIFY</div>
-        </div>
-        <div class="card-body" style="display:flex;flex-direction:column;gap:12px">
-          <div class="music-input-row">
-            <input type="text" id="spotifyUrl" class="music-input" placeholder="Incolla Link Brano o Playlist Spotify…">
-            <button class="btn-ok" onclick="updateMusic()">OK</button>
-          </div>
-          <div class="music-meta">
-            <span class="music-meta-label">Sorgente attiva</span>
-            <span class="music-meta-val" id="musicLabel">Playlist predefinita</span>
-          </div>
-        </div>
-      </div>
+        // Generazione consiglio tecnico prevenzione
+        const prevTip = document.getElementById('preventionTip');
+        const prevStatus = document.getElementById('preventionStatus');
+        let tipText = "Il tuo stato biomeccanico è ottimale. Mantieni una buona tecnica.";
 
-      <!-- Player -->
-      <div class="card">
-        <div class="card-head">
-          <div class="card-title">▶ Player</div>
-        </div>
-        <div class="player-wrap">
-          <iframe id="musicPlayer"
-            src="https://open.spotify.com/embed/playlist/37i9dQZF1DX76W9SwwE3Y4"
-            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture">
-          </iframe>
-        </div>
-      </div>
+        if (ci.pain && ci.pain.length > 0 && !ci.pain.includes('none')) {
+          prevStatus.textContent = "ATTENZIONE TECNICA";
+          prevStatus.style.color = "var(--orange)";
 
-      <!-- Actions -->
-      <button class="btn-share-music" onclick="sharePlaylist()"><i class="fa-solid fa-link" style="color: #9e9e9e;"></i> Copia Link Playlist</button>
+          const tips = [];
+          if (ci.pain.includes('back')) tips.push("Esegui 2 minuti di 'Cat-Cow' prima di iniziare per mobilizzare le vertebre.");
+          if (ci.pain.includes('knees')) tips.push("Riduci l'ampiezza degli affondi e focalizzati sulla stabilità della caviglia.");
+          if (ci.pain.includes('shoulders')) tips.push("Evita carichi sopra la testa. Focus su extrarotatori della spalla.");
+          if (ci.pain.includes('legs')) tips.push("Possibile affaticamento muscolare: prediligi lo stretching dinamico al posto di scatti esplosivi.");
 
-      <!-- Tips -->
-      <div class="card">
-        <div class="card-head"><div class="card-title"><i class="fa-solid fa-lightbulb" style="color: #ffeb3b;"></i> Suggerimento</div></div>
-        <div class="card-body">
-          <p style="font-size:.78rem;color:var(--dim);line-height:1.7">
-            Incolla il link di qualsiasi brano, album o playlist Spotify per ascoltarlo durante la corsa. La playlist viene salvata automaticamente per la prossima sessione.
-          </p>
-        </div>
-      </div>
-
-    </div>
-  </div>
-
-  <!-- ════════ PAGE: COMMUNITY ════════ -->
-  <div class="page" id="page-community">
-    <div class="page-inner">
-
-      <!-- Hero -->
-      <div class="comm-hero">
-        <div class="comm-hero-title">Mai<br><span class="gt">Soli</span></div>
-        <p class="comm-hero-sub">Sfida i tuoi amici, condividi i progressi, cresci insieme.</p>
-      </div>
-
-      <!-- Match card -->
-      
-
-      <!-- Social buttons -->
-      <div style="display:flex;flex-direction:column;gap:8px">
-        <div class="section-label">Condividi</div>
-        <div class="social-btn" onclick="shareToWhatsApp('invite')">
-          <span class="sb-icon"><i class="fa-regular fa-message" style="color: #03a9f4;"></i></span>
-          <div class="sb-body">
-            <div class="sb-title">Invita su WhatsApp</div>
-            <div class="sb-desc">Condividi FITORA con un amico</div>
-          </div>
-          <span class="sb-arrow">→</span>
-        </div>
-        <button class="btn-challenge-big" onclick="shareToWhatsApp('challenge')">
-          <i class="fa-solid fa-bolt" style="color: #facc15;"></i> Sfida un Amico Ora
-        </button>
-      </div>
-
-      <!-- Badges -->
-      <div class="card">
-        <div class="card-head">
-          <div class="card-title"><i class="fa-solid fa-medal" style="color: #ffc107;"></i> Badges</div>
-          <div class="card-badge" id="badgeCount">0 / 8</div>
-        </div>
-        <div class="card-body">
-          <div class="badge-grid" id="badgeGrid"></div>
-        </div>
-      </div>
-
-      <!-- Stats -->
-      <div class="card">
-        <div class="card-head"><div class="card-title"><i class="fa-solid fa-chart-simple" style="color: #03a9f4;"></i> Le Tue Statistiche</div></div>
-        <div class="card-body" style="display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border);padding:0">
-          <div style="background:var(--dark2);padding:16px;text-align:center">
-            <div style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:1.8rem" class="gt" id="statTotalRuns">0</div>
-            <div style="font-size:.58rem;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-top:3px">Workout Totali</div>
-          </div>
-          <div style="background:var(--dark2);padding:16px;text-align:center">
-            <div style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:1.8rem;color:var(--green)" id="statTotalKm">0</div>
-            <div style="font-size:.58rem;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-top:3px">Kcal Totali</div>
-          </div>
-          <div style="background:var(--dark2);padding:16px;text-align:center">
-            <div style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:1.8rem;color:var(--yellow)" id="statTotalCal">0</div>
-            <div style="font-size:.58rem;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-top:3px">Giorni Attivi</div>
-          </div>
-          <div style="background:var(--dark2);padding:16px;text-align:center">
-            <div style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:1.8rem;color:var(--cyan)" id="statBestDist">0</div>
-            <div style="font-size:.58rem;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-top:3px">Esercizi Totali</div>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </div>
-
-</div><!-- /app-body -->
-
-<!-- BOTTOM TAB BAR -->
-<nav class="tab-bar">
-  <button class="tab-btn active" id="tab-home" onclick="switchTab('home')">
-    <span class="tab-icon"><i class="fa-solid fa-house" style="color: #795548;"></i></span>
-    <span class="tab-label">Home</span>
-  </button>
-  <button class="tab-btn" id="tab-run" onclick="switchTab('run')">
-    <span class="tab-icon"><i class="fa-regular fa-calendar" style="color: #03a9f4;"></i></span>
-    <span class="tab-label">Piano</span>
-  </button>
-  <button class="tab-btn" id="tab-history" onclick="switchTab('history')">
-    <span class="tab-icon"><i class="fa-solid fa-book" style="color: #795548;"></i></span>
-    <span class="tab-label">Diario</span>
-  </button>
-  <button class="tab-btn" id="tab-music" onclick="switchTab('music')">
-    <span class="tab-icon"><i class="fa-solid fa-music" style="color: #e91e63;"></i></span>
-    <span class="tab-label">Musica</span>
-  </button>
-  <button class="tab-btn" id="tab-community" onclick="switchTab('community')">
-    <span class="tab-icon"><i class="fa-solid fa-users" style="color: #03a9f4;"></i></span>
-    <span class="tab-label">Comunità</span>
-  </button>
-</nav>
-
-<script>
-/* ══════════════════════════
-   CONSTANTS
-══════════════════════════ */
-const LS_MUSIC = 'fitora_music_id';
-const LS_PLAN  = 'fitora_monthly_plan';
-const LS_LOG   = 'fitora_workout_log';
-
-/* ══════════════════════════
-   STATE
-══════════════════════════ */
-let clockInterval = null;
-
-/* ══════════════════════════
-   TABS
-══════════════════════════ */
-function switchTab(name) {
-  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-  document.getElementById('page-' + name).classList.add('active');
-  document.getElementById('tab-' + name).classList.add('active');
-  if (name === 'run')     renderPlan();
-  if (name === 'history') renderDiary();
-  if (name === 'community') renderCommunity();
-}
-
-/* ══════════════════════════
-   UTILS
-══════════════════════════ */
-function pad(n) { return String(Math.floor(n)).padStart(2,'0'); }
-
-/* ══════════════════════════
-   CLOCK
-══════════════════════════ */
-function updateClock() {
-  const now = new Date();
-  const h = now.getHours(), m = now.getMinutes();
-  document.getElementById('clockDisplay').textContent = `${pad(h)}:${pad(m)}`;
-  const greet = h<6?'Buonanotte':h<12?'Buongiorno':h<18?'Buon Pomeriggio':'Buonasera';
-  document.getElementById('greetingTitle').textContent = greet;
-}
-function setNavDate() {
-  const d = new Date();
-  const s = d.toLocaleDateString('it-IT',{weekday:'short',day:'numeric',month:'short'}).toUpperCase();
-  ['navDate','navDate2'].forEach(id => { const el=document.getElementById(id); if(el) el.textContent=s; });
-}
-
-/* ══════════════════════════
-   CHECK-IN CARD
-══════════════════════════ */
-function loadCheckin() {
-  const raw = sessionStorage.getItem('fitora_checkin');
-  if (!raw) {
-    // Se non ci sono dati di check-in, assicurati che la card sia nascosta e i valori siano di default
-    document.getElementById('checkinCard').style.display = 'none';
-    document.getElementById('greetingSub').textContent = 'Completa il check-in per una raccomandazione personalizzata.';
-    return;
-  }
-  try {
-    const ci = JSON.parse(raw);
-    const score = ci.score || 0;
-    const icons  = {0:'<i class="fa-solid fa-shield" style="color: #03a9f4;"></i>',40:'<i class="fa-solid fa-triangle-exclamation" style="color: #ff9800;"></i>',60:'<i class="fa-solid fa-bolt" style="color: #facc15;"></i>',80:'<i class="fa-solid fa-fire" style="color: #ff5722;"></i>'};
-    const colors = {0:'var(--orange)',40:'var(--yellow)',60:'var(--cyan)',80:'var(--green)'};
-    const descs  = {
-      0:'Giorno di recupero — allenamento leggero',
-      40:'Allenamento moderato — riduci l\'intensità',
-      60:'Buona giornata — allenamento completo',
-      80:'Giornata ideale — spingi al massimo'
-    };
-    const key = score>=80?80:score>=60?60:score>=40?40:0;
-    document.getElementById('ciIcon').textContent   = icons[key];
-    document.getElementById('ciLevel').textContent  = ci.level || '—';
-    document.getElementById('ciDesc').textContent   = descs[key];
-    document.getElementById('ciScore').textContent  = score;
-    document.getElementById('ciBarFill').style.width  = score+'%';
-    document.getElementById('ciBarFill').style.background = colors[key];
-    document.getElementById('checkinCard').style.display = 'block';
-    
-    // Generazione consiglio tecnico prevenzione
-    const prevTip = document.getElementById('preventionTip');
-    const prevStatus = document.getElementById('preventionStatus');
-    let tipText = "Il tuo stato biomeccanico è ottimale. Mantieni una buona tecnica.";
-    
-    if (ci.pain && ci.pain.length > 0 && !ci.pain.includes('none')) {
-      prevStatus.textContent = "ATTENZIONE TECNICA";
-      prevStatus.style.color = "var(--orange)";
-      
-      const tips = [];
-      if (ci.pain.includes('back')) tips.push("Esegui 2 minuti di 'Cat-Cow' prima di iniziare per mobilizzare le vertebre.");
-      if (ci.pain.includes('knees')) tips.push("Riduci l'ampiezza degli affondi e focalizzati sulla stabilità della caviglia.");
-      if (ci.pain.includes('shoulders')) tips.push("Evita carichi sopra la testa. Focus su extrarotatori della spalla.");
-      if (ci.pain.includes('legs')) tips.push("Possibile affaticamento muscolare: prediligi lo stretching dinamico al posto di scatti esplosivi.");
-      
-      tipText = `<ul style="list-style: none; display: flex; flex-direction: column; gap: 8px;">
+          tipText = `<ul style="list-style: none; display: flex; flex-direction: column; gap: 8px;">
         ${tips.map(t => `<li style="font-size: 0.78rem; color: var(--orange); display: flex; gap: 8px;"><span><i class="fa-solid fa-triangle-exclamation" style="color: #ff9800;"></i></span> ${t}</li>`).join('')}
       </ul>`;
-    } else {
-      prevStatus.textContent = "SICURO";
-      prevStatus.style.color = "var(--green)";
+        } else {
+          prevStatus.textContent = "SICURO";
+          prevStatus.style.color = "var(--green)";
+        }
+        prevTip.innerHTML = tipText;
+
+        // Update greeting sub
+        document.getElementById('greetingSub').textContent = descs[key];
+      } catch (e) {
+        console.error("Errore durante il parsing del check-in da sessionStorage:", e);
+        // In caso di errore, pulisci i dati corrotti e ripristina lo stato iniziale
+        sessionStorage.removeItem('fitora_checkin');
+        document.getElementById('checkinCard').style.display = 'none';
+        document.getElementById('greetingSub').textContent = 'Errore nel check-in. Riprova.';
+      }
     }
-    prevTip.innerHTML = tipText;
 
-    // Update greeting sub
-    document.getElementById('greetingSub').textContent = descs[key];
-  } catch(e) {
-    console.error("Errore durante il parsing del check-in da sessionStorage:", e);
-    // In caso di errore, pulisci i dati corrotti e ripristina lo stato iniziale
-    sessionStorage.removeItem('fitora_checkin');
-    document.getElementById('checkinCard').style.display = 'none';
-    document.getElementById('greetingSub').textContent = 'Errore nel check-in. Riprova.';
-  }
-}
+    /* ══ IDRATAZIONE ══ */
+    let currentWater = parseFloat(localStorage.getItem('fitora_water')) || 0;
+    if (isNaN(currentWater)) currentWater = 0;
 
-/* ══ IDRATAZIONE ══ */
-let currentWater = parseFloat(localStorage.getItem('fitora_water')) || 0;
-if (isNaN(currentWater)) currentWater = 0;
+    function addWater(amount) {
+      let userWeight = 70;
+      try {
+        const profile = JSON.parse(localStorage.getItem('fitora_profile'));
+        if (profile && profile.weight) {
+          userWeight = parseFloat(profile.weight) || 70;
+        }
+      } catch (e) { }
 
-function addWater(amount) {
-  let userWeight = 70;
-  try {
-    const profile = JSON.parse(localStorage.getItem('fitora_profile'));
-    if (profile && profile.weight) {
-      userWeight = parseFloat(profile.weight) || 70;
+      const target = parseFloat((userWeight * 0.035).toFixed(1)) || 2.5; // 35ml per kg o 2.5L default
+      currentWater = Math.max(0, currentWater + amount);
+      localStorage.setItem('fitora_water', currentWater);
+
+      const pct = target > 0 ? Math.min(100, (currentWater / target) * 100) : 0;
+      document.getElementById('waterBar').style.width = pct + '%';
+      document.getElementById('waterCount').textContent = `${currentWater.toFixed(2)} / ${target} L`;
+
+      if (pct >= 100) document.getElementById('waterCount').style.color = "var(--green)";
     }
-  } catch(e) {}
-  
-  const target = parseFloat((userWeight * 0.035).toFixed(1)) || 2.5; // 35ml per kg o 2.5L default
-  currentWater = Math.max(0, currentWater + amount);
-  localStorage.setItem('fitora_water', currentWater);
-  
-  const pct = target > 0 ? Math.min(100, (currentWater / target) * 100) : 0;
-  document.getElementById('waterBar').style.width = pct + '%';
-  document.getElementById('waterCount').textContent = `${currentWater.toFixed(2)} / ${target} L`;
-  
-  if (pct >= 100) document.getElementById('waterCount').style.color = "var(--green)";
-}
 
-/* ══════════════════════════
-   BIOMECHANICAL HEALTH INDEX
-══════════════════════════ */
-function updateBHI() {
-  // 1. Check-in giornaliero (max 40 punti)
-  let dailyPts = 20, painPenalty = 0;
-  try {
-    const ci = JSON.parse(sessionStorage.getItem('fitora_checkin'));
-    if (ci) {
-      dailyPts = (ci.score || 0) * 0.4;
-      if (ci.pain && !ci.pain.includes('none'))
-        painPenalty = Math.min(20, ci.pain.filter(p => p !== 'none').length * 10);
-    }
-  } catch(e) {}
+    /* ══════════════════════════
+       BIOMECHANICAL HEALTH INDEX
+    ══════════════════════════ */
+    function updateBHI() {
+      // 1. Check-in giornaliero (max 40 punti)
+      let dailyPts = 20, painPenalty = 0;
+      try {
+        const ci = JSON.parse(sessionStorage.getItem('fitora_checkin'));
+        if (ci) {
+          dailyPts = (ci.score || 0) * 0.4;
+          if (ci.pain && !ci.pain.includes('none'))
+            painPenalty = Math.min(20, ci.pain.filter(p => p !== 'none').length * 10);
+        }
+      } catch (e) { }
 
-  // 2. Analisi compliance esercizi reali
-  const plan = getPlan();
-  const log  = getWorkoutLog();
-  let wUp=0,wDn=0, cUp=0,cDn=0, mUp=0,mDn=0;
+      // 2. Analisi compliance esercizi reali
+      const plan = getPlan();
+      const log = getWorkoutLog();
+      let wUp = 0, wDn = 0, cUp = 0, cDn = 0, mUp = 0, mDn = 0;
 
-  plan.forEach(w => {
-    const dayLog = log[w.date] || {};
-    w.phases.forEach((ph, pi) => {
-      const isW = ph.type.includes('warmup');
-      const isC = ph.type.includes('cooldown');
-      ph.exercises.forEach((ex, ei) => {
-        const done = !!dayLog[`p${pi}_e${ei}`];
-        if (isW)      { wUp++; if(done) wDn++; }
-        else if (isC) { cUp++; if(done) cDn++; }
-        else          { mUp++; if(done) mDn++; }
+      plan.forEach(w => {
+        const dayLog = log[w.date] || {};
+        w.phases.forEach((ph, pi) => {
+          const isW = ph.type.includes('warmup');
+          const isC = ph.type.includes('cooldown');
+          ph.exercises.forEach((ex, ei) => {
+            const done = !!dayLog[`p${pi}_e${ei}`];
+            if (isW) { wUp++; if (done) wDn++; }
+            else if (isC) { cUp++; if (done) cDn++; }
+            else { mUp++; if (done) mDn++; }
+          });
+        });
       });
-    });
-  });
 
-  // Compliance ratios (default neutro se nessun dato)
-  const wCmp = wUp > 0 ? wDn/wUp : 0.5;
-  const cCmp = cUp > 0 ? cDn/cUp : 0.5;
-  const mCmp = mUp > 0 ? mDn/mUp : 0.5;
+      // Compliance ratios (default neutro se nessun dato)
+      const wCmp = wUp > 0 ? wDn / wUp : 0.5;
+      const cCmp = cUp > 0 ? cDn / cUp : 0.5;
+      const mCmp = mUp > 0 ? mDn / mUp : 0.5;
 
-  // 3. Punteggi componenti
-  const consistencyPts = Math.min(20, plan.length * 5);     // 0-20 (4 WO → 20 pts)
-  const warmupPts      = Math.round(wCmp * 20);             // 0-20: riscaldamento = meno infortuni
-  const cooldownPts    = Math.round(cCmp * 10);             // 0-10: defaticamento
-  const mainPts        = Math.round(mCmp * 10);             // 0-10: completamento esercizi
+      // 3. Punteggi componenti
+      const consistencyPts = Math.min(20, plan.length * 5);     // 0-20 (4 WO → 20 pts)
+      const warmupPts = Math.round(wCmp * 20);             // 0-20: riscaldamento = meno infortuni
+      const cooldownPts = Math.round(cCmp * 10);             // 0-10: defaticamento
+      const mainPts = Math.round(mCmp * 10);             // 0-10: completamento esercizi
 
-  const bhi = Math.round(Math.min(100, Math.max(0,
-    10 + dailyPts + consistencyPts + warmupPts + cooldownPts + mainPts - painPenalty
-  )));
+      const bhi = Math.round(Math.min(100, Math.max(0,
+        10 + dailyPts + consistencyPts + warmupPts + cooldownPts + mainPts - painPenalty
+      )));
 
-  // Risk text — avviso specifico se compliance bassa
-  let riskText, riskColor;
-  if (wUp > 0 && wCmp < 0.35) {
-    riskText = '+20% Rischio — Salta il Riscaldamento!';
-    riskColor = 'var(--red)';
-  } else if (cUp > 0 && cCmp < 0.35) {
-    riskText = '+12% Rischio — Salta il Defaticamento!';
-    riskColor = 'var(--orange)';
-  } else if (bhi >= 85) {
-    riskText = '-18% Rischio Infortuni';    riskColor = 'var(--green)';
-  } else if (bhi >= 70) {
-    riskText = '-10% Rischio Infortuni';    riskColor = 'var(--cyan)';
-  } else if (bhi >= 55) {
-    riskText = 'Rischio Nella Norma';       riskColor = 'var(--yellow)';
-  } else {
-    riskText = '+8% Rischio Infortuni';     riskColor = 'var(--orange)';
-  }
+      // Risk text - avviso specifico se compliance bassa
+      let riskText, riskColor;
+      if (wUp > 0 && wCmp < 0.35) {
+        riskText = '+20% Rischio - Salta il Riscaldamento!';
+        riskColor = 'var(--red)';
+      } else if (cUp > 0 && cCmp < 0.35) {
+        riskText = '+12% Rischio - Salta il Defaticamento!';
+        riskColor = 'var(--orange)';
+      } else if (bhi >= 85) {
+        riskText = '-18% Rischio Infortuni'; riskColor = 'var(--green)';
+      } else if (bhi >= 70) {
+        riskText = '-10% Rischio Infortuni'; riskColor = 'var(--cyan)';
+      } else if (bhi >= 55) {
+        riskText = 'Rischio Nella Norma'; riskColor = 'var(--yellow)';
+      } else {
+        riskText = '+8% Rischio Infortuni'; riskColor = 'var(--orange)';
+      }
 
-  document.getElementById('bhiScore').textContent = bhi + '.0';
-  document.getElementById('bhiBar').style.width   = bhi + '%';
-  document.getElementById('bhiRisk').textContent  = riskText;
-  document.getElementById('bhiRisk').style.color  = riskColor;
-}
+      document.getElementById('bhiScore').textContent = bhi + '.0';
+      document.getElementById('bhiBar').style.width = bhi + '%';
+      document.getElementById('bhiRisk').textContent = riskText;
+      document.getElementById('bhiRisk').style.color = riskColor;
+    }
 
-/* ══════════════════════════
-   STORAGE HELPERS
-══════════════════════════ */
-function getPlan() {
-  try { return JSON.parse(localStorage.getItem(LS_PLAN)) || []; } catch(e) { return []; }
-}
-function savePlanData(arr) {
-  try { localStorage.setItem(LS_PLAN, JSON.stringify(arr)); } catch(e) {}
-}
-function getWorkoutLog() {
-  try { return JSON.parse(localStorage.getItem(LS_LOG)) || {}; } catch(e) { return {}; }
-}
-function saveWorkoutLog(log) {
-  try { localStorage.setItem(LS_LOG, JSON.stringify(log)); } catch(e) {}
-}
+    /* ══════════════════════════
+       STORAGE HELPERS
+    ══════════════════════════ */
+    function getPlan() {
+      try { return JSON.parse(localStorage.getItem(LS_PLAN)) || []; } catch (e) { return []; }
+    }
+    function savePlanData(arr) {
+      try { localStorage.setItem(LS_PLAN, JSON.stringify(arr)); } catch (e) { }
+    }
+    function getWorkoutLog() {
+      try { return JSON.parse(localStorage.getItem(LS_LOG)) || {}; } catch (e) { return {}; }
+    }
+    function saveWorkoutLog(log) {
+      try { localStorage.setItem(LS_LOG, JSON.stringify(log)); } catch (e) { }
+    }
 
-/* ══════════════════════════
-   HOME STATS
-══════════════════════════ */
-function updateHomeStats() {
-  const plan = getPlan();
-  const log  = getWorkoutLog();
-  const now  = new Date();
-  const thisMonth = `${now.getFullYear()}-${String(now.getMonth()+1).padStart(2,'0')}`;
-  const monthPlan = plan.filter(w => w.date && w.date.startsWith(thisMonth));
-  const totalKcal = monthPlan.reduce((a,w) => a + (w.kcal||0), 0);
-  const totalEx   = monthPlan.reduce((a,w) => a + w.phases.reduce((b,ph) => b + ph.exercises.length, 0), 0);
-  const activeDays = Object.keys(log).filter(d => d.startsWith(thisMonth) && Object.values(log[d]).some(v=>v)).length;
-  document.getElementById('qs-workouts').textContent  = monthPlan.length;
-  document.getElementById('qs-kcal').textContent      = totalKcal;
-  document.getElementById('qs-exercises').textContent = totalEx;
-  document.getElementById('qs-days').textContent      = activeDays;
-}
-/* ══════════════════════════
-   PIANO MENSILE
-══════════════════════════ */
-function renderPlan() {
-  const plan = getPlan();
-  const log  = getWorkoutLog();
-  const listEl = document.getElementById('planList');
-  const noEl   = document.getElementById('noPlanState');
-  const full   = plan.length >= 3;
-  document.getElementById('planCount').textContent = `${plan.length} / 3`;
-  document.getElementById('planFullNotice').style.display = full ? '' : 'none';
-  const genLink = document.getElementById('planGenLink');
-  if (full) {
-    genLink.style.opacity = '.35';
-    genLink.style.pointerEvents = 'none';
-    genLink.textContent = '<i class="fa-solid fa-lock" style="color: #ff9800;"></i> Piano Completo — Elimina un allenamento';
-  } else {
-    genLink.style.opacity = '';
-    genLink.style.pointerEvents = '';
-    genLink.textContent = '<i class="fa-solid fa-bolt" style="color: #facc15;"></i> Genera Nuovo Allenamento';
-  }
-  if (!plan.length) { noEl.style.display=''; listEl.innerHTML=''; return; }
-  noEl.style.display = 'none';
-  listEl.innerHTML = plan.map(w => {
-    const planKeys = [];
-    w.phases.forEach((ph,pi) => ph.exercises.forEach((_,ei) => planKeys.push(`p${pi}_e${ei}`)));
-    const totalEx = planKeys.length;
-    const dayLog  = log[w.date] || {};
-    const done    = planKeys.filter(k => dayLog[k]).length;
-    const pct     = totalEx > 0 ? Math.round(done/totalEx*100) : 0;
-    const statusColor = pct===100 ? 'var(--green)' : pct>0 ? 'var(--cyan)' : 'var(--muted)';
-    const statusText  = pct===100 ? '<i class="fa-solid fa-check" style="color: #4caf50;"></i> Completato' : pct>0 ? pct+'% fatto' : '';
-    const phasesHtml = w.phases.map(ph => {
-      const tc = ph.type.replace('phase-','');
-      return `
+    /* ══════════════════════════
+       HOME STATS
+    ══════════════════════════ */
+    function updateHomeStats() {
+      const plan = getPlan();
+      const log = getWorkoutLog();
+      const now = new Date();
+      const thisMonth = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}`;
+      const monthPlan = plan.filter(w => w.date && w.date.startsWith(thisMonth));
+      const totalKcal = monthPlan.reduce((a, w) => a + (w.kcal || 0), 0);
+      const totalEx = monthPlan.reduce((a, w) => a + w.phases.reduce((b, ph) => b + ph.exercises.length, 0), 0);
+      const activeDays = Object.keys(log).filter(d => d.startsWith(thisMonth) && Object.values(log[d]).some(v => v)).length;
+      document.getElementById('qs-workouts').textContent = monthPlan.length;
+      document.getElementById('qs-kcal').textContent = totalKcal;
+      document.getElementById('qs-exercises').textContent = totalEx;
+      document.getElementById('qs-days').textContent = activeDays;
+    }
+    /* ══════════════════════════
+       PIANO MENSILE
+    ══════════════════════════ */
+    function renderPlan() {
+      const plan = getPlan();
+      const log = getWorkoutLog();
+      const listEl = document.getElementById('planList');
+      const noEl = document.getElementById('noPlanState');
+      const full = plan.length >= 3;
+      document.getElementById('planCount').textContent = `${plan.length} / 3`;
+      document.getElementById('planFullNotice').style.display = full ? '' : 'none';
+      const genLink = document.getElementById('planGenLink');
+      if (full) {
+        genLink.style.opacity = '.35';
+        genLink.style.pointerEvents = 'none';
+        genLink.innerHTML = '<i class="fa-solid fa-lock" style="color: #ff9800;"></i> Piano Completo - Elimina un allenamento';
+      } else {
+        genLink.style.opacity = '';
+        genLink.style.pointerEvents = '';
+        genLink.innerHTML = '<i class="fa-solid fa-bolt" style="color: #facc15;"></i> Genera Nuovo Allenamento';
+      }
+      if (!plan.length) { noEl.style.display = ''; listEl.innerHTML = ''; return; }
+      noEl.style.display = 'none';
+      listEl.innerHTML = plan.map(w => {
+        const planKeys = [];
+        w.phases.forEach((ph, pi) => ph.exercises.forEach((_, ei) => planKeys.push(`p${pi}_e${ei}`)));
+        const totalEx = planKeys.length;
+        const dayLog = log[w.date] || {};
+        const done = planKeys.filter(k => dayLog[k]).length;
+        const pct = totalEx > 0 ? Math.round(done / totalEx * 100) : 0;
+        const statusColor = pct === 100 ? 'var(--green)' : pct > 0 ? 'var(--cyan)' : 'var(--muted)';
+        const statusText = pct === 100 ? '<i class="fa-solid fa-check" style="color: #4caf50;"></i> Completato' : pct > 0 ? pct + '% fatto' : '';
+        const phasesHtml = w.phases.map(ph => {
+          const tc = ph.type.replace('phase-', '');
+          return `
         <div class="plan-phase-label ${tc}">${ph.label}<span style="float:right;font-weight:400;opacity:.6">${ph.dur}</span></div>
-        ${ph.exercises.map((ex,i) => `
+        ${ph.exercises.map((ex, i) => `
           <div style="display:flex;align-items:center;gap:12px;padding:10px 16px;border-top:1px solid rgba(255,255,255,.03)">
-            <span style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:.8rem;color:var(--muted);width:22px">${String(i+1).padStart(2,'0')}</span>
-            <div style="flex:1"><div style="font-size:.82rem;font-weight:600">${ex.n}</div>${ex.d?`<div style="font-size:.63rem;color:var(--muted)">${ex.d}</div>`:''}</div>
+            <span style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:.8rem;color:var(--muted);width:22px">${String(i + 1).padStart(2, '0')}</span>
+            <div style="flex:1"><div style="font-size:.82rem;font-weight:600">${ex.n}</div>${ex.d ? `<div style="font-size:.63rem;color:var(--muted)">${ex.d}</div>` : ''}</div>
             <span style="font-size:.62rem;font-weight:700;color:var(--cyan)">${ex.spec}</span>
           </div>`).join('')}`;
-    }).join('');
-    return `
+        }).join('');
+        return `
       <div class="plan-card" id="pc-${w.id}">
         <div class="plan-card-head" onclick="togglePlanDetail(${w.id})">
           <div class="plan-date-block"><div class="pdb-day">${w.day}</div><div class="pdb-mon">${w.month}</div></div>
@@ -696,115 +782,115 @@ function renderPlan() {
             <div class="plan-meta">${w.dur} min · ${totalEx} esercizi · ~${w.kcal} kcal</div>
           </div>
           <div style="display:flex;flex-direction:column;align-items:flex-end;gap:4px">
-            ${statusText?`<span style="font-size:.62rem;color:${statusColor};font-weight:700">${statusText}</span>`:''}
+            ${statusText ? `<span style="font-size:.62rem;color:${statusColor};font-weight:700">${statusText}</span>` : ''}
             <span class="plan-chevron" id="chev-${w.id}">▼</span>
           </div>
         </div>
         <div class="plan-detail" id="pd-${w.id}">
           ${phasesHtml}
           <div style="display:flex;align-items:center;justify-content:space-between;padding:10px 16px;border-top:1px solid rgba(255,255,255,.04)">
-            <span style="font-size:.62rem;color:var(--muted);letter-spacing:2px;text-transform:uppercase">${w.levelLabel||''} · Score ${w.score}</span>
+            <span style="font-size:.62rem;color:var(--muted);letter-spacing:2px;text-transform:uppercase">${w.levelLabel || ''} · Score ${w.score}</span>
             <button class="btn-del-plan" onclick="deletePlanItem(${w.id})"><i class="fa-solid fa-trash" style="color: #f44336;"></i>️ Rimuovi</button>
           </div>
         </div>
       </div>`;
-  }).join('');
-}
-function togglePlanDetail(id) {
-  document.getElementById('pd-'+id).classList.toggle('open');
-  document.getElementById('chev-'+id).classList.toggle('open');
-}
-function deletePlanItem(id) {
-  if (!confirm('Rimuovere questo allenamento dal piano?')) return;
-  savePlanData(getPlan().filter(w => w.id !== id));
-  renderPlan(); updateHomeStats(); showToast('<i class="fa-solid fa-trash" style="color: #f44336;"></i>️ Rimosso');
-}
+      }).join('');
+    }
+    function togglePlanDetail(id) {
+      document.getElementById('pd-' + id).classList.toggle('open');
+      document.getElementById('chev-' + id).classList.toggle('open');
+    }
+    function deletePlanItem(id) {
+      if (!confirm('Rimuovere questo allenamento dal piano?')) return;
+      savePlanData(getPlan().filter(w => w.id !== id));
+      renderPlan(); updateHomeStats(); showToast('<i class="fa-solid fa-trash" style="color: #f44336;"></i>️ Rimosso');
+    }
 
-/* ══════════════════════════
-   DIARIO + CALENDARIO
-══════════════════════════ */
-function renderDiary() {
-  const plan  = getPlan();
-  const log   = getWorkoutLog();
-  const today = new Date().toISOString().split('T')[0];
-  const now   = new Date();
-  document.getElementById('diaryTodayLabel').textContent =
-    now.toLocaleDateString('it-IT',{weekday:'short',day:'numeric',month:'short'}).toUpperCase();
-  document.getElementById('calMonthLabel').textContent =
-    now.toLocaleDateString('it-IT',{month:'long',year:'numeric'}).toUpperCase();
+    /* ══════════════════════════
+       DIARIO + CALENDARIO
+    ══════════════════════════ */
+    function renderDiary() {
+      const plan = getPlan();
+      const log = getWorkoutLog();
+      const today = new Date().toISOString().split('T')[0];
+      const now = new Date();
+      document.getElementById('diaryTodayLabel').textContent =
+        now.toLocaleDateString('it-IT', { weekday: 'short', day: 'numeric', month: 'short' }).toUpperCase();
+      document.getElementById('calMonthLabel').textContent =
+        now.toLocaleDateString('it-IT', { month: 'long', year: 'numeric' }).toUpperCase();
 
-  renderCalendar(plan, log, today);
+      renderCalendar(plan, log, today);
 
-  const container = document.getElementById('diaryTodaySection');
-  document.getElementById('diaryDayDetail').style.display = 'none';
-  document.getElementById('diaryLogSection').innerHTML = '';
+      const container = document.getElementById('diaryTodaySection');
+      document.getElementById('diaryDayDetail').style.display = 'none';
+      document.getElementById('diaryLogSection').innerHTML = '';
 
-  if (!plan.length) {
-    container.innerHTML = `<div class="section-label">// I tuoi piani (0 / 3)</div>
+      if (!plan.length) {
+        container.innerHTML = `<div class="section-label">// I tuoi piani (0 / 3)</div>
       <div class="card"><div class="card-body" style="text-align:center;padding:28px 20px">
         <div style="font-size:2rem;margin-bottom:10px;opacity:.2"><i class="fa-solid fa-clipboard-list" style="color: #ffeb3b;"></i></div>
         <div style="font-size:.68rem;letter-spacing:3px;text-transform:uppercase;color:var(--muted);line-height:1.9">Nessun piano salvato<br>Genera e salva il tuo workout</div>
         <a href="workout.html" style="display:inline-block;margin-top:16px;background:var(--grad);color:#000;font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:.85rem;letter-spacing:3px;text-transform:uppercase;padding:11px 28px;border-radius:8px;text-decoration:none"><i class="fa-solid fa-bolt" style="color: #facc15;"></i> Genera ora</a>
       </div></div>`;
-    return;
-  }
+        return;
+      }
 
-  // Ordina: oggi prima, poi per data decrescente
-  const sorted = [...plan].sort((a,b) => {
-    if (a.date === today) return -1;
-    if (b.date === today) return 1;
-    return b.date.localeCompare(a.date);
-  });
-  container.innerHTML = `<div class="section-label">// I tuoi piani (${plan.length} / 3)</div>` +
-    sorted.map(w => buildDiaryAccordion(w, log[w.date]||{}, w.date === today)).join('');
-}
+      // Ordina: oggi prima, poi per data decrescente
+      const sorted = [...plan].sort((a, b) => {
+        if (a.date === today) return -1;
+        if (b.date === today) return 1;
+        return b.date.localeCompare(a.date);
+      });
+      container.innerHTML = `<div class="section-label">// I tuoi piani (${plan.length} / 3)</div>` +
+        sorted.map(w => buildDiaryAccordion(w, log[w.date] || {}, w.date === today)).join('');
+    }
 
-function buildDiaryAccordion(w, dayLog, startOpen) {
-  const date    = w.date;
-  const today   = new Date().toISOString().split('T')[0];
-  const isPast  = date < today;
-  // Conta solo le chiavi degli esercizi di QUESTO piano
-  const planKeys = [];
-  w.phases.forEach((ph,pi) => ph.exercises.forEach((_,ei) => planKeys.push(`p${pi}_e${ei}`)));
-  const totalEx = planKeys.length;
-  const done    = planKeys.filter(k => dayLog[k]).length;
-  const pct     = totalEx>0 ? Math.round(done/totalEx*100) : 0;
-  const color   = pct===100?'var(--green)':pct>0?'var(--cyan)':'var(--muted)';
-  const d       = new Date(date+'T12:00:00');
+    function buildDiaryAccordion(w, dayLog, startOpen) {
+      const date = w.date;
+      const today = new Date().toISOString().split('T')[0];
+      const isPast = date < today;
+      // Conta solo le chiavi degli esercizi di QUESTO piano
+      const planKeys = [];
+      w.phases.forEach((ph, pi) => ph.exercises.forEach((_, ei) => planKeys.push(`p${pi}_e${ei}`)));
+      const totalEx = planKeys.length;
+      const done = planKeys.filter(k => dayLog[k]).length;
+      const pct = totalEx > 0 ? Math.round(done / totalEx * 100) : 0;
+      const color = pct === 100 ? 'var(--green)' : pct > 0 ? 'var(--cyan)' : 'var(--muted)';
+      const d = new Date(date + 'T12:00:00');
 
-  const phasesHtml = w.phases.map((ph,pi) => {
-    const tc = ph.type.replace('phase-','');
-    return `<div class="plan-phase-label ${tc}">${ph.label}<span style="float:right;font-weight:400;opacity:.6">${ph.dur}</span></div>
-      ${ph.exercises.map((ex,ei) => {
-        const key = `p${pi}_e${ei}`;
-        const chk = !!dayLog[key];
-        // Piani passati: esercizi bloccati (read-only)
-        const rowClass = `ex-check-row ${chk?'done':''} ${isPast?'locked':''}`;
-        const click    = isPast ? '' : `onclick="toggleExercise('${date}','${key}')"`;
-        return `<div class="${rowClass}" id="ecr-${date}-${key}" ${click}>
-          <div class="ex-checkbox">${chk?'<i class="fa-solid fa-check" style="color: #4caf50;"></i>':''}</div>
-          <div class="ex-check-body"><div class="ex-check-name">${ex.n}</div>${ex.d?`<div class="ex-check-detail">${ex.d}</div>`:''}</div>
+      const phasesHtml = w.phases.map((ph, pi) => {
+        const tc = ph.type.replace('phase-', '');
+        return `<div class="plan-phase-label ${tc}">${ph.label}<span style="float:right;font-weight:400;opacity:.6">${ph.dur}</span></div>
+      ${ph.exercises.map((ex, ei) => {
+          const key = `p${pi}_e${ei}`;
+          const chk = !!dayLog[key];
+          // Piani passati: esercizi bloccati (read-only)
+          const rowClass = `ex-check-row ${chk ? 'done' : ''} ${isPast ? 'locked' : ''}`;
+          const click = isPast ? '' : `onclick="toggleExercise('${date}','${key}')"`;
+          return `<div class="${rowClass}" id="ecr-${date}-${key}" ${click}>
+          <div class="ex-checkbox">${chk ? '<i class="fa-solid fa-check" style="color: #4caf50;"></i>' : ''}</div>
+          <div class="ex-check-body"><div class="ex-check-name">${ex.n}</div>${ex.d ? `<div class="ex-check-detail">${ex.d}</div>` : ''}</div>
           <span class="ex-check-spec">${ex.spec}</span>
         </div>`;
-      }).join('')}`;
-  }).join('');
+        }).join('')}`;
+      }).join('');
 
-  const pastLabel = isPast ? `<span class="past-label"><i class="fa-solid fa-lock" style="color: #ff9800;"></i> Giorno passato</span>` : '';
-  const foot = isPast
-    ? `<div class="diary-accord-foot">
+      const pastLabel = isPast ? `<span class="past-label"><i class="fa-solid fa-lock" style="color: #ff9800;"></i> Giorno passato</span>` : '';
+      const foot = isPast
+        ? `<div class="diary-accord-foot">
         ${pastLabel}
         <button class="btn-del-plan" style="margin-left:auto;padding:10px 14px;border:1px solid rgba(255,69,69,.25);font-size:.65rem" onclick="deletePlanFromDiary(${w.id})"><i class="fa-solid fa-trash" style="color: #f44336;"></i>️ Elimina</button>
       </div>`
-    : `<div class="diary-accord-foot">
+        : `<div class="diary-accord-foot">
         <button class="btn-check-all" style="flex:1;margin:0" onclick="checkAllForDate('${date}')"><i class="fa-solid fa-check" style="color: #4caf50;"></i> Tutto completato</button>
         <button class="btn-del-plan" style="padding:10px 14px;border:1px solid rgba(255,69,69,.25);font-size:.65rem" onclick="deletePlanFromDiary(${w.id})"><i class="fa-solid fa-trash" style="color: #f44336;"></i>️ Elimina</button>
       </div>`;
 
-  return `<div class="diary-accord ${isPast?'past-plan':''}" id="da-${w.id}">
+      return `<div class="diary-accord ${isPast ? 'past-plan' : ''}" id="da-${w.id}">
     <div class="diary-accord-head" onclick="toggleDiaryAccord('${w.id}')">
       <div class="plan-date-block">
         <div class="pdb-day">${d.getDate()}</div>
-        <div class="pdb-mon">${d.toLocaleDateString('it-IT',{month:'short'}).toUpperCase()}</div>
+        <div class="pdb-mon">${d.toLocaleDateString('it-IT', { month: 'short' }).toUpperCase()}</div>
       </div>
       <div style="flex:1;min-width:0">
         <div class="plan-sport">${w.sportIcon} ${w.sport}</div>
@@ -812,130 +898,130 @@ function buildDiaryAccordion(w, dayLog, startOpen) {
       </div>
       <div style="display:flex;flex-direction:column;align-items:flex-end;gap:4px;flex-shrink:0">
         <span id="dapct-${date}" style="font-size:.65rem;font-weight:700;color:${color}">${pct}%</span>
-        <span class="plan-chevron ${startOpen?'open':''}" id="dachev-${w.id}">▼</span>
+        <span class="plan-chevron ${startOpen ? 'open' : ''}" id="dachev-${w.id}">▼</span>
       </div>
     </div>
     <div style="height:3px;background:rgba(255,255,255,.04)">
       <div id="da-bar-${date}" style="height:100%;width:${pct}%;background:var(--grad);transition:width .4s"></div>
     </div>
-    <div class="diary-accord-body ${startOpen?'open':''}" id="dab-${w.id}">
+    <div class="diary-accord-body ${startOpen ? 'open' : ''}" id="dab-${w.id}">
       ${phasesHtml}
       ${foot}
     </div>
   </div>`;
-}
+    }
 
-function toggleDiaryAccord(id) {
-  document.getElementById('dab-'+id).classList.toggle('open');
-  document.getElementById('dachev-'+id).classList.toggle('open');
-}
+    function toggleDiaryAccord(id) {
+      document.getElementById('dab-' + id).classList.toggle('open');
+      document.getElementById('dachev-' + id).classList.toggle('open');
+    }
 
-function deletePlanFromDiary(id) {
-  if (!confirm('Eliminare questo piano dal diario?')) return;
-  savePlanData(getPlan().filter(w => w.id !== id));
-  updateHomeStats(); updateBHI();
-  renderDiary();
-  showToast('<i class="fa-solid fa-trash" style="color: #f44336;"></i>️ Piano eliminato');
-}
+    function deletePlanFromDiary(id) {
+      if (!confirm('Eliminare questo piano dal diario?')) return;
+      savePlanData(getPlan().filter(w => w.id !== id));
+      updateHomeStats(); updateBHI();
+      renderDiary();
+      showToast('<i class="fa-solid fa-trash" style="color: #f44336;"></i>️ Piano eliminato');
+    }
 
-function renderCalendar(plan, log, today) {
-  const now   = new Date();
-  const year  = now.getFullYear();
-  const month = now.getMonth();
-  // Raggruppa più piani per la stessa data in un array
-  const planMap = {};
-  plan.forEach(w => {
-    if (!planMap[w.date]) planMap[w.date] = [];
-    planMap[w.date].push(w);
-  });
+    function renderCalendar(plan, log, today) {
+      const now = new Date();
+      const year = now.getFullYear();
+      const month = now.getMonth();
+      // Raggruppa più piani per la stessa data in un array
+      const planMap = {};
+      plan.forEach(w => {
+        if (!planMap[w.date]) planMap[w.date] = [];
+        planMap[w.date].push(w);
+      });
 
-  const daysInMonth = new Date(year, month+1, 0).getDate();
-  const firstDow    = new Date(year, month, 1).getDay();
-  const startOffset = firstDow === 0 ? 6 : firstDow - 1; // Mon=0
+      const daysInMonth = new Date(year, month + 1, 0).getDate();
+      const firstDow = new Date(year, month, 1).getDay();
+      const startOffset = firstDow === 0 ? 6 : firstDow - 1; // Mon=0
 
-  const headers = ['Lun','Mar','Mer','Gio','Ven','Sab','Dom'];
-  let html = headers.map(h=>`<div class="cal-header-cell">${h}</div>`).join('');
-  for (let i=0; i<startOffset; i++) html += `<div class="cal-day empty"></div>`;
+      const headers = ['Lun', 'Mar', 'Mer', 'Gio', 'Ven', 'Sab', 'Dom'];
+      let html = headers.map(h => `<div class="cal-header-cell">${h}</div>`).join('');
+      for (let i = 0; i < startOffset; i++) html += `<div class="cal-day empty"></div>`;
 
-  for (let d=1; d<=daysInMonth; d++) {
-    const ds  = `${year}-${String(month+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`;
-    const plans = planMap[ds];
-    const isT   = ds === today;
-    const isPast= ds < today;
-    let cls     = 'cal-day' + (isT?' today':'') + (isPast?' past-workout':'');
+      for (let d = 1; d <= daysInMonth; d++) {
+        const ds = `${year}-${String(month + 1).padStart(2, '0')}-${String(d).padStart(2, '0')}`;
+        const plans = planMap[ds];
+        const isT = ds === today;
+        const isPast = ds < today;
+        let cls = 'cal-day' + (isT ? ' today' : '') + (isPast ? ' past-workout' : '');
 
-    if (plans) {
-      const dayLog = log[ds]||{};
-      // Aggrega le chiavi uniche di tutti i piani per questa data
-      const allKeys = new Set();
-      plans.forEach(w => w.phases.forEach((ph,pi) => ph.exercises.forEach((_,ei) => allKeys.add(`p${pi}_e${ei}`))));
-      const totalEx = allKeys.size;
-      const doneEx  = [...allKeys].filter(k => dayLog[k]).length;
-      const pct     = totalEx>0 ? Math.round(doneEx/totalEx*100) : 0;
-      const pctColor= pct===100?'var(--green)':pct>0?'var(--cyan)':'rgba(255,255,255,.3)';
-      if (pct===100) cls += ' done-100';
-      cls += ' has-workout';
-      const rep = plans[0]; // usa il primo piano per icona/nome
-      html += `<div class="${cls}" id="calday-${ds}" onclick="showCalDay('${ds}')">
+        if (plans) {
+          const dayLog = log[ds] || {};
+          // Aggrega le chiavi uniche di tutti i piani per questa data
+          const allKeys = new Set();
+          plans.forEach(w => w.phases.forEach((ph, pi) => ph.exercises.forEach((_, ei) => allKeys.add(`p${pi}_e${ei}`))));
+          const totalEx = allKeys.size;
+          const doneEx = [...allKeys].filter(k => dayLog[k]).length;
+          const pct = totalEx > 0 ? Math.round(doneEx / totalEx * 100) : 0;
+          const pctColor = pct === 100 ? 'var(--green)' : pct > 0 ? 'var(--cyan)' : 'rgba(255,255,255,.3)';
+          if (pct === 100) cls += ' done-100';
+          cls += ' has-workout';
+          const rep = plans[0]; // usa il primo piano per icona/nome
+          html += `<div class="${cls}" id="calday-${ds}" onclick="showCalDay('${ds}')">
         <div class="cal-day-num">${d}</div>
         <div class="cal-sport">${rep.sportIcon}</div>
         <div class="cal-sport-nm">${rep.sport}</div>
-        <div class="cal-pct-txt" id="calpct-${ds}" style="color:${pctColor};${pct>0?'':'display:none'}">${pct}%</div>
+        <div class="cal-pct-txt" id="calpct-${ds}" style="color:${pctColor};${pct > 0 ? '' : 'display:none'}">${pct}%</div>
       </div>`;
-    } else {
-      html += `<div class="${cls}"><div class="cal-day-num">${d}</div></div>`;
+        } else {
+          html += `<div class="${cls}"><div class="cal-day-num">${d}</div></div>`;
+        }
+      }
+      document.getElementById('calGrid').innerHTML = html;
     }
-  }
-  document.getElementById('calGrid').innerHTML = html;
-}
 
-let _calSelectedDate = null;
-function showCalDay(date) {
-  // Rimuovi selezione precedente
-  if (_calSelectedDate) {
-    const prev = document.getElementById('calday-'+_calSelectedDate);
-    if (prev) prev.classList.remove('selected');
-  }
-  if (_calSelectedDate === date) { _calSelectedDate = null; return; }
-  _calSelectedDate = date;
-  const cell = document.getElementById('calday-'+date);
-  if (cell) cell.classList.add('selected');
+    let _calSelectedDate = null;
+    function showCalDay(date) {
+      // Rimuovi selezione precedente
+      if (_calSelectedDate) {
+        const prev = document.getElementById('calday-' + _calSelectedDate);
+        if (prev) prev.classList.remove('selected');
+      }
+      if (_calSelectedDate === date) { _calSelectedDate = null; return; }
+      _calSelectedDate = date;
+      const cell = document.getElementById('calday-' + date);
+      if (cell) cell.classList.add('selected');
 
-  // Trova il piano per questa data e apri il suo accordion
-  const w = getPlan().find(w => w.date === date);
-  if (!w) return;
-  const body  = document.getElementById('dab-'+w.id);
-  const chev  = document.getElementById('dachev-'+w.id);
-  const card  = document.getElementById('da-'+w.id);
-  if (body && !body.classList.contains('open')) {
-    body.classList.add('open');
-    if (chev) chev.classList.add('open');
-  }
-  if (card) card.scrollIntoView({behavior:'smooth', block:'start'});
-}
+      // Trova il piano per questa data e apri il suo accordion
+      const w = getPlan().find(w => w.date === date);
+      if (!w) return;
+      const body = document.getElementById('dab-' + w.id);
+      const chev = document.getElementById('dachev-' + w.id);
+      const card = document.getElementById('da-' + w.id);
+      if (body && !body.classList.contains('open')) {
+        body.classList.add('open');
+        if (chev) chev.classList.add('open');
+      }
+      if (card) card.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
 
-function buildDiaryWorkout(w, dayLog, dateOverride) {
-  const today = dateOverride || new Date().toISOString().split('T')[0];
-  const planKeys = [];
-  w.phases.forEach((ph,pi) => ph.exercises.forEach((_,ei) => planKeys.push(`p${pi}_e${ei}`)));
-  const totalEx = planKeys.length;
-  const done = planKeys.filter(k => dayLog[k]).length;
-  const pct  = totalEx>0 ? Math.round(done/totalEx*100) : 0;
-  const phasesHtml = w.phases.map((ph,pi) => {
-    const tc = ph.type.replace('phase-','');
-    return `
+    function buildDiaryWorkout(w, dayLog, dateOverride) {
+      const today = dateOverride || new Date().toISOString().split('T')[0];
+      const planKeys = [];
+      w.phases.forEach((ph, pi) => ph.exercises.forEach((_, ei) => planKeys.push(`p${pi}_e${ei}`)));
+      const totalEx = planKeys.length;
+      const done = planKeys.filter(k => dayLog[k]).length;
+      const pct = totalEx > 0 ? Math.round(done / totalEx * 100) : 0;
+      const phasesHtml = w.phases.map((ph, pi) => {
+        const tc = ph.type.replace('phase-', '');
+        return `
       <div class="plan-phase-label ${tc}">${ph.label}<span style="float:right;font-weight:400;opacity:.6">${ph.dur}</span></div>
-      ${ph.exercises.map((ex,ei) => {
-        const key = `p${pi}_e${ei}`;
-        const checked = !!dayLog[key];
-        return `<div class="ex-check-row ${checked?'done':''}" id="ecr-${today}-${key}" onclick="toggleExercise('${today}','${key}')">
-          <div class="ex-checkbox">${checked?'<i class="fa-solid fa-check" style="color: #4caf50;"></i>':''}</div>
-          <div class="ex-check-body"><div class="ex-check-name">${ex.n}</div>${ex.d?`<div class="ex-check-detail">${ex.d}</div>`:''}</div>
+      ${ph.exercises.map((ex, ei) => {
+          const key = `p${pi}_e${ei}`;
+          const checked = !!dayLog[key];
+          return `<div class="ex-check-row ${checked ? 'done' : ''}" id="ecr-${today}-${key}" onclick="toggleExercise('${today}','${key}')">
+          <div class="ex-checkbox">${checked ? '<i class="fa-solid fa-check" style="color: #4caf50;"></i>' : ''}</div>
+          <div class="ex-check-body"><div class="ex-check-name">${ex.n}</div>${ex.d ? `<div class="ex-check-detail">${ex.d}</div>` : ''}</div>
           <span class="ex-check-spec">${ex.spec}</span>
         </div>`;
-      }).join('')}`;
-  }).join('');
-  return `<div class="card" style="overflow:hidden">
+        }).join('')}`;
+      }).join('');
+      return `<div class="card" style="overflow:hidden">
     <div class="card-head">
       <div style="font-weight:700;font-size:.9rem">${w.sportIcon} ${w.sport} · ${w.dur} min</div>
       <div style="font-size:.7rem;color:var(--cyan);font-weight:700" id="diary-pct-${today}">${pct}% completato</div>
@@ -945,183 +1031,183 @@ function buildDiaryWorkout(w, dayLog, dateOverride) {
     <button class="btn-check-all" onclick="checkAllForDate('${today}')"><i class="fa-solid fa-check" style="color: #4caf50;"></i> Segna tutto completato</button>
     <button class="btn-save-day" onclick="saveDayLog('${today}')"><i class="fa-solid fa-floppy-disk" style="color: #03a9f4;"></i> Salva giornata</button>
   </div>`;
-}
+    }
 
-function toggleExercise(date, key) {
-  const log = getWorkoutLog();
-  if (!log[date]) log[date]={};
-  log[date][key] = !log[date][key];
-  saveWorkoutLog(log);
-  const row = document.getElementById(`ecr-${date}-${key}`);
-  if (row) {
-    row.classList.toggle('done', !!log[date][key]);
-    row.querySelector('.ex-checkbox').textContent = log[date][key]?'<i class="fa-solid fa-check" style="color: #4caf50;"></i>':'';
-  }
-  updateDiaryProgress(date);
-  updateBHI();
-}
-function updateDiaryProgress(date) {
-  // Aggiorna badge e barra dell'accordion dalla fonte DOM
-  const rows  = Array.from(document.querySelectorAll(`[id^="ecr-${date}-"]`));
-  if (rows.length) {
-    const done  = rows.filter(r => r.classList.contains('done')).length;
-    const pct   = Math.round(done/rows.length*100);
-    const color = pct===100?'var(--green)':pct>0?'var(--cyan)':'var(--muted)';
-    const pA = document.getElementById(`dapct-${date}`);
-    const bA = document.getElementById(`da-bar-${date}`);
-    if (pA) { pA.textContent = pct+'%'; pA.style.color = color; }
-    if (bA) bA.style.width = pct+'%';
-    const pB = document.getElementById(`diary-pct-${date}`);
-    const bB = document.getElementById(`diary-bar-${date}`);
-    if (pB) pB.textContent = pct+'% completato';
-    if (bB) bB.style.width = pct+'%';
-  }
-  // Aggiorna la cella del calendario leggendo sempre da localStorage (fonte autorevole)
-  _updateCalCell(date);
-}
-function _updateCalCell(date) {
-  const calCell = document.getElementById('calday-'+date);
-  if (!calCell) return;
-  const log    = getWorkoutLog();
-  const dayLog = log[date]||{};
-  const plans  = getPlan().filter(w => w.date === date);
-  if (!plans.length) return;
-  // Chiavi uniche aggregate su tutti i piani della data
-  const allKeys = new Set();
-  plans.forEach(w => w.phases.forEach((ph,pi) => ph.exercises.forEach((_,ei) => allKeys.add(`p${pi}_e${ei}`))));
-  const totalEx = allKeys.size;
-  const doneEx  = [...allKeys].filter(k => dayLog[k]).length;
-  const pct     = totalEx>0 ? Math.round(doneEx/totalEx*100) : 0;
-  const color   = pct===100?'var(--green)':pct>0?'var(--cyan)':'rgba(255,255,255,.3)';
-  const calPct  = document.getElementById('calpct-'+date);
-  if (calPct) {
-    calPct.textContent   = pct+'%';
-    calPct.style.color   = color;
-    calPct.style.display = pct>0 ? '' : 'none';
-  }
-  calCell.classList.toggle('done-100', pct===100);
-}
-function checkAllForDate(date) {
-  const log = getWorkoutLog();
-  if (!log[date]) log[date]={};
-  document.querySelectorAll(`[id^="ecr-${date}-"]`).forEach(row => {
-    const key = row.id.replace(`ecr-${date}-`,'');
-    log[date][key] = true;
-    row.classList.add('done');
-    row.querySelector('.ex-checkbox').textContent='<i class="fa-solid fa-check" style="color: #4caf50;"></i>';
-  });
-  saveWorkoutLog(log);
-  updateDiaryProgress(date);
-  updateBHI();
-  showToast('<i class="fa-solid fa-check" style="color: #4caf50;"></i> Tutto completato!');
-}
-function saveDayLog(date) {
-  const log = getWorkoutLog();
-  const done = Object.values(log[date]||{}).filter(v=>v).length;
-  updateHomeStats(); updateBHI();
-  showToast(`<i class="fa-solid fa-floppy-disk" style="color: #03a9f4;"></i> Giornata salvata! ${done} esercizi completati`);
-}
+    function toggleExercise(date, key) {
+      const log = getWorkoutLog();
+      if (!log[date]) log[date] = {};
+      log[date][key] = !log[date][key];
+      saveWorkoutLog(log);
+      const row = document.getElementById(`ecr-${date}-${key}`);
+      if (row) {
+        row.classList.toggle('done', !!log[date][key]);
+        row.querySelector('.ex-checkbox').innerHTML = log[date][key] ? '<i class="fa-solid fa-check" style="color: #4caf50;"></i>' : '';
+      }
+      updateDiaryProgress(date);
+      updateBHI();
+    }
+    function updateDiaryProgress(date) {
+      // Aggiorna badge e barra dell'accordion dalla fonte DOM
+      const rows = Array.from(document.querySelectorAll(`[id^="ecr-${date}-"]`));
+      if (rows.length) {
+        const done = rows.filter(r => r.classList.contains('done')).length;
+        const pct = Math.round(done / rows.length * 100);
+        const color = pct === 100 ? 'var(--green)' : pct > 0 ? 'var(--cyan)' : 'var(--muted)';
+        const pA = document.getElementById(`dapct-${date}`);
+        const bA = document.getElementById(`da-bar-${date}`);
+        if (pA) { pA.textContent = pct + '%'; pA.style.color = color; }
+        if (bA) bA.style.width = pct + '%';
+        const pB = document.getElementById(`diary-pct-${date}`);
+        const bB = document.getElementById(`diary-bar-${date}`);
+        if (pB) pB.textContent = pct + '% completato';
+        if (bB) bB.style.width = pct + '%';
+      }
+      // Aggiorna la cella del calendario leggendo sempre da localStorage (fonte autorevole)
+      _updateCalCell(date);
+    }
+    function _updateCalCell(date) {
+      const calCell = document.getElementById('calday-' + date);
+      if (!calCell) return;
+      const log = getWorkoutLog();
+      const dayLog = log[date] || {};
+      const plans = getPlan().filter(w => w.date === date);
+      if (!plans.length) return;
+      // Chiavi uniche aggregate su tutti i piani della data
+      const allKeys = new Set();
+      plans.forEach(w => w.phases.forEach((ph, pi) => ph.exercises.forEach((_, ei) => allKeys.add(`p${pi}_e${ei}`))));
+      const totalEx = allKeys.size;
+      const doneEx = [...allKeys].filter(k => dayLog[k]).length;
+      const pct = totalEx > 0 ? Math.round(doneEx / totalEx * 100) : 0;
+      const color = pct === 100 ? 'var(--green)' : pct > 0 ? 'var(--cyan)' : 'rgba(255,255,255,.3)';
+      const calPct = document.getElementById('calpct-' + date);
+      if (calPct) {
+        calPct.textContent = pct + '%';
+        calPct.style.color = color;
+        calPct.style.display = pct > 0 ? '' : 'none';
+      }
+      calCell.classList.toggle('done-100', pct === 100);
+    }
+    function checkAllForDate(date) {
+      const log = getWorkoutLog();
+      if (!log[date]) log[date] = {};
+      document.querySelectorAll(`[id^="ecr-${date}-"]`).forEach(row => {
+        const key = row.id.replace(`ecr-${date}-`, '');
+        log[date][key] = true;
+        row.classList.add('done');
+        row.querySelector('.ex-checkbox').innerHTML = '<i class="fa-solid fa-check" style="color: #4caf50;"></i>';
+      });
+      saveWorkoutLog(log);
+      updateDiaryProgress(date);
+      updateBHI();
+      showToast('<i class="fa-solid fa-check" style="color: #4caf50;"></i> Tutto completato!');
+    }
+    function saveDayLog(date) {
+      const log = getWorkoutLog();
+      const done = Object.values(log[date] || {}).filter(v => v).length;
+      updateHomeStats(); updateBHI();
+      showToast(`<i class="fa-solid fa-floppy-disk" style="color: #03a9f4;"></i> Giornata salvata! ${done} esercizi completati`);
+    }
 
-/* ══════════════════════════
-   COMMUNITY
-══════════════════════════ */
-const BADGES = [
-  {icon:'<i class="fa-solid fa-dumbbell" style="color: #9c27b0;"></i>',name:'Primo WO',req:(r)=>r>=1},
-  {icon:'<i class="fa-solid fa-fire" style="color: #ff5722;"></i>',name:'5 WO',req:(r)=>r>=5},
-  {icon:'<i class="fa-solid fa-medal" style="color: #ffc107;"></i>',name:'10 WO',req:(r)=>r>=10},
-  {icon:'<i class="fa-solid fa-star" style="color: #ffeb3b;"></i>',name:'25 WO',req:(r)=>r>=25},
-  {icon:'<i class="fa-solid fa-bolt" style="color: #facc15;"></i>',name:'500 kcal',req:(r,k)=>k>=500},
-  {icon:'<i class="fa-solid fa-rocket" style="color: #ff5722;"></i>',name:'2000 kcal',req:(r,k)=>k>=2000},
-  {icon:'<i class="fa-solid fa-trophy" style="color: #ffc107;"></i>',name:'5000 kcal',req:(r,k)=>k>=5000},
-  {icon:'<i class="fa-solid fa-crown" style="color: #ffc107;"></i>',name:'10000 kcal',req:(r,k)=>k>=10000},
-];
-function renderCommunity() {
-  const plan = getPlan();
-  const log  = getWorkoutLog();
-  const totalWorkouts = plan.length;
-  const totalKcal = plan.reduce((a,w)=>a+(w.kcal||0),0);
-  const activeDays = Object.keys(log).filter(d=>Object.values(log[d]).some(v=>v)).length;
-  const totalEx = plan.reduce((a,w)=>a+w.phases.reduce((b,ph)=>b+ph.exercises.length,0),0);
+    /* ══════════════════════════
+       COMMUNITY
+    ══════════════════════════ */
+    const BADGES = [
+      { icon: '<i class="fa-solid fa-dumbbell" style="color: #9c27b0;"></i>', name: 'Primo WO', req: (r) => r >= 1 },
+      { icon: '<i class="fa-solid fa-fire" style="color: #ff5722;"></i>', name: '5 WO', req: (r) => r >= 5 },
+      { icon: '<i class="fa-solid fa-medal" style="color: #ffc107;"></i>', name: '10 WO', req: (r) => r >= 10 },
+      { icon: '<i class="fa-solid fa-star" style="color: #ffeb3b;"></i>', name: '25 WO', req: (r) => r >= 25 },
+      { icon: '<i class="fa-solid fa-bolt" style="color: #facc15;"></i>', name: '500 kcal', req: (r, k) => k >= 500 },
+      { icon: '<i class="fa-solid fa-rocket" style="color: #ff5722;"></i>', name: '2000 kcal', req: (r, k) => k >= 2000 },
+      { icon: '<i class="fa-solid fa-trophy" style="color: #ffc107;"></i>', name: '5000 kcal', req: (r, k) => k >= 5000 },
+      { icon: '<i class="fa-solid fa-crown" style="color: #ffc107;"></i>', name: '10000 kcal', req: (r, k) => k >= 10000 },
+    ];
+    function renderCommunity() {
+      const plan = getPlan();
+      const log = getWorkoutLog();
+      const totalWorkouts = plan.length;
+      const totalKcal = plan.reduce((a, w) => a + (w.kcal || 0), 0);
+      const activeDays = Object.keys(log).filter(d => Object.values(log[d]).some(v => v)).length;
+      const totalEx = plan.reduce((a, w) => a + w.phases.reduce((b, ph) => b + ph.exercises.length, 0), 0);
 
-  document.getElementById('statTotalRuns').textContent = totalWorkouts;
-  document.getElementById('statTotalKm').textContent   = totalKcal;
-  document.getElementById('statTotalCal').textContent  = activeDays;
-  document.getElementById('statBestDist').textContent  = totalEx;
+      document.getElementById('statTotalRuns').textContent = totalWorkouts;
+      document.getElementById('statTotalKm').textContent = totalKcal;
+      document.getElementById('statTotalCal').textContent = activeDays;
+      document.getElementById('statBestDist').textContent = totalEx;
 
-  const earned = BADGES.filter(b=>b.req(totalWorkouts,totalKcal)).length;
-  document.getElementById('badgeCount').textContent = earned+' / '+BADGES.length;
-  document.getElementById('badgeGrid').innerHTML = BADGES.map(b=>`
-    <div class="badge-item ${b.req(totalWorkouts,totalKcal)?'earned':''}">
+      const earned = BADGES.filter(b => b.req(totalWorkouts, totalKcal)).length;
+      document.getElementById('badgeCount').textContent = earned + ' / ' + BADGES.length;
+      document.getElementById('badgeGrid').innerHTML = BADGES.map(b => `
+    <div class="badge-item ${b.req(totalWorkouts, totalKcal) ? 'earned' : ''}">
       <div class="badge-icon">${b.icon}</div>
       <div class="badge-name">${b.name}</div>
     </div>
   `).join('');
-}
+    }
 
-/* ══════════════════════════
-   MUSIC
-══════════════════════════ */
-function updateMusic() {
-  const url=document.getElementById('spotifyUrl').value;
-  if (!url) return showToast('<i class="fa-solid fa-link" style="color: #9e9e9e;"></i> Incolla URL Spotify');
-  if (!url.includes('spotify.com')) return showToast('<i class="fa-solid fa-triangle-exclamation" style="color: #ff9800;"></i> URL Spotify non valido');
-  let embed=url.replace('open.spotify.com/','open.spotify.com/embed/');
-  if (embed.includes('?')) embed=embed.split('?')[0];
-  document.getElementById('musicPlayer').src=embed;
-  localStorage.setItem(LS_MUSIC,url);
-  document.getElementById('musicLabel').textContent='Personalizzata';
-  showToast('<i class="fa-solid fa-music" style="color: #e91e63;"></i> Musica aggiornata!');
-}
-function sharePlaylist() {
-  const url=localStorage.getItem(LS_MUSIC)||'https://open.spotify.com/playlist/37i9dQZF1DX76W9SwwE3Y4';
-  navigator.clipboard.writeText(url).then(()=>showToast('<i class="fa-solid fa-link" style="color: #9e9e9e;"></i> Link copiato!')).catch(()=>showToast('Copia manuale: '+url));
-}
+    /* ══════════════════════════
+       MUSIC
+    ══════════════════════════ */
+    function updateMusic() {
+      const url = document.getElementById('spotifyUrl').value;
+      if (!url) return showToast('<i class="fa-solid fa-link" style="color: #9e9e9e;"></i> Incolla URL Spotify');
+      if (!url.includes('spotify.com')) return showToast('<i class="fa-solid fa-triangle-exclamation" style="color: #ff9800;"></i> URL Spotify non valido');
+      let embed = url.replace('open.spotify.com/', 'open.spotify.com/embed/');
+      if (embed.includes('?')) embed = embed.split('?')[0];
+      document.getElementById('musicPlayer').src = embed;
+      localStorage.setItem(LS_MUSIC, url);
+      document.getElementById('musicLabel').textContent = 'Personalizzata';
+      showToast('<i class="fa-solid fa-music" style="color: #e91e63;"></i> Musica aggiornata!');
+    }
+    function sharePlaylist() {
+      const url = localStorage.getItem(LS_MUSIC) || 'https://open.spotify.com/playlist/37i9dQZF1DX76W9SwwE3Y4';
+      navigator.clipboard.writeText(url).then(() => showToast('<i class="fa-solid fa-link" style="color: #9e9e9e;"></i> Link copiato!')).catch(() => showToast('Copia manuale: ' + url));
+    }
 
-/* ══════════════════════════
-   SHARE
-══════════════════════════ */
-function shareToWhatsApp(type) {
-  const base=window.location.href;
-  let text='';
-  if (type==='invite') {
-    text=encodeURIComponent(`Sto usando FITORA per i miei allenamenti. Provalo: ${base}`);
-  } else {
-    const plan=getPlan();
-    const kcal=plan.reduce((a,w)=>a+(w.kcal||0),0);
-    text=encodeURIComponent(`Ti sfido su FITORA! Ho bruciato ${kcal} kcal con ${plan.length} allenamenti. Riesci a fare di meglio? ${base}`);
-  }
-  window.open('https://wa.me/?text='+text,'_blank');
-}
-
-
-/* ══════════════════════════
-   TOAST
-══════════════════════════ */
-let toastTimer;
-function showToast(msg) {
-  const t=document.getElementById('toast');
-  t.textContent=msg; t.classList.add('show');
-  clearTimeout(toastTimer); toastTimer=setTimeout(()=>t.classList.remove('show'),2800);
-}
+    /* ══════════════════════════
+       SHARE
+    ══════════════════════════ */
+    function shareToWhatsApp(type) {
+      const base = window.location.href;
+      let text = '';
+      if (type === 'invite') {
+        text = encodeURIComponent(`Sto usando FITORA per i miei allenamenti. Provalo: ${base}`);
+      } else {
+        const plan = getPlan();
+        const kcal = plan.reduce((a, w) => a + (w.kcal || 0), 0);
+        text = encodeURIComponent(`Ti sfido su FITORA! Ho bruciato ${kcal} kcal con ${plan.length} allenamenti. Riesci a fare di meglio? ${base}`);
+      }
+      window.open('https://wa.me/?text=' + text, '_blank');
+    }
 
 
-/* ══════════════════════════
-   INIT
-══════════════════════════ */
-window.addEventListener('load', function() {
-  setNavDate();
-  updateClock();
-  clockInterval = setInterval(updateClock, 30000);
-  loadCheckin();
-  addWater(0);
-  updateBHI();
-  updateHomeStats();
-  const savedMusic = localStorage.getItem(LS_MUSIC);
-  if (savedMusic) {
-    document.getElementById('spotifyUrl').value = savedMusic;
-    try { updateMusic(); } catch(e) {}
-  }
-});
-</script>
-<script src="chatbot.js"></script>
+    /* ══════════════════════════
+       TOAST
+    ══════════════════════════ */
+    let toastTimer;
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg; t.classList.add('show');
+      clearTimeout(toastTimer); toastTimer = setTimeout(() => t.classList.remove('show'), 2800);
+    }
+
+
+    /* ══════════════════════════
+       INIT
+    ══════════════════════════ */
+    window.addEventListener('load', function () {
+      setNavDate();
+      updateClock();
+      clockInterval = setInterval(updateClock, 30000);
+      loadCheckin();
+      addWater(0);
+      updateBHI();
+      updateHomeStats();
+      const savedMusic = localStorage.getItem(LS_MUSIC);
+      if (savedMusic) {
+        document.getElementById('spotifyUrl').value = savedMusic;
+        try { updateMusic(); } catch (e) { }
+      }
+    });
+  </script>
+  <script src="chatbot.js"></script>
 </body>

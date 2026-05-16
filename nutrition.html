@@ -1,257 +1,277 @@
 <!DOCTYPE html>
 <html lang="it">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<meta name="theme-color" content="#080808">
-<title>FITORA – Piano Alimentare</title>
-<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;700;900&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="nutrition.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="theme-color" content="#080808">
+  <title>FITORA – Piano Alimentare</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;700;900&family=Barlow:wght@400;500;600&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="nutrition.css">
 </head>
+
 <body>
 
-<nav>
-  <a href="dashboard.html" class="btn-back">← Dashboard</a>
-  <div class="nav-logo gt">FITORA</div>
-  <div id="navDate" style="font-size:.6rem;letter-spacing:2px;color:var(--muted);text-transform:uppercase;"></div>
-</nav>
+  <nav>
+    <a href="dashboard.html" class="btn-back">← Dashboard</a>
+    <div class="nav-logo gt">FITORA</div>
+    <div id="navDate" style="font-size:.6rem;letter-spacing:2px;color:var(--muted);text-transform:uppercase;"></div>
+  </nav>
 
-<div class="wrapper">
+  <div class="wrapper">
 
-  <div class="page-tag">// Nutrizione & Calorie</div>
-  <h1 class="page-title">Piano<br><span class="gt">Alimentare</span></h1>
-  <p class="page-sub">Calcolo il tuo fabbisogno calorico reale (BMR + TDEE) e genero un piano pasti con i macronutrienti ottimali per il tuo obiettivo.</p>
+    <div class="page-tag">// Nutrizione & Calorie</div>
+    <h1 class="page-title">Piano<br><span class="gt">Alimentare</span></h1>
+    <p class="page-sub">Calcolo il tuo fabbisogno calorico reale (BMR + TDEE) e genero un piano pasti con i
+      macronutrienti ottimali per il tuo obiettivo.</p>
 
-  <!-- FORM -->
-  <div class="form-section">
-    <div class="form-head"><span class="form-head-icon"><i class="fa-solid fa-user" style="color: #9e9e9e;"></i></span><span class="form-head-title">Dati Fisici</span></div>
-    <div class="form-body">
-      <div class="form-row single">
-        <div class="field">
-          <label class="field-label">Sesso biologico</label>
-          <div class="gender-row">
-            <div class="gender-btn sel" id="gb-m" onclick="setGender('m')"><i class="fa-solid fa-user" style="color: #03a9f4;"></i> Uomo</div>
-            <div class="gender-btn" id="gb-f" onclick="setGender('f')"><i class="fa-solid fa-user" style="color: #e91e63;"></i> Donna</div>
+    <!-- FORM -->
+    <div class="form-section">
+      <div class="form-head"><span class="form-head-icon"><i class="fa-solid fa-user"
+            style="color: #9e9e9e;"></i></span><span class="form-head-title">Dati Fisici</span></div>
+      <div class="form-body">
+        <div class="form-row single">
+          <div class="field">
+            <label class="field-label">Sesso biologico</label>
+            <div class="gender-row">
+              <div class="gender-btn sel" id="gb-m" onclick="setGender('m')"><i class="fa-solid fa-user"
+                  style="color: #03a9f4;"></i> Uomo</div>
+              <div class="gender-btn" id="gb-f" onclick="setGender('f')"><i class="fa-solid fa-user"
+                  style="color: #e91e63;"></i> Donna</div>
+            </div>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="field">
+            <label class="field-label">Età (anni)</label>
+            <input type="number" class="field-input" id="f-age" placeholder="28" min="14" max="90"
+              oninput="checkForm()">
+          </div>
+          <div class="field">
+            <label class="field-label">Peso (kg)</label>
+            <input type="number" class="field-input" id="f-weight" placeholder="70" min="30" max="250"
+              oninput="checkForm()">
+          </div>
+        </div>
+        <div class="form-row single">
+          <div class="field">
+            <label class="field-label">Altezza (cm)</label>
+            <input type="number" class="field-input" id="f-height" placeholder="175" min="100" max="230"
+              oninput="checkForm()">
           </div>
         </div>
       </div>
-      <div class="form-row">
+    </div>
+
+    <div class="form-section">
+      <div class="form-head"><span class="form-head-icon"><i class="fa-solid fa-person-running"
+            style="color: #ff5722;"></i></span><span class="form-head-title">Stile di Vita & Attività</span></div>
+      <div class="form-body" style="display:flex;flex-direction:column;gap:14px;">
         <div class="field">
-          <label class="field-label">Età (anni)</label>
-          <input type="number" class="field-input" id="f-age" placeholder="28" min="14" max="90" oninput="checkForm()">
+          <label class="field-label">Livello di attività quotidiana</label>
+          <select class="field-select" id="f-activity" onchange="checkForm()">
+            <option value="">- Seleziona -</option>
+            <option value="1.2">Sedentario (lavoro fisso, nessun sport)</option>
+            <option value="1.375">Leggermente attivo (1–2 allenamenti / settimana)</option>
+            <option value="1.55">Moderatamente attivo (3–4 allenamenti / settimana)</option>
+            <option value="1.725">Molto attivo (5–6 allenamenti / settimana)</option>
+            <option value="1.9">Atleta (2 sessioni/giorno o lavoro fisico)</option>
+          </select>
         </div>
         <div class="field">
-          <label class="field-label">Peso (kg)</label>
-          <input type="number" class="field-input" id="f-weight" placeholder="70" min="30" max="250" oninput="checkForm()">
-        </div>
-      </div>
-      <div class="form-row single">
-        <div class="field">
-          <label class="field-label">Altezza (cm)</label>
-          <input type="number" class="field-input" id="f-height" placeholder="175" min="100" max="230" oninput="checkForm()">
+          <label class="field-label">Sport praticato</label>
+          <select class="field-select" id="f-sport" onchange="checkForm()">
+            <option value="">- Seleziona -</option>
+            <option value="endurance">Endurance (corsa, ciclismo, nuoto)</option>
+            <option value="strength">Forza (palestra, powerlifting, crossfit)</option>
+            <option value="team">Sport di squadra (calcio, basket, tennis)</option>
+            <option value="yoga">Yoga / Pilates / Mobilità</option>
+            <option value="mixed">Misto (vario)</option>
+            <option value="none">Nessuno sport specifico</option>
+          </select>
         </div>
       </div>
     </div>
-  </div>
 
-  <div class="form-section">
-    <div class="form-head"><span class="form-head-icon"><i class="fa-solid fa-person-running" style="color: #ff5722;"></i></span><span class="form-head-title">Stile di Vita & Attività</span></div>
-    <div class="form-body" style="display:flex;flex-direction:column;gap:14px;">
-      <div class="field">
-        <label class="field-label">Livello di attività quotidiana</label>
-        <select class="field-select" id="f-activity" onchange="checkForm()">
-          <option value="">— Seleziona —</option>
-          <option value="1.2">Sedentario (lavoro fisso, nessun sport)</option>
-          <option value="1.375">Leggermente attivo (1–2 allenamenti / settimana)</option>
-          <option value="1.55">Moderatamente attivo (3–4 allenamenti / settimana)</option>
-          <option value="1.725">Molto attivo (5–6 allenamenti / settimana)</option>
-          <option value="1.9">Atleta (2 sessioni/giorno o lavoro fisico)</option>
-        </select>
-      </div>
-      <div class="field">
-        <label class="field-label">Sport praticato</label>
-        <select class="field-select" id="f-sport" onchange="checkForm()">
-          <option value="">— Seleziona —</option>
-          <option value="endurance">Endurance (corsa, ciclismo, nuoto)</option>
-          <option value="strength">Forza (palestra, powerlifting, crossfit)</option>
-          <option value="team">Sport di squadra (calcio, basket, tennis)</option>
-          <option value="yoga">Yoga / Pilates / Mobilità</option>
-          <option value="mixed">Misto (vario)</option>
-          <option value="none">Nessuno sport specifico</option>
-        </select>
+    <div class="form-section">
+      <div class="form-head"><span class="form-head-icon"><i class="fa-solid fa-bullseye"
+            style="color: #f44336;"></i></span><span class="form-head-title">Obiettivo</span></div>
+      <div class="form-body">
+        <div class="pill-opts" id="goalOpts">
+          <div class="pill-opt sel" onclick="setGoal('lose',this)"><i class="fa-solid fa-fire"
+              style="color: #ff5722;"></i> Perdere peso</div>
+          <div class="pill-opt" onclick="setGoal('maintain',this)"><i class="fa-solid fa-scale-balanced"
+              style="color: #9e9e9e;"></i>️ Mantenere il peso</div>
+          <div class="pill-opt" onclick="setGoal('gain',this)"><i class="fa-solid fa-dumbbell"
+              style="color: #9c27b0;"></i> Aumentare massa muscolare</div>
+          <div class="pill-opt" onclick="setGoal('performance',this)"><i class="fa-solid fa-bolt"
+              style="color: #facc15;"></i> Massima performance</div>
+        </div>
       </div>
     </div>
+
+    <button class="btn-calc" id="calcBtn" onclick="calculate()" disabled><i class="fa-solid fa-apple-whole"
+        style="color: #f44336;"></i> Calcola Piano Alimentare</button>
+
+    <!-- RESULTS -->
+    <div class="results" id="results"></div>
+
   </div>
 
-  <div class="form-section">
-    <div class="form-head"><span class="form-head-icon"><i class="fa-solid fa-bullseye" style="color: #f44336;"></i></span><span class="form-head-title">Obiettivo</span></div>
-    <div class="form-body">
-      <div class="pill-opts" id="goalOpts">
-        <div class="pill-opt sel" onclick="setGoal('lose',this)"><i class="fa-solid fa-fire" style="color: #ff5722;"></i> Perdere peso</div>
-        <div class="pill-opt" onclick="setGoal('maintain',this)"><i class="fa-solid fa-scale-balanced" style="color: #9e9e9e;"></i>️ Mantenere il peso</div>
-        <div class="pill-opt" onclick="setGoal('gain',this)"><i class="fa-solid fa-dumbbell" style="color: #9c27b0;"></i> Aumentare massa muscolare</div>
-        <div class="pill-opt" onclick="setGoal('performance',this)"><i class="fa-solid fa-bolt" style="color: #facc15;"></i> Massima performance</div>
-      </div>
-    </div>
-  </div>
+  <script>
+    document.getElementById('navDate').textContent =
+      new Date().toLocaleDateString('it-IT', { weekday: 'short', day: 'numeric', month: 'short' }).toUpperCase();
 
-  <button class="btn-calc" id="calcBtn" onclick="calculate()" disabled><i class="fa-solid fa-apple-whole" style="color: #f44336;"></i> Calcola Piano Alimentare</button>
+    let F = { gender: 'm', goal: 'lose' };
 
-  <!-- RESULTS -->
-  <div class="results" id="results"></div>
+    function setGender(g) {
+      F.gender = g;
+      document.getElementById('gb-m').classList.toggle('sel', g === 'm');
+      document.getElementById('gb-f').classList.toggle('sel', g === 'f');
+    }
+    function setGoal(g, el) {
+      F.goal = g;
+      document.querySelectorAll('#goalOpts .pill-opt').forEach(b => b.classList.remove('sel'));
+      el.classList.add('sel');
+    }
+    function checkForm() {
+      const ok = document.getElementById('f-age').value &&
+        document.getElementById('f-weight').value &&
+        document.getElementById('f-height').value &&
+        document.getElementById('f-activity').value &&
+        document.getElementById('f-sport').value;
+      document.getElementById('calcBtn').disabled = !ok;
+    }
 
-</div>
+    /* ══ CALCULATION ══ */
+    function calculate() {
+      const age = parseInt(document.getElementById('f-age').value);
+      const weight = parseFloat(document.getElementById('f-weight').value);
+      const height = parseFloat(document.getElementById('f-height').value);
+      const act = parseFloat(document.getElementById('f-activity').value);
+      const sport = document.getElementById('f-sport').value;
+      const goal = F.goal;
+      const gender = F.gender;
 
-<script>
-document.getElementById('navDate').textContent =
-  new Date().toLocaleDateString('it-IT',{weekday:'short',day:'numeric',month:'short'}).toUpperCase();
+      // BMR - Mifflin-St Jeor
+      let bmr = gender === 'm'
+        ? (10 * weight) + (6.25 * height) - (5 * age) + 5
+        : (10 * weight) + (6.25 * height) - (5 * age) - 161;
+      bmr = Math.round(bmr);
 
-let F = { gender:'m', goal:'lose' };
+      // TDEE
+      let tdee = Math.round(bmr * act);
 
-function setGender(g) {
-  F.gender = g;
-  document.getElementById('gb-m').classList.toggle('sel', g==='m');
-  document.getElementById('gb-f').classList.toggle('sel', g==='f');
-}
-function setGoal(g, el) {
-  F.goal = g;
-  document.querySelectorAll('#goalOpts .pill-opt').forEach(b=>b.classList.remove('sel'));
-  el.classList.add('sel');
-}
-function checkForm() {
-  const ok = document.getElementById('f-age').value &&
-             document.getElementById('f-weight').value &&
-             document.getElementById('f-height').value &&
-             document.getElementById('f-activity').value &&
-             document.getElementById('f-sport').value;
-  document.getElementById('calcBtn').disabled = !ok;
-}
+      // Goal adjustment
+      let target, goalLabel, goalNote;
+      switch (goal) {
+        case 'lose':
+          target = Math.max(1200, tdee - 500);
+          goalLabel = 'Perdita di peso'; goalNote = 'Deficit di 500 kcal/giorno = ~0.5 kg/settimana';
+          break;
+        case 'maintain':
+          target = tdee;
+          goalLabel = 'Mantenimento'; goalNote = 'Bilancio energetico neutro';
+          break;
+        case 'gain':
+          target = tdee + 300;
+          goalLabel = 'Massa muscolare'; goalNote = 'Surplus di 300 kcal/giorno per crescita pulita';
+          break;
+        case 'performance':
+          target = tdee + 200;
+          goalLabel = 'Massima performance'; goalNote = 'Surplus leggero per sostenere l\'intensità';
+          break;
+        default:
+          target = tdee; goalLabel = 'Mantenimento'; goalNote = '';
+      }
 
-/* ══ CALCULATION ══ */
-function calculate() {
-  const age    = parseInt(document.getElementById('f-age').value);
-  const weight = parseFloat(document.getElementById('f-weight').value);
-  const height = parseFloat(document.getElementById('f-height').value);
-  const act    = parseFloat(document.getElementById('f-activity').value);
-  const sport  = document.getElementById('f-sport').value;
-  const goal   = F.goal;
-  const gender = F.gender;
+      // Macros (g) based on sport + goal
+      let protPct, carbPct, fatPct;
+      if (sport === 'strength') {
+        protPct = goal === 'gain' ? 0.38 : 0.35; carbPct = goal === 'lose' ? 0.30 : 0.40; fatPct = 1 - protPct - carbPct;
+      } else if (sport === 'endurance') {
+        protPct = 0.25; carbPct = goal === 'lose' ? 0.40 : 0.50; fatPct = 1 - protPct - carbPct;
+      } else if (sport === 'team') {
+        protPct = 0.28; carbPct = 0.45; fatPct = 0.27;
+      } else if (sport === 'yoga') {
+        protPct = 0.25; carbPct = goal === 'lose' ? 0.35 : 0.40; fatPct = 1 - protPct - carbPct;
+      } else {
+        protPct = goal === 'gain' ? 0.33 : goal === 'lose' ? 0.35 : 0.28;
+        carbPct = goal === 'lose' ? 0.32 : 0.42;
+        fatPct = 1 - protPct - carbPct;
+      }
 
-  // BMR — Mifflin-St Jeor
-  let bmr = gender === 'm'
-    ? (10 * weight) + (6.25 * height) - (5 * age) + 5
-    : (10 * weight) + (6.25 * height) - (5 * age) - 161;
-  bmr = Math.round(bmr);
+      const protKcal = Math.round(target * protPct);
+      const carbKcal = Math.round(target * carbPct);
+      const fatKcal = Math.round(target * fatPct);
+      const protG = Math.round(protKcal / 4);
+      const carbG = Math.round(carbKcal / 4);
+      const fatG = Math.round(fatKcal / 9);
 
-  // TDEE
-  let tdee = Math.round(bmr * act);
+      // Per kg ratios
+      const protPerKg = (protG / weight).toFixed(1);
+      const carbPerKg = (carbG / weight).toFixed(1);
 
-  // Goal adjustment
-  let target, goalLabel, goalNote;
-  switch(goal) {
-    case 'lose':
-      target = Math.max(1200, tdee - 500);
-      goalLabel = 'Perdita di peso'; goalNote = 'Deficit di 500 kcal/giorno = ~0.5 kg/settimana';
-      break;
-    case 'maintain':
-      target = tdee;
-      goalLabel = 'Mantenimento'; goalNote = 'Bilancio energetico neutro';
-      break;
-    case 'gain':
-      target = tdee + 300;
-      goalLabel = 'Massa muscolare'; goalNote = 'Surplus di 300 kcal/giorno per crescita pulita';
-      break;
-    case 'performance':
-      target = tdee + 200;
-      goalLabel = 'Massima performance'; goalNote = 'Surplus leggero per sostenere l\'intensità';
-      break;
-    default:
-      target = tdee; goalLabel = 'Mantenimento'; goalNote = '';
-  }
+      // Meals
+      const meals = buildMeals(target, protG, carbG, fatG, goal, sport, weight);
 
-  // Macros (g) based on sport + goal
-  let protPct, carbPct, fatPct;
-  if (sport === 'strength') {
-    protPct = goal==='gain'?0.38:0.35; carbPct = goal==='lose'?0.30:0.40; fatPct = 1-protPct-carbPct;
-  } else if (sport === 'endurance') {
-    protPct = 0.25; carbPct = goal==='lose'?0.40:0.50; fatPct = 1-protPct-carbPct;
-  } else if (sport === 'team') {
-    protPct = 0.28; carbPct = 0.45; fatPct = 0.27;
-  } else if (sport === 'yoga') {
-    protPct = 0.25; carbPct = goal==='lose'?0.35:0.40; fatPct = 1-protPct-carbPct;
-  } else {
-    protPct = goal==='gain'?0.33:goal==='lose'?0.35:0.28;
-    carbPct = goal==='lose'?0.32:0.42;
-    fatPct  = 1 - protPct - carbPct;
-  }
+      renderResults({
+        bmr, tdee, target, goalLabel, goalNote,
+        protG, carbG, fatG, protPct, carbPct, fatPct,
+        protPerKg, carbPerKg, age, weight, height, gender, meals
+      });
+    }
 
-  const protKcal = Math.round(target * protPct);
-  const carbKcal = Math.round(target * carbPct);
-  const fatKcal  = Math.round(target * fatPct);
-  const protG    = Math.round(protKcal / 4);
-  const carbG    = Math.round(carbKcal / 4);
-  const fatG     = Math.round(fatKcal / 9);
+    /* ══ MEAL BUILDER ══ */
+    function buildMeals(kcal, prot, carb, fat, goal, sport, weight) {
+      // Distribute: 25% breakfast, 10% snack1, 35% lunch, 10% snack2, 20% dinner
+      const dist = [.25, .10, .35, .10, .20];
+      const isEndurance = sport === 'endurance';
+      const isStrength = sport === 'strength';
 
-  // Per kg ratios
-  const protPerKg = (protG / weight).toFixed(1);
-  const carbPerKg = (carbG / weight).toFixed(1);
+      const plans = {
+        breakfast: [
+          { icon: '<i class="fa-solid fa-bowl-rice" style="color: #e0e0e0;"></i>', name: 'Porridge con frutta e noci', desc: '80g avena, 150ml latte (scremato o vegetale), 1 banana, 20g noci', kcal: dist[0] * kcal },
+          { icon: '<i class="fa-solid fa-egg" style="color: #ffeb3b;"></i>', name: 'Uova strapazzate + pane integrale', desc: '3 uova, 2 fette pane integrale, 1 kiwi', kcal: dist[0] * kcal },
+        ],
+        snack1: [
+          { icon: '<i class="fa-solid fa-apple-whole" style="color: #f44336;"></i>', name: 'Frutta + proteine', desc: goal === 'lose' ? '1 mela + 20g mandorle' : '1 banana + 1 yogurt greco 150g + 15g miele', kcal: dist[1] * kcal },
+        ],
+        lunch: [
+          isEndurance
+            ? { icon: '<i class="fa-solid fa-bowl-food" style="color: #ff9800;"></i>', name: 'Pasta integrale + pollo + verdure', desc: `${Math.round(weight * 1.2)}g pasta integrale cotta, ${Math.round(weight * 1.5)}g petto pollo, 200g zucchine grigliate, olio EVO 10g`, kcal: dist[2] * kcal }
+            : isStrength
+              ? { icon: '<i class="fa-solid fa-drumstick-bite" style="color: #795548;"></i>', name: 'Riso + carne magra + legumi', desc: `150g riso basmati cotto, 200g manzo o tacchino, 100g fagioli, pomodoro, olio EVO 8g`, kcal: dist[2] * kcal }
+              : { icon: '<i class="fa-solid fa-bowl-food" style="color: #4caf50;"></i>', name: 'Piatto completo bilanciato', desc: `120g cereale integrale (riso, farro o quinoa), 180g proteina magra (pollo, tonno o tofu), verdure miste 200g, olio EVO 10g`, kcal: dist[2] * kcal },
+        ],
+        snack2: [
+          {
+            icon: '<i class="fa-solid fa-glass-water" style="color: #00bcd4;"></i>', name: goal === 'gain' ? 'Frullato proteico + banana' : 'Yogurt greco + semi di chia',
+            desc: goal === 'gain' ? '250ml latte, 30g proteine whey, 1 banana, 15g burro di arachidi' : '150g yogurt greco 0%, 10g semi di chia, 1 cucchiaio miele',
+            kcal: dist[3] * kcal
+          },
+        ],
+        dinner: [
+          { icon: '<i class="fa-solid fa-fish" style="color: #03a9f4;"></i>', name: 'Pesce + patate dolci + verdure', desc: `200g salmone (o merluzzo), ${goal === 'lose' ? '150' : '200'}g patate dolci al forno, spinaci saltati 200g, olio EVO 8g, limone`, kcal: dist[4] * kcal },
+        ],
+      };
 
-  // Meals
-  const meals = buildMeals(target, protG, carbG, fatG, goal, sport, weight);
+      return [
+        { label: 'Colazione', time: '07:00 – 08:00', icon: '<i class="fa-solid fa-sun" style="color: #ffeb3b;"></i>️', ...plans.breakfast[0] },
+        { label: 'Spuntino mattina', time: '10:00 – 10:30', icon: '<i class="fa-solid fa-apple-whole" style="color: #f44336;"></i>', ...plans.snack1[0] },
+        { label: 'Pranzo', time: '12:30 – 13:30', icon: '<i class="fa-solid fa-utensils" style="color: #9e9e9e;"></i>️', ...plans.lunch[0] },
+        { label: 'Spuntino pomeriggio', time: '16:00 – 17:00', icon: '<i class="fa-solid fa-glass-water" style="color: #00bcd4;"></i>', ...plans.snack2[0] },
+        { label: 'Cena', time: '19:30 – 20:30', icon: '<i class="fa-solid fa-moon" style="color: #3f51b5;"></i>', ...plans.dinner[0] },
+      ];
+    }
 
-  renderResults({
-    bmr, tdee, target, goalLabel, goalNote,
-    protG, carbG, fatG, protPct, carbPct, fatPct,
-    protPerKg, carbPerKg, age, weight, height, gender, meals
-  });
-}
+    /* ══ RENDER ══ */
+    function renderResults(D) {
+      const genderLabel = D.gender === 'm' ? 'Uomo' : 'Donna';
 
-/* ══ MEAL BUILDER ══ */
-function buildMeals(kcal, prot, carb, fat, goal, sport, weight) {
-  // Distribute: 25% breakfast, 10% snack1, 35% lunch, 10% snack2, 20% dinner
-  const dist = [.25, .10, .35, .10, .20];
-  const isEndurance = sport === 'endurance';
-  const isStrength  = sport === 'strength';
-
-  const plans = {
-    breakfast: [
-      { icon:'<i class="fa-solid fa-bowl-rice" style="color: #e0e0e0;"></i>', name:'Porridge con frutta e noci', desc:'80g avena, 150ml latte (scremato o vegetale), 1 banana, 20g noci', kcal: dist[0] * kcal },
-      { icon:'<i class="fa-solid fa-egg" style="color: #ffeb3b;"></i>', name:'Uova strapazzate + pane integrale', desc:'3 uova, 2 fette pane integrale, 1 kiwi', kcal: dist[0] * kcal },
-    ],
-    snack1: [
-      { icon:'<i class="fa-solid fa-apple-whole" style="color: #f44336;"></i>', name:'Frutta + proteine', desc: goal==='lose' ? '1 mela + 20g mandorle' : '1 banana + 1 yogurt greco 150g + 15g miele', kcal: dist[1] * kcal },
-    ],
-    lunch: [
-      isEndurance
-        ? { icon:'<i class="fa-solid fa-bowl-food" style="color: #ff9800;"></i>', name:'Pasta integrale + pollo + verdure', desc:`${Math.round(weight * 1.2)}g pasta integrale cotta, ${Math.round(weight * 1.5)}g petto pollo, 200g zucchine grigliate, olio EVO 10g`, kcal: dist[2] * kcal }
-        : isStrength
-        ? { icon:'<i class="fa-solid fa-drumstick-bite" style="color: #795548;"></i>', name:'Riso + carne magra + legumi', desc:`150g riso basmati cotto, 200g manzo o tacchino, 100g fagioli, pomodoro, olio EVO 8g`, kcal: dist[2] * kcal }
-        : { icon:'<i class="fa-solid fa-bowl-food" style="color: #4caf50;"></i>', name:'Piatto completo bilanciato', desc:`120g cereale integrale (riso, farro o quinoa), 180g proteina magra (pollo, tonno o tofu), verdure miste 200g, olio EVO 10g`, kcal: dist[2] * kcal },
-    ],
-    snack2: [
-      { icon:'<i class="fa-solid fa-glass-water" style="color: #00bcd4;"></i>', name: goal==='gain' ? 'Frullato proteico + banana' : 'Yogurt greco + semi di chia',
-        desc: goal==='gain' ? '250ml latte, 30g proteine whey, 1 banana, 15g burro di arachidi' : '150g yogurt greco 0%, 10g semi di chia, 1 cucchiaio miele',
-        kcal: dist[3] * kcal },
-    ],
-    dinner: [
-      { icon:'<i class="fa-solid fa-fish" style="color: #03a9f4;"></i>', name:'Pesce + patate dolci + verdure', desc:`200g salmone (o merluzzo), ${goal==='lose'?'150':'200'}g patate dolci al forno, spinaci saltati 200g, olio EVO 8g, limone`, kcal: dist[4] * kcal },
-    ],
-  };
-
-  return [
-    { label:'Colazione', time:'07:00 – 08:00', icon:'<i class="fa-solid fa-sun" style="color: #ffeb3b;"></i>️', ...plans.breakfast[0] },
-    { label:'Spuntino mattina', time:'10:00 – 10:30', icon:'<i class="fa-solid fa-apple-whole" style="color: #f44336;"></i>', ...plans.snack1[0] },
-    { label:'Pranzo', time:'12:30 – 13:30', icon:'<i class="fa-solid fa-utensils" style="color: #9e9e9e;"></i>️', ...plans.lunch[0] },
-    { label:'Spuntino pomeriggio', time:'16:00 – 17:00', icon:'<i class="fa-solid fa-glass-water" style="color: #00bcd4;"></i>', ...plans.snack2[0] },
-    { label:'Cena', time:'19:30 – 20:30', icon:'<i class="fa-solid fa-moon" style="color: #3f51b5;"></i>', ...plans.dinner[0] },
-  ];
-}
-
-/* ══ RENDER ══ */
-function renderResults(D) {
-  const genderLabel = D.gender==='m' ? 'Uomo' : 'Donna';
-
-  const mealsHtml = D.meals.map(m => `
+      const mealsHtml = D.meals.map(m => `
     <div class="meal-section">
       <div class="meal-head">
         <div style="display:flex;align-items:center;gap:8px">
@@ -273,10 +293,10 @@ function renderResults(D) {
     </div>
   `).join('');
 
-  const idratazione = Math.round(D.weight * 35 / 100) / 10;
-  const prot_rec    = D.gender==='m' ? (D.weight * 1.6).toFixed(0) : (D.weight * 1.4).toFixed(0);
+      const idratazione = Math.round(D.weight * 35 / 100) / 10;
+      const prot_rec = D.gender === 'm' ? (D.weight * 1.6).toFixed(0) : (D.weight * 1.4).toFixed(0);
 
-  const html = `
+      const html = `
     <!-- CALORIE HERO -->
     <div class="cal-hero">
       <div class="cal-label">Fabbisogno Calorico Giornaliero</div>
@@ -307,8 +327,8 @@ function renderResults(D) {
           <div class="macro-icon"><i class="fa-solid fa-bacon" style="color: #f44336;"></i></div>
           <div class="macro-info">
             <div class="macro-name">Proteine</div>
-            <div class="macro-bar-wrap"><div class="macro-bar-fill" style="width:0%;background:var(--cyan)" data-w="${Math.round(D.protPct*100)}%"></div></div>
-            <div class="macro-sub">${Math.round(D.protPct*100)}% delle calorie · ${D.protPerKg}g per kg di peso · 4 kcal/g</div>
+            <div class="macro-bar-wrap"><div class="macro-bar-fill" style="width:0%;background:var(--cyan)" data-w="${Math.round(D.protPct * 100)}%"></div></div>
+            <div class="macro-sub">${Math.round(D.protPct * 100)}% delle calorie · ${D.protPerKg}g per kg di peso · 4 kcal/g</div>
           </div>
           <div style="text-align:right">
             <div class="macro-grams" style="color:var(--cyan)">${D.protG}</div>
@@ -319,8 +339,8 @@ function renderResults(D) {
           <div class="macro-icon"><i class="fa-solid fa-bowl-rice" style="color: #ffffff;"></i></div>
           <div class="macro-info">
             <div class="macro-name">Carboidrati</div>
-            <div class="macro-bar-wrap"><div class="macro-bar-fill" style="width:0%;background:var(--green)" data-w="${Math.round(D.carbPct*100)}%"></div></div>
-            <div class="macro-sub">${Math.round(D.carbPct*100)}% delle calorie · ${D.carbPerKg}g per kg di peso · 4 kcal/g</div>
+            <div class="macro-bar-wrap"><div class="macro-bar-fill" style="width:0%;background:var(--green)" data-w="${Math.round(D.carbPct * 100)}%"></div></div>
+            <div class="macro-sub">${Math.round(D.carbPct * 100)}% delle calorie · ${D.carbPerKg}g per kg di peso · 4 kcal/g</div>
           </div>
           <div style="text-align:right">
             <div class="macro-grams" style="color:var(--green)">${D.carbG}</div>
@@ -331,8 +351,8 @@ function renderResults(D) {
           <div class="macro-icon"><i class="fa-solid fa-carrot" style="color: #4caf50;"></i></div>
           <div class="macro-info">
             <div class="macro-name">Grassi</div>
-            <div class="macro-bar-wrap"><div class="macro-bar-fill" style="width:0%;background:var(--yellow)" data-w="${Math.round(D.fatPct*100)}%"></div></div>
-            <div class="macro-sub">${Math.round(D.fatPct*100)}% delle calorie · 9 kcal/g</div>
+            <div class="macro-bar-wrap"><div class="macro-bar-fill" style="width:0%;background:var(--yellow)" data-w="${Math.round(D.fatPct * 100)}%"></div></div>
+            <div class="macro-sub">${Math.round(D.fatPct * 100)}% delle calorie · 9 kcal/g</div>
           </div>
           <div style="text-align:right">
             <div class="macro-grams" style="color:var(--yellow)">${D.fatG}</div>
@@ -354,8 +374,8 @@ function renderResults(D) {
           <li>Bevi almeno <strong>${idratazione} litri d'acqua</strong> al giorno (${D.weight}kg × 35ml). Aggiungi 500ml per ogni ora di sport intenso.</li>
           <li>Obiettivo proteico minimo: <strong>${prot_rec}g/giorno</strong> per proteggere e costruire massa muscolare (${D.protPerKg}g/kg).</li>
           <li>Consuma carboidrati complessi <strong>prima dell'allenamento</strong> (1–2h prima) e proteine <strong>entro 30 min dopo</strong> per massimizzare il recupero.</li>
-          <li>${D.goal==='lose' ? 'Non scendere mai sotto le '+Math.max(1200,D.bmr)+' kcal/giorno (il tuo BMR). Un deficit eccessivo brucia muscolo, non grasso.' : D.goal==='gain' ? 'Pesi l\'avanzata mensile: +0.5–1kg/mese è crescita pulita. Oltre, stai accumulando troppo grasso.' : 'Mantieni la consistenza: variazioni di ±200 kcal nel lungo periodo non impattano i risultati.'}</li>
-          <li>Dormi 7–9 ore. Il <strong>GH (ormone della crescita)</strong> viene rilasciato prevalentemente durante il sonno profondo — è essenziale quanto l\'allenamento.</li>
+          <li>${D.goal === 'lose' ? 'Non scendere mai sotto le ' + Math.max(1200, D.bmr) + ' kcal/giorno (il tuo BMR). Un deficit eccessivo brucia muscolo, non grasso.' : D.goal === 'gain' ? 'Pesi l\'avanzata mensile: +0.5–1kg/mese è crescita pulita. Oltre, stai accumulando troppo grasso.' : 'Mantieni la consistenza: variazioni di ±200 kcal nel lungo periodo non impattano i risultati.'}</li>
+          <li>Dormi 7–9 ore. Il <strong>GH (ormone della crescita)</strong> viene rilasciato prevalentemente durante il sonno profondo - è essenziale quanto l\'allenamento.</li>
         </ul>
       </div>
     </div>
@@ -364,40 +384,41 @@ function renderResults(D) {
     <button class="btn-recalc" onclick="document.getElementById('results').classList.remove('show');window.scrollTo({top:0,behavior:'smooth'})">↺ Ricalcola</button>
   `;
 
-  const res = document.getElementById('results');
-  res.innerHTML = html;
-  res.classList.add('show');
+      const res = document.getElementById('results');
+      res.innerHTML = html;
+      res.classList.add('show');
 
-  // Animate calorie counter
-  setTimeout(() => {
-    const el = document.getElementById('calNum');
-    const target = D.target;
-    let cur = 0;
-    const step = Math.ceil(target / 60);
-    const timer = setInterval(() => {
-      cur = Math.min(cur + step, target);
-      el.textContent = cur.toLocaleString('it-IT');
-      if (cur >= target) clearInterval(timer);
-    }, 16);
-  }, 100);
+      // Animate calorie counter
+      setTimeout(() => {
+        const el = document.getElementById('calNum');
+        const target = D.target;
+        let cur = 0;
+        const step = Math.ceil(target / 60);
+        const timer = setInterval(() => {
+          cur = Math.min(cur + step, target);
+          el.textContent = cur.toLocaleString('it-IT');
+          if (cur >= target) clearInterval(timer);
+        }, 16);
+      }, 100);
 
-  // Animate macro bars
-  setTimeout(() => {
-    document.querySelectorAll('.macro-bar-fill').forEach(el => {
-      el.style.width = el.dataset.w;
-    });
-  }, 200);
+      // Animate macro bars
+      setTimeout(() => {
+        document.querySelectorAll('.macro-bar-fill').forEach(el => {
+          el.style.width = el.dataset.w;
+        });
+      }, 200);
 
-  res.scrollIntoView({behavior:'smooth', block:'start'});
+      res.scrollIntoView({ behavior: 'smooth', block: 'start' });
 
-  // Save to localStorage for other pages
-  try {
-    localStorage.setItem('fitora_profile', JSON.stringify({
-      gender: D.gender, age: D.age||0, weight: D.weight, height: D.height,
-      tdee: D.tdee, target: D.target, protG: D.protG, carbG: D.carbG, fatG: D.fatG
-    }));
-  } catch(e) {}
-}
-</script>
+      // Save to localStorage for other pages
+      try {
+        localStorage.setItem('fitora_profile', JSON.stringify({
+          gender: D.gender, age: D.age || 0, weight: D.weight, height: D.height,
+          tdee: D.tdee, target: D.target, protG: D.protG, carbG: D.carbG, fatG: D.fatG
+        }));
+      } catch (e) { }
+    }
+  </script>
 </body>
+
 </html>
