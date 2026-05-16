@@ -13,12 +13,12 @@
   const CFG = Object.assign({
     siteName:       'FITORA',
     botName:        'Assistente FITORA',
-    botAvatar:      '⚡',
+    botAvatar:      '<i class="fa-solid fa-bolt" style="color: #facc15;"></i>',
     apiKey:         '',
     proxyUrl:       '',
     model:          'claude-sonnet-4-6',
     maxTokens:      512,
-    welcomeMessage: 'Ciao! 👋 Sono l\'assistente di **FITORA**.\nPosso aiutarti a navigare il sito, conoscerti le funzionalità, metterti in contatto con i Personal Trainer e tanto altro. Come posso aiutarti?',
+    welcomeMessage: 'Ciao! <i class="fa-solid fa-hand" style="color: #ffc107;"></i> Sono l\'assistente di **FITORA**.\nPosso aiutarti a navigare il sito, conoscerti le funzionalità, metterti in contatto con i Personal Trainer e tanto altro. Come posso aiutarti?',
     cssFile:        null,
   }, window.ChatbotConfig || {});
 
@@ -31,27 +31,27 @@
      NAVIGAZIONE REALE
   ══════════════════════════════════════════════════════ */
   const NAV = IS_DASHBOARD ? {
-    home:        { label: 'Home Dashboard',    icon: '🏠', action: () => switchTabSafe('home') },
-    run:         { label: 'Corri / GPS',       icon: '🏃', action: () => switchTabSafe('run') },
-    allenamento: { label: 'Allenamento Oggi',  icon: '⚡', action: () => goHref('workout.html') },
-    nutrizione:  { label: 'Piano Alimentare',  icon: '🥗', action: () => goHref('nutrition.html') },
-    sport:       { label: 'Il Tuo Sport',      icon: '🏆', action: () => goHref('sport-quiz.html') },
-    storico:     { label: 'Storico Corse',     icon: '📜', action: () => switchTabSafe('history') },
-    musica:      { label: 'Musica / Spotify',  icon: '🎵', action: () => switchTabSafe('music') },
-    community:   { label: 'Community',         icon: '👥', action: () => switchTabSafe('community') },
-    match:       { label: 'Trova Compagno',    icon: '💚', action: () => goHref('match.html') },
+    home:        { label: 'Home Dashboard',    icon: '<i class="fa-solid fa-house" style="color: #795548;"></i>', action: () => switchTabSafe('home') },
+    run:         { label: 'Corri / GPS',       icon: '<i class="fa-solid fa-person-running" style="color: #ff5722;"></i>', action: () => switchTabSafe('run') },
+    allenamento: { label: 'Allenamento Oggi',  icon: '<i class="fa-solid fa-bolt" style="color: #facc15;"></i>', action: () => goHref('workout.html') },
+    nutrizione:  { label: 'Piano Alimentare',  icon: '<i class="fa-solid fa-bowl-food" style="color: #4caf50;"></i>', action: () => goHref('nutrition.html') },
+    sport:       { label: 'Il Tuo Sport',      icon: '<i class="fa-solid fa-trophy" style="color: #ffc107;"></i>', action: () => goHref('sport-quiz.html') },
+    storico:     { label: 'Storico Corse',     icon: '<i class="fa-solid fa-scroll" style="color: #ffeb3b;"></i>', action: () => switchTabSafe('history') },
+    musica:      { label: 'Musica / Spotify',  icon: '<i class="fa-solid fa-music" style="color: #e91e63;"></i>', action: () => switchTabSafe('music') },
+    community:   { label: 'Community',         icon: '<i class="fa-solid fa-users" style="color: #03a9f4;"></i>', action: () => switchTabSafe('community') },
+    match:       { label: 'Trova Compagno',    icon: '<i class="fa-solid fa-heart" style="color: #4caf50;"></i>', action: () => goHref('match.html') },
   } : {
-    home:        { label: 'Home',              icon: '🏠', action: () => goHref('index.html#hero') },
-    metodo:      { label: 'Il Metodo',         icon: '📋', action: () => goHref('index.html#beyond') },
-    features:    { label: 'Funzionalità',      icon: '⚡', action: () => goHref('index.html#features') },
-    tech:        { label: 'Tecnologia AI',     icon: '🤖', action: () => goHref('index.html#vision') },
-    community:   { label: 'Community',         icon: '👥', action: () => goHref('index.html#community') },
-    futuro:      { label: 'Futuro / Wearable', icon: '🚀', action: () => goHref('index.html#future') },
-    dashboard:   { label: 'Dashboard ⚡',      icon: '📊', action: () => goHref('check-in.html') },
-    registrati:  { label: 'Registrati',        icon: '✍️', action: () => goHref('register.html') },
-    allenamento: { label: 'Allenamento',       icon: '⚡', action: () => goHref('workout.html') },
-    nutrizione:  { label: 'Nutrizione',        icon: '🥗', action: () => goHref('nutrition.html') },
-    sport:       { label: 'Quiz Sport',        icon: '🏆', action: () => goHref('sport-quiz.html') },
+    home:        { label: 'Home',              icon: '<i class="fa-solid fa-house" style="color: #795548;"></i>', action: () => goHref('index.html#hero') },
+    metodo:      { label: 'Il Metodo',         icon: '<i class="fa-solid fa-clipboard-list" style="color: #ffeb3b;"></i>', action: () => goHref('index.html#beyond') },
+    features:    { label: 'Funzionalità',      icon: '<i class="fa-solid fa-bolt" style="color: #facc15;"></i>', action: () => goHref('index.html#features') },
+    tech:        { label: 'Tecnologia AI',     icon: '<i class="fa-solid fa-robot" style="color: #9c27b0;"></i>', action: () => goHref('index.html#vision') },
+    community:   { label: 'Community',         icon: '<i class="fa-solid fa-users" style="color: #03a9f4;"></i>', action: () => goHref('index.html#community') },
+    futuro:      { label: 'Futuro / Wearable', icon: '<i class="fa-solid fa-rocket" style="color: #ff5722;"></i>', action: () => goHref('index.html#future') },
+    dashboard:   { label: 'Dashboard <i class="fa-solid fa-bolt" style="color: #facc15;"></i>',      icon: '<i class="fa-solid fa-chart-simple" style="color: #03a9f4;"></i>', action: () => goHref('check-in.html') },
+    registrati:  { label: 'Registrati',        icon: '<i class="fa-solid fa-pen" style="color: #03a9f4;"></i>️', action: () => goHref('register.html') },
+    allenamento: { label: 'Allenamento',       icon: '<i class="fa-solid fa-bolt" style="color: #facc15;"></i>', action: () => goHref('workout.html') },
+    nutrizione:  { label: 'Nutrizione',        icon: '<i class="fa-solid fa-bowl-food" style="color: #4caf50;"></i>', action: () => goHref('nutrition.html') },
+    sport:       { label: 'Quiz Sport',        icon: '<i class="fa-solid fa-trophy" style="color: #ffc107;"></i>', action: () => goHref('sport-quiz.html') },
   };
 
   function goHref(url) { window.location.href = url; }
@@ -350,7 +350,7 @@
         </div>
       </div>
     `).join('');
-    return `<div class="cb-pt-intro">👥 I nostri <strong>Personal Trainer</strong> in palestra:</div>${cards}`;
+    return `<div class="cb-pt-intro"><i class="fa-solid fa-users" style="color: #03a9f4;"></i> I nostri <strong>Personal Trainer</strong> in palestra:</div>${cards}`;
   }
 
   /* ══════════════════════════════════════════════════════
@@ -366,7 +366,7 @@
         <span class="cb-nav-arrow">→</span>
       </button>`;
     }).join('');
-    return `<div class="cb-nav-intro">📍 Dove vuoi andare? Clicca per aprire:</div><div class="cb-nav-grid">${items}</div>`;
+    return `<div class="cb-nav-intro"><i class="fa-solid fa-location-dot" style="color: #f44336;"></i> Dove vuoi andare? Clicca per aprire:</div><div class="cb-nav-grid">${items}</div>`;
   }
 
   function bindNavClicks() {
@@ -418,7 +418,7 @@
       }
     } catch (err) {
       removeTyping();
-      addMsg('bot', '⚠️ Si è verificato un errore. Riprova tra poco.', true);
+      addMsg('bot', '<i class="fa-solid fa-triangle-exclamation" style="color: #ff9800;"></i> Si è verificato un errore. Riprova tra poco.', true);
       console.error('[FITORA Chatbot]', err);
       updateChips(chipSet);
     } finally {
@@ -457,7 +457,7 @@
       const bmi = (bmiState.weight / (h * h)).toFixed(1);
       bmiState.step = 0;
       let desc = bmi < 18.5 ? "Sottopeso" : bmi < 25 ? "Normopeso" : bmi < 30 ? "Sovrappeso" : "Obesità";
-      return `Il tuo BMI calcolato è **${bmi}** (${desc}).\n\nRicorda che questo è un valore indicativo. Per un'analisi completa, consulta i nostri PT o la sezione Nutrizione! 💪`;
+      return `Il tuo BMI calcolato è **${bmi}** (${desc}).\n\nRicorda che questo è un valore indicativo. Per un'analisi completa, consulta i nostri PT o la sezione Nutrizione! <i class="fa-solid fa-dumbbell" style="color: #9c27b0;"></i>`;
     }
     if (/calcola.*bmi|indice.*massa|voglio sapere il mio bmi/.test(msg)) {
       bmiState.step = 1;
@@ -469,24 +469,24 @@
       updateChips(CHIPS_DEFAULT);
       const hasChattedBefore = localStorage.getItem('fitora_has_chatted');
       if (hasChattedBefore) {
-        return 'Bentornato! 👋 Sono di nuovo qui per aiutarti con **FITORA**. Come posso esserti utile oggi?';
+        return 'Bentornato! <i class="fa-solid fa-hand" style="color: #ffc107;"></i> Sono di nuovo qui per aiutarti con **FITORA**. Come posso esserti utile oggi?';
       } else {
         localStorage.setItem('fitora_has_chatted', 'true');
-        return 'Ciao! 👋 Sono l\'assistente di **FITORA**.\n\nPosso aiutarti su: funzionalità dell\'app, navigare il sito, Personal Trainer disponibili e tanto altro. Da dove vuoi iniziare?';
+        return 'Ciao! <i class="fa-solid fa-hand" style="color: #ffc107;"></i> Sono l\'assistente di **FITORA**.\n\nPosso aiutarti su: funzionalità dell\'app, navigare il sito, Personal Trainer disponibili e tanto altro. Da dove vuoi iniziare?';
       }
     }
 
     /* ── Contatti / Supporto ── */
     if (/contatti|supporto|aiuto|email|telefono|assistenza/.test(msg)) {
       updateChips(CHIPS_DEFAULT);
-      return 'Certo! Puoi contattarci via email a **supporto@fitora.com** o visitare la nostra pagina di **Contatti** sul sito. Siamo qui per aiutarti! 📧';
+      return 'Certo! Puoi contattarci via email a **supporto@fitora.com** o visitare la nostra pagina di **Contatti** sul sito. Siamo qui per aiutarti! <i class="fa-solid fa-envelope" style="color: #ff5722;"></i>';
     }
 
 
     /* ── Chi sei ── */
     if (/chi sei|cosa fai|presentati|come ti chiami/.test(msg)) {
       updateChips(CHIPS_DEFAULT);
-      return 'Sono l\'assistente virtuale di **FITORA** 🤖\n\nPosso:\n- Rispondere alle domande sull\'app e le funzionalità\n- Portarti direttamente alle sezioni del sito\n- Presentarti i nostri **Personal Trainer**\n- Supportarti nel tuo percorso fitness\n\nChiedimi pure qualsiasi cosa!';
+      return 'Sono l\'assistente virtuale di **FITORA** <i class="fa-solid fa-robot" style="color: #9c27b0;"></i>\n\nPosso:\n- Rispondere alle domande sull\'app e le funzionalità\n- Portarti direttamente alle sezioni del sito\n- Presentarti i nostri **Personal Trainer**\n- Supportarti nel tuo percorso fitness\n\nChiedimi pure qualsiasi cosa!';
     }
 
     /* ══ PERSONAL TRAINER - Come allenarsi con un PT ══ */
@@ -536,91 +536,91 @@
     /* Come funziona */
     if (/come funziona|funzionalit|cosa offre|cosa fa fitora|spiegami|dimmi di fitora/.test(msg)) {
       updateChips(CHIPS_AFTER_FEATURES);
-      return 'FITORA è un\'app fitness all-in-one basata su **AI** 🤖\n\n**01 Lo Sport Perfetto** — Analizza i tuoi dati clinici e suggerisce lo sport ideale per te.\n\n**02 Personal Trainer AI** — Corregge postura, conta reps, previene infortuni — solo col tuo telefono.\n\n**03 Computer Vision** — La fotocamera analizza i tuoi movimenti in tempo reale.\n\n**04 Adattabilità Quotidiana** — Il piano cambia ogni giorno in base al tuo umore e stanchezza.\n\n**05 Nutrizione Intelligente** — Piano alimentare su misura basato sui parametri reali.\n\n**06 Community & Gamification** — Sfide, badge, compagni di allenamento.\n\nVuoi sapere di più su una funzione specifica?';
+      return 'FITORA è un\'app fitness all-in-one basata su **AI** <i class="fa-solid fa-robot" style="color: #9c27b0;"></i>\n\n**01 Lo Sport Perfetto** — Analizza i tuoi dati clinici e suggerisce lo sport ideale per te.\n\n**02 Personal Trainer AI** — Corregge postura, conta reps, previene infortuni — solo col tuo telefono.\n\n**03 Computer Vision** — La fotocamera analizza i tuoi movimenti in tempo reale.\n\n**04 Adattabilità Quotidiana** — Il piano cambia ogni giorno in base al tuo umore e stanchezza.\n\n**05 Nutrizione Intelligente** — Piano alimentare su misura basato sui parametri reali.\n\n**06 Community & Gamification** — Sfide, badge, compagni di allenamento.\n\nVuoi sapere di più su una funzione specifica?';
     }
 
     /* Computer Vision */
     if (/computer vision|telecamera|fotocamera|postura|ripetizioni|\brep\b|movimento.*reale|reale.*movimento/.test(msg)) {
       updateChips(CHIPS_AFTER_FEATURES);
-      return '**Computer Vision di FITORA** 📷\n\nUsa la fotocamera del tuo smartphone per:\n\n- **Analizzare i movimenti** in tempo reale\n- **Correggere la postura** con feedback visivo immediato\n- **Contare le ripetizioni** automaticamente\n- **Rilevare rischi di infortuni** *prima* che accadano\n\nNon servono sensori o device aggiuntivi — basta il tuo telefono appoggiato davanti a te 📱\n\nVuoi che ti porti nella sezione Tech del sito?';
+      return '**Computer Vision di FITORA** <i class="fa-solid fa-camera" style="color: #607d8b;"></i>\n\nUsa la fotocamera del tuo smartphone per:\n\n- **Analizzare i movimenti** in tempo reale\n- **Correggere la postura** con feedback visivo immediato\n- **Contare le ripetizioni** automaticamente\n- **Rilevare rischi di infortuni** *prima* che accadano\n\nNon servono sensori o device aggiuntivi — basta il tuo telefono appoggiato davanti a te <i class="fa-solid fa-mobile" style="color: #607d8b;"></i>\n\nVuoi che ti porti nella sezione Tech del sito?';
     }
 
     /* GPS / Corsa */
     if (/\bgps\b|traccia.*corsa|percorso gps|correre|running|km.*corsa|distanza.*corsa/.test(msg)) {
-      updateChips(['Dove trovo la sezione Corri?', 'Storico corse', 'Cos\'è la Computer Vision?', 'Personal Trainer 💪']);
-      return '**Tracking GPS di FITORA** 🛰️\n\nDalla sezione **Corri** puoi:\n\n- Tracciare il percorso in **tempo reale** su mappa interattiva\n- Vedere distanza, velocità, calorie e ritmo (min/km)\n- Visualizzare il **grafico del ritmo** nel tempo\n- Salvare la sessione nello **Storico Corse**\n- Mettere in pausa e riprendere la sessione\n\nIl GPS si attiva quando premi *Avvia*. Basta permettere l\'accesso alla posizione 📍\n\nVuoi aprire la schermata Corri?';
+      updateChips(['Dove trovo la sezione Corri?', 'Storico corse', 'Cos\'è la Computer Vision?', 'Personal Trainer <i class="fa-solid fa-dumbbell" style="color: #9c27b0;"></i>']);
+      return '**Tracking GPS di FITORA** <i class="fa-solid fa-satellite" style="color: #9e9e9e;"></i>️\n\nDalla sezione **Corri** puoi:\n\n- Tracciare il percorso in **tempo reale** su mappa interattiva\n- Vedere distanza, velocità, calorie e ritmo (min/km)\n- Visualizzare il **grafico del ritmo** nel tempo\n- Salvare la sessione nello **Storico Corse**\n- Mettere in pausa e riprendere la sessione\n\nIl GPS si attiva quando premi *Avvia*. Basta permettere l\'accesso alla posizione <i class="fa-solid fa-location-dot" style="color: #f44336;"></i>\n\nVuoi aprire la schermata Corri?';
     }
 
     /* Adattabilità / Check-in */
     if (/adattab|check.?in|umore|stanchezza|giorn|quotidian|stato.*oggi|come mi sento/.test(msg)) {
       updateChips(CHIPS_AFTER_FEATURES);
-      return '**Adattabilità Quotidiana** 🔄\n\nOgni giorno FITORA ti chiede come stai tramite un breve **check-in**:\n\n- Come ti senti fisicamente?\n- Livello di stanchezza e stress\n- Qualità del sonno\n\nIn base alle risposte, l\'AI **modifica il piano di allenamento**:\n\n- 🟢 Forma top → allenamento intenso\n- 🟡 Moderato → workout ridotto\n- 🔴 Stanco → recupero attivo\n\nIn questo modo non ti alleni mai in modo controproducente!';
+      return '**Adattabilità Quotidiana** <i class="fa-solid fa-rotate" style="color: #03a9f4;"></i>\n\nOgni giorno FITORA ti chiede come stai tramite un breve **check-in**:\n\n- Come ti senti fisicamente?\n- Livello di stanchezza e stress\n- Qualità del sonno\n\nIn base alle risposte, l\'AI **modifica il piano di allenamento**:\n\n- 🟢 Forma top → allenamento intenso\n- 🟡 Moderato → workout ridotto\n- <i class="fa-solid fa-circle" style="color: #f44336;"></i> Stanco → recupero attivo\n\nIn questo modo non ti alleni mai in modo controproducente!';
     }
 
     /* Sport perfetto / Quiz */
     if (/sport perfetto|sport ideal|quale sport|che sport|mi consiglia.*sport|quiz.*sport|sport.*quiz/.test(msg)) {
-      updateChips(['Dove trovo il Quiz Sport?', 'Come funziona FITORA?', 'Personal Trainer 💪', 'Community e sfide']);
-      return '**"Il Tuo Sport Perfetto"** 🏆\n\nFITORA incrocia:\n- I tuoi **dati clinici** (peso, altezza, pressione, glicemia)\n- Le tue **preferenze personali**\n- Le tue **capacità fisiche reali**\n\nIn 6 domande ti suggerisce i **3 sport più adatti a te**, spiegando i benefici specifici per la tua salute.\n\nVuoi aprire il quiz adesso?';
+      updateChips(['Dove trovo il Quiz Sport?', 'Come funziona FITORA?', 'Personal Trainer <i class="fa-solid fa-dumbbell" style="color: #9c27b0;"></i>', 'Community e sfide']);
+      return '**"Il Tuo Sport Perfetto"** <i class="fa-solid fa-trophy" style="color: #ffc107;"></i>\n\nFITORA incrocia:\n- I tuoi **dati clinici** (peso, altezza, pressione, glicemia)\n- Le tue **preferenze personali**\n- Le tue **capacità fisiche reali**\n\nIn 6 domande ti suggerisce i **3 sport più adatti a te**, spiegando i benefici specifici per la tua salute.\n\nVuoi aprire il quiz adesso?';
     }
 
     /* Allenamento con AI */
     if (/allenament.*ai|ai.*allenament|scheda.*ai|ai.*scheda|workout.*inteligent/.test(msg)) {
       updateChips(CHIPS_AFTER_FEATURES);
-      return '**Allenamento con l\'AI** ⚡\n\nFITORA genera schede di allenamento personalizzate basate su:\n\n- Il tuo **profilo clinico** (peso, altezza, parametri medici)\n- Il **check-in giornaliero** (come stai oggi)\n- I tuoi **obiettivi** (forza, dimagrimento, resistenza...)\n- Lo **sport che pratichi**\n\nLa scheda si adatta automaticamente ogni giorno — mai lo stesso workout generico!\n\nVuoi aprire l\'allenamento di oggi?';
+      return '**Allenamento con l\'AI** <i class="fa-solid fa-bolt" style="color: #facc15;"></i>\n\nFITORA genera schede di allenamento personalizzate basate su:\n\n- Il tuo **profilo clinico** (peso, altezza, parametri medici)\n- Il **check-in giornaliero** (come stai oggi)\n- I tuoi **obiettivi** (forza, dimagrimento, resistenza...)\n- Lo **sport che pratichi**\n\nLa scheda si adatta automaticamente ogni giorno — mai lo stesso workout generico!\n\nVuoi aprire l\'allenamento di oggi?';
     }
 
     /* Nutrizione */
     if (/nutrizi|calorie|caloric|macro|dieta|alimentaz|pasto|cibo|bmr|tdee|fabbisogno/.test(msg)) {
-      updateChips(['Dove trovo il Piano Alimentare?', 'Come funziona FITORA?', 'Allenamento con l\'AI', 'Personal Trainer 💪']);
-      return '**Nutrizione Intelligente** 🥗\n\nFITORA calcola:\n\n- **BMR** (metabolismo basale) + **TDEE** (fabbisogno totale)\n- Suddivisione ottimale in **macronutrienti** (proteine, carbo, grassi)\n- **Piano pasti giornaliero** su misura\n\nTutto basato sui tuoi parametri reali — non una dieta generica, ma una dieta *tua*.\n\nVuoi aprire il Piano Alimentare?';
+      updateChips(['Dove trovo il Piano Alimentare?', 'Come funziona FITORA?', 'Allenamento con l\'AI', 'Personal Trainer <i class="fa-solid fa-dumbbell" style="color: #9c27b0;"></i>']);
+      return '**Nutrizione Intelligente** <i class="fa-solid fa-bowl-food" style="color: #4caf50;"></i>\n\nFITORA calcola:\n\n- **BMR** (metabolismo basale) + **TDEE** (fabbisogno totale)\n- Suddivisione ottimale in **macronutrienti** (proteine, carbo, grassi)\n- **Piano pasti giornaliero** su misura\n\nTutto basato sui tuoi parametri reali — non una dieta generica, ma una dieta *tua*.\n\nVuoi aprire il Piano Alimentare?';
     }
 
     /* Community / Badge */
     if (/community|amici|sfid|classifica|social|gruppo|badge|gamification|matching|compagno/.test(msg)) {
-      updateChips(['Dove trovo la Community?', 'Come funzionano i badge?', 'Personal Trainer 💪', 'Come mi registro?']);
-      return '**Community FITORA** 👥\n\n- **Matching Intelligente** — Trova compagni con lo stesso sport e livello 💚\n- **Sfide di Gruppo** — Compete in challenge settimanali\n- **Badge & Classifiche** — Guadagna badge: Prima Corsa, 5 km, 50 km...\n- **Condivisione WhatsApp** — Invita amici e sfidali\n- **Trova Compagno** — Scorri profili di atleti vicini a te\n\nVuoi aprire la Community?';
+      updateChips(['Dove trovo la Community?', 'Come funzionano i badge?', 'Personal Trainer <i class="fa-solid fa-dumbbell" style="color: #9c27b0;"></i>', 'Come mi registro?']);
+      return '**Community FITORA** <i class="fa-solid fa-users" style="color: #03a9f4;"></i>\n\n- **Matching Intelligente** — Trova compagni con lo stesso sport e livello <i class="fa-solid fa-heart" style="color: #4caf50;"></i>\n- **Sfide di Gruppo** — Compete in challenge settimanali\n- **Badge & Classifiche** — Guadagna badge: Prima Corsa, 5 km, 50 km...\n- **Condivisione WhatsApp** — Invita amici e sfidali\n- **Trova Compagno** — Scorri profili di atleti vicini a te\n\nVuoi aprire la Community?';
     }
 
     /* Storico corse */
     if (/storico|storia.*corse|corse.*salvate|sessioni.*salvate|le mie corse/.test(msg)) {
-      updateChips(['Dove trovo lo Storico?', 'Come funziona il GPS?', 'Community e sfide', 'Personal Trainer 💪']);
-      return '**Storico Corse** 📜\n\nIn questa sezione trovi tutte le tue sessioni salvate con:\n\n- **Data e ora** della corsa\n- **Distanza** percorsa in km\n- **Tempo** totale\n- **Calorie** bruciate\n- **Waypoint GPS** registrati\n\nPuoi anche cancellare lo storico o condividere i risultati con la community!\n\nVuoi aprire lo Storico?';
+      updateChips(['Dove trovo lo Storico?', 'Come funziona il GPS?', 'Community e sfide', 'Personal Trainer <i class="fa-solid fa-dumbbell" style="color: #9c27b0;"></i>']);
+      return '**Storico Corse** <i class="fa-solid fa-scroll" style="color: #ffeb3b;"></i>\n\nIn questa sezione trovi tutte le tue sessioni salvate con:\n\n- **Data e ora** della corsa\n- **Distanza** percorsa in km\n- **Tempo** totale\n- **Calorie** bruciate\n- **Waypoint GPS** registrati\n\nPuoi anche cancellare lo storico o condividere i risultati con la community!\n\nVuoi aprire lo Storico?';
     }
 
     /* Musica / Spotify */
     if (/\b(musica|spotify|playlist|brano|canzone|song)\b/.test(msg)) {
       updateChips(['Dove trovo la sezione Musica?', 'Come funziona il GPS?', 'Community e sfide', 'Come funziona FITORA?']);
-      return '**Musica su FITORA** 🎵\n\nNella sezione **Musica** della Dashboard puoi:\n\n- Ascoltare una **playlist predefinita** per l\'allenamento\n- Incollare qualsiasi link **Spotify** (brano, album o playlist)\n- Il player rimane attivo **durante la corsa GPS**\n- Il link viene **salvato automaticamente** per le prossime sessioni\n\nPerfetto per allenarsi con la tua musica preferita!';
+      return '**Musica su FITORA** <i class="fa-solid fa-music" style="color: #e91e63;"></i>\n\nNella sezione **Musica** della Dashboard puoi:\n\n- Ascoltare una **playlist predefinita** per l\'allenamento\n- Incollare qualsiasi link **Spotify** (brano, album o playlist)\n- Il player rimane attivo **durante la corsa GPS**\n- Il link viene **salvato automaticamente** per le prossime sessioni\n\nPerfetto per allenarsi con la tua musica preferita!';
     }
 
     /* Wearable */
     if (/wearable|smartwatch|apple watch|garmin|fitbit|orologio.*smart/.test(msg)) {
       updateChips(CHIPS_AFTER_FEATURES);
-      return '**Integrazione Wearable** ⌚\n\nFITORA sta sviluppando l\'integrazione con:\n\n- **Apple Watch**\n- **Garmin**\n- **Fitbit**\n\nI dati si sincronizzeranno automaticamente — senza inserimenti manuali.\n\nQuesta funzione arriva con **FITORA 2.0** 🚀 insieme a partnership mediche e telemedicina!';
+      return '**Integrazione Wearable** <i class="fa-solid fa-stopwatch" style="color: #607d8b;"></i>\n\nFITORA sta sviluppando l\'integrazione con:\n\n- **Apple Watch**\n- **Garmin**\n- **Fitbit**\n\nI dati si sincronizzeranno automaticamente — senza inserimenti manuali.\n\nQuesta funzione arriva con **FITORA 2.0** <i class="fa-solid fa-rocket" style="color: #ff5722;"></i> insieme a partnership mediche e telemedicina!';
     }
 
     /* Futuro / FITORA 2.0 */
     if (/futuro|prossimamente|2\.0|telemedicina|partnership|in arrivo|novit/.test(msg)) {
-      updateChips(['Come funziona FITORA?', 'Wearable e integrazioni', 'Personal Trainer 💪', 'Community e sfide']);
-      return '**Il Futuro di FITORA** 🚀\n\n**⌚ Integrazione Wearable** — Sync automatico con Apple Watch, Fitbit, Garmin.\n\n**🏥 Partnership Mediche** — Collaborazioni con palestre, centri medici e assicurazioni.\n\n**👨‍⚕️ Telemedicina** — I medici potranno monitorare i progressi dei pazienti a distanza.\n\nFITORA è una piattaforma in continua evoluzione — restate sintonizzati!';
+      updateChips(['Come funziona FITORA?', 'Wearable e integrazioni', 'Personal Trainer <i class="fa-solid fa-dumbbell" style="color: #9c27b0;"></i>', 'Community e sfide']);
+      return '**Il Futuro di FITORA** <i class="fa-solid fa-rocket" style="color: #ff5722;"></i>\n\n**<i class="fa-solid fa-stopwatch" style="color: #607d8b;"></i> Integrazione Wearable** — Sync automatico con Apple Watch, Fitbit, Garmin.\n\n**<i class="fa-solid fa-hospital" style="color: #f44336;"></i> Partnership Mediche** — Collaborazioni con palestre, centri medici e assicurazioni.\n\n**<i class="fa-solid fa-user" style="color: #03a9f4;"></i>‍<i class="fa-solid fa-staff-snake" style="color: #03a9f4;"></i>️ Telemedicina** — I medici potranno monitorare i progressi dei pazienti a distanza.\n\nFITORA è una piattaforma in continua evoluzione — restate sintonizzati!';
     }
 
     /* App mobile */
     if (/app mobile|scarica|download|android|ios|iphone|google play|app store/.test(msg)) {
       updateChips(CHIPS_AFTER_FEATURES);
-      return '**App FITORA** 📲\n\nDisponibile su:\n- **App Store** (iOS / iPhone)\n- **Google Play** (Android)\n\nScaricala gratuitamente! Puoi anche usare FITORA direttamente dal **browser** senza installare nulla — prova subito la Dashboard!';
+      return '**App FITORA** <i class="fa-solid fa-mobile-screen" style="color: #4caf50;"></i>\n\nDisponibile su:\n- **App Store** (iOS / iPhone)\n- **Google Play** (Android)\n\nScaricala gratuitamente! Puoi anche usare FITORA direttamente dal **browser** senza installare nulla — prova subito la Dashboard!';
     }
 
     /* Registrazione */
     if (/registr|iscri|creare.*account|sign.?up|nuovo.*account/.test(msg)) {
-      updateChips(['Dove mi registro?', 'Come funziona FITORA?', 'Personal Trainer 💪', 'Community e sfide']);
-      return 'Per registrarti a **FITORA** e iniziare il tuo percorso, clicca qui: Registrati su FITORA 📝\n\nÈ semplice e veloce!';
+      updateChips(['Dove mi registro?', 'Come funziona FITORA?', 'Personal Trainer <i class="fa-solid fa-dumbbell" style="color: #9c27b0;"></i>', 'Community e sfide']);
+      return 'Per registrarti a **FITORA** e iniziare il tuo percorso, clicca qui: Registrati su FITORA <i class="fa-solid fa-clipboard-list" style="color: #ffeb3b;"></i>\n\nÈ semplice e veloce!';
     }
 
     /* Login */
     if (/login|accedi|entrare|password|accesso|dimenticato.*password/.test(msg)) {
       updateChips(CHIPS_DEFAULT);
-      return 'Per accedere a **FITORA** usa il pulsante **Dashboard ⚡** nel menu in alto.\n\nSe hai dimenticato la password, dalla pagina di login trovi il link *"Password dimenticata?"* per resettarla via email 🔐';
+      return 'Per accedere a **FITORA** usa il pulsante **Dashboard <i class="fa-solid fa-bolt" style="color: #facc15;"></i>** nel menu in alto.\n\nSe hai dimenticato la password, dalla pagina di login trovi il link *"Password dimenticata?"* per resettarla via email <i class="fa-solid fa-lock" style="color: #ff9800;"></i>';
     }
 
     /* ── Coaching Tecnico 10K ── */
@@ -637,7 +637,7 @@
     /* ── VISION & BUSINESS (Investor Logic) ── */
     if (/investire|mercato|business|giuria|perché fitora|unicità|competitor/.test(msg)) {
       updateChips(['Biomechanical Health Index', 'Computer Vision', 'Modello B2B']);
-      return 'FITORA non è un\'app di fitness, è un **asset di prevenzione sanitaria digitale** 🛡️\n\n**Perché investire?**\n1. **Proprietary Data**: Calcoliamo il BHI (Biomechanical Health Index), un dato unico che nessun competitor ha.\n2. **De-risking**: Riduciamo i costi per le assicurazioni monitorando la tecnica in tempo reale.\n3. **Scalabilità**: Integriamo il welfare aziendale con test di prontezza neurale (CNS) per ridurre l\'assenteismo da infortunio.\n\nSiamo pronti per la rivoluzione della *Longevity Tech*.';
+      return 'FITORA non è un\'app di fitness, è un **asset di prevenzione sanitaria digitale** <i class="fa-solid fa-shield" style="color: #03a9f4;"></i>\n\n**Perché investire?**\n1. **Proprietary Data**: Calcoliamo il BHI (Biomechanical Health Index), un dato unico che nessun competitor ha.\n2. **De-risking**: Riduciamo i costi per le assicurazioni monitorando la tecnica in tempo reale.\n3. **Scalabilità**: Integriamo il welfare aziendale con test di prontezza neurale (CNS) per ridurre l\'assenteismo da infortunio.\n\nSiamo pronti per la rivoluzione della *Longevity Tech*.';
     }
 
     /* ── Aiuto Tecnico Prevenzione ── */
@@ -649,30 +649,30 @@
     /* Notifiche */
     if (/notifich|reminder|avvisi|promemoria/.test(msg)) {
       updateChips(CHIPS_AFTER_FEATURES);
-      return 'FITORA invia **notifiche intelligenti** 🔔\n\n- Reminder per gli allenamenti programmati\n- Aggiornamenti sui progressi settimanali\n- Avvisi sulle sfide della community\n- Messaggi motivazionali personalizzati\n\nGestisci le preferenze da **Profilo → Impostazioni Notifiche**.';
+      return 'FITORA invia **notifiche intelligenti** <i class="fa-solid fa-bell" style="color: #ffeb3b;"></i>\n\n- Reminder per gli allenamenti programmati\n- Aggiornamenti sui progressi settimanali\n- Avvisi sulle sfide della community\n- Messaggi motivazionali personalizzati\n\nGestisci le preferenze da **Profilo → Impostazioni Notifiche**.';
     }
 
     /* Infortuni / sicurezza */
     if (/infortun|dolore|fisioterapia|recupero|sicurezza|male.*eserciz/.test(msg)) {
       updateChips(CHIPS_AFTER_FEATURES);
-      return 'La **sicurezza** è al centro di FITORA ⚠️\n\nL\'app monitora il carico di lavoro e ti avvisa quando rischi il sovrallenamento. La **Computer Vision** analizza la postura in tempo reale per prevenire movimenti scorretti.\n\nIn caso di dolori o infortuni, consulta sempre un medico o fisioterapista prima di riprendere.\n\nHai bisogno di un **Personal Trainer** per una scheda su misura?';
+      return 'La **sicurezza** è al centro di FITORA <i class="fa-solid fa-triangle-exclamation" style="color: #ff9800;"></i>\n\nL\'app monitora il carico di lavoro e ti avvisa quando rischi il sovrallenamento. La **Computer Vision** analizza la postura in tempo reale per prevenire movimenti scorretti.\n\nIn caso di dolori o infortuni, consulta sempre un medico o fisioterapista prima di riprendere.\n\nHai bisogno di un **Personal Trainer** per una scheda su misura?';
     }
 
     /* Grazie */
     if (/\b(grazie|perfetto|ottimo|bravo|ok grazie|capito|benissimo)\b/.test(msg)) {
       updateChips(CHIPS_DEFAULT);
-      return 'Prego! 😊 Sono qui se hai altre domande su FITORA. Buon allenamento! 💪';
+      return 'Prego! <i class="fa-solid fa-face-smile" style="color: #4caf50;"></i> Sono qui se hai altre domande su FITORA. Buon allenamento! <i class="fa-solid fa-dumbbell" style="color: #9c27b0;"></i>';
     }
 
     /* Off-topic */
     if (/politic|notizie|matematica|storia|meteo|covid|guerra|film|ricette di cucina/.test(msg)) {
       updateChips(CHIPS_DEFAULT);
-      return 'Mi dispiace, posso aiutarti solo con argomenti inerenti a **FITORA** e al fitness 🏋️\n\nHai domande sull\'app, le funzionalità o i nostri Personal Trainer?';
+      return 'Mi dispiace, posso aiutarti solo con argomenti inerenti a **FITORA** e al fitness <i class="fa-solid fa-dumbbell" style="color: #9c27b0;"></i>\n\nHai domande sull\'app, le funzionalità o i nostri Personal Trainer?';
     }
 
     /* Fallback */
     updateChips(CHIPS_DEFAULT);
-    return 'Non ho capito bene 🤔 Ecco cosa posso fare per te:\n\n- Spiegarti le **funzionalità** di FITORA\n- Portarti nelle **sezioni** del sito con un click\n- Presentarti i **Personal Trainer**\n- Rispondere su **allenamento, nutrizione, GPS e community**\n\nProva a riformulare o scegli un argomento qui sotto!';
+    return 'Non ho capito bene <i class="fa-solid fa-question" style="color: #ffc107;"></i> Ecco cosa posso fare per te:\n\n- Spiegarti le **funzionalità** di FITORA\n- Portarti nelle **sezioni** del sito con un click\n- Presentarti i **Personal Trainer**\n- Rispondere su **allenamento, nutrizione, GPS e community**\n\nProva a riformulare o scegli un argomento qui sotto!';
   }
 
   /* ══════════════════════════════════════════════════════
@@ -865,7 +865,7 @@
       const hasChattedBefore = localStorage.getItem('fitora_has_chatted');
       let msg = CFG.welcomeMessage;
       if (hasChattedBefore) {
-        msg = 'Bentornato! 👋 Sono di nuovo qui per aiutarti con **FITORA**. Come posso esserti utile oggi?';
+        msg = 'Bentornato! <i class="fa-solid fa-hand" style="color: #ffc107;"></i> Sono di nuovo qui per aiutarti con **FITORA**. Come posso esserti utile oggi?';
       } else {
         localStorage.setItem('fitora_has_chatted', 'true');
       }

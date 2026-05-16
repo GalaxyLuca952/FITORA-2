@@ -47,7 +47,7 @@
       <div id="checkinCard" style="display:none">
         <div class="section-label">Stato di oggi</div>
         <div class="checkin-result">
-          <div class="ci-icon" id="ciIcon">⚡</div>
+          <div class="ci-icon" id="ciIcon"><i class="fa-solid fa-bolt" style="color: #facc15;"></i></div>
           <div class="ci-body">
             <div class="ci-level gt" id="ciLevel">—</div>
             <div class="ci-desc" id="ciDesc">Completa il check-in per vedere la raccomandazione</div>
@@ -65,7 +65,7 @@
         <div class="section-label">// Monitoraggio Tecnico & Prevenzione</div>
         <div class="card" style="margin-bottom: 8px;">
           <div class="card-head">
-            <div class="card-title">🛡️ Analisi Biomeccanica</div>
+            <div class="card-title"><i class="fa-solid fa-shield" style="color: #03a9f4;"></i> Analisi Biomeccanica</div>
             <div class="card-badge" id="preventionStatus">Check-in richiesto</div>
           </div>
           <div class="card-body" id="preventionTip">
@@ -76,7 +76,7 @@
         <!-- Tracker Idratazione -->
         <div class="card">
           <div class="card-head">
-            <div class="card-title">💧 Idratazione Tecnica</div>
+            <div class="card-title"><i class="fa-solid fa-droplet" style="color: #00bcd4;"></i> Idratazione Tecnica</div>
             <div class="card-badge" id="waterCount">0.0 / 3.0 L</div>
           </div>
           <div class="card-body">
@@ -99,7 +99,7 @@
       <!-- BIOMECHANICAL HEALTH INDEX (BHI) - INVESTOR FEATURE -->
       <div class="card" style="background: linear-gradient(135deg, #080808 0%, #001a1a 100%); border: 1px solid var(--cyan);">
         <div class="card-head">
-          <div class="card-title">🔬 Biomechanical Health Index</div>
+          <div class="card-title"><i class="fa-solid fa-microscope" style="color: #9c27b0;"></i> Biomechanical Health Index</div>
           <div class="card-badge" style="color: var(--cyan); font-weight: 900;">AI AUDIT ACTIVE</div>
         </div>
         <div class="card-body">
@@ -147,7 +147,7 @@
 
       <!-- CTA workout -->
       <a href="workout.html" class="btn-start-cta" style="display:block;text-decoration:none;text-align:center;">
-        ⚡ Genera Allenamento di Oggi
+        <i class="fa-solid fa-bolt" style="color: #facc15;"></i> Genera Allenamento di Oggi
       </a>
 
       <!-- Tool Cards -->
@@ -157,7 +157,7 @@
 
           <!-- Workout -->
           <a href="workout.html" style="display:flex;align-items:center;gap:14px;padding:16px 18px;background:linear-gradient(135deg,rgba(0,212,212,.07),rgba(0,212,212,.02));border:1px solid rgba(0,212,212,.25);text-decoration:none;border-radius:10px;transition:background .2s,box-shadow .2s;" onmouseover="this.style.background='linear-gradient(135deg,rgba(0,212,212,.13),rgba(0,212,212,.05))';this.style.boxShadow='0 4px 20px rgba(0,212,212,.15)'" onmouseout="this.style.background='linear-gradient(135deg,rgba(0,212,212,.07),rgba(0,212,212,.02))';this.style.boxShadow='none'">
-            <div style="width:46px;height:46px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:1.6rem;background:rgba(0,212,212,.1);border:1px solid rgba(0,212,212,.3);">⚡</div>
+            <div style="width:46px;height:46px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:1.6rem;background:rgba(0,212,212,.1);border:1px solid rgba(0,212,212,.3);"><i class="fa-solid fa-bolt" style="color: #facc15;"></i></div>
             <div style="flex:1">
               <div style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:1rem;text-transform:uppercase;letter-spacing:1px;margin-bottom:3px;">Allenamento di Oggi</div>
               <div style="font-size:.7rem;color:var(--dim);line-height:1.45;">Workout su misura in base al tuo check-in e allo sport che pratichi.</div>
@@ -167,7 +167,7 @@
 
           <!-- Nutrition -->
           <a href="nutrition.html" style="display:flex;align-items:center;gap:14px;padding:16px 18px;background:linear-gradient(135deg,rgba(127,255,0,.06),rgba(127,255,0,.02));border:1px solid rgba(127,255,0,.22);text-decoration:none;border-radius:10px;transition:background .2s,box-shadow .2s;" onmouseover="this.style.background='linear-gradient(135deg,rgba(127,255,0,.11),rgba(127,255,0,.04))';this.style.boxShadow='0 4px 20px rgba(127,255,0,.12)'" onmouseout="this.style.background='linear-gradient(135deg,rgba(127,255,0,.06),rgba(127,255,0,.02))';this.style.boxShadow='none'">
-            <div style="width:46px;height:46px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:1.6rem;background:rgba(127,255,0,.1);border:1px solid rgba(127,255,0,.28);">🍎</div>
+            <div style="width:46px;height:46px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:1.6rem;background:rgba(127,255,0,.1);border:1px solid rgba(127,255,0,.28);"><i class="fa-solid fa-apple-whole" style="color: #f44336;"></i></div>
             <div style="flex:1">
               <div style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:1rem;text-transform:uppercase;letter-spacing:1px;margin-bottom:3px;">Piano Alimentare</div>
               <div style="font-size:.7rem;color:var(--dim);line-height:1.45;">Calcola BMR + TDEE, macros e piano pasti giornaliero su misura.</div>
@@ -177,7 +177,7 @@
 
           <!-- Sport Quiz -->
           <a href="sport-quiz.html" style="display:flex;align-items:center;gap:14px;padding:16px 18px;background:linear-gradient(135deg,rgba(212,255,0,.05),rgba(212,255,0,.01));border:1px solid rgba(212,255,0,.18);text-decoration:none;border-radius:10px;transition:background .2s,box-shadow .2s;" onmouseover="this.style.background='linear-gradient(135deg,rgba(212,255,0,.1),rgba(212,255,0,.03))';this.style.boxShadow='0 4px 18px rgba(212,255,0,.1)'" onmouseout="this.style.background='linear-gradient(135deg,rgba(212,255,0,.05),rgba(212,255,0,.01))';this.style.boxShadow='none'">
-            <div style="width:46px;height:46px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:1.6rem;background:rgba(212,255,0,.08);border:1px solid rgba(212,255,0,.25);">🏆</div>
+            <div style="width:46px;height:46px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:1.6rem;background:rgba(212,255,0,.08);border:1px solid rgba(212,255,0,.25);"><i class="fa-solid fa-trophy" style="color: #ffc107;"></i></div>
             <div style="flex:1">
               <div style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:1rem;text-transform:uppercase;letter-spacing:1px;margin-bottom:3px;">Il Tuo Sport Perfetto</div>
               <div style="font-size:.7rem;color:var(--dim);line-height:1.45;">Incrocia desideri e capacità fisiche. 6 domande → 3 sport su misura.</div>
@@ -196,19 +196,19 @@
     <div class="page-inner">
 
       <div class="card-head" style="border:1px solid var(--border);background:var(--dark2)">
-        <div class="card-title">📅 Piano Mensile</div>
+        <div class="card-title"><i class="fa-regular fa-calendar" style="color: #03a9f4;"></i> Piano Mensile</div>
         <div class="card-badge" id="planCount">0 / 3</div>
       </div>
 
       <!-- Avviso piano pieno -->
       <div id="planFullNotice" class="plan-full-notice" style="display:none">
-        ⚠️ Piano completo — elimina un allenamento per aggiungerne uno nuovo
+        <i class="fa-solid fa-triangle-exclamation" style="color: #ff9800;"></i> Piano completo — elimina un allenamento per aggiungerne uno nuovo
       </div>
 
       <!-- Stato vuoto -->
       <div id="noPlanState" class="card">
         <div class="card-body" style="text-align:center;padding:36px 20px">
-          <div style="font-size:2.5rem;margin-bottom:12px;opacity:.2">📋</div>
+          <div style="font-size:2.5rem;margin-bottom:12px;opacity:.2"><i class="fa-solid fa-clipboard-list" style="color: #ffeb3b;"></i></div>
           <div style="font-size:.68rem;letter-spacing:3px;text-transform:uppercase;color:var(--muted);line-height:1.9">
             Nessun allenamento nel piano<br>Genera e salva il tuo primo workout
           </div>
@@ -220,7 +220,7 @@
 
       <!-- Bottone genera -->
       <a href="workout.html" id="planGenLink" style="display:block;width:100%;text-align:center;background:var(--grad);color:#000;font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:1rem;letter-spacing:4px;text-transform:uppercase;padding:17px;border-radius:10px;text-decoration:none;margin-top:4px;transition:opacity .2s,box-shadow .2s;" onmouseover="this.style.boxShadow='0 6px 28px rgba(0,212,212,.4)'" onmouseout="this.style.boxShadow='none'">
-        ⚡ Genera Nuovo Allenamento
+        <i class="fa-solid fa-bolt" style="color: #facc15;"></i> Genera Nuovo Allenamento
       </a>
 
     </div>
@@ -232,14 +232,14 @@
 
       <!-- Header -->
       <div class="card-head" style="border:1px solid var(--border);background:var(--dark2)">
-        <div class="card-title">📓 Diario Allenamenti</div>
+        <div class="card-title"><i class="fa-solid fa-book" style="color: #795548;"></i> Diario Allenamenti</div>
         <div class="card-badge" id="diaryTodayLabel">—</div>
       </div>
 
       <!-- Calendario mensile -->
       <div class="card">
         <div class="card-head">
-          <div class="card-title">📅 <span id="calMonthLabel"></span></div>
+          <div class="card-title"><i class="fa-regular fa-calendar" style="color: #03a9f4;"></i> <span id="calMonthLabel"></span></div>
         </div>
         <div class="card-body" style="padding:8px">
           <div class="cal-grid" id="calGrid"></div>
@@ -265,7 +265,7 @@
       <!-- Header -->
       <div class="card">
         <div class="card-head">
-          <div class="card-title">🎵 Spotify Hub</div>
+          <div class="card-title"><i class="fa-solid fa-music" style="color: #e91e63;"></i> Spotify Hub</div>
           <div style="font-size:.6rem;letter-spacing:2px;color:#1DB954;font-weight:700">SPOTIFY</div>
         </div>
         <div class="card-body" style="display:flex;flex-direction:column;gap:12px">
@@ -294,11 +294,11 @@
       </div>
 
       <!-- Actions -->
-      <button class="btn-share-music" onclick="sharePlaylist()">🔗 Copia Link Playlist</button>
+      <button class="btn-share-music" onclick="sharePlaylist()"><i class="fa-solid fa-link" style="color: #9e9e9e;"></i> Copia Link Playlist</button>
 
       <!-- Tips -->
       <div class="card">
-        <div class="card-head"><div class="card-title">💡 Suggerimento</div></div>
+        <div class="card-head"><div class="card-title"><i class="fa-solid fa-lightbulb" style="color: #ffeb3b;"></i> Suggerimento</div></div>
         <div class="card-body">
           <p style="font-size:.78rem;color:var(--dim);line-height:1.7">
             Incolla il link di qualsiasi brano, album o playlist Spotify per ascoltarlo durante la corsa. La playlist viene salvata automaticamente per la prossima sessione.
@@ -326,7 +326,7 @@
       <div style="display:flex;flex-direction:column;gap:8px">
         <div class="section-label">Condividi</div>
         <div class="social-btn" onclick="shareToWhatsApp('invite')">
-          <span class="sb-icon">💬</span>
+          <span class="sb-icon"><i class="fa-regular fa-message" style="color: #03a9f4;"></i></span>
           <div class="sb-body">
             <div class="sb-title">Invita su WhatsApp</div>
             <div class="sb-desc">Condividi FITORA con un amico</div>
@@ -334,14 +334,14 @@
           <span class="sb-arrow">→</span>
         </div>
         <button class="btn-challenge-big" onclick="shareToWhatsApp('challenge')">
-          ⚡ Sfida un Amico Ora
+          <i class="fa-solid fa-bolt" style="color: #facc15;"></i> Sfida un Amico Ora
         </button>
       </div>
 
       <!-- Badges -->
       <div class="card">
         <div class="card-head">
-          <div class="card-title">🏅 Badges</div>
+          <div class="card-title"><i class="fa-solid fa-medal" style="color: #ffc107;"></i> Badges</div>
           <div class="card-badge" id="badgeCount">0 / 8</div>
         </div>
         <div class="card-body">
@@ -351,7 +351,7 @@
 
       <!-- Stats -->
       <div class="card">
-        <div class="card-head"><div class="card-title">📊 Le Tue Statistiche</div></div>
+        <div class="card-head"><div class="card-title"><i class="fa-solid fa-chart-simple" style="color: #03a9f4;"></i> Le Tue Statistiche</div></div>
         <div class="card-body" style="display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border);padding:0">
           <div style="background:var(--dark2);padding:16px;text-align:center">
             <div style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:1.8rem" class="gt" id="statTotalRuns">0</div>
@@ -380,23 +380,23 @@
 <!-- BOTTOM TAB BAR -->
 <nav class="tab-bar">
   <button class="tab-btn active" id="tab-home" onclick="switchTab('home')">
-    <span class="tab-icon">🏠</span>
+    <span class="tab-icon"><i class="fa-solid fa-house" style="color: #795548;"></i></span>
     <span class="tab-label">Home</span>
   </button>
   <button class="tab-btn" id="tab-run" onclick="switchTab('run')">
-    <span class="tab-icon">📅</span>
+    <span class="tab-icon"><i class="fa-regular fa-calendar" style="color: #03a9f4;"></i></span>
     <span class="tab-label">Piano</span>
   </button>
   <button class="tab-btn" id="tab-history" onclick="switchTab('history')">
-    <span class="tab-icon">📓</span>
+    <span class="tab-icon"><i class="fa-solid fa-book" style="color: #795548;"></i></span>
     <span class="tab-label">Diario</span>
   </button>
   <button class="tab-btn" id="tab-music" onclick="switchTab('music')">
-    <span class="tab-icon">🎵</span>
+    <span class="tab-icon"><i class="fa-solid fa-music" style="color: #e91e63;"></i></span>
     <span class="tab-label">Musica</span>
   </button>
   <button class="tab-btn" id="tab-community" onclick="switchTab('community')">
-    <span class="tab-icon">👥</span>
+    <span class="tab-icon"><i class="fa-solid fa-users" style="color: #03a9f4;"></i></span>
     <span class="tab-label">Comunità</span>
   </button>
 </nav>
@@ -462,7 +462,7 @@ function loadCheckin() {
   try {
     const ci = JSON.parse(raw);
     const score = ci.score || 0;
-    const icons  = {0:'🛡️',40:'⚠️',60:'⚡',80:'🔥'};
+    const icons  = {0:'<i class="fa-solid fa-shield" style="color: #03a9f4;"></i>',40:'<i class="fa-solid fa-triangle-exclamation" style="color: #ff9800;"></i>',60:'<i class="fa-solid fa-bolt" style="color: #facc15;"></i>',80:'<i class="fa-solid fa-fire" style="color: #ff5722;"></i>'};
     const colors = {0:'var(--orange)',40:'var(--yellow)',60:'var(--cyan)',80:'var(--green)'};
     const descs  = {
       0:'Giorno di recupero — allenamento leggero',
@@ -495,7 +495,7 @@ function loadCheckin() {
       if (ci.pain.includes('legs')) tips.push("Possibile affaticamento muscolare: prediligi lo stretching dinamico al posto di scatti esplosivi.");
       
       tipText = `<ul style="list-style: none; display: flex; flex-direction: column; gap: 8px;">
-        ${tips.map(t => `<li style="font-size: 0.78rem; color: var(--orange); display: flex; gap: 8px;"><span>⚠️</span> ${t}</li>`).join('')}
+        ${tips.map(t => `<li style="font-size: 0.78rem; color: var(--orange); display: flex; gap: 8px;"><span><i class="fa-solid fa-triangle-exclamation" style="color: #ff9800;"></i></span> ${t}</li>`).join('')}
       </ul>`;
     } else {
       prevStatus.textContent = "SICURO";
@@ -659,11 +659,11 @@ function renderPlan() {
   if (full) {
     genLink.style.opacity = '.35';
     genLink.style.pointerEvents = 'none';
-    genLink.textContent = '🔒 Piano Completo — Elimina un allenamento';
+    genLink.textContent = '<i class="fa-solid fa-lock" style="color: #ff9800;"></i> Piano Completo — Elimina un allenamento';
   } else {
     genLink.style.opacity = '';
     genLink.style.pointerEvents = '';
-    genLink.textContent = '⚡ Genera Nuovo Allenamento';
+    genLink.textContent = '<i class="fa-solid fa-bolt" style="color: #facc15;"></i> Genera Nuovo Allenamento';
   }
   if (!plan.length) { noEl.style.display=''; listEl.innerHTML=''; return; }
   noEl.style.display = 'none';
@@ -675,7 +675,7 @@ function renderPlan() {
     const done    = planKeys.filter(k => dayLog[k]).length;
     const pct     = totalEx > 0 ? Math.round(done/totalEx*100) : 0;
     const statusColor = pct===100 ? 'var(--green)' : pct>0 ? 'var(--cyan)' : 'var(--muted)';
-    const statusText  = pct===100 ? '✓ Completato' : pct>0 ? pct+'% fatto' : '';
+    const statusText  = pct===100 ? '<i class="fa-solid fa-check" style="color: #4caf50;"></i> Completato' : pct>0 ? pct+'% fatto' : '';
     const phasesHtml = w.phases.map(ph => {
       const tc = ph.type.replace('phase-','');
       return `
@@ -704,7 +704,7 @@ function renderPlan() {
           ${phasesHtml}
           <div style="display:flex;align-items:center;justify-content:space-between;padding:10px 16px;border-top:1px solid rgba(255,255,255,.04)">
             <span style="font-size:.62rem;color:var(--muted);letter-spacing:2px;text-transform:uppercase">${w.levelLabel||''} · Score ${w.score}</span>
-            <button class="btn-del-plan" onclick="deletePlanItem(${w.id})">🗑️ Rimuovi</button>
+            <button class="btn-del-plan" onclick="deletePlanItem(${w.id})"><i class="fa-solid fa-trash" style="color: #f44336;"></i>️ Rimuovi</button>
           </div>
         </div>
       </div>`;
@@ -717,7 +717,7 @@ function togglePlanDetail(id) {
 function deletePlanItem(id) {
   if (!confirm('Rimuovere questo allenamento dal piano?')) return;
   savePlanData(getPlan().filter(w => w.id !== id));
-  renderPlan(); updateHomeStats(); showToast('🗑️ Rimosso');
+  renderPlan(); updateHomeStats(); showToast('<i class="fa-solid fa-trash" style="color: #f44336;"></i>️ Rimosso');
 }
 
 /* ══════════════════════════
@@ -742,9 +742,9 @@ function renderDiary() {
   if (!plan.length) {
     container.innerHTML = `<div class="section-label">// I tuoi piani (0 / 3)</div>
       <div class="card"><div class="card-body" style="text-align:center;padding:28px 20px">
-        <div style="font-size:2rem;margin-bottom:10px;opacity:.2">📋</div>
+        <div style="font-size:2rem;margin-bottom:10px;opacity:.2"><i class="fa-solid fa-clipboard-list" style="color: #ffeb3b;"></i></div>
         <div style="font-size:.68rem;letter-spacing:3px;text-transform:uppercase;color:var(--muted);line-height:1.9">Nessun piano salvato<br>Genera e salva il tuo workout</div>
-        <a href="workout.html" style="display:inline-block;margin-top:16px;background:var(--grad);color:#000;font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:.85rem;letter-spacing:3px;text-transform:uppercase;padding:11px 28px;border-radius:8px;text-decoration:none">⚡ Genera ora</a>
+        <a href="workout.html" style="display:inline-block;margin-top:16px;background:var(--grad);color:#000;font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:.85rem;letter-spacing:3px;text-transform:uppercase;padding:11px 28px;border-radius:8px;text-decoration:none"><i class="fa-solid fa-bolt" style="color: #facc15;"></i> Genera ora</a>
       </div></div>`;
     return;
   }
@@ -782,22 +782,22 @@ function buildDiaryAccordion(w, dayLog, startOpen) {
         const rowClass = `ex-check-row ${chk?'done':''} ${isPast?'locked':''}`;
         const click    = isPast ? '' : `onclick="toggleExercise('${date}','${key}')"`;
         return `<div class="${rowClass}" id="ecr-${date}-${key}" ${click}>
-          <div class="ex-checkbox">${chk?'✓':''}</div>
+          <div class="ex-checkbox">${chk?'<i class="fa-solid fa-check" style="color: #4caf50;"></i>':''}</div>
           <div class="ex-check-body"><div class="ex-check-name">${ex.n}</div>${ex.d?`<div class="ex-check-detail">${ex.d}</div>`:''}</div>
           <span class="ex-check-spec">${ex.spec}</span>
         </div>`;
       }).join('')}`;
   }).join('');
 
-  const pastLabel = isPast ? `<span class="past-label">🔒 Giorno passato</span>` : '';
+  const pastLabel = isPast ? `<span class="past-label"><i class="fa-solid fa-lock" style="color: #ff9800;"></i> Giorno passato</span>` : '';
   const foot = isPast
     ? `<div class="diary-accord-foot">
         ${pastLabel}
-        <button class="btn-del-plan" style="margin-left:auto;padding:10px 14px;border:1px solid rgba(255,69,69,.25);font-size:.65rem" onclick="deletePlanFromDiary(${w.id})">🗑️ Elimina</button>
+        <button class="btn-del-plan" style="margin-left:auto;padding:10px 14px;border:1px solid rgba(255,69,69,.25);font-size:.65rem" onclick="deletePlanFromDiary(${w.id})"><i class="fa-solid fa-trash" style="color: #f44336;"></i>️ Elimina</button>
       </div>`
     : `<div class="diary-accord-foot">
-        <button class="btn-check-all" style="flex:1;margin:0" onclick="checkAllForDate('${date}')">✓ Tutto completato</button>
-        <button class="btn-del-plan" style="padding:10px 14px;border:1px solid rgba(255,69,69,.25);font-size:.65rem" onclick="deletePlanFromDiary(${w.id})">🗑️ Elimina</button>
+        <button class="btn-check-all" style="flex:1;margin:0" onclick="checkAllForDate('${date}')"><i class="fa-solid fa-check" style="color: #4caf50;"></i> Tutto completato</button>
+        <button class="btn-del-plan" style="padding:10px 14px;border:1px solid rgba(255,69,69,.25);font-size:.65rem" onclick="deletePlanFromDiary(${w.id})"><i class="fa-solid fa-trash" style="color: #f44336;"></i>️ Elimina</button>
       </div>`;
 
   return `<div class="diary-accord ${isPast?'past-plan':''}" id="da-${w.id}">
@@ -835,7 +835,7 @@ function deletePlanFromDiary(id) {
   savePlanData(getPlan().filter(w => w.id !== id));
   updateHomeStats(); updateBHI();
   renderDiary();
-  showToast('🗑️ Piano eliminato');
+  showToast('<i class="fa-solid fa-trash" style="color: #f44336;"></i>️ Piano eliminato');
 }
 
 function renderCalendar(plan, log, today) {
@@ -929,7 +929,7 @@ function buildDiaryWorkout(w, dayLog, dateOverride) {
         const key = `p${pi}_e${ei}`;
         const checked = !!dayLog[key];
         return `<div class="ex-check-row ${checked?'done':''}" id="ecr-${today}-${key}" onclick="toggleExercise('${today}','${key}')">
-          <div class="ex-checkbox">${checked?'✓':''}</div>
+          <div class="ex-checkbox">${checked?'<i class="fa-solid fa-check" style="color: #4caf50;"></i>':''}</div>
           <div class="ex-check-body"><div class="ex-check-name">${ex.n}</div>${ex.d?`<div class="ex-check-detail">${ex.d}</div>`:''}</div>
           <span class="ex-check-spec">${ex.spec}</span>
         </div>`;
@@ -942,8 +942,8 @@ function buildDiaryWorkout(w, dayLog, dateOverride) {
     </div>
     <div style="height:4px;background:rgba(255,255,255,.04)"><div id="diary-bar-${today}" style="height:100%;width:${pct}%;background:var(--grad);transition:width .4s"></div></div>
     ${phasesHtml}
-    <button class="btn-check-all" onclick="checkAllForDate('${today}')">✓ Segna tutto completato</button>
-    <button class="btn-save-day" onclick="saveDayLog('${today}')">💾 Salva giornata</button>
+    <button class="btn-check-all" onclick="checkAllForDate('${today}')"><i class="fa-solid fa-check" style="color: #4caf50;"></i> Segna tutto completato</button>
+    <button class="btn-save-day" onclick="saveDayLog('${today}')"><i class="fa-solid fa-floppy-disk" style="color: #03a9f4;"></i> Salva giornata</button>
   </div>`;
 }
 
@@ -955,7 +955,7 @@ function toggleExercise(date, key) {
   const row = document.getElementById(`ecr-${date}-${key}`);
   if (row) {
     row.classList.toggle('done', !!log[date][key]);
-    row.querySelector('.ex-checkbox').textContent = log[date][key]?'✓':'';
+    row.querySelector('.ex-checkbox').textContent = log[date][key]?'<i class="fa-solid fa-check" style="color: #4caf50;"></i>':'';
   }
   updateDiaryProgress(date);
   updateBHI();
@@ -1008,32 +1008,32 @@ function checkAllForDate(date) {
     const key = row.id.replace(`ecr-${date}-`,'');
     log[date][key] = true;
     row.classList.add('done');
-    row.querySelector('.ex-checkbox').textContent='✓';
+    row.querySelector('.ex-checkbox').textContent='<i class="fa-solid fa-check" style="color: #4caf50;"></i>';
   });
   saveWorkoutLog(log);
   updateDiaryProgress(date);
   updateBHI();
-  showToast('✅ Tutto completato!');
+  showToast('<i class="fa-solid fa-check" style="color: #4caf50;"></i> Tutto completato!');
 }
 function saveDayLog(date) {
   const log = getWorkoutLog();
   const done = Object.values(log[date]||{}).filter(v=>v).length;
   updateHomeStats(); updateBHI();
-  showToast(`💾 Giornata salvata! ${done} esercizi completati`);
+  showToast(`<i class="fa-solid fa-floppy-disk" style="color: #03a9f4;"></i> Giornata salvata! ${done} esercizi completati`);
 }
 
 /* ══════════════════════════
    COMMUNITY
 ══════════════════════════ */
 const BADGES = [
-  {icon:'💪',name:'Primo WO',req:(r)=>r>=1},
-  {icon:'🔥',name:'5 WO',req:(r)=>r>=5},
-  {icon:'🏅',name:'10 WO',req:(r)=>r>=10},
-  {icon:'🌟',name:'25 WO',req:(r)=>r>=25},
-  {icon:'⚡',name:'500 kcal',req:(r,k)=>k>=500},
-  {icon:'🚀',name:'2000 kcal',req:(r,k)=>k>=2000},
-  {icon:'🏆',name:'5000 kcal',req:(r,k)=>k>=5000},
-  {icon:'👑',name:'10000 kcal',req:(r,k)=>k>=10000},
+  {icon:'<i class="fa-solid fa-dumbbell" style="color: #9c27b0;"></i>',name:'Primo WO',req:(r)=>r>=1},
+  {icon:'<i class="fa-solid fa-fire" style="color: #ff5722;"></i>',name:'5 WO',req:(r)=>r>=5},
+  {icon:'<i class="fa-solid fa-medal" style="color: #ffc107;"></i>',name:'10 WO',req:(r)=>r>=10},
+  {icon:'<i class="fa-solid fa-star" style="color: #ffeb3b;"></i>',name:'25 WO',req:(r)=>r>=25},
+  {icon:'<i class="fa-solid fa-bolt" style="color: #facc15;"></i>',name:'500 kcal',req:(r,k)=>k>=500},
+  {icon:'<i class="fa-solid fa-rocket" style="color: #ff5722;"></i>',name:'2000 kcal',req:(r,k)=>k>=2000},
+  {icon:'<i class="fa-solid fa-trophy" style="color: #ffc107;"></i>',name:'5000 kcal',req:(r,k)=>k>=5000},
+  {icon:'<i class="fa-solid fa-crown" style="color: #ffc107;"></i>',name:'10000 kcal',req:(r,k)=>k>=10000},
 ];
 function renderCommunity() {
   const plan = getPlan();
@@ -1063,18 +1063,18 @@ function renderCommunity() {
 ══════════════════════════ */
 function updateMusic() {
   const url=document.getElementById('spotifyUrl').value;
-  if (!url) return showToast('🔗 Incolla URL Spotify');
-  if (!url.includes('spotify.com')) return showToast('⚠️ URL Spotify non valido');
+  if (!url) return showToast('<i class="fa-solid fa-link" style="color: #9e9e9e;"></i> Incolla URL Spotify');
+  if (!url.includes('spotify.com')) return showToast('<i class="fa-solid fa-triangle-exclamation" style="color: #ff9800;"></i> URL Spotify non valido');
   let embed=url.replace('open.spotify.com/','open.spotify.com/embed/');
   if (embed.includes('?')) embed=embed.split('?')[0];
   document.getElementById('musicPlayer').src=embed;
   localStorage.setItem(LS_MUSIC,url);
   document.getElementById('musicLabel').textContent='Personalizzata';
-  showToast('🎵 Musica aggiornata!');
+  showToast('<i class="fa-solid fa-music" style="color: #e91e63;"></i> Musica aggiornata!');
 }
 function sharePlaylist() {
   const url=localStorage.getItem(LS_MUSIC)||'https://open.spotify.com/playlist/37i9dQZF1DX76W9SwwE3Y4';
-  navigator.clipboard.writeText(url).then(()=>showToast('🔗 Link copiato!')).catch(()=>showToast('Copia manuale: '+url));
+  navigator.clipboard.writeText(url).then(()=>showToast('<i class="fa-solid fa-link" style="color: #9e9e9e;"></i> Link copiato!')).catch(()=>showToast('Copia manuale: '+url));
 }
 
 /* ══════════════════════════

@@ -24,14 +24,14 @@
 
   <!-- FORM -->
   <div class="form-section">
-    <div class="form-head"><span class="form-head-icon">👤</span><span class="form-head-title">Dati Fisici</span></div>
+    <div class="form-head"><span class="form-head-icon"><i class="fa-solid fa-user" style="color: #9e9e9e;"></i></span><span class="form-head-title">Dati Fisici</span></div>
     <div class="form-body">
       <div class="form-row single">
         <div class="field">
           <label class="field-label">Sesso biologico</label>
           <div class="gender-row">
-            <div class="gender-btn sel" id="gb-m" onclick="setGender('m')">👨 Uomo</div>
-            <div class="gender-btn" id="gb-f" onclick="setGender('f')">👩 Donna</div>
+            <div class="gender-btn sel" id="gb-m" onclick="setGender('m')"><i class="fa-solid fa-user" style="color: #03a9f4;"></i> Uomo</div>
+            <div class="gender-btn" id="gb-f" onclick="setGender('f')"><i class="fa-solid fa-user" style="color: #e91e63;"></i> Donna</div>
           </div>
         </div>
       </div>
@@ -55,7 +55,7 @@
   </div>
 
   <div class="form-section">
-    <div class="form-head"><span class="form-head-icon">🏃</span><span class="form-head-title">Stile di Vita & Attività</span></div>
+    <div class="form-head"><span class="form-head-icon"><i class="fa-solid fa-person-running" style="color: #ff5722;"></i></span><span class="form-head-title">Stile di Vita & Attività</span></div>
     <div class="form-body" style="display:flex;flex-direction:column;gap:14px;">
       <div class="field">
         <label class="field-label">Livello di attività quotidiana</label>
@@ -84,18 +84,18 @@
   </div>
 
   <div class="form-section">
-    <div class="form-head"><span class="form-head-icon">🎯</span><span class="form-head-title">Obiettivo</span></div>
+    <div class="form-head"><span class="form-head-icon"><i class="fa-solid fa-bullseye" style="color: #f44336;"></i></span><span class="form-head-title">Obiettivo</span></div>
     <div class="form-body">
       <div class="pill-opts" id="goalOpts">
-        <div class="pill-opt sel" onclick="setGoal('lose',this)">🔥 Perdere peso</div>
-        <div class="pill-opt" onclick="setGoal('maintain',this)">⚖️ Mantenere il peso</div>
-        <div class="pill-opt" onclick="setGoal('gain',this)">💪 Aumentare massa muscolare</div>
-        <div class="pill-opt" onclick="setGoal('performance',this)">⚡ Massima performance</div>
+        <div class="pill-opt sel" onclick="setGoal('lose',this)"><i class="fa-solid fa-fire" style="color: #ff5722;"></i> Perdere peso</div>
+        <div class="pill-opt" onclick="setGoal('maintain',this)"><i class="fa-solid fa-scale-balanced" style="color: #9e9e9e;"></i>️ Mantenere il peso</div>
+        <div class="pill-opt" onclick="setGoal('gain',this)"><i class="fa-solid fa-dumbbell" style="color: #9c27b0;"></i> Aumentare massa muscolare</div>
+        <div class="pill-opt" onclick="setGoal('performance',this)"><i class="fa-solid fa-bolt" style="color: #facc15;"></i> Massima performance</div>
       </div>
     </div>
   </div>
 
-  <button class="btn-calc" id="calcBtn" onclick="calculate()" disabled>🍎 Calcola Piano Alimentare</button>
+  <button class="btn-calc" id="calcBtn" onclick="calculate()" disabled><i class="fa-solid fa-apple-whole" style="color: #f44336;"></i> Calcola Piano Alimentare</button>
 
   <!-- RESULTS -->
   <div class="results" id="results"></div>
@@ -215,35 +215,35 @@ function buildMeals(kcal, prot, carb, fat, goal, sport, weight) {
 
   const plans = {
     breakfast: [
-      { icon:'🥣', name:'Porridge con frutta e noci', desc:'80g avena, 150ml latte (scremato o vegetale), 1 banana, 20g noci', kcal: dist[0] * kcal },
-      { icon:'🥚', name:'Uova strapazzate + pane integrale', desc:'3 uova, 2 fette pane integrale, 1 kiwi', kcal: dist[0] * kcal },
+      { icon:'<i class="fa-solid fa-bowl-rice" style="color: #e0e0e0;"></i>', name:'Porridge con frutta e noci', desc:'80g avena, 150ml latte (scremato o vegetale), 1 banana, 20g noci', kcal: dist[0] * kcal },
+      { icon:'<i class="fa-solid fa-egg" style="color: #ffeb3b;"></i>', name:'Uova strapazzate + pane integrale', desc:'3 uova, 2 fette pane integrale, 1 kiwi', kcal: dist[0] * kcal },
     ],
     snack1: [
-      { icon:'🍎', name:'Frutta + proteine', desc: goal==='lose' ? '1 mela + 20g mandorle' : '1 banana + 1 yogurt greco 150g + 15g miele', kcal: dist[1] * kcal },
+      { icon:'<i class="fa-solid fa-apple-whole" style="color: #f44336;"></i>', name:'Frutta + proteine', desc: goal==='lose' ? '1 mela + 20g mandorle' : '1 banana + 1 yogurt greco 150g + 15g miele', kcal: dist[1] * kcal },
     ],
     lunch: [
       isEndurance
-        ? { icon:'🍝', name:'Pasta integrale + pollo + verdure', desc:`${Math.round(weight * 1.2)}g pasta integrale cotta, ${Math.round(weight * 1.5)}g petto pollo, 200g zucchine grigliate, olio EVO 10g`, kcal: dist[2] * kcal }
+        ? { icon:'<i class="fa-solid fa-bowl-food" style="color: #ff9800;"></i>', name:'Pasta integrale + pollo + verdure', desc:`${Math.round(weight * 1.2)}g pasta integrale cotta, ${Math.round(weight * 1.5)}g petto pollo, 200g zucchine grigliate, olio EVO 10g`, kcal: dist[2] * kcal }
         : isStrength
-        ? { icon:'🍗', name:'Riso + carne magra + legumi', desc:`150g riso basmati cotto, 200g manzo o tacchino, 100g fagioli, pomodoro, olio EVO 8g`, kcal: dist[2] * kcal }
-        : { icon:'🥗', name:'Piatto completo bilanciato', desc:`120g cereale integrale (riso, farro o quinoa), 180g proteina magra (pollo, tonno o tofu), verdure miste 200g, olio EVO 10g`, kcal: dist[2] * kcal },
+        ? { icon:'<i class="fa-solid fa-drumstick-bite" style="color: #795548;"></i>', name:'Riso + carne magra + legumi', desc:`150g riso basmati cotto, 200g manzo o tacchino, 100g fagioli, pomodoro, olio EVO 8g`, kcal: dist[2] * kcal }
+        : { icon:'<i class="fa-solid fa-bowl-food" style="color: #4caf50;"></i>', name:'Piatto completo bilanciato', desc:`120g cereale integrale (riso, farro o quinoa), 180g proteina magra (pollo, tonno o tofu), verdure miste 200g, olio EVO 10g`, kcal: dist[2] * kcal },
     ],
     snack2: [
-      { icon:'🧃', name: goal==='gain' ? 'Frullato proteico + banana' : 'Yogurt greco + semi di chia',
+      { icon:'<i class="fa-solid fa-glass-water" style="color: #00bcd4;"></i>', name: goal==='gain' ? 'Frullato proteico + banana' : 'Yogurt greco + semi di chia',
         desc: goal==='gain' ? '250ml latte, 30g proteine whey, 1 banana, 15g burro di arachidi' : '150g yogurt greco 0%, 10g semi di chia, 1 cucchiaio miele',
         kcal: dist[3] * kcal },
     ],
     dinner: [
-      { icon:'🐟', name:'Pesce + patate dolci + verdure', desc:`200g salmone (o merluzzo), ${goal==='lose'?'150':'200'}g patate dolci al forno, spinaci saltati 200g, olio EVO 8g, limone`, kcal: dist[4] * kcal },
+      { icon:'<i class="fa-solid fa-fish" style="color: #03a9f4;"></i>', name:'Pesce + patate dolci + verdure', desc:`200g salmone (o merluzzo), ${goal==='lose'?'150':'200'}g patate dolci al forno, spinaci saltati 200g, olio EVO 8g, limone`, kcal: dist[4] * kcal },
     ],
   };
 
   return [
-    { label:'Colazione', time:'07:00 – 08:00', icon:'☀️', ...plans.breakfast[0] },
-    { label:'Spuntino mattina', time:'10:00 – 10:30', icon:'🍎', ...plans.snack1[0] },
-    { label:'Pranzo', time:'12:30 – 13:30', icon:'🍽️', ...plans.lunch[0] },
-    { label:'Spuntino pomeriggio', time:'16:00 – 17:00', icon:'🧃', ...plans.snack2[0] },
-    { label:'Cena', time:'19:30 – 20:30', icon:'🌙', ...plans.dinner[0] },
+    { label:'Colazione', time:'07:00 – 08:00', icon:'<i class="fa-solid fa-sun" style="color: #ffeb3b;"></i>️', ...plans.breakfast[0] },
+    { label:'Spuntino mattina', time:'10:00 – 10:30', icon:'<i class="fa-solid fa-apple-whole" style="color: #f44336;"></i>', ...plans.snack1[0] },
+    { label:'Pranzo', time:'12:30 – 13:30', icon:'<i class="fa-solid fa-utensils" style="color: #9e9e9e;"></i>️', ...plans.lunch[0] },
+    { label:'Spuntino pomeriggio', time:'16:00 – 17:00', icon:'<i class="fa-solid fa-glass-water" style="color: #00bcd4;"></i>', ...plans.snack2[0] },
+    { label:'Cena', time:'19:30 – 20:30', icon:'<i class="fa-solid fa-moon" style="color: #3f51b5;"></i>', ...plans.dinner[0] },
   ];
 }
 
@@ -301,10 +301,10 @@ function renderResults(D) {
 
     <!-- MACROS -->
     <div class="macro-card">
-      <div class="macro-head"><div class="macro-title">📊 Macronutrienti Giornalieri</div></div>
+      <div class="macro-head"><div class="macro-title"><i class="fa-solid fa-chart-simple" style="color: #03a9f4;"></i> Macronutrienti Giornalieri</div></div>
       <div class="macro-body">
         <div class="macro-row">
-          <div class="macro-icon">🥩</div>
+          <div class="macro-icon"><i class="fa-solid fa-bacon" style="color: #f44336;"></i></div>
           <div class="macro-info">
             <div class="macro-name">Proteine</div>
             <div class="macro-bar-wrap"><div class="macro-bar-fill" style="width:0%;background:var(--cyan)" data-w="${Math.round(D.protPct*100)}%"></div></div>
@@ -316,7 +316,7 @@ function renderResults(D) {
           </div>
         </div>
         <div class="macro-row">
-          <div class="macro-icon">🍚</div>
+          <div class="macro-icon"><i class="fa-solid fa-bowl-rice" style="color: #ffffff;"></i></div>
           <div class="macro-info">
             <div class="macro-name">Carboidrati</div>
             <div class="macro-bar-wrap"><div class="macro-bar-fill" style="width:0%;background:var(--green)" data-w="${Math.round(D.carbPct*100)}%"></div></div>
@@ -328,7 +328,7 @@ function renderResults(D) {
           </div>
         </div>
         <div class="macro-row">
-          <div class="macro-icon">🥑</div>
+          <div class="macro-icon"><i class="fa-solid fa-carrot" style="color: #4caf50;"></i></div>
           <div class="macro-info">
             <div class="macro-name">Grassi</div>
             <div class="macro-bar-wrap"><div class="macro-bar-fill" style="width:0%;background:var(--yellow)" data-w="${Math.round(D.fatPct*100)}%"></div></div>
@@ -348,7 +348,7 @@ function renderResults(D) {
 
     <!-- TIPS -->
     <div class="macro-card">
-      <div class="macro-head"><div class="macro-title">💡 Consigli Specifici per Te</div></div>
+      <div class="macro-head"><div class="macro-title"><i class="fa-solid fa-lightbulb" style="color: #ffeb3b;"></i> Consigli Specifici per Te</div></div>
       <div class="macro-body">
         <ul class="tip-list">
           <li>Bevi almeno <strong>${idratazione} litri d'acqua</strong> al giorno (${D.weight}kg × 35ml). Aggiungi 500ml per ogni ora di sport intenso.</li>

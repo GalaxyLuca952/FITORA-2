@@ -1,361 +1,390 @@
 <!DOCTYPE html>
 <html lang="it">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>FITORA – Il Tuo Corpo Parla</title>
-<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;900&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FITORA – Il Tuo Corpo Parla</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;900&family=Barlow:wght@400;500;600&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
-<!-- ====================== NEW NAV ====================== -->
-<header class="main-header" id="mainHeader">
-  <div class="nav-container">
-    <a href="#hero" class="nav-logo grad-text">FITORA</a>
-    
-    <nav class="nav-menu">
+  <!-- ====================== NEW NAV ====================== -->
+  <header class="main-header" id="mainHeader">
+    <div class="nav-container">
+      <a href="#hero" class="nav-logo grad-text">FITORA</a>
+
+      <nav class="nav-menu">
+        <a href="#beyond">Metodo</a>
+        <a href="#features">Features</a>
+        <a href="#vision">Tech</a>
+        <a href="#community">Community</a>
+        <a href="#future">Futuro</a>
+      </nav>
+
+      <div class="nav-actions">
+        <div class="nav-profile-btn" id="profileTrigger">
+          <img src="https://ui-avatars.com/api/?name=User&background=00d4d4&color=000" alt="Profilo" id="navAvatar">
+        </div>
+        <a href="check-in.html" class="nav-cta-btn"><i class="fa-solid fa-bolt" style="color:#facc15;"></i>
+          Dashboard</a>
+        <a href="register.html" class="nav-cta-btn"
+          style="background: rgba(255,255,255,0.1); color: #fff !important;">Registrati</a>
+      </div>
+
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle Navigation">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <div class="mobile-overlay" id="mobileOverlay">
+    <nav class="mobile-links">
+      <div class="mobile-profile-section" id="mobileProfileTrigger">
+        <img src="https://ui-avatars.com/api/?name=User&background=00d4d4&color=000" alt="Avatar">
+        <span class="grad-text">Il Tuo Profilo</span>
+        <p>Visualizza e modifica dati</p>
+      </div>
       <a href="#beyond">Metodo</a>
       <a href="#features">Features</a>
       <a href="#vision">Tech</a>
       <a href="#community">Community</a>
+      <a href="check-in.html" class="grad-text">Dashboard <i class="fa-solid fa-bolt" style="color:#facc15;"></i></a>
+    </nav>
+  </div>
+
+  <!-- ====================== PROFILE MODAL ====================== -->
+  <div class="profile-modal" id="profileModal">
+    <div class="profile-content">
+      <button class="close-modal" id="closeProfile">×</button>
+      <h2 class="grad-text">Il Tuo Profilo</h2>
+      <div class="profile-avatar-edit">
+        <img src="https://ui-avatars.com/api/?name=User&background=00d4d4&color=000" alt="Avatar">
+        <button class="edit-avatar-btn">Cambia Foto</button>
+      </div>
+      <div class="profile-data-grid">
+        <div class="data-item"><label>Peso (kg)</label><input type="number" value="75" id="userWeight"></div>
+        <div class="data-item"><label>Altezza (cm)</label><input type="number" value="180"></div>
+        <div class="data-item"><label>Età</label><input type="number" value="28"></div>
+      </div>
+      <button class="nav-cta-btn" style="width: 100%; margin-top: 20px;" onclick="alert('Dati salvati!')">Salva
+        Modifiche</button>
+    </div>
+  </div>
+
+  <!-- ====================== HERO ====================== -->
+  <section id="hero">
+    <div class="hero-lines"></div>
+    <div class="hero-panel"></div>
+
+    <div class="hero-visual">
+      <img src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=1000&q=85" alt="Atleta che si allena">
+      <div class="hero-visual-overlay"></div>
+    </div>
+
+    <div class="hero-content">
+      <div class="hero-badge"><i class="fa-solid fa-rocket" style="color:#38bdf8;"></i> L'App di Fitness che ti Capisce
+        Davvero</div>
+      <h1 class="hero-logo grad-text">FITORA</h1>
+      <p class="hero-quote">
+        "Il tuo corpo parla, noi ti insegniamo ad ascoltarlo e a trasformarlo."
+      </p>
+      <div class="hero-btns">
+        <a href="check-in.html" class="btn-cta"><i class="fa-solid fa-bolt" style="color:#facc15;"></i> Prova Ora
+          FITORA</a>
+        <a href="#beyond" class="btn-ghost">Scopri di più ↓</a>
+      </div>
+    </div>
+
+    <div class="scroll-hint">
+      <div class="dot"></div>
+      <span>Scroll</span>
+    </div>
+  </section>
+
+  <!-- ====================== STATS ====================== -->
+  <div class="stats-bar">
+    <div class="stat-item">
+      <div class="stat-num grad-text">100%</div>
+      <div class="stat-label">Personalizzato</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num grad-text">AI</div>
+      <div class="stat-label">Computer Vision</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num grad-text">0</div>
+      <div class="stat-label">Sensori Esterni</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num grad-text">24/7</div>
+      <div class="stat-label">Personal Trainer</div>
+    </div>
+  </div>
+
+  <!-- ====================== BEYOND BILANCIA ====================== -->
+  <section id="beyond" class="section">
+    <div class="beyond-visual reveal">
+      <img src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=900&q=80" alt="Allenamento">
+      <div class="beyond-slash"></div>
+    </div>
+    <div class="beyond-text reveal">
+      <span class="section-tag">// 01 — Il Nostro Metodo</span>
+      <h2 class="section-title">Oltre la<br>Semplice<br>Bilancia</h2>
+      <p class="beyond-desc">
+        Molte app si fermano ai passi fatti. La nostra inizia dai tuoi dati clinici reali: peso, altezza, pressione,
+        glicemia e massa grassa/magra.
+      </p>
+      <div class="data-pills">
+        <span class="pill">Peso</span>
+        <span class="pill">Altezza</span>
+        <span class="pill">Pressione</span>
+        <span class="pill">Glicemia</span>
+        <span class="pill">Massa Grassa</span>
+        <span class="pill">Massa Magra</span>
+      </div>
+      <p class="beyond-desc">
+        L'utente riceve un'analisi immediata dello stato fisico e mentale, identificando rischi e soluzioni concrete
+        <em>prima ancora di iniziare a sudare.</em>
+      </p>
+    </div>
+  </section>
+
+  <!-- ====================== FEATURES ====================== -->
+  <section id="features" class="section">
+    <div class="features-head reveal">
+      <span class="section-tag">// 02 — Le Funzionalità</span>
+      <h2 class="section-title">Tutto quello<br>che ti serve</h2>
+      <p>Sei funzionalità potenti, progettate insieme, per un'esperienza di fitness senza precedenti.</p>
+    </div>
+
+    <div class="features-grid">
+      <div class="feat-card">
+        <div class="feat-num">01</div>
+        <div class="feat-icon"><i class="fa-solid fa-trophy" style="color:#facc15;"></i></div>
+        <h3 class="feat-title">Lo Sport Perfetto per Te</h3>
+        <p class="feat-desc">Suggerimenti personalizzati sullo sport ideale da praticare, spiegando i benefici specifici
+          per la tua salute. L'app incrocia i tuoi desideri con le tue capacità fisiche reali attraverso un questionario
+          intelligente.</p>
+      </div>
+      <div class="feat-card">
+        <div class="feat-num">02</div>
+        <div class="feat-icon"><i class="fa-solid fa-robot" style="color:#38bdf8;"></i></div>
+        <h3 class="feat-title">Personal Trainer AI</h3>
+        <p class="feat-desc">Correzione della postura, conteggio automatico delle ripetizioni e prevenzione degli
+          infortuni. Tutto senza bisogno di sensori esterni — solo il tuo smartphone.</p>
+      </div>
+      <div class="feat-card">
+        <div class="feat-num">03</div>
+        <div class="feat-icon"><i class="fa-solid fa-camera" style="color:#a78bfa;"></i></div>
+        <h3 class="feat-title">Computer Vision</h3>
+        <p class="feat-desc">Sfruttiamo l'Image Detection tramite la fotocamera per analizzare i tuoi movimenti in tempo
+          reale. Non preoccuparti più di farti male durante gli esercizi.</p>
+      </div>
+      <div class="feat-card">
+        <div class="feat-num">04</div>
+        <div class="feat-icon"><i class="fa-solid fa-rotate" style="color:#facc15;"></i></div>
+        <h3 class="feat-title">Adattabilità Quotidiana</h3>
+        <p class="feat-desc">Schede variabili: l'app crea il tuo allenamento in base a come ti senti oggi. Stanchezza,
+          stress, umore — ogni giorno il piano è diverso, perché tu sei diverso ogni giorno.</p>
+      </div>
+      <div class="feat-card">
+        <div class="feat-num">05</div>
+        <div class="feat-icon"><i class="fa-solid fa-bowl-food" style="color:#22c55e;"></i></div>
+        <h3 class="feat-title">Nutrizione Intelligente</h3>
+        <p class="feat-desc">Piano alimentare basato sul consumo calorico reale e sui tuoi parametri medici iniziali.
+          Mangia bene — non per tutti, ma per te.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ====================== AI VISION ====================== -->
+  <section id="vision" class="section">
+    <div class="reveal">
+      <div class="vision-badge"><i class="fa-solid fa-brain" style="color:#a78bfa;"></i> Computer Vision · Tempo Reale
+      </div>
+      <span class="section-tag">// 03 — Tecnologia</span>
+      <h2 class="section-title">Non<br>Preoccuparti<br>Più di<br>Farti Male</h2>
+      <ul class="vision-list">
+        <li>Analisi dei movimenti in tempo reale tramite la fotocamera del tuo smartphone</li>
+        <li>Correzione automatica della postura con feedback visivo immediato</li>
+        <li>Conteggio intelligente delle ripetizioni senza device aggiuntivi</li>
+        <li>Rilevamento del rischio infortuni <em>prima</em> che si verifichino</li>
+        <li>Funziona con qualsiasi smartphone, senza accessori extra</li>
+      </ul>
+    </div>
+
+    <div class="phone-wrap reveal">
+      <div class="phone">
+        <div class="phone-notch"></div>
+        <div class="phone-screen">
+          <div class="ph-header">
+            <div class="ph-logo grad-text">FitOra</div>
+            <div class="ph-live"><i class="fa-solid fa-circle" style="color:#22c55e;"></i> LIVE</div>
+          </div>
+          <div class="ph-metric">
+            <div>
+              <div class="ph-metric-label">Calorie</div>
+              <div class="ph-metric-value">842</div>
+            </div>
+            <div>
+              <div class="ph-metric-label">Bpm</div>
+              <div class="ph-metric-value" style="color:var(--green)">138</div>
+            </div>
+          </div>
+          <div class="ph-metric">
+            <div>
+              <div class="ph-metric-label">Ripetizioni</div>
+              <div class="ph-metric-value">12/15</div>
+            </div>
+            <div>
+              <div class="ph-metric-label">Postura</div>
+              <div class="ph-metric-value" style="color:var(--green);font-size:1rem"><i class="fa-solid fa-check" style="color: #4caf50;"></i> OK</div>
+            </div>
+          </div>
+          <div class="ph-chart">
+            <div class="chart-bars">
+              <div class="bar" style="height:38%;animation-delay:.1s"></div>
+              <div class="bar" style="height:62%;animation-delay:.2s"></div>
+              <div class="bar" style="height:48%;animation-delay:.3s"></div>
+              <div class="bar" style="height:80%;animation-delay:.4s"></div>
+              <div class="bar" style="height:70%;animation-delay:.5s"></div>
+              <div class="bar" style="height:92%;animation-delay:.6s"></div>
+              <div class="bar" style="height:74%;animation-delay:.7s"></div>
+            </div>
+          </div>
+          <div class="ph-ai"><i class="fa-solid fa-robot" style="color:#38bdf8;"></i> AI ANALISI IN CORSO...</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====================== HOW IT WORKS ====================== -->
+  <section id="how" class="section">
+    <div class="how-head reveal">
+      <span class="section-tag">// 04 — Come Funziona</span>
+      <h2 class="section-title">4 Passi verso<br>il Tuo Sé Migliore</h2>
+      <p>Dal profilo clinico al piano personalizzato — tutto in pochi minuti.</p>
+    </div>
+
+    <div class="timeline">
+      <div class="tl-step">
+        <div class="tl-circle"><i class="fa-solid fa-address-card" style="color: #00d4d4;"></i></div>
+        <h3 class="tl-title">Inserisci<br>i Tuoi Dati</h3>
+        <p class="tl-desc">Peso, altezza, pressione, glicemia e preferenze personali. Un profilo completo in 3 minuti.
+        </p>
+      </div>
+      <div class="tl-step">
+        <div class="tl-circle"><i class="fa-solid fa-brain" style="color: #00d4d4;"></i></div>
+        <h3 class="tl-title">L'AI Analizza<br>il Tuo Profilo</h3>
+        <p class="tl-desc">Il nostro motore AI incrocia dati clinici, fisici e personali per trovare il tuo sport
+          ideale.</p>
+      </div>
+      <div class="tl-step">
+        <div class="tl-circle"><i class="fa-solid fa-camera" style="color: #00d4d4;"></i></div>
+        <h3 class="tl-title">Allenati con<br>la Camera</h3>
+        <p class="tl-desc">La Computer Vision corregge i tuoi movimenti in tempo reale. Nessun trainer fisico
+          necessario.</p>
+      </div>
+      <div class="tl-step">
+        <div class="tl-circle"><i class="fa-solid fa-chart-line" style="color: #00d4d4;"></i></div>
+        <h3 class="tl-title">Monitora i<br>Progressi</h3>
+        <p class="tl-desc">Dashboard completa, sfide con i tuoi amici e adattamento giornaliero del piano in base al tuo
+          umore.</p>
+      </div>
+    </div>
+  </section>
+
+
+
+  <!-- ====================== FUTURO / WEARABLE ====================== -->
+  <section id="future" class="section">
+    <div class="future-text reveal">
+      <span class="section-tag">// 05 — Il Futuro di FITORA</span>
+      <h2 class="section-title">Dove Stiamo<br>Andando</h2>
+      <p class="future-desc">
+        FITORA non è solo un'app — è una piattaforma in continua evoluzione. Ecco cosa stiamo costruendo per rendere il
+        tuo benessere ancora più connesso e automatizzato.
+      </p>
+
+      <div class="future-cards">
+        <div class="future-card">
+          <div class="future-card-icon"><i class="fa-solid fa-clock" style="color:#22c55e;"></i></div>
+          <div>
+            <div class="future-card-title">Integrazione Wearable</div>
+            <p class="future-card-desc">Connessione con Apple Watch, Fitbit e Garmin per raccogliere i dati
+              automaticamente — senza inserimenti manuali.</p>
+          </div>
+        </div>
+        <div class="future-card">
+          <div class="future-card-icon"><i class="fa-solid fa-hospital" style="color:#60a5fa;"></i></div>
+          <div>
+            <div class="future-card-title">Partnership Mediche</div>
+            <p class="future-card-desc">Collaborazioni con palestre, centri medici e assicurazioni sanitarie per portare
+              FITORA ai loro clienti.</p>
+          </div>
+        </div>
+        <div class="future-card">
+          <div class="future-card-icon"><i class="fa-solid fa-user-doctor" style="color:#f472b6;"></i></div>
+          <div>
+            <div class="future-card-title">Telemedicina</div>
+            <p class="future-card-desc">I medici potranno monitorare i progressi dei loro pazienti a distanza,
+              direttamente dalla piattaforma.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="future-visual reveal">
+      <div class="future-glow-ring">
+        <div class="future-inner">
+          <div class="future-inner-emoji"><i class="fa-solid fa-rocket" style="color:#38bdf8;"></i></div>
+          <div class="future-inner-label grad-text">FITORA 2.0</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====================== CTA ====================== -->
+  <section id="cta">
+    <div class="reveal">
+      <div class="cta-eyebrow">Inizia Oggi · Gratis · Nessun Sensore Richiesto</div>
+      <h2 class="cta-title">
+        FITORA<br><span class="grad-text">Scaricala</span>
+      </h2>
+      <p class="cta-sub">
+        Il percorso verso il tuo sé migliore inizia con un'analisi onesta del tuo corpo. Siamo pronti quando lo sei tu.
+      </p>
+      <div class="cta-btns">
+        <a href="https://alecode25.github.io/skeleton" class="btn-cta-xl"><i class="fa-solid fa-bolt"
+            style="color:#facc15;"></i> Prova Ora FITORA</a>
+        <a href="check-in.html" class="btn-cta-xl">Accedi al Dashboard</a>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- ====================== FOOTER ====================== -->
+  <footer>
+    <div class="footer-logo grad-text">FITORA</div>
+    <nav class="footer-nav">
+      <a href="#beyond">Il Metodo</a>
+      <a href="#features">Features</a>
+      <a href="#vision">Tecnologia</a>
+      <a href="#community">Community</a>
       <a href="#future">Futuro</a>
     </nav>
+    <div class="footer-copy">© 2026 Fitora</div>
+  </footer>
 
-    <div class="nav-actions">
-      <div class="nav-profile-btn" id="profileTrigger">
-        <img src="https://ui-avatars.com/api/?name=User&background=00d4d4&color=000" alt="Profilo" id="navAvatar">
-      </div>
-      <a href="check-in.html" class="nav-cta-btn">⚡ Dashboard</a>
-      <a href="register.html" class="nav-cta-btn" style="background: rgba(255,255,255,0.1); color: #fff !important;">Registrati</a>
-    </div>
-
-    <button class="nav-toggle" id="navToggle" aria-label="Toggle Navigation">
-      <span></span><span></span><span></span>
-    </button>
-  </div>
-</header>
-
-<div class="mobile-overlay" id="mobileOverlay">
-  <nav class="mobile-links">
-    <div class="mobile-profile-section" id="mobileProfileTrigger">
-      <img src="https://ui-avatars.com/api/?name=User&background=00d4d4&color=000" alt="Avatar">
-      <span class="grad-text">Il Tuo Profilo</span>
-      <p>Visualizza e modifica dati</p>
-    </div>
-    <a href="#beyond">Metodo</a>
-    <a href="#features">Features</a>
-    <a href="#vision">Tech</a>
-    <a href="#community">Community</a>
-    <a href="check-in.html" class="grad-text">Dashboard ⚡</a>
-  </nav>
-</div>
-
-<!-- ====================== PROFILE MODAL ====================== -->
-<div class="profile-modal" id="profileModal">
-  <div class="profile-content">
-    <button class="close-modal" id="closeProfile">×</button>
-    <h2 class="grad-text">Il Tuo Profilo</h2>
-    <div class="profile-avatar-edit">
-      <img src="https://ui-avatars.com/api/?name=User&background=00d4d4&color=000" alt="Avatar">
-      <button class="edit-avatar-btn">Cambia Foto</button>
-    </div>
-    <div class="profile-data-grid">
-      <div class="data-item"><label>Peso (kg)</label><input type="number" value="75" id="userWeight"></div>
-      <div class="data-item"><label>Altezza (cm)</label><input type="number" value="180"></div>
-      <div class="data-item"><label>Età</label><input type="number" value="28"></div>
-    </div>
-    <button class="nav-cta-btn" style="width: 100%; margin-top: 20px;" onclick="alert('Dati salvati!')">Salva Modifiche</button>
-  </div>
-</div>
-
-<!-- ====================== HERO ====================== -->
-<section id="hero">
-  <div class="hero-lines"></div>
-  <div class="hero-panel"></div>
-
-  <div class="hero-visual">
-    <img src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=1000&q=85" alt="Atleta che si allena">
-    <div class="hero-visual-overlay"></div>
-  </div>
-
-  <div class="hero-content">
-    <div class="hero-badge">🚀 L'App di Fitness che ti Capisce Davvero</div>
-    <h1 class="hero-logo grad-text">FITORA</h1>
-    <p class="hero-quote">
-      "Il tuo corpo parla, noi ti insegniamo ad ascoltarlo e a trasformarlo."
-    </p>
-    <div class="hero-btns">
-      <a href="check-in.html" class="btn-cta">⚡ Prova Ora FITORA</a>
-      <a href="#beyond" class="btn-ghost">Scopri di più ↓</a>
-    </div>
-  </div>
-
-  <div class="scroll-hint">
-    <div class="dot"></div>
-    <span>Scroll</span>
-  </div>
-</section>
-
-<!-- ====================== STATS ====================== -->
-<div class="stats-bar">
-  <div class="stat-item">
-    <div class="stat-num grad-text">100%</div>
-    <div class="stat-label">Personalizzato</div>
-  </div>
-  <div class="stat-item">
-    <div class="stat-num grad-text">AI</div>
-    <div class="stat-label">Computer Vision</div>
-  </div>
-  <div class="stat-item">
-    <div class="stat-num grad-text">0</div>
-    <div class="stat-label">Sensori Esterni</div>
-  </div>
-  <div class="stat-item">
-    <div class="stat-num grad-text">24/7</div>
-    <div class="stat-label">Personal Trainer</div>
-  </div>
-</div>
-
-<!-- ====================== BEYOND BILANCIA ====================== -->
-<section id="beyond" class="section">
-  <div class="beyond-visual reveal">
-    <img src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=900&q=80" alt="Allenamento">
-    <div class="beyond-slash"></div>
-  </div>
-  <div class="beyond-text reveal">
-    <span class="section-tag">// 01 — Il Nostro Metodo</span>
-    <h2 class="section-title">Oltre la<br>Semplice<br>Bilancia</h2>
-    <p class="beyond-desc">
-      Molte app si fermano ai passi fatti. La nostra inizia dai tuoi dati clinici reali: peso, altezza, pressione, glicemia e massa grassa/magra.
-    </p>
-    <div class="data-pills">
-      <span class="pill">Peso</span>
-      <span class="pill">Altezza</span>
-      <span class="pill">Pressione</span>
-      <span class="pill">Glicemia</span>
-      <span class="pill">Massa Grassa</span>
-      <span class="pill">Massa Magra</span>
-    </div>
-    <p class="beyond-desc">
-      L'utente riceve un'analisi immediata dello stato fisico e mentale, identificando rischi e soluzioni concrete <em>prima ancora di iniziare a sudare.</em>
-    </p>
-  </div>
-</section>
-
-<!-- ====================== FEATURES ====================== -->
-<section id="features" class="section">
-  <div class="features-head reveal">
-    <span class="section-tag">// 02 — Le Funzionalità</span>
-    <h2 class="section-title">Tutto quello<br>che ti serve</h2>
-    <p>Sei funzionalità potenti, progettate insieme, per un'esperienza di fitness senza precedenti.</p>
-  </div>
-
-  <div class="features-grid">
-    <div class="feat-card">
-      <div class="feat-num">01</div>
-      <div class="feat-icon">🏆</div>
-      <h3 class="feat-title">Lo Sport Perfetto per Te</h3>
-      <p class="feat-desc">Suggerimenti personalizzati sullo sport ideale da praticare, spiegando i benefici specifici per la tua salute. L'app incrocia i tuoi desideri con le tue capacità fisiche reali attraverso un questionario intelligente.</p>
-    </div>
-    <div class="feat-card">
-      <div class="feat-num">02</div>
-      <div class="feat-icon">🤖</div>
-      <h3 class="feat-title">Personal Trainer AI</h3>
-      <p class="feat-desc">Correzione della postura, conteggio automatico delle ripetizioni e prevenzione degli infortuni. Tutto senza bisogno di sensori esterni — solo il tuo smartphone.</p>
-    </div>
-    <div class="feat-card">
-      <div class="feat-num">03</div>
-      <div class="feat-icon">📷</div>
-      <h3 class="feat-title">Computer Vision</h3>
-      <p class="feat-desc">Sfruttiamo l'Image Detection tramite la fotocamera per analizzare i tuoi movimenti in tempo reale. Non preoccuparti più di farti male durante gli esercizi.</p>
-    </div>
-    <div class="feat-card">
-      <div class="feat-num">04</div>
-      <div class="feat-icon">🔄</div>
-      <h3 class="feat-title">Adattabilità Quotidiana</h3>
-      <p class="feat-desc">Schede variabili: l'app crea il tuo allenamento in base a come ti senti oggi. Stanchezza, stress, umore — ogni giorno il piano è diverso, perché tu sei diverso ogni giorno.</p>
-    </div>
-    <div class="feat-card">
-      <div class="feat-num">05</div>
-      <div class="feat-icon">🥗</div>
-      <h3 class="feat-title">Nutrizione Intelligente</h3>
-      <p class="feat-desc">Piano alimentare basato sul consumo calorico reale e sui tuoi parametri medici iniziali. Mangia bene — non per tutti, ma per te.</p>
-    </div>
-   
-  </div>
-</section>
-
-<!-- ====================== AI VISION ====================== -->
-<section id="vision" class="section">
-  <div class="reveal">
-    <div class="vision-badge">🧠 Computer Vision · Tempo Reale</div>
-    <span class="section-tag">// 03 — Tecnologia</span>
-    <h2 class="section-title">Non<br>Preoccuparti<br>Più di<br>Farti Male</h2>
-    <ul class="vision-list">
-      <li>Analisi dei movimenti in tempo reale tramite la fotocamera del tuo smartphone</li>
-      <li>Correzione automatica della postura con feedback visivo immediato</li>
-      <li>Conteggio intelligente delle ripetizioni senza device aggiuntivi</li>
-      <li>Rilevamento del rischio infortuni <em>prima</em> che si verifichino</li>
-      <li>Funziona con qualsiasi smartphone, senza accessori extra</li>
-    </ul>
-  </div>
-
-  <div class="phone-wrap reveal">
-    <div class="phone">
-      <div class="phone-notch"></div>
-      <div class="phone-screen">
-        <div class="ph-header">
-          <div class="ph-logo grad-text">FitOra</div>
-          <div class="ph-live">● LIVE</div>
-        </div>
-        <div class="ph-metric">
-          <div>
-            <div class="ph-metric-label">Calorie</div>
-            <div class="ph-metric-value">842</div>
-          </div>
-          <div>
-            <div class="ph-metric-label">Bpm</div>
-            <div class="ph-metric-value" style="color:var(--green)">138</div>
-          </div>
-        </div>
-        <div class="ph-metric">
-          <div>
-            <div class="ph-metric-label">Ripetizioni</div>
-            <div class="ph-metric-value">12/15</div>
-          </div>
-          <div>
-            <div class="ph-metric-label">Postura</div>
-            <div class="ph-metric-value" style="color:var(--green);font-size:1rem">✓ OK</div>
-          </div>
-        </div>
-        <div class="ph-chart">
-          <div class="chart-bars">
-            <div class="bar" style="height:38%;animation-delay:.1s"></div>
-            <div class="bar" style="height:62%;animation-delay:.2s"></div>
-            <div class="bar" style="height:48%;animation-delay:.3s"></div>
-            <div class="bar" style="height:80%;animation-delay:.4s"></div>
-            <div class="bar" style="height:70%;animation-delay:.5s"></div>
-            <div class="bar" style="height:92%;animation-delay:.6s"></div>
-            <div class="bar" style="height:74%;animation-delay:.7s"></div>
-          </div>
-        </div>
-        <div class="ph-ai">🤖 AI ANALISI IN CORSO...</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ====================== HOW IT WORKS ====================== -->
-<section id="how" class="section">
-  <div class="how-head reveal">
-    <span class="section-tag">// 04 — Come Funziona</span>
-    <h2 class="section-title">4 Passi verso<br>il Tuo Sé Migliore</h2>
-    <p>Dal profilo clinico al piano personalizzato — tutto in pochi minuti.</p>
-  </div>
-
-  <div class="timeline">
-    <div class="tl-step">
-      <div class="tl-circle grad-text">01</div>
-      <h3 class="tl-title">Inserisci<br>i Tuoi Dati</h3>
-      <p class="tl-desc">Peso, altezza, pressione, glicemia e preferenze personali. Un profilo completo in 3 minuti.</p>
-    </div>
-    <div class="tl-step">
-      <div class="tl-circle grad-text">02</div>
-      <h3 class="tl-title">L'AI Analizza<br>il Tuo Profilo</h3>
-      <p class="tl-desc">Il nostro motore AI incrocia dati clinici, fisici e personali per trovare il tuo sport ideale.</p>
-    </div>
-    <div class="tl-step">
-      <div class="tl-circle grad-text">03</div>
-      <h3 class="tl-title">Allenati con<br>la Camera</h3>
-      <p class="tl-desc">La Computer Vision corregge i tuoi movimenti in tempo reale. Nessun trainer fisico necessario.</p>
-    </div>
-    <div class="tl-step">
-      <div class="tl-circle grad-text">04</div>
-      <h3 class="tl-title">Monitora i<br>Progressi</h3>
-      <p class="tl-desc">Dashboard completa, sfide con i tuoi amici e adattamento giornaliero del piano in base al tuo umore.</p>
-    </div>
-  </div>
-</section>
-
-
-
-<!-- ====================== FUTURO / WEARABLE ====================== -->
-<section id="future" class="section">
-  <div class="future-text reveal">
-    <span class="section-tag">// 05 — Il Futuro di FITORA</span>
-    <h2 class="section-title">Dove Stiamo<br>Andando</h2>
-    <p class="future-desc">
-      FITORA non è solo un'app — è una piattaforma in continua evoluzione. Ecco cosa stiamo costruendo per rendere il tuo benessere ancora più connesso e automatizzato.
-    </p>
-
-    <div class="future-cards">
-      <div class="future-card">
-        <div class="future-card-icon">⌚</div>
-        <div>
-          <div class="future-card-title">Integrazione Wearable</div>
-          <p class="future-card-desc">Connessione con Apple Watch, Fitbit e Garmin per raccogliere i dati automaticamente — senza inserimenti manuali.</p>
-        </div>
-      </div>
-      <div class="future-card">
-        <div class="future-card-icon">🏥</div>
-        <div>
-          <div class="future-card-title">Partnership Mediche</div>
-          <p class="future-card-desc">Collaborazioni con palestre, centri medici e assicurazioni sanitarie per portare FITORA ai loro clienti.</p>
-        </div>
-      </div>
-      <div class="future-card">
-        <div class="future-card-icon">👨‍⚕️</div>
-        <div>
-          <div class="future-card-title">Telemedicina</div>
-          <p class="future-card-desc">I medici potranno monitorare i progressi dei loro pazienti a distanza, direttamente dalla piattaforma.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="future-visual reveal">
-    <div class="future-glow-ring">
-      <div class="future-inner">
-        <div class="future-inner-emoji">🚀</div>
-        <div class="future-inner-label grad-text">FITORA 2.0</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ====================== CTA ====================== -->
-<section id="cta">
-  <div class="reveal">
-    <div class="cta-eyebrow">Inizia Oggi · Gratis · Nessun Sensore Richiesto</div>
-    <h2 class="cta-title">
-      FITORA<br><span class="grad-text">Scaricala</span>
-    </h2>
-    <p class="cta-sub">
-      Il percorso verso il tuo sé migliore inizia con un'analisi onesta del tuo corpo. Siamo pronti quando lo sei tu.
-    </p>
-    <div class="cta-btns">
-      <a href="https://alecode25.github.io/skeleton" class="btn-cta-xl">⚡ Prova Ora FITORA</a>
-      <a href="check-in.html" class="btn-cta-xl">Accedi al Dashboard</a>
-    </div>
-  </div>
- 
-</section>
-
-<!-- ====================== FOOTER ====================== -->
-<footer>
-  <div class="footer-logo grad-text">FITORA</div>
-  <nav class="footer-nav">
-    <a href="#beyond">Il Metodo</a>
-    <a href="#features">Features</a>
-    <a href="#vision">Tecnologia</a>
-    <a href="#community">Community</a>
-    <a href="#future">Futuro</a>
-  </nav>
-  <div class="footer-copy">© 2026 Fitora</div>
-</footer>
-
-<script src="script.js"></script>
-<script src="chatbot.js"></script>
+  <script src="script.js"></script>
+  <script src="chatbot.js"></script>
 </body>
+
 </html>
