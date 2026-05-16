@@ -249,7 +249,7 @@ nav {
     border: 1px solid var(--border);
     cursor: pointer;
     transition: all 0.25s ease;
-    border-radius: 10px;
+    border-radius: 6px;
 }
 
 .emoji-btn:hover {
@@ -298,7 +298,7 @@ nav {
     border: 1px solid var(--border);
     cursor: pointer;
     transition: all 0.25s ease;
-    border-radius: 10px;
+    border-radius: 6px;
 }
 
 .option-card:hover {
@@ -430,7 +430,7 @@ nav {
     border: none;
     cursor: pointer;
     padding: 16px 28px;
-    border-radius: 10px;
+    border-radius: 6px;
     transition: transform 0.2s, box-shadow 0.3s, opacity 0.2s;
     animation: liquidShift 5s ease infinite;
     position: relative;
@@ -473,7 +473,7 @@ nav {
     border: 1px solid var(--border);
     cursor: pointer;
     padding: 16px 20px;
-    border-radius: 10px;
+    border-radius: 6px;
     backdrop-filter: blur(6px);
     -webkit-backdrop-filter: blur(6px);
     transition: all 0.25s ease;

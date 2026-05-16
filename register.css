@@ -145,7 +145,7 @@ select:focus {
   padding: 16px;
   border: none;
   cursor: pointer;
-  border-radius: 10px;
+  border-radius: 6px;
   transition: transform 0.2s, box-shadow 0.3s;
   animation: liquidShift 5s ease infinite;
   position: relative;
@@ -758,7 +758,7 @@ button {
   letter-spacing: 3px;
   text-transform: uppercase;
   padding: 14px 36px;
-  border-radius: 10px;
+  border-radius: 6px;
   border: none;
   cursor: pointer;
   transition: transform 0.2s, box-shadow 0.3s;
@@ -832,7 +832,7 @@ button {
   letter-spacing: 3px;
   text-transform: uppercase;
   padding: 14px 32px;
-  border-radius: 10px;
+  border-radius: 6px;
   border: none;
   cursor: pointer;
   transition: transform 0.2s, box-shadow 0.3s;
@@ -952,7 +952,7 @@ button {
   letter-spacing: 3px;
   text-transform: uppercase;
   padding: 16px 40px;
-  border-radius: 10px;
+  border-radius: 6px;
   transition: transform 0.2s, box-shadow 0.3s;
   margin-top: 8px;
   animation: liquidShift 5s ease infinite;

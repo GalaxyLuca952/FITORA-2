@@ -9,6 +9,10 @@
   box-sizing: border-box;
 }
 
+button:active {
+  scale: 0.95;
+}
+
 html {
   scroll-behavior: smooth;
   font-size: 16px;
@@ -255,7 +259,6 @@ body::after {
 
 .edit-avatar-btn:hover {
   background: rgba(0, 212, 212, 0.08);
-  box-shadow: 0 0 12px rgba(0, 212, 212, 0.2);
 }
 
 .profile-data-grid {
@@ -312,7 +315,6 @@ body::after {
 
 .nav-cta-btn:hover {
   transform: scale(1.05);
-  box-shadow: 0 4px 20px rgba(0, 212, 212, 0.4);
 }
 
 /* --- ANIMAZIONE HAMBURGER TO X --- */
@@ -627,7 +629,7 @@ body::after {
   letter-spacing: 3px;
   text-transform: uppercase;
   padding: clamp(14px, 2.5vw, 18px) clamp(28px, 5vw, 42px);
-  border-radius: 10px;
+  border-radius: 6px;
   transition: transform 0.2s, box-shadow 0.3s;
   position: relative;
   overflow: hidden;
@@ -650,14 +652,14 @@ body::after {
 
 .btn-cta:hover {
   transform: scale(1.03);
-  box-shadow: 0 8px 32px rgba(0, 212, 212, 0.4), 0 4px 16px rgba(0, 100, 255, 0.2);
 }
 
 .btn-ghost {
-  display: inline-flex;
+  font-family: 'Barlow Condensed', sans-serif;
+  display: flex;
   align-items: center;
   gap: 7px;
-  font-size: 0.82rem;
+  font-size: clamp(0.95rem, 2.5vw, 1.1rem);
   font-weight: 600;
   letter-spacing: 2px;
   text-transform: uppercase;
@@ -669,13 +671,13 @@ body::after {
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
   transition: all 0.3s ease;
+  padding: clamp(14px, 2.5vw, 18px) clamp(28px, 5vw, 35px);
 }
 
 .btn-ghost:hover {
   color: var(--cyan);
   border-color: rgba(0, 212, 212, 0.45);
   background: rgba(0, 212, 212, 0.06);
-  box-shadow: 0 0 22px rgba(0, 212, 212, 0.2), inset 0 0 16px rgba(0, 212, 212, 0.04);
 }
 
 /* Hero scroll indicator */
@@ -917,8 +919,6 @@ body::after {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 2px;
-  background: rgba(0, 212, 212, 0.04);
-  border: 1px solid rgba(0, 212, 212, 0.07);
 }
 
 .feat-card {
@@ -930,6 +930,8 @@ body::after {
   transform: translateY(28px);
   transition: opacity 0.7s, transform 0.7s;
   cursor: default;
+  border: 1px solid var(--dark3);
+  border-radius: 6px;
 }
 
 .feat-card.visible {
@@ -1090,7 +1092,6 @@ body::after {
   border-radius: 36px;
   overflow: hidden;
   position: relative;
-  box-shadow: 0 0 60px rgba(0, 212, 212, 0.1);
   animation: phonePulse 4s ease-in-out infinite;
 }
 
@@ -1163,7 +1164,7 @@ body::after {
 .ph-metric {
   background: rgba(0, 212, 212, 0.06);
   border: 1px solid rgba(0, 212, 212, 0.14);
-  border-radius: 10px;
+  border-radius: 6px;
   padding: clamp(8px, 1.5vw, 12px) clamp(10px, 1.5vw, 14px);
   display: flex;
   justify-content: space-between;
@@ -1187,7 +1188,7 @@ body::after {
   flex: 1;
   background: rgba(0, 212, 212, 0.04);
   border: 1px solid rgba(0, 212, 212, 0.1);
-  border-radius: 10px;
+  border-radius: 6px;
   overflow: hidden;
   position: relative;
 }
@@ -1637,7 +1638,6 @@ body::after {
 
 .btn-cta-xl:hover {
   transform: scale(1.04);
-  box-shadow: 0 10px 40px rgba(0, 212, 212, 0.45), 0 4px 20px rgba(0, 100, 255, 0.25);
 }
 
 /* App badges */

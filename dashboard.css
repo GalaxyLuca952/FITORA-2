@@ -405,7 +405,7 @@ body::after {
     border: none;
     cursor: pointer;
     padding: 18px;
-    border-radius: 10px;
+    border-radius: 6px;
     transition: transform .2s, box-shadow .3s;
     animation: liquidShift 5s ease infinite;
     position: relative;
@@ -573,7 +573,7 @@ body::after {
     background: var(--dark3);
     border: 1px solid var(--border);
     transition: all .25s ease;
-    border-radius: 10px;
+    border-radius: 6px;
 }
 
 .social-btn:hover {
@@ -623,7 +623,7 @@ body::after {
     border: none;
     cursor: pointer;
     padding: 18px;
-    border-radius: 10px;
+    border-radius: 6px;
     transition: transform .2s, box-shadow .3s;
     animation: liquidShift 5s ease infinite;
     position: relative;
