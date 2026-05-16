@@ -163,7 +163,7 @@ nav {
 
 .progress-fill {
     height: 100%;
-    background: var(--grad);
+    background: var(--cyan);
     border-radius: 2px;
     transition: width 0.5s cubic-bezier(0.22, 1, 0.36, 1);
 }
@@ -421,8 +421,7 @@ nav {
 
 .btn-next {
     flex: 1;
-    background: linear-gradient(90deg, #3a5a40, #517751, #a3b18a, #3a5a40);
-    background-size: 250% 100%;
+    background: var(--cyan);
     color: #fff;
     font-family: 'Public Sans', sans-serif;
     font-weight: 900;
@@ -434,7 +433,6 @@ nav {
     padding: 16px 28px;
     border-radius: 6px;
     transition: transform 0.2s, box-shadow 0.3s, opacity 0.2s;
-    animation: liquidShift 5s ease infinite;
     position: relative;
     overflow: hidden;
 }
@@ -647,8 +645,7 @@ nav {
     display: block;
     width: 100%;
     text-align: center;
-    background: linear-gradient(90deg, #3a5a40, #517751, #a3b18a, #3a5a40);
-    background-size: 250% 100%;
+    background: var(--cyan);
     color: #fff;
     font-family: 'Public Sans', sans-serif;
     font-weight: 900;
@@ -660,7 +657,6 @@ nav {
     padding: 20px;
     border-radius: 12px;
     transition: transform 0.2s, box-shadow 0.3s;
-    animation: liquidShift 5s ease infinite;
     text-decoration: none;
     position: relative;
     overflow: hidden;

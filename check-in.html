@@ -49,7 +49,7 @@
       <!-- STEP 1: ENERGIA -->
       <div class="step active" id="step1">
         <div class="q-card">
-          <div class="q-icon"><i class="fa-solid fa-bolt" style="color: #facc15;"></i></div>
+          <div class="q-icon"><i class="fa-solid fa-bolt" style="color: #3a5a40;"></i></div>
           <div class="q-label">Livello di Energia</div>
           <div class="q-hint">Come ti senti fisicamente in questo momento? Sii onesto - è l'input più importante.</div>
           <div class="emoji-scale" id="energy-scale">
@@ -223,7 +223,7 @@
               <div class="opt-check"></div>
             </div>
             <div class="option-card" onclick="selectOption('lastwork','yesterday',this)">
-              <span class="opt-icon"><i class="fa-solid fa-circle" style="color: #ff9800;"></i></span>
+              <span class="opt-icon"><i class="fa-solid fa-circle" style="color: #517751;"></i></span>
               <div class="opt-text">
                 <div class="opt-name">Ieri</div>
                 <div class="opt-desc">Recupero parziale (~24h)</div>
@@ -275,7 +275,7 @@
         <ul class="tips-list" id="tipsList"></ul>
       </div>
 
-      <a href="dashboard.html" class="btn-go" id="goBtn"><i class="fa-solid fa-bolt" style="color: #facc15;"></i> Inizia
+      <a href="dashboard.html" class="btn-go" id="goBtn"><i class="fa-solid fa-bolt" style="color: #3a5a40;"></i> Inizia
         l'Allenamento</a>
 
     </div>
@@ -421,7 +421,7 @@
         goLabel = '<i class="fa-solid fa-fire" style="color: #ff5722;"></i> Inizia al Massimo';
       } else if (score >= 60) {
         level = 'Buona Giornata';
-        icon = '<i class="fa-solid fa-bolt" style="color: #facc15;"></i>';
+        icon = '<i class="fa-solid fa-bolt" style="color: #3a5a40;"></i>';
         desc = 'Sei in buone condizioni. Allenamento completo consigliato con qualche attenzione ai segnali del corpo.';
         color = 'var(--cyan)';
         tips = [
@@ -430,10 +430,10 @@
           'Dedica 10 minuti extra al riscaldamento',
           'Ascolta il corpo - se un esercizio fa male, sostituiscilo',
         ];
-        goLabel = '<i class="fa-solid fa-bolt" style="color: #facc15;"></i> Inizia l\'Allenamento';
+        goLabel = '<i class="fa-solid fa-bolt" style="color: #3a5a40;"></i> Inizia l\'Allenamento';
       } else if (score >= 40) {
         level = 'Allenamento Moderato';
-        icon = '<i class="fa-solid fa-triangle-exclamation" style="color: #ff9800;"></i>';
+        icon = '<i class="fa-solid fa-triangle-exclamation" style="color: #517751;"></i>';
         desc = 'Il tuo corpo ha bisogno di attenzione. Allenati, ma riduci l\'intensità e ascolta i segnali di recupero.';
         color = 'var(--yellow)';
         tips = [
@@ -443,7 +443,7 @@
           'Inserisci pause più lunghe tra le serie',
           'Idratazione e alimentazione sono priorità oggi',
         ];
-        goLabel = '<i class="fa-solid fa-triangle-exclamation" style="color: #ff9800;"></i> Allenamento Moderato';
+        goLabel = '<i class="fa-solid fa-triangle-exclamation" style="color: #517751;"></i> Allenamento Moderato';
       } else {
         level = 'Giorno di Recupero';
         icon = '<i class="fa-solid fa-shield" style="color: #03a9f4;"></i>';
