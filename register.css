@@ -25,6 +25,11 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
+@keyframes liquidShift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
 a { text-decoration: none; color: inherit; }
 input, button { font-family: inherit; }
 
@@ -263,18 +268,19 @@ input, button { font-family: inherit; }
 }
 .num-btn {
   width: 36px; height: 36px;
-  border: 1px solid rgba(255,255,255,0.15);
-  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(0,212,212,0.2);
+  background: rgba(0,212,212,0.04);
   color: rgba(255,255,255,0.7);
   font-size: 1.2rem; line-height: 1;
   cursor: pointer; border-radius: 50%;
-  transition: all 0.2s;
+  transition: all 0.25s ease;
   display: flex; align-items: center; justify-content: center;
   flex-shrink: 0;
 }
 .num-btn:hover {
   border-color: var(--cyan); color: var(--cyan);
-  background: rgba(0,212,212,0.08);
+  background: rgba(0,212,212,0.12);
+  box-shadow: 0 0 16px rgba(0,212,212,0.3);
 }
 .number-input input {
   text-align: center;
@@ -372,18 +378,30 @@ input, button { font-family: inherit; }
 ============================================= */
 .btn-next {
   align-self: flex-end;
-  background: var(--grad);
+  background: linear-gradient(90deg, #00d4d4, #00d4ff, #0066ff, #00d4d4);
+  background-size: 250% 100%;
   color: #000;
   font-family: 'Barlow Condensed', sans-serif;
   font-weight: 900; font-size: 1rem;
   letter-spacing: 3px; text-transform: uppercase;
   padding: 14px 36px;
-  clip-path: polygon(10px 0, 100% 0, calc(100% - 10px) 100%, 0 100%);
+  border-radius: 10px;
   border: none; cursor: pointer;
-  transition: filter 0.2s, transform 0.2s;
+  transition: transform 0.2s, box-shadow 0.3s;
   display: flex; align-items: center; gap: 10px;
+  animation: liquidShift 5s ease infinite;
+  position: relative; overflow: hidden;
 }
-.btn-next:hover { filter: brightness(1.1); transform: scale(1.03); }
+.btn-next::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: rgba(255,255,255,0.2);
+  border-radius: inherit;
+  transform: translateY(100%);
+  transition: transform 0.45s cubic-bezier(0.23, 1, 0.32, 1);
+}
+.btn-next:hover::before { transform: translateY(0); }
+.btn-next:hover { transform: scale(1.03); box-shadow: 0 6px 24px rgba(0, 212, 212, 0.4); }
 .arrow { display: inline-block; transition: transform 0.2s; }
 .btn-next:hover .arrow { transform: translateX(4px); }
 
@@ -401,26 +419,29 @@ input, button { font-family: inherit; }
 .btn-back:hover { color: var(--white); transform: translateX(-3px); }
 
 .btn-submit {
-  background: var(--grad);
+  background: linear-gradient(90deg, #00d4d4, #00d4ff, #0066ff, #00d4d4);
+  background-size: 250% 100%;
   color: #000;
   font-family: 'Barlow Condensed', sans-serif;
   font-weight: 900; font-size: 1rem;
   letter-spacing: 3px; text-transform: uppercase;
   padding: 14px 32px;
-  clip-path: polygon(10px 0, 100% 0, calc(100% - 10px) 100%, 0 100%);
+  border-radius: 10px;
   border: none; cursor: pointer;
-  transition: filter 0.2s, transform 0.2s;
+  transition: transform 0.2s, box-shadow 0.3s;
   position: relative; overflow: hidden;
+  animation: liquidShift 5s ease infinite;
 }
 .btn-submit::before {
   content: '';
   position: absolute; inset: 0;
-  background: rgba(255,255,255,0.15);
-  transform: translateX(-100%) skewX(-20deg);
-  transition: transform 0.4s ease;
+  background: rgba(255,255,255,0.2);
+  border-radius: inherit;
+  transform: translateY(100%);
+  transition: transform 0.45s cubic-bezier(0.23, 1, 0.32, 1);
 }
-.btn-submit:hover::before { transform: translateX(120%) skewX(-20deg); }
-.btn-submit:hover { filter: brightness(1.1); transform: scale(1.03); }
+.btn-submit:hover::before { transform: translateY(0); }
+.btn-submit:hover { transform: scale(1.03); box-shadow: 0 6px 24px rgba(0, 212, 212, 0.4); }
 
 /* =============================================
    SUCCESS SCREEN
@@ -469,17 +490,29 @@ input, button { font-family: inherit; }
   font-size: 1rem; line-height: 1.7;
 }
 .btn-dashboard {
-  background: var(--grad);
+  background: linear-gradient(90deg, #00d4d4, #00d4ff, #0066ff, #00d4d4);
+  background-size: 250% 100%;
   color: #000;
   font-family: 'Barlow Condensed', sans-serif;
   font-weight: 900; font-size: 1rem;
   letter-spacing: 3px; text-transform: uppercase;
   padding: 16px 40px;
-  clip-path: polygon(10px 0, 100% 0, calc(100% - 10px) 100%, 0 100%);
-  transition: filter 0.2s, transform 0.2s;
+  border-radius: 10px;
+  transition: transform 0.2s, box-shadow 0.3s;
   margin-top: 8px;
+  animation: liquidShift 5s ease infinite;
+  position: relative; overflow: hidden;
 }
-.btn-dashboard:hover { filter: brightness(1.1); transform: scale(1.03); }
+.btn-dashboard::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: rgba(255,255,255,0.2);
+  border-radius: inherit;
+  transform: translateY(100%);
+  transition: transform 0.45s cubic-bezier(0.23, 1, 0.32, 1);
+}
+.btn-dashboard:hover::before { transform: translateY(0); }
+.btn-dashboard:hover { transform: scale(1.03); box-shadow: 0 6px 28px rgba(0, 212, 212, 0.45); }
 
 /* =============================================
    RESPONSIVE

@@ -108,16 +108,6 @@ body::after {
 
 .nav-actions { display: flex; align-items: center; gap: 20px; }
 
-.nav-cta-btn {
-  background: var(--grad); color: #000 !important;
-  font-family: 'Barlow Condensed', sans-serif;
-  font-weight: 700; font-size: 0.8rem;
-  letter-spacing: 2px; text-transform: uppercase;
-  padding: 10px 24px;
-  clip-path: polygon(8px 0, 100% 0, calc(100% - 8px) 100%, 0 100%);
-  transition: all 0.3s;
-}
-
 .nav-profile-btn {
   width: 40px; height: 40px; border-radius: 50%;
   border: 2px solid var(--cyan); overflow: hidden;
@@ -146,7 +136,8 @@ body::after {
 }
 .profile-avatar-edit { text-align: center; margin-bottom: 30px; }
 .profile-avatar-edit img { width: 80px; height: 80px; border-radius: 50%; border: 2px solid var(--cyan); margin-bottom: 10px; }
-.edit-avatar-btn { display: block; margin: 0 auto; background: none; border: 1px solid var(--cyan); color: var(--cyan); font-size: 0.6rem; padding: 4px 10px; text-transform: uppercase; cursor: pointer; }
+.edit-avatar-btn { display: block; margin: 0 auto; background: none; border: 1px solid var(--cyan); color: var(--cyan); font-size: 0.6rem; padding: 6px 14px; text-transform: uppercase; cursor: pointer; border-radius: 6px; transition: all 0.2s ease; }
+.edit-avatar-btn:hover { background: rgba(0,212,212,0.08); box-shadow: 0 0 12px rgba(0,212,212,0.2); }
 
 .profile-data-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
 .data-item { display: flex; flex-direction: column; gap: 5px; }
@@ -160,15 +151,23 @@ body::after {
 
 /* Updated Nav CTA */
 .nav-cta-btn {
-  background: var(--grad); color: #000 !important;
+  background: linear-gradient(90deg, #00d4d4, #00d4ff, #0066ff, #00d4d4);
+  background-size: 250% 100%;
+  color: #000 !important;
   font-family: 'Barlow Condensed', sans-serif;
   font-weight: 700; font-size: 0.8rem;
   letter-spacing: 2px; text-transform: uppercase;
   padding: 10px 24px;
-  clip-path: polygon(8px 0, 100% 0, calc(100% - 8px) 100%, 0 100%);
-  transition: all 0.3s;
+  border-radius: 8px;
+  border: none;
+  transition: transform 0.3s, box-shadow 0.3s;
+  animation: liquidShift 5s ease infinite;
+  position: relative; overflow: hidden;
 }
-.nav-cta-btn:hover { filter: brightness(1.1); transform: scale(1.05); }
+.nav-cta-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 20px rgba(0, 212, 212, 0.4);
+}
 
 /* --- ANIMAZIONE HAMBURGER TO X --- */
 #navToggle {
@@ -372,36 +371,52 @@ body::after {
 
 .btn-cta {
   display: inline-block;
-  background: var(--grad); color: #000;
+  background: linear-gradient(90deg, #00d4d4, #00d4ff, #0066ff, #00d4d4);
+  background-size: 250% 100%;
+  color: #000;
   font-family: 'Barlow Condensed', sans-serif;
   font-weight: 900;
   font-size: clamp(0.95rem, 2.5vw, 1.1rem);
   letter-spacing: 3px; text-transform: uppercase;
   padding: clamp(14px, 2.5vw, 18px) clamp(28px, 5vw, 42px);
-  clip-path: polygon(12px 0, 100% 0, calc(100% - 12px) 100%, 0 100%);
-  transition: transform 0.2s, filter 0.2s;
+  border-radius: 10px;
+  transition: transform 0.2s, box-shadow 0.3s;
   position: relative; overflow: hidden;
+  animation: liquidShift 5s ease infinite;
 }
 .btn-cta::before {
   content: '';
   position: absolute; inset: 0;
   background: rgba(255,255,255,0.22);
-  transform: translateX(-110%) skewX(-18deg);
-  transition: transform 0.45s;
+  border-radius: inherit;
+  transform: translateY(100%);
+  transition: transform 0.5s cubic-bezier(0.23, 1, 0.32, 1);
 }
-.btn-cta:hover::before { transform: translateX(200%) skewX(-18deg); }
-.btn-cta:hover { transform: scale(1.03); filter: brightness(1.1); }
+.btn-cta:hover::before { transform: translateY(0); }
+.btn-cta:hover {
+  transform: scale(1.03);
+  box-shadow: 0 8px 32px rgba(0, 212, 212, 0.4), 0 4px 16px rgba(0, 100, 255, 0.2);
+}
 
 .btn-ghost {
   display: inline-flex; align-items: center; gap: 7px;
   font-size: 0.82rem; font-weight: 600;
   letter-spacing: 2px; text-transform: uppercase;
-  color: rgba(255,255,255,0.5);
-  border-bottom: 1px solid rgba(255,255,255,0.18);
-  padding-bottom: 3px;
-  transition: color 0.2s, border-color 0.2s;
+  color: rgba(255,255,255,0.6);
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 8px;
+  padding: 11px 20px;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  transition: all 0.3s ease;
 }
-.btn-ghost:hover { color: var(--cyan); border-color: var(--cyan); }
+.btn-ghost:hover {
+  color: var(--cyan);
+  border-color: rgba(0, 212, 212, 0.45);
+  background: rgba(0, 212, 212, 0.06);
+  box-shadow: 0 0 22px rgba(0, 212, 212, 0.2), inset 0 0 16px rgba(0, 212, 212, 0.04);
+}
 
 /* Hero scroll indicator */
 .scroll-hint {
@@ -421,6 +436,11 @@ body::after {
 }
 @keyframes bounce { 0%,100%{transform:translateY(0)} 50%{transform:translateY(8px)} }
 @keyframes fadeInUp { from{opacity:0;transform:translateX(-50%) translateY(10px)} to{opacity:1;transform:translateX(-50%) translateY(0)} }
+
+@keyframes liquidShift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
 
 /* =============================================
    STATS BAR
@@ -524,7 +544,10 @@ body::after {
   font-size: 0.72rem; font-weight: 600;
   letter-spacing: 2px; text-transform: uppercase;
   padding: 7px 16px;
-  clip-path: polygon(5px 0, 100% 0, calc(100% - 5px) 100%, 0 100%);
+  border-radius: 20px;
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  transition: all 0.25s ease;
 }
 
 .beyond-desc {
@@ -1019,7 +1042,9 @@ body::after {
 
 .btn-cta-xl {
   display: inline-block;
-  background: var(--grad); color: #000;
+  background: linear-gradient(90deg, #00d4d4, #00d4ff, #0066ff, #00d4d4);
+  background-size: 250% 100%;
+  color: #000;
   font-family: 'Barlow Condensed', sans-serif;
   font-weight: 900;
   font-size: clamp(1.1rem, 2.5vw, 1.5rem);
@@ -1027,19 +1052,24 @@ body::after {
   padding: clamp(18px, 3vw, 24px) clamp(40px, 7vw, 72px);
   min-width: clamp(280px, 35vw, 420px);
   text-align: center;
-  clip-path: polygon(16px 0, 100% 0, calc(100% - 16px) 100%, 0 100%);
+  border-radius: 12px;
   position: relative; overflow: hidden;
-  transition: transform 0.25s, filter 0.25s;
+  transition: transform 0.25s, box-shadow 0.3s;
+  animation: liquidShift 5s ease infinite;
 }
 .btn-cta-xl::before {
   content: '';
   position: absolute; inset: 0;
   background: rgba(255,255,255,0.22);
-  transform: translateX(-110%) skewX(-20deg);
-  transition: transform 0.5s;
+  border-radius: inherit;
+  transform: translateY(100%);
+  transition: transform 0.5s cubic-bezier(0.23, 1, 0.32, 1);
 }
-.btn-cta-xl:hover::before { transform: translateX(210%) skewX(-20deg); }
-.btn-cta-xl:hover { transform: scale(1.04); filter: brightness(1.1); }
+.btn-cta-xl:hover::before { transform: translateY(0); }
+.btn-cta-xl:hover {
+  transform: scale(1.04);
+  box-shadow: 0 10px 40px rgba(0, 212, 212, 0.45), 0 4px 20px rgba(0, 100, 255, 0.25);
+}
 
 /* App badges */
 .store-badges {

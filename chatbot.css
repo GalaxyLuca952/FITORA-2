@@ -346,10 +346,11 @@
   white-space: nowrap;
 }
 .cb-chip:hover {
-  background: rgba(0, 255, 136, 0.12);
+  background: rgba(0, 255, 136, 0.14);
   border-color: #00ff88;
-  box-shadow: 0 0 10px rgba(0, 255, 136, 0.25);
+  box-shadow: 0 0 16px rgba(0, 255, 136, 0.38), inset 0 0 8px rgba(0, 255, 136, 0.06);
   color: #00ff88;
+  transform: translateY(-2px);
 }
 
 /* input row */
@@ -401,8 +402,8 @@
   transition: transform 0.18s, box-shadow 0.18s, opacity 0.18s;
 }
 .cb-send:hover:not(:disabled) {
-  transform: scale(1.08);
-  box-shadow: 0 4px 14px rgba(0, 255, 136, 0.45);
+  transform: scale(1.12);
+  box-shadow: 0 6px 22px rgba(0, 255, 136, 0.6), 0 0 0 2px rgba(0, 255, 136, 0.18);
 }
 .cb-send:disabled {
   opacity: 0.35;
