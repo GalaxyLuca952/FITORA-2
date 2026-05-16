@@ -684,6 +684,84 @@ hr.biz-divider {
     overflow: hidden;
 }
 
+/* ── TAM/SAM/SOM ── */
+.tam-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 48px 32px;
+    margin-top: 16px;
+}
+
+.tam-item {
+    text-align: center;
+}
+
+.tam-circle {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    margin: 0 auto 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Public Sans', sans-serif;
+    font-weight: 900;
+    font-size: 1.9rem;
+    color: var(--white);
+    background: rgba(58, 90, 64, .18);
+    border: 2px solid rgba(58, 90, 64, .35);
+    transition: transform .2s;
+}
+
+.tam-circle:hover { transform: scale(1.05); }
+
+.tam-circle-mid {
+    width: 160px;
+    height: 160px;
+    font-size: 1.5rem;
+    background: rgba(58, 90, 64, .28);
+    border-color: rgba(58, 90, 64, .55);
+}
+
+.tam-circle-focus {
+    width: 120px;
+    height: 120px;
+    font-size: 1.1rem;
+    background: linear-gradient(135deg, #2a5a32, #1a3d22);
+    border-color: var(--cyan);
+    box-shadow: 0 0 32px rgba(58, 90, 64, .4);
+}
+
+.tam-item-title {
+    font-size: 1.1rem;
+    font-weight: 800;
+    letter-spacing: 1px;
+    color: var(--cyan);
+    margin-bottom: 12px;
+    text-transform: uppercase;
+}
+
+.tam-item-desc {
+    font-size: 1rem;
+    color: var(--white);
+    line-height: 1.75;
+    max-width: 280px;
+    margin: 0 auto 12px;
+}
+
+.tam-source {
+    font-size: .72rem;
+    color: var(--cyan);
+    opacity: .65;
+    max-width: 280px;
+    margin: 0 auto;
+    line-height: 1.5;
+}
+
+@media (max-width: 768px) {
+    .tam-grid { grid-template-columns: 1fr; }
+}
+
 .slide-bg-num {
     position: absolute;
     right: -12px;
@@ -695,4 +773,281 @@ hr.biz-divider {
     pointer-events: none;
     user-select: none;
     letter-spacing: -6px;
+}
+
+/* ── TRACTION / REDDIT ── */
+.traction-sub {
+    font-size: 1rem;
+    color: rgba(255,255,255,.5);
+    margin-bottom: 48px;
+    max-width: 500px;
+}
+
+.reddit-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+}
+
+.reddit-card {
+    background: var(--dark2);
+    border-radius: 20px;
+    padding: 28px;
+    border: 1px solid rgba(255,255,255,.07);
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    transition: transform .2s;
+}
+
+.reddit-card:hover { transform: translateY(-5px); }
+
+.reddit-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.reddit-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--cyan);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: .75rem;
+    font-weight: 800;
+    color: #fff;
+    flex-shrink: 0;
+}
+
+.reddit-user {
+    font-size: .8rem;
+    font-weight: 700;
+    color: var(--white);
+}
+
+.reddit-sub {
+    font-size: .7rem;
+    color: var(--cyan);
+    font-weight: 600;
+}
+
+.reddit-quote {
+    font-size: 1rem;
+    color: var(--white);
+    line-height: 1.7;
+    flex: 1;
+    font-style: italic;
+}
+
+.reddit-footer {
+    border-top: 1px solid rgba(255,255,255,.07);
+    padding-top: 12px;
+}
+
+.reddit-upvote {
+    font-size: .8rem;
+    font-weight: 700;
+    color: var(--cyan);
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+@media (max-width: 768px) {
+    .reddit-grid { grid-template-columns: 1fr; }
+}
+
+/* ── COME FAI I SOLDI ── */
+.money-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+}
+
+.money-item {
+    background: var(--dark2);
+    border-radius: 20px;
+    padding: 36px 28px;
+    border: 1px solid rgba(255,255,255,.07);
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    transition: transform .2s;
+}
+
+.money-item:hover { transform: translateY(-5px); }
+
+.money-icon {
+    font-size: 2rem;
+    color: var(--cyan);
+}
+
+.money-channel {
+    font-size: .7rem;
+    font-weight: 800;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--cyan);
+}
+
+.money-price {
+    font-family: 'Public Sans', sans-serif;
+    font-weight: 900;
+    font-size: 2.4rem;
+    color: var(--white);
+    line-height: 1;
+}
+
+.money-price span {
+    font-size: 1rem;
+    font-weight: 400;
+    color: rgba(26,46,31,.45);
+}
+
+.money-desc {
+    font-size: .9rem;
+    color: rgba(26,46,31,.65);
+    line-height: 1.7;
+    flex: 1;
+}
+
+.money-math {
+    font-size: .85rem;
+    color: var(--white);
+    background: rgba(58,90,64,.12);
+    border-left: 3px solid var(--cyan);
+    padding: 10px 14px;
+    border-radius: 0 8px 8px 0;
+}
+
+.money-math strong { color: var(--cyan); }
+
+@media (max-width: 768px) {
+    .money-grid { grid-template-columns: 1fr 1fr; }
+}
+
+/* ── COMPETIZIONE ── */
+.comp-table-wrap {
+    overflow-x: auto;
+}
+
+.comp-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: .9rem;
+}
+
+.comp-table thead tr {
+    background: var(--dark3);
+}
+
+.comp-table th {
+    padding: 14px 18px;
+    text-align: center;
+    font-size: .7rem;
+    font-weight: 800;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--white);
+}
+
+.comp-table th:first-child { text-align: left; }
+
+.comp-table td {
+    padding: 14px 18px;
+    border-bottom: 1px solid rgba(26,46,31,.08);
+    color: rgba(26,46,31,.75);
+    text-align: center;
+}
+
+.comp-table td:first-child {
+    text-align: left;
+    font-weight: 600;
+    color: var(--white);
+}
+
+.comp-table tbody tr:hover { background: var(--dark3); }
+
+.comp-table th:nth-child(2),
+.comp-table td:nth-child(2) {
+    background: rgba(58,90,64,.08);
+    font-weight: 700;
+}
+
+.comp-yes {
+    color: var(--cyan) !important;
+    font-size: 1.1rem;
+}
+
+.comp-no {
+    color: rgba(26,46,31,.3) !important;
+    font-size: 1.1rem;
+}
+
+.comp-partial {
+    color: rgba(26,46,31,.55) !important;
+    font-size: .8rem;
+}
+
+/* ── TEAM ── */
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 28px;
+}
+
+.team-card {
+    background: var(--dark2);
+    border-radius: 20px;
+    padding: 36px 28px;
+    text-align: center;
+    border: 1px solid rgba(26,46,31,.08);
+    transition: transform .2s;
+}
+
+.team-card:hover { transform: translateY(-5px); }
+
+.team-avatar {
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    background: var(--cyan);
+    color: #fff;
+    font-family: 'Public Sans', sans-serif;
+    font-weight: 900;
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+}
+
+.team-name {
+    font-family: 'Public Sans', sans-serif;
+    font-weight: 800;
+    font-size: 1.15rem;
+    color: var(--white);
+    margin-bottom: 6px;
+}
+
+.team-role {
+    font-size: .7rem;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--cyan);
+    margin-bottom: 14px;
+}
+
+.team-bio {
+    font-size: .9rem;
+    color: rgba(26,46,31,.6);
+    line-height: 1.65;
+}
+
+@media (max-width: 768px) {
+    .team-grid { grid-template-columns: 1fr; }
 }
