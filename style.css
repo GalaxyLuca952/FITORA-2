@@ -247,17 +247,21 @@ body::after {
   color: var(--white);
   font-size: 2rem;
   cursor: pointer;
-  padding: 5px;
+  padding: 1px 15px;
+  border-radius: 1000px;
 }
 
 .close-modal:hover{
   color: var(--cyan);
-  background-color: rgba(128, 128, 128, 0.577);
+  background-color: rgba(128, 128, 128, 0.2 );
 }
 
 .profile-avatar-edit {
-  text-align: center;
-  margin-bottom: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  margin: 10px 0;
 }
 
 .profile-avatar-edit img {
@@ -265,7 +269,7 @@ body::after {
   height: 80px;
   border-radius: 50%;
   border: 2px solid var(--cyan);
-  margin-bottom: 10px;
+  object-fit:cover;
 }
 
 .edit-avatar-btn {
@@ -274,7 +278,7 @@ body::after {
   background: none;
   border: 1px solid var(--cyan);
   color: var(--cyan);
-  font-size: 0.6rem;
+  font-size: 0.9rem;
   padding: 6px 14px;
   text-transform: uppercase;
   cursor: pointer;
