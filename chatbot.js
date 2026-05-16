@@ -18,7 +18,7 @@
     proxyUrl: '',
     model: 'claude-sonnet-4-6',
     maxTokens: 512,
-    welcomeMessage: 'Ciao! <i class="fa-solid fa-hand" style="color: #ffc107;"></i> Sono l\'assistente di **FITORA**.\nPosso aiutarti a navigare il sito, conoscerti le funzionalità, metterti in contatto con i Personal Trainer e tanto altro. Come posso aiutarti?',
+    welcomeMessage: 'Ciao! Sono l\'assistente di **FITORA**.\nPosso aiutarti a navigare il sito, conoscerti le funzionalità, metterti in contatto con i Personal Trainer e tanto altro. Come posso aiutarti?',
     cssFile: null,
   }, window.ChatbotConfig || {});
 
@@ -47,7 +47,7 @@
     tech: { label: 'Tecnologia AI', icon: '<i class="fa-solid fa-robot" style="color: #9c27b0;"></i>', action: () => goHref('index.html#vision') },
     community: { label: 'Community', icon: '<i class="fa-solid fa-users" style="color: #03a9f4;"></i>', action: () => goHref('index.html#community') },
     futuro: { label: 'Futuro / Wearable', icon: '<i class="fa-solid fa-rocket" style="color: #ff5722;"></i>', action: () => goHref('index.html#future') },
-    dashboard: { label: 'Dashboard <i class="fa-solid fa-bolt" style="color: #facc15;"></i>', icon: '<i class="fa-solid fa-chart-simple" style="color: #03a9f4;"></i>', action: () => goHref('check-in.html') },
+    dashboard: { label: 'Dashboard', icon: '<i class="fa-solid fa-chart-simple" style="color: #03a9f4;"></i>', action: () => goHref('check-in.html') },
     registrati: { label: 'Registrati', icon: '<i class="fa-solid fa-pen" style="color: #03a9f4;"></i>️', action: () => goHref('register.html') },
     allenamento: { label: 'Allenamento', icon: '<i class="fa-solid fa-bolt" style="color: #facc15;"></i>', action: () => goHref('workout.html') },
     nutrizione: { label: 'Nutrizione', icon: '<i class="fa-solid fa-bowl-food" style="color: #4caf50;"></i>', action: () => goHref('nutrition.html') },
@@ -152,6 +152,9 @@
   }
   function md(text) {
     return text
+      .replace(/<i\b[^>]*>[\s\S]*?<\/i>/g, '')
+      .replace(/[\u{1F000}-\u{1FFFF}]|[\u{2600}-\u{27FF}]|️/gu, '')
+      .replace(/\s{2,}/g, ' ').trim()
       .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
       .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
       .replace(/\*(.*?)\*/g, '<em>$1</em>')
@@ -163,7 +166,11 @@
     ta.style.height = Math.min(ta.scrollHeight, 96) + 'px';
   }
   function escHTML(s) {
-    return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+    return String(s)
+      .replace(/<i\b[^>]*>[\s\S]*?<\/i>/g, '')
+      .replace(/[\u{1F000}-\u{1FFFF}]|[\u{2600}-\u{27FF}]|️/gu, '')
+      .trim()
+      .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
   }
   function waLink(phone) {
     return `https://wa.me/39${phone.replace(/\D/g, '')}`;
@@ -350,7 +357,7 @@
         </div>
       </div>
     `).join('');
-    return `<div class="cb-pt-intro"><i class="fa-solid fa-users" style="color: #03a9f4;"></i> I nostri <strong>Personal Trainer</strong> in palestra:</div>${cards}`;
+    return `<div class="cb-pt-intro">I nostri <strong>Personal Trainer</strong> in palestra:</div>${cards}`;
   }
 
   /* ══════════════════════════════════════════════════════
@@ -366,7 +373,7 @@
         <span class="cb-nav-arrow">→</span>
       </button>`;
     }).join('');
-    return `<div class="cb-nav-intro"><i class="fa-solid fa-location-dot" style="color: #f44336;"></i> Dove vuoi andare? Clicca per aprire:</div><div class="cb-nav-grid">${items}</div>`;
+    return `<div class="cb-nav-intro">Dove vuoi andare? Clicca per aprire:</div><div class="cb-nav-grid">${items}</div>`;
   }
 
   function bindNavClicks() {
@@ -418,7 +425,7 @@
       }
     } catch (err) {
       removeTyping();
-      addMsg('bot', '<i class="fa-solid fa-triangle-exclamation" style="color: #ff9800;"></i> Si è verificato un errore. Riprova tra poco.', true);
+      addMsg('bot', 'Si è verificato un errore. Riprova tra poco.', true);
       console.error('[FITORA Chatbot]', err);
       updateChips(chipSet);
     } finally {
@@ -469,7 +476,7 @@
       updateChips(CHIPS_DEFAULT);
       const hasChattedBefore = localStorage.getItem('fitora_has_chatted');
       if (hasChattedBefore) {
-        return 'Bentornato! <i class="fa-solid fa-hand" style="color: #ffc107;"></i> Sono di nuovo qui per aiutarti con **FITORA**. Come posso esserti utile oggi?';
+        return 'Bentornato! Sono di nuovo qui per aiutarti con **FITORA**. Come posso esserti utile oggi?';
       } else {
         localStorage.setItem('fitora_has_chatted', 'true');
         return 'Ciao! <i class="fa-solid fa-hand" style="color: #ffc107;"></i> Sono l\'assistente di **FITORA**.\n\nPosso aiutarti su: funzionalità dell\'app, navigare il sito, Personal Trainer disponibili e tanto altro. Da dove vuoi iniziare?';
@@ -724,22 +731,22 @@
       .cb-pt-intro { font-size: 12px; color: #aaa; margin-bottom: 10px; }
       .cb-pt-card {
         display: flex; gap: 10px; align-items: flex-start;
-        background: rgba(0,255,136,0.04); border: 1px solid rgba(0,255,136,0.12);
+        background: rgba(58,90,64,0.04); border: 1px solid rgba(58,90,64,0.12);
         border-radius: 12px; padding: 10px 11px; margin-bottom: 8px;
       }
       .cb-pt-card:last-child { margin-bottom: 0; }
       .cb-pt-photo {
         width: 54px; height: 54px; border-radius: 50%; object-fit: cover;
-        border: 2px solid rgba(0,255,136,0.35); flex-shrink: 0;
+        border: 2px solid rgba(58,90,64,0.35); flex-shrink: 0;
       }
       .cb-pt-info { flex: 1; min-width: 0; }
-      .cb-pt-name { font-size: 13px; font-weight: 700; color: #e8e8e8; }
-      .cb-pt-role { font-size: 10.5px; color: #00d4ff; margin: 2px 0 4px; }
-      .cb-pt-bio  { font-size: 11px; color: #aaa; line-height: 1.45; margin-bottom: 6px; }
+      .cb-pt-name { font-size: 13px; font-weight: 700; color: #1a2e1f; }
+      .cb-pt-role { font-size: 10.5px; color: #517751; margin: 2px 0 4px; }
+      .cb-pt-bio  { font-size: 11px; color: rgba(26,46,31,0.5); line-height: 1.45; margin-bottom: 6px; }
       .cb-pt-tags { display: flex; flex-wrap: wrap; gap: 4px; margin-bottom: 8px; }
       .cb-pt-tag {
         font-size: 9.5px; padding: 2px 7px; border-radius: 20px;
-        background: rgba(0,212,255,0.09); border: 1px solid rgba(0,212,255,0.22); color: #00d4ff;
+        background: rgba(58,90,64,0.09); border: 1px solid rgba(58,90,64,0.22); color: #517751;
       }
       .cb-pt-wa {
         display: inline-flex; align-items: center; gap: 5px;
@@ -750,19 +757,19 @@
       .cb-pt-wa:hover { background: rgba(37,211,102,0.2); }
 
       /* Nav cards */
-      .cb-nav-intro { font-size: 12px; color: #aaa; margin-bottom: 9px; }
+      .cb-nav-intro { font-size: 12px; color: rgba(26,46,31,0.5); margin-bottom: 9px; }
       .cb-nav-grid { display: flex; flex-direction: column; gap: 5px; }
       .cb-nav-item {
         display: flex; align-items: center; gap: 10px;
-        background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.07);
+        background: rgba(26,46,31,0.03); border: 1px solid rgba(26,46,31,0.07);
         border-radius: 9px; padding: 9px 11px;
-        cursor: pointer; width: 100%; text-align: left; color: #d8e8d8;
+        cursor: pointer; width: 100%; text-align: left; color: #1a2e1f;
         font-family: inherit; transition: background 0.15s, border-color 0.15s;
       }
-      .cb-nav-item:hover { background: rgba(0,255,136,0.07); border-color: rgba(0,255,136,0.22); }
+      .cb-nav-item:hover { background: rgba(58,90,64,0.07); border-color: rgba(58,90,64,0.22); }
       .cb-nav-icon  { font-size: 16px; width: 22px; text-align: center; flex-shrink: 0; }
       .cb-nav-label { flex: 1; font-size: 12.5px; font-weight: 600; }
-      .cb-nav-arrow { color: #00d4ff; font-size: 13px; }
+      .cb-nav-arrow { color: #3a5a40; font-size: 13px; }
     `;
     document.head.appendChild(style);
   }
@@ -865,7 +872,7 @@
       const hasChattedBefore = localStorage.getItem('fitora_has_chatted');
       let msg = CFG.welcomeMessage;
       if (hasChattedBefore) {
-        msg = 'Bentornato! <i class="fa-solid fa-hand" style="color: #ffc107;"></i> Sono di nuovo qui per aiutarti con **FITORA**. Come posso esserti utile oggi?';
+        msg = 'Bentornato! Sono di nuovo qui per aiutarti con **FITORA**. Come posso esserti utile oggi?';
       } else {
         localStorage.setItem('fitora_has_chatted', 'true');
       }

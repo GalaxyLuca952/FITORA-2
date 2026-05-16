@@ -1,22 +1,22 @@
 @import url('https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,100..900;1,100..900&family=Sansation:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap');
 
 :root {
-    --cyan: #00d4d4;
-    --green: #00d4ff;
-    --yellow: #0066ff;
+    --cyan: #3a5a40;
+    --green: #517751;
+    --yellow: #a3b18a;
     --red: #ff4545;
     --orange: #ff8c00;
-    --grad: linear-gradient(90deg, #00d4d4, #00d4ff, #0066ff);
-    --grad-t: linear-gradient(100deg, #00d4d4 0%, #00d4ff 50%, #0066ff 100%);
-    --dark: #080808;
-    --dark2: #101010;
-    --dark3: #181818;
-    --dark4: #1e1e1e;
-    --border: rgba(255, 255, 255, .07);
-    --bc: rgba(0, 212, 212, .2);
-    --white: #fff;
-    --muted: rgba(255, 255, 255, .3);
-    --dim: rgba(255, 255, 255, .55);
+    --grad: linear-gradient(90deg, #3a5a40, #517751, #a3b18a);
+    --grad-t: linear-gradient(100deg, #3a5a40 0%, #517751 50%, #a3b18a 100%);
+    --dark: #f4f6f1;
+    --dark2: #eaede5;
+    --dark3: #dde2d8;
+    --dark4: #d6dcd2;
+    --border: rgba(26, 46, 31, .07);
+    --bc: rgba(58, 90, 64, .2);
+    --white: #1a2e1f;
+    --muted: rgba(26, 46, 31, .3);
+    --dim: rgba(26, 46, 31, .55);
     --nav-h: 64px;
     --tab-h: 68px;
 }
@@ -86,9 +86,9 @@ body::after {
     align-items: center;
     justify-content: space-between;
     padding: 0 clamp(14px, 4vw, 28px);
-    background: rgba(8, 8, 8, .92);
+    background: rgba(244, 246, 241, .92);
     backdrop-filter: blur(14px);
-    border-bottom: 1px solid rgba(0, 212, 212, .12);
+    border-bottom: 1px solid rgba(58, 90, 64, .12);
 }
 
 .nav-logo {
@@ -126,7 +126,7 @@ body::after {
     padding: clamp(16px, 3vw, 24px) clamp(12px, 3vw, 24px) 16px;
     -webkit-overflow-scrolling: touch;
     scrollbar-width: thin;
-    scrollbar-color: rgba(0, 212, 212, .2) transparent;
+    scrollbar-color: rgba(58, 90, 64, .2) transparent;
 }
 
 .page.active {
@@ -153,9 +153,9 @@ body::after {
     z-index: 1000;
     display: flex;
     align-items: stretch;
-    background: rgba(8, 8, 8, .95);
+    background: rgba(244, 246, 241, .95);
     backdrop-filter: blur(16px);
-    border-top: 1px solid rgba(255, 255, 255, .06);
+    border-top: 1px solid rgba(26, 46, 31, .06);
 }
 
 .tab-btn {
@@ -220,7 +220,7 @@ body::after {
     align-items: center;
     justify-content: space-between;
     padding: clamp(12px, 1.8vw, 16px) clamp(14px, 2vw, 20px);
-    border-bottom: 1px solid rgba(255, 255, 255, .04);
+    border-bottom: 1px solid rgba(26, 46, 31, .04);
 }
 
 .card-title {
@@ -256,8 +256,8 @@ body::after {
 ══════════════════════════════════ */
 .home-greeting {
     padding: clamp(20px, 3vw, 28px) clamp(16px, 2vw, 22px);
-    background: linear-gradient(135deg, rgba(0, 212, 212, .07) 0%, rgba(127, 255, 0, .03) 100%);
-    border: 1px solid rgba(0, 212, 212, .15);
+    background: linear-gradient(135deg, rgba(58, 90, 64, .07) 0%, rgba(81, 119, 81, .03) 100%);
+    border: 1px solid rgba(58, 90, 64, .15);
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -366,8 +366,8 @@ body::after {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 1px;
-    background: rgba(0, 212, 212, .05);
-    border: 1px solid rgba(0, 212, 212, .08);
+    background: rgba(58, 90, 64, .05);
+    border: 1px solid rgba(58, 90, 64, .08);
 }
 
 .qs-cell {
@@ -396,9 +396,9 @@ body::after {
     display: block;
     width: 100%;
     text-align: center;
-    background: linear-gradient(90deg, #00d4d4, #00d4ff, #0066ff, #00d4d4);
+    background: linear-gradient(90deg, #3a5a40, #517751, #a3b18a, #3a5a40);
     background-size: 250% 100%;
-    color: #000;
+    color: #fff;
     font-family: 'Public Sans', sans-serif;
     font-weight: 900;
     font-size: 1.1rem;
@@ -430,7 +430,7 @@ body::after {
 
 .btn-start-cta:hover {
     transform: scale(1.02);
-    box-shadow: 0 6px 28px rgba(0, 212, 212, .4);
+    box-shadow: 0 6px 28px rgba(58, 90, 64, .4);
 }
 
 
@@ -457,9 +457,9 @@ body::after {
 }
 
 .btn-ok {
-    background: linear-gradient(90deg, #00d4d4, #00d4ff, #0066ff, #00d4d4);
+    background: linear-gradient(90deg, #3a5a40, #517751, #a3b18a, #3a5a40);
     background-size: 250% 100%;
-    color: #000;
+    color: #fff;
     font-family: 'Public Sans', sans-serif;
     font-weight: 900;
     font-size: .85rem;
@@ -476,7 +476,7 @@ body::after {
 
 .btn-ok:hover {
     transform: scale(1.04);
-    box-shadow: 0 4px 18px rgba(0, 212, 212, .4);
+    box-shadow: 0 4px 18px rgba(58, 90, 64, .4);
 }
 
 .player-wrap {
@@ -538,8 +538,8 @@ body::after {
 
 .btn-share-music:hover {
     border-color: var(--bc);
-    background: rgba(0, 212, 212, .07);
-    box-shadow: 0 0 18px rgba(0, 212, 212, .15);
+    background: rgba(58, 90, 64, .07);
+    box-shadow: 0 0 18px rgba(58, 90, 64, .15);
 }
 
 /* ══════════════════════════════════
@@ -548,8 +548,8 @@ body::after {
 .comm-hero {
     padding: clamp(24px, 4vw, 36px) clamp(18px, 3vw, 28px);
     text-align: center;
-    background: linear-gradient(135deg, rgba(0, 212, 212, .06), rgba(127, 255, 0, .03));
-    border: 1px solid rgba(0, 212, 212, .12);
+    background: linear-gradient(135deg, rgba(58, 90, 64, .06), rgba(81, 119, 81, .03));
+    border: 1px solid rgba(58, 90, 64, .12);
 }
 
 .comm-hero-title {
@@ -579,9 +579,9 @@ body::after {
 }
 
 .social-btn:hover {
-    background: rgba(0, 212, 212, .07);
+    background: rgba(58, 90, 64, .07);
     border-color: var(--bc);
-    box-shadow: 0 4px 20px rgba(0, 212, 212, .12);
+    box-shadow: 0 4px 20px rgba(58, 90, 64, .12);
     transform: translateY(-2px);
 }
 
@@ -614,9 +614,9 @@ body::after {
     display: block;
     width: 100%;
     text-align: center;
-    background: linear-gradient(90deg, #00d4d4, #00d4ff, #0066ff, #00d4d4);
+    background: linear-gradient(90deg, #3a5a40, #517751, #a3b18a, #3a5a40);
     background-size: 250% 100%;
-    color: #000;
+    color: #fff;
     font-family: 'Public Sans', sans-serif;
     font-weight: 900;
     font-size: 1rem;
@@ -648,7 +648,7 @@ body::after {
 
 .btn-challenge-big:hover {
     transform: scale(1.02);
-    box-shadow: 0 6px 28px rgba(0, 212, 212, .4);
+    box-shadow: 0 6px 28px rgba(58, 90, 64, .4);
 }
 
 .badge-grid {
@@ -728,22 +728,22 @@ body::after {
 }
 
 .cal-day.today {
-    border-color: rgba(0, 212, 212, .5);
-    background: rgba(0, 212, 212, .05);
+    border-color: rgba(58, 90, 64, .5);
+    background: rgba(58, 90, 64, .05);
 }
 
 .cal-day.has-workout {
     cursor: pointer;
-    border-color: rgba(0, 212, 212, .18);
+    border-color: rgba(58, 90, 64, .18);
 }
 
 .cal-day.has-workout:hover {
-    background: rgba(0, 212, 212, .08);
+    background: rgba(58, 90, 64, .08);
 }
 
 .cal-day.done-100 {
-    background: rgba(0, 212, 212, .1);
-    border-color: rgba(0, 212, 212, .4);
+    background: rgba(58, 90, 64, .1);
+    border-color: rgba(58, 90, 64, .4);
 }
 
 .cal-day-num {
@@ -773,7 +773,7 @@ body::after {
     font-size: .34rem;
     letter-spacing: .5px;
     text-transform: uppercase;
-    color: rgba(255, 255, 255, .45);
+    color: rgba(26, 46, 31, .45);
     text-align: center;
     line-height: 1.2;
     overflow: hidden;
@@ -796,6 +796,7 @@ body::after {
     outline: 2px solid var(--cyan);
     outline-offset: -1px;
 }
+
 
 /* Giorno passato nel calendario */
 .cal-day.past-workout {
@@ -820,12 +821,12 @@ body::after {
 }
 
 .diary-accord-head:hover {
-    background: rgba(0, 212, 212, .04);
+    background: rgba(58, 90, 64, .04);
 }
 
 .diary-accord-body {
     display: none;
-    border-top: 1px solid rgba(255, 255, 255, .04);
+    border-top: 1px solid rgba(26, 46, 31, .04);
 }
 
 .diary-accord-body.open {
@@ -849,7 +850,7 @@ body::after {
     display: flex;
     gap: 8px;
     padding: 10px 16px;
-    border-top: 1px solid rgba(255, 255, 255, .04);
+    border-top: 1px solid rgba(26, 46, 31, .04);
     flex-wrap: wrap;
 }
 
@@ -900,7 +901,7 @@ body::after {
     z-index: 4000;
     pointer-events: none;
     background: var(--dark3);
-    border: 1px solid rgba(0, 212, 212, .25);
+    border: 1px solid rgba(58, 90, 64, .25);
     padding: 10px 20px;
     white-space: nowrap;
     font-size: .72rem;
@@ -971,15 +972,15 @@ body::after {
 }
 
 .plan-card-head:hover {
-    background: rgba(0, 212, 212, .04);
+    background: rgba(58, 90, 64, .04);
 }
 
 .plan-date-block {
     width: 40px;
     height: 40px;
     flex-shrink: 0;
-    background: rgba(0, 212, 212, .07);
-    border: 1px solid rgba(0, 212, 212, .15);
+    background: rgba(58, 90, 64, .07);
+    border: 1px solid rgba(58, 90, 64, .15);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -1028,7 +1029,7 @@ body::after {
 
 .plan-detail {
     display: none;
-    border-top: 1px solid rgba(255, 255, 255, .04);
+    border-top: 1px solid rgba(26, 46, 31, .04);
 }
 
 .plan-detail.open {
@@ -1053,13 +1054,13 @@ body::after {
 .plan-phase-label.main {
     border-color: var(--cyan);
     color: var(--cyan);
-    background: rgba(0, 212, 212, .04);
+    background: rgba(58, 90, 64, .04);
 }
 
 .plan-phase-label.cooldown {
     border-color: var(--green);
     color: var(--green);
-    background: rgba(0, 212, 212, .03);
+    background: rgba(58, 90, 64, .03);
 }
 
 /* Checkbox esercizi */
@@ -1068,7 +1069,7 @@ body::after {
     align-items: center;
     gap: 12px;
     padding: 11px 16px;
-    border-top: 1px solid rgba(255, 255, 255, .03);
+    border-top: 1px solid rgba(26, 46, 31, .03);
     cursor: pointer;
     transition: background .15s;
 }
@@ -1101,7 +1102,7 @@ body::after {
     width: 20px;
     height: 20px;
     flex-shrink: 0;
-    border: 2px solid rgba(255, 255, 255, .2);
+    border: 2px solid rgba(26, 46, 31, .2);
     border-radius: 3px;
     display: flex;
     align-items: center;
@@ -1143,14 +1144,14 @@ body::after {
     display: block;
     width: calc(100% - 32px);
     text-align: center;
-    background: rgba(0, 212, 212, .08);
+    background: rgba(58, 90, 64, .08);
     color: var(--cyan);
     font-family: 'Public Sans', sans-serif;
     font-weight: 900;
     font-size: .9rem;
     letter-spacing: 3px;
     text-transform: uppercase;
-    border: 1px solid rgba(0, 212, 212, .25);
+    border: 1px solid rgba(58, 90, 64, .25);
     cursor: pointer;
     padding: 13px;
     border-radius: 8px;
@@ -1161,17 +1162,17 @@ body::after {
 }
 
 .btn-check-all:hover {
-    background: rgba(0, 212, 212, .15);
-    box-shadow: 0 0 18px rgba(0, 212, 212, .2);
+    background: rgba(58, 90, 64, .15);
+    box-shadow: 0 0 18px rgba(58, 90, 64, .2);
 }
 
 .btn-save-day {
     display: block;
     width: calc(100% - 32px);
     text-align: center;
-    background: linear-gradient(90deg, #00d4d4, #00d4ff, #0066ff, #00d4d4);
+    background: linear-gradient(90deg, #3a5a40, #517751, #a3b18a, #3a5a40);
     background-size: 250% 100%;
-    color: #000;
+    color: #fff;
     font-family: 'Public Sans', sans-serif;
     font-weight: 900;
     font-size: .9rem;
@@ -1204,7 +1205,7 @@ body::after {
 
 .btn-save-day:hover {
     transform: scale(1.02);
-    box-shadow: 0 4px 20px rgba(0, 212, 212, .4);
+    box-shadow: 0 4px 20px rgba(58, 90, 64, .4);
 }
 
 .btn-del-plan {
@@ -1226,7 +1227,7 @@ body::after {
 /* Progress bar diario */
 .diary-progress-bar {
     height: 3px;
-    background: rgba(255, 255, 255, .05);
+    background: rgba(26, 46, 31, .05);
     margin: 0 16px;
 }
 

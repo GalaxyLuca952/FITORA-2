@@ -1,22 +1,22 @@
 @import url('https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,100..900;1,100..900&family=Sansation:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap');
 
 :root {
-    --cyan: #00d4d4;
-    --green: #00d4ff;
-    --yellow: #0066ff;
+    --cyan: #3a5a40;
+    --green: #517751;
+    --yellow: #a3b18a;
     --red: #ff4545;
     --orange: #ff8c00;
-    --grad: linear-gradient(90deg, #00d4d4, #00d4ff, #0066ff);
-    --grad-t: linear-gradient(100deg, #00d4d4 0%, #00d4ff 50%, #0066ff 100%);
-    --dark: #080808;
-    --dark2: #101010;
-    --dark3: #181818;
-    --dark4: #1e1e1e;
-    --border: rgba(255, 255, 255, .07);
-    --bc: rgba(0, 212, 212, .2);
-    --white: #fff;
-    --muted: rgba(255, 255, 255, .32);
-    --dim: rgba(255, 255, 255, .55);
+    --grad: linear-gradient(90deg, #3a5a40, #517751, #a3b18a);
+    --grad-t: linear-gradient(100deg, #3a5a40 0%, #517751 50%, #a3b18a 100%);
+    --dark: #f4f6f1;
+    --dark2: #eaede5;
+    --dark3: #dde2d8;
+    --dark4: #d6dcd2;
+    --border: rgba(26, 46, 31, .07);
+    --bc: rgba(58, 90, 64, .2);
+    --white: #1a2e1f;
+    --muted: rgba(26, 46, 31, .32);
+    --dim: rgba(26, 46, 31, .55);
 }
 
 *,
@@ -66,9 +66,9 @@ nav {
     justify-content: space-between;
     padding: 0 clamp(16px, 5vw, 40px);
     height: 64px;
-    background: rgba(8, 8, 8, .88);
+    background: rgba(244, 246, 241, .88);
     backdrop-filter: blur(14px);
-    border-bottom: 1px solid rgba(0, 212, 212, .12);
+    border-bottom: 1px solid rgba(58, 90, 64, .12);
     position: sticky;
     top: 0;
     z-index: 100;
@@ -112,7 +112,7 @@ nav {
 .btn-back:hover {
     color: var(--cyan);
     border-color: var(--bc);
-    background: rgba(0, 212, 212, .05);
+    background: rgba(58, 90, 64, .05);
 }
 
 /* ── WRAPPER ── */
@@ -135,7 +135,7 @@ nav {
     letter-spacing: 5px;
     text-transform: uppercase;
     color: var(--cyan);
-    border: 1px solid rgba(0, 212, 212, .3);
+    border: 1px solid rgba(58, 90, 64, .3);
     padding: 5px 14px;
     margin-bottom: 16px;
 }
@@ -169,7 +169,7 @@ nav {
 .prog-bar {
     flex: 1;
     height: 3px;
-    background: rgba(255, 255, 255, .06);
+    background: rgba(26, 46, 31, .06);
     overflow: hidden;
 }
 
@@ -274,22 +274,22 @@ nav {
 }
 
 .opt-card:hover {
-    background: rgba(0, 212, 212, .06);
-    border-color: rgba(0, 212, 212, .25);
-    box-shadow: 0 4px 16px rgba(0, 212, 212, .1);
+    background: rgba(58, 90, 64, .06);
+    border-color: rgba(58, 90, 64, .25);
+    box-shadow: 0 4px 16px rgba(58, 90, 64, .1);
     transform: translateY(-1px);
 }
 
 .opt-card.sel {
-    background: rgba(0, 212, 212, .1);
+    background: rgba(58, 90, 64, .1);
     border-color: var(--cyan);
-    box-shadow: 0 0 18px rgba(0, 212, 212, .18);
+    box-shadow: 0 0 18px rgba(58, 90, 64, .18);
 }
 
 .opt-card.sel-multi {
-    background: rgba(127, 255, 0, .08);
+    background: rgba(81, 119, 81, .08);
     border-color: var(--green);
-    box-shadow: 0 0 14px rgba(127, 255, 0, .12);
+    box-shadow: 0 0 14px rgba(81, 119, 81, .12);
 }
 
 .opt-icon-big {
@@ -317,7 +317,7 @@ nav {
     width: 16px;
     height: 16px;
     border-radius: 50%;
-    border: 2px solid rgba(255, 255, 255, .15);
+    border: 2px solid rgba(26, 46, 31, .15);
     flex-shrink: 0;
     transition: all .18s;
 }
@@ -353,16 +353,16 @@ nav {
 }
 
 .em-btn:hover {
-    background: rgba(0, 212, 212, .07);
-    border-color: rgba(0, 212, 212, .3);
-    box-shadow: 0 4px 14px rgba(0, 212, 212, .12);
+    background: rgba(58, 90, 64, .07);
+    border-color: rgba(58, 90, 64, .3);
+    box-shadow: 0 4px 14px rgba(58, 90, 64, .12);
     transform: translateY(-2px);
 }
 
 .em-btn.sel {
-    background: rgba(0, 212, 212, .11);
+    background: rgba(58, 90, 64, .11);
     border-color: var(--cyan);
-    box-shadow: 0 0 18px rgba(0, 212, 212, .2);
+    box-shadow: 0 0 18px rgba(58, 90, 64, .2);
 }
 
 .em-btn .em {
@@ -390,9 +390,9 @@ nav {
 
 .btn-next {
     flex: 1;
-    background: linear-gradient(90deg, #00d4d4, #00d4ff, #0066ff, #00d4d4);
+    background: linear-gradient(90deg, #3a5a40, #517751, #a3b18a, #3a5a40);
     background-size: 250% 100%;
-    color: #000;
+    color: #fff;
     font-family: 'Public Sans', sans-serif;
     font-weight: 900;
     font-size: .95rem;
@@ -430,7 +430,7 @@ nav {
 
 .btn-next:not(:disabled):hover {
     transform: scale(1.02);
-    box-shadow: 0 6px 24px rgba(0, 212, 212, .4);
+    box-shadow: 0 6px 24px rgba(58, 90, 64, .4);
 }
 
 .btn-prev {
@@ -494,7 +494,7 @@ nav {
     letter-spacing: 5px;
     text-transform: uppercase;
     color: var(--cyan);
-    border: 1px solid rgba(0, 212, 212, .3);
+    border: 1px solid rgba(58, 90, 64, .3);
     padding: 5px 14px;
     margin-bottom: 14px;
 }
@@ -527,7 +527,7 @@ nav {
 }
 
 .sport-card:first-child {
-    border-color: rgba(0, 212, 212, .3);
+    border-color: rgba(58, 90, 64, .3);
 }
 
 .sport-rank {
@@ -535,7 +535,7 @@ nav {
     align-items: center;
     gap: 10px;
     padding: 10px clamp(16px, 2vw, 22px);
-    border-bottom: 1px solid rgba(255, 255, 255, .04);
+    border-bottom: 1px solid rgba(26, 46, 31, .04);
 }
 
 .rank-badge {
@@ -550,20 +550,20 @@ nav {
 
 .rank-1 {
     color: var(--cyan);
-    border-color: rgba(0, 212, 212, .4);
-    background: rgba(0, 212, 212, .07);
+    border-color: rgba(58, 90, 64, .4);
+    background: rgba(58, 90, 64, .07);
 }
 
 .rank-2 {
     color: var(--green);
-    border-color: rgba(127, 255, 0, .3);
-    background: rgba(127, 255, 0, .05);
+    border-color: rgba(81, 119, 81, .3);
+    background: rgba(81, 119, 81, .05);
 }
 
 .rank-3 {
     color: var(--yellow);
-    border-color: rgba(212, 255, 0, .3);
-    background: rgba(212, 255, 0, .05);
+    border-color: rgba(163, 177, 138, .3);
+    background: rgba(163, 177, 138, .05);
 }
 
 .rank-score {
@@ -617,7 +617,7 @@ nav {
 
 .sport-match-bar {
     height: 4px;
-    background: rgba(255, 255, 255, .06);
+    background: rgba(26, 46, 31, .06);
     margin-bottom: 12px;
     overflow: hidden;
 }
@@ -698,9 +698,9 @@ nav {
     display: block;
     width: 100%;
     text-align: center;
-    background: linear-gradient(90deg, #00d4d4, #00d4ff, #0066ff, #00d4d4);
+    background: linear-gradient(90deg, #3a5a40, #517751, #a3b18a, #3a5a40);
     background-size: 250% 100%;
-    color: #000;
+    color: #fff;
     font-family: 'Public Sans', sans-serif;
     font-weight: 900;
     font-size: 1rem;
@@ -733,5 +733,5 @@ nav {
 
 .btn-go-dash:hover {
     transform: scale(1.02);
-    box-shadow: 0 6px 28px rgba(0, 212, 212, .4);
+    box-shadow: 0 6px 28px rgba(58, 90, 64, .4);
 }

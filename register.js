@@ -99,9 +99,9 @@ document.getElementById('password').addEventListener('input', function () {
   if (/[0-9]/.test(val))          score++;
   if (/[^A-Za-z0-9]/.test(val))   score++;
 
-  const colors = ['#ff4444', '#ff8800', '#ffdd00', '#7fff00'];
+  const colors = ['#ff4444', '#ff8800', '#ffdd00', '#517751'];
   bars.forEach((bar, i) => {
-    bar.style.background = i < score ? colors[score - 1] : 'rgba(255,255,255,0.1)';
+    bar.style.background = i < score ? colors[score - 1] : 'rgba(26,46,31,0.1)';
     bar.style.transform  = i < score ? 'scaleX(1)' : 'scaleX(0.3)';
     bar.style.transition = 'background 0.3s, transform 0.3s';
   });
@@ -112,7 +112,7 @@ document.querySelector('.pw-toggle').addEventListener('click', function () {
   const input = document.getElementById('password');
   const isHidden = input.type === 'password';
   input.type = isHidden ? 'text' : 'password';
-  this.style.color = isHidden ? 'var(--cyan)' : 'rgba(255,255,255,0.3)';
+  this.style.color = isHidden ? 'var(--cyan)' : 'rgba(26,46,31,0.3)';
 });
 
 // =============================================
@@ -176,7 +176,7 @@ document.querySelectorAll('.mov-card').forEach(card => {
     // ripple
     const ripple = document.createElement('span');
     ripple.style.cssText = `
-      position:absolute;width:6px;height:6px;background:rgba(0,212,212,0.4);
+      position:absolute;width:6px;height:6px;background:rgba(58,90,64,0.4);
       border-radius:50%;top:50%;left:50%;transform:translate(-50%,-50%) scale(0);
       animation:ripple 0.5s ease;pointer-events:none;
     `;
