@@ -921,8 +921,54 @@ body::after {
 /* ══════════════════════════════════
    RESPONSIVE
 ══════════════════════════════════ */
-@media (max-width: 600px) {
 
+/* ── 768px: Tablet ── */
+@media (max-width: 768px) {
+    .nav-logo img {
+        height: clamp(36px, 8vw, 60px) !important;
+    }
+
+    .nav-logo {
+        font-size: clamp(.9rem, 2.5vw, 1.2rem);
+        letter-spacing: clamp(2px, 1vw, 4px);
+    }
+
+    .greeting-title {
+        font-size: clamp(1.3rem, 5vw, 2rem);
+    }
+
+    .greeting-time {
+        font-size: clamp(1.4rem, 5vw, 2.2rem);
+    }
+
+    .cal-day {
+        min-height: clamp(48px, 10vw, 64px);
+    }
+
+    .cal-sport-nm {
+        font-size: clamp(.28rem, 1vw, .34rem);
+    }
+
+    .comm-hero-title {
+        font-size: clamp(1.4rem, 6vw, 2.4rem);
+    }
+
+    .toast {
+        white-space: normal;
+    }
+
+    .btn-start-cta,
+    .btn-challenge-big,
+    .btn-check-all,
+    .btn-save-day {
+        font-size: clamp(.82rem, 2vw, 1rem);
+        letter-spacing: clamp(1px, .5vw, 3px);
+        padding: clamp(12px, 2vw, 16px) clamp(16px, 3vw, 24px);
+    }
+}
+
+/* ── 600px: Mobile ── */
+@media (max-width: 600px) {
     .stats-strip,
     .quick-stats {
         grid-template-columns: repeat(2, 1fr);
@@ -933,13 +979,126 @@ body::after {
     }
 
     .badge-grid {
-        grid-template-columns: repeat(4, 1fr);
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .badge-icon {
+        font-size: clamp(1.2rem, 4vw, 1.6rem);
+    }
+
+    .badge-name {
+        font-size: clamp(.38rem, 1.2vw, .5rem);
+    }
+
+    .checkin-result {
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    .home-greeting {
+        flex-direction: column;
+        gap: 4px;
+        align-items: flex-start;
+    }
+
+    .plan-date-block {
+        width: clamp(32px, 8vw, 40px);
+        height: clamp(32px, 8vw, 40px);
+    }
+
+    .ex-check-row {
+        padding: 8px 12px;
+    }
+
+    .ex-checkbox {
+        width: clamp(16px, 4vw, 20px);
+        height: clamp(16px, 4vw, 20px);
+    }
+
+    .social-btn {
+        gap: 8px;
+        padding: 12px 14px;
+    }
+
+    .log-entry-pct {
+        font-size: 1.1rem;
+        min-width: 36px;
     }
 }
 
+/* ── 480px: Small phone ── */
+@media (max-width: 480px) {
+    .badge-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .quick-stats {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .tab-bar {
+        height: clamp(56px, 14vw, 68px);
+    }
+
+    .tab-btn .tab-icon {
+        font-size: clamp(1rem, 3vw, 1.3rem);
+    }
+
+    .tab-btn .tab-label {
+        font-size: clamp(.38rem, 1.2vw, .52rem);
+    }
+
+    .qs-val {
+        font-size: clamp(1.2rem, 4vw, 1.6rem);
+    }
+
+    .ci-icon {
+        font-size: clamp(1.4rem, 4vw, 1.8rem);
+    }
+
+    .ci-score {
+        font-size: clamp(1.3rem, 4vw, 1.6rem);
+    }
+
+    .cal-day {
+        min-height: clamp(40px, 9vw, 52px);
+        padding: 3px 1px;
+    }
+
+    .cal-day-num {
+        font-size: .6rem;
+    }
+}
+
+/* ── 380px: XS phone ── */
 @media (max-width: 380px) {
     .tab-btn .tab-label {
-        font-size: .48rem;
+        font-size: .4rem;
+    }
+
+    .quick-stats {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .badge-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .plan-card-head {
+        gap: 8px;
+    }
+
+    .sum-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .nav-logo img {
+        height: 28px !important;
+    }
+
+    .nav-logo {
+        font-size: .82rem;
+        letter-spacing: 1px;
     }
 }
 

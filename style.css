@@ -454,11 +454,14 @@ body::after {
 }
 
 .mobile-profile-section img {
-  width: 90px;
-  height: 90px;
+  width: 88px;
+  height: 88px;
   border-radius: 50%;
   border: 3px solid var(--cyan);
+  object-fit: cover;
+  object-position: center top;
   margin-bottom: 12px;
+  box-shadow: 0 4px 20px rgba(26,46,31,.15);
 }
 
 .mobile-profile-section span {
@@ -1834,6 +1837,15 @@ footer {
 }
 
 /* =============================================
+   RESPONSIVE - WIDE TABLET (≤ 960px)
+============================================= */
+@media (max-width: 960px) {
+  .stats-bar {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* =============================================
    RESPONSIVE - TABLET (≤ 900px)
 ============================================= */
 @media (max-width: 900px) {
@@ -1988,6 +2000,135 @@ footer {
 
   .store-badges {
     flex-direction: column;
+    align-items: center;
+  }
+
+  .mobile-links a {
+    font-size: 1.4rem;
+    letter-spacing: 2px;
+  }
+
+  .mobile-links {
+    gap: 18px;
+  }
+
+  .mobile-profile-section img {
+    width: 68px;
+    height: 68px;
+  }
+
+  .hero-content {
+    padding: 24px 16px;
+  }
+
+  .beyond-visual {
+    aspect-ratio: 16/9;
+  }
+
+  .data-pills {
+    gap: 6px;
+  }
+
+  .hero-btns {
+    gap: 10px;
+  }
+
+  .stat-item {
+    padding: clamp(12px, 3vw, 20px) clamp(8px, 2vw, 16px);
+  }
+}
+
+/* =============================================
+   RESPONSIVE - TABLET (≤ 768px)
+============================================= */
+@media (max-width: 768px) {
+  .stats-bar {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .features-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .timeline {
+    grid-template-columns: 1fr;
+    gap: 1px;
+  }
+
+  .profile-data-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .profile-content {
+    padding: 24px 16px;
+    max-width: 95vw;
+  }
+
+  .qr-img {
+    width: min(260px, 80vw);
+    height: min(260px, 80vw);
+  }
+
+  .nav-logo img {
+    height: 36px !important;
+  }
+
+  .nav-logo {
+    font-size: 1.1rem;
+    letter-spacing: 2px;
+  }
+
+  #qr-section {
+    padding: clamp(40px, 8vw, 80px) clamp(16px, 4vw, 32px);
+  }
+}
+
+/* =============================================
+   RESPONSIVE - SMALL PHONE (≤ 480px)
+============================================= */
+@media (max-width: 480px) {
+  .phone {
+    width: clamp(180px, 70vw, 240px) !important;
+  }
+
+  .features-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .comm-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .cta-btns {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .btn-ghost {
+    width: 100%;
+    text-align: center;
+  }
+
+  .hero-quote {
+    max-width: 90vw;
+  }
+
+  .qr-img {
+    width: min(220px, 75vw);
+    height: min(220px, 75vw);
+  }
+
+  .nav-logo img {
+    height: 28px !important;
+  }
+
+  footer {
+    gap: 10px;
+  }
+
+  .footer-nav {
+    flex-direction: column;
+    gap: 10px;
     align-items: center;
   }
 }

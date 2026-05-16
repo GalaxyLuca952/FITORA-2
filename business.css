@@ -493,6 +493,7 @@ hr.biz-divider {
     justify-content: space-between;
     padding: 0 40px;
     z-index: 100;
+    overflow: hidden;
 }
 
 .biz-nav-logo {
@@ -760,6 +761,31 @@ hr.biz-divider {
 
 @media (max-width: 768px) {
     .tam-grid { grid-template-columns: 1fr; }
+
+    .biz-nav {
+        padding: 0 16px;
+        gap: 8px;
+    }
+
+    .biz-nav-logo img {
+        height: 36px !important;
+    }
+
+    .biz-nav-logo {
+        font-size: .75rem;
+        letter-spacing: 1px;
+    }
+
+    .biz-nav-back {
+        font-size: .65rem;
+        padding: 6px 12px;
+        letter-spacing: 1px;
+        white-space: nowrap;
+    }
+
+    .biz-tag[style*="margin:0"] {
+        display: none;
+    }
 }
 
 .slide-bg-num {
@@ -925,8 +951,20 @@ hr.biz-divider {
 
 .money-math strong { color: var(--cyan); }
 
-@media (max-width: 768px) {
-    .money-grid { grid-template-columns: 1fr 1fr; }
+@media (max-width: 900px) {
+    .money-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 560px) {
+    .money-grid { grid-template-columns: 1fr; }
+
+    .money-item {
+        padding: 24px 20px;
+    }
+
+    .money-price {
+        font-size: 1.8rem;
+    }
 }
 
 /* ── COMPETIZIONE ── */
