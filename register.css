@@ -16,15 +16,15 @@ html {
 }
 
 :root {
-  --cyan: #00d4d4;
-  --green: #7fff00;
-  --yellow: #d4ff00;
-  --grad: linear-gradient(90deg, #00d4d4, #7fff00, #d4ff00);
-  --grad-text: linear-gradient(100deg, #00d4d4 0%, #7fff00 50%, #d4ff00 100%);
-  --dark: #080808;
-  --dark2: #101010;
-  --dark3: #181818;
-  --white: #ffffff;
+  --cyan: #3a5a40;
+  --green: #517751;
+  --yellow: #a3b18a;
+  --grad: linear-gradient(90deg, #3a5a40, #517751, #a3b18a);
+  --grad-text: linear-gradient(100deg, #3a5a40 0%, #517751 50%, #a3b18a 100%);
+  --dark: #f4f6f1;
+  --dark2: #eaede5;
+  --dark3: #dde2d8;
+  --white: #1a2e1f;
 }
 
 body {
@@ -33,16 +33,16 @@ body {
   justify-content: center;
   min-height: 100vh;
   padding: 40px 20px;
-  background: radial-gradient(circle at center, #0c1f1f 0%, #080808 100%);
+  background: var(--dark);
 }
 
 .reg-card {
   background: var(--dark2);
-  border: 1px solid rgba(0, 212, 212, 0.15);
+  border: 1px solid rgba(58, 90, 64, 0.15);
   padding: clamp(30px, 5vw, 50px);
   width: 100%;
   max-width: 600px;
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 20px 50px rgba(26, 46, 31, 0.15);
   animation: slideUp 0.8s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
@@ -118,9 +118,9 @@ label {
 input,
 select {
   background: var(--dark3);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(26, 46, 31, 0.1);
   padding: 12px 16px;
-  color: #fff;
+  color: var(--white);
   font-family: inherit;
   border-radius: 6px;
   transition: border-color 0.3s, box-shadow 0.3s;
@@ -130,15 +130,15 @@ input:focus,
 select:focus {
   outline: none;
   border-color: var(--cyan);
-  box-shadow: 0 0 10px rgba(0, 212, 212, 0.2);
+  box-shadow: 0 0 10px rgba(58, 90, 64, 0.2);
 }
 
 .btn-reg {
   grid-column: span 2;
   margin-top: 20px;
-  background: linear-gradient(90deg, #00d4d4, #00d4ff, #0066ff, #00d4d4);
+  background: linear-gradient(90deg, #3a5a40, #517751, #a3b18a, #3a5a40);
   background-size: 250% 100%;
-  color: #000;
+  color: #fff;
   font-family: 'Public Sans', sans-serif;
   font-weight: 900;
   font-size: 1.2rem;
@@ -170,7 +170,7 @@ select:focus {
 
 .btn-reg:hover {
   transform: scale(1.02);
-  box-shadow: 0 6px 28px rgba(0, 212, 212, .4);
+  box-shadow: 0 6px 28px rgba(58, 90, 64, .4);
 }
 
 @media (max-width: 600px) {
@@ -226,8 +226,8 @@ button {
   inset: 0;
   z-index: 0;
   background-image:
-    linear-gradient(rgba(0, 212, 212, 0.04) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0, 212, 212, 0.04) 1px, transparent 1px);
+    linear-gradient(rgba(58, 90, 64, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(58, 90, 64, 0.04) 1px, transparent 1px);
   background-size: 60px 60px;
   animation: gridMove 20s linear infinite;
 }
@@ -247,8 +247,8 @@ button {
   inset: 0;
   z-index: 0;
   background:
-    radial-gradient(ellipse 60% 50% at 20% 20%, rgba(0, 212, 212, 0.07) 0%, transparent 60%),
-    radial-gradient(ellipse 50% 60% at 80% 80%, rgba(127, 255, 0, 0.05) 0%, transparent 60%);
+    radial-gradient(ellipse 60% 50% at 20% 20%, rgba(58, 90, 64, 0.07) 0%, transparent 60%),
+    radial-gradient(ellipse 50% 60% at 80% 80%, rgba(81, 119, 81, 0.05) 0%, transparent 60%);
   pointer-events: none;
 }
 
@@ -268,7 +268,7 @@ button {
 
 .logo-back-arrow {
   font-size: 1.1rem;
-  color: rgba(255, 255, 255, 0.4);
+  color: rgba(26, 46, 31, 0.4);
   transition: color 0.2s, transform 0.2s;
 }
 
@@ -310,32 +310,32 @@ button {
   width: 32px;
   height: 32px;
   border-radius: 50%;
-  border: 2px solid rgba(255, 255, 255, 0.15);
+  border: 2px solid rgba(26, 46, 31, 0.15);
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 0.72rem;
   font-weight: 700;
-  color: rgba(255, 255, 255, 0.3);
+  color: rgba(26, 46, 31, 0.3);
   transition: all 0.4s ease;
 }
 
 .step.active {
   border-color: var(--cyan);
   color: var(--cyan);
-  box-shadow: 0 0 12px rgba(0, 212, 212, 0.4);
+  box-shadow: 0 0 12px rgba(58, 90, 64, 0.4);
 }
 
 .step.done {
   background: var(--cyan);
   border-color: var(--cyan);
-  color: #000;
+  color: #fff;
 }
 
 .step-line {
   width: 28px;
   height: 2px;
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(26, 46, 31, 0.1);
   position: relative;
   overflow: hidden;
 }
@@ -459,7 +459,7 @@ button {
 
 .step-sub {
   font-size: 0.95rem;
-  color: rgba(255, 255, 255, 0.5);
+  color: rgba(26, 46, 31, 0.5);
   line-height: 1.6;
 }
 
@@ -490,7 +490,7 @@ button {
   font-weight: 600;
   letter-spacing: 2px;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.4);
+  color: rgba(26, 46, 31, 0.4);
   transition: color 0.2s;
 }
 
@@ -510,12 +510,12 @@ button {
 }
 
 .field-group input::placeholder {
-  color: rgba(255, 255, 255, 0.2);
+  color: rgba(26, 46, 31, 0.2);
 }
 
 .field-line {
   height: 1px;
-  background: rgba(255, 255, 255, 0.12);
+  background: rgba(26, 46, 31, 0.12);
   position: relative;
   overflow: visible;
 }
@@ -552,7 +552,7 @@ button {
   background: none;
   border: none;
   cursor: pointer;
-  color: rgba(255, 255, 255, 0.3);
+  color: rgba(26, 46, 31, 0.3);
   padding: 4px;
   transition: color 0.2s;
   flex-shrink: 0;
@@ -579,7 +579,7 @@ button {
   flex: 1;
   height: 3px;
   border-radius: 2px;
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(26, 46, 31, 0.1);
   transition: background 0.3s;
 }
 
@@ -595,9 +595,9 @@ button {
 .num-btn {
   width: 36px;
   height: 36px;
-  border: 1px solid rgba(0, 212, 212, 0.2);
-  background: rgba(0, 212, 212, 0.04);
-  color: rgba(255, 255, 255, 0.7);
+  border: 1px solid rgba(58, 90, 64, 0.2);
+  background: rgba(58, 90, 64, 0.04);
+  color: rgba(26, 46, 31, 0.7);
   font-size: 1.2rem;
   line-height: 1;
   cursor: pointer;
@@ -612,8 +612,8 @@ button {
 .num-btn:hover {
   border-color: var(--cyan);
   color: var(--cyan);
-  background: rgba(0, 212, 212, 0.12);
-  box-shadow: 0 0 16px rgba(0, 212, 212, 0.3);
+  background: rgba(58, 90, 64, 0.12);
+  box-shadow: 0 0 16px rgba(58, 90, 64, 0.3);
 }
 
 .number-input input {
@@ -625,7 +625,7 @@ button {
 
 .unit {
   font-size: 0.65rem;
-  color: rgba(255, 255, 255, 0.35);
+  color: rgba(26, 46, 31, 0.35);
   letter-spacing: 1px;
 }
 
@@ -633,8 +633,8 @@ button {
    BMI CARD
 ============================================= */
 .bmi-card {
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(26, 46, 31, 0.03);
+  border: 1px solid rgba(26, 46, 31, 0.08);
   border-radius: 12px;
   padding: 20px 24px;
   display: flex;
@@ -648,7 +648,7 @@ button {
   font-weight: 600;
   letter-spacing: 3px;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.35);
+  color: rgba(26, 46, 31, 0.35);
 }
 
 .bmi-value {
@@ -661,7 +661,7 @@ button {
 .bmi-status {
   font-size: 0.85rem;
   font-weight: 600;
-  color: rgba(255, 255, 255, 0.6);
+  color: rgba(26, 46, 31, 0.6);
 }
 
 .bmi-bar-wrap {
@@ -671,7 +671,7 @@ button {
 .bmi-bar-track {
   height: 4px;
   border-radius: 2px;
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(26, 46, 31, 0.1);
   position: relative;
   overflow: hidden;
 }
@@ -691,7 +691,7 @@ button {
   justify-content: space-between;
   margin-top: 6px;
   font-size: 0.6rem;
-  color: rgba(255, 255, 255, 0.25);
+  color: rgba(26, 46, 31, 0.25);
   letter-spacing: 0.5px;
 }
 
@@ -705,8 +705,8 @@ button {
 }
 
 .mov-card {
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(26, 46, 31, 0.03);
+  border: 1px solid rgba(26, 46, 31, 0.08);
   border-radius: 12px;
   padding: 18px 10px;
   cursor: pointer;
@@ -715,21 +715,21 @@ button {
   align-items: center;
   gap: 10px;
   transition: all 0.25s ease;
-  color: rgba(255, 255, 255, 0.55);
+  color: rgba(26, 46, 31, 0.55);
 }
 
 .mov-card:hover {
-  border-color: rgba(0, 212, 212, 0.35);
-  background: rgba(0, 212, 212, 0.05);
+  border-color: rgba(58, 90, 64, 0.35);
+  background: rgba(58, 90, 64, 0.05);
   color: var(--white);
   transform: translateY(-3px);
 }
 
 .mov-card.selected {
   border-color: var(--cyan);
-  background: rgba(0, 212, 212, 0.1);
+  background: rgba(58, 90, 64, 0.1);
   color: var(--white);
-  box-shadow: 0 0 20px rgba(0, 212, 212, 0.15);
+  box-shadow: 0 0 20px rgba(58, 90, 64, 0.15);
 }
 
 .mov-icon {
@@ -751,9 +751,9 @@ button {
 ============================================= */
 .btn-next {
   align-self: flex-end;
-  background: linear-gradient(90deg, #00d4d4, #00d4ff, #0066ff, #00d4d4);
+  background: linear-gradient(90deg, #3a5a40, #517751, #a3b18a, #3a5a40);
   background-size: 250% 100%;
-  color: #000;
+  color: #fff;
   font-family: 'Public Sans', sans-serif;
   font-weight: 900;
   font-size: 1rem;
@@ -788,7 +788,7 @@ button {
 
 .btn-next:hover {
   transform: scale(1.03);
-  box-shadow: 0 6px 24px rgba(0, 212, 212, 0.4);
+  box-shadow: 0 6px 24px rgba(58, 90, 64, 0.4);
 }
 
 .arrow {
@@ -810,7 +810,7 @@ button {
   background: none;
   border: none;
   cursor: pointer;
-  color: rgba(255, 255, 255, 0.35);
+  color: rgba(26, 46, 31, 0.35);
   font-size: 0.8rem;
   font-weight: 600;
   letter-spacing: 2px;
@@ -825,9 +825,9 @@ button {
 }
 
 .btn-submit {
-  background: linear-gradient(90deg, #00d4d4, #00d4ff, #0066ff, #00d4d4);
+  background: linear-gradient(90deg, #3a5a40, #517751, #a3b18a, #3a5a40);
   background-size: 250% 100%;
-  color: #000;
+  color: #fff;
   font-family: 'Public Sans', sans-serif;
   font-weight: 900;
   font-size: 1rem;
@@ -859,7 +859,7 @@ button {
 
 .btn-submit:hover {
   transform: scale(1.03);
-  box-shadow: 0 6px 24px rgba(0, 212, 212, 0.4);
+  box-shadow: 0 6px 24px rgba(58, 90, 64, 0.4);
 }
 
 /* =============================================
@@ -882,7 +882,7 @@ button {
   width: 120px;
   height: 120px;
   border-radius: 50%;
-  border: 2px solid rgba(0, 212, 212, 0.3);
+  border: 2px solid rgba(58, 90, 64, 0.3);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -893,11 +893,11 @@ button {
 
   0%,
   100% {
-    box-shadow: 0 0 0 0 rgba(0, 212, 212, 0.3);
+    box-shadow: 0 0 0 0 rgba(58, 90, 64, 0.3);
   }
 
   50% {
-    box-shadow: 0 0 0 20px rgba(0, 212, 212, 0);
+    box-shadow: 0 0 0 20px rgba(58, 90, 64, 0);
   }
 }
 
@@ -905,8 +905,8 @@ button {
   width: 80px;
   height: 80px;
   border-radius: 50%;
-  background: rgba(0, 212, 212, 0.1);
-  border: 1px solid rgba(0, 212, 212, 0.5);
+  background: rgba(58, 90, 64, 0.1);
+  border: 1px solid rgba(58, 90, 64, 0.5);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -939,15 +939,15 @@ button {
 }
 
 .success-sub {
-  color: rgba(255, 255, 255, 0.5);
+  color: rgba(26, 46, 31, 0.5);
   font-size: 1rem;
   line-height: 1.7;
 }
 
 .btn-dashboard {
-  background: linear-gradient(90deg, #00d4d4, #00d4ff, #0066ff, #00d4d4);
+  background: linear-gradient(90deg, #3a5a40, #517751, #a3b18a, #3a5a40);
   background-size: 250% 100%;
-  color: #000;
+  color: #fff;
   font-family: 'Public Sans', sans-serif;
   font-weight: 900;
   font-size: 1rem;
@@ -978,7 +978,7 @@ button {
 
 .btn-dashboard:hover {
   transform: scale(1.03);
-  box-shadow: 0 6px 28px rgba(0, 212, 212, 0.45);
+  box-shadow: 0 6px 28px rgba(58, 90, 64, 0.45);
 }
 
 /* =============================================
