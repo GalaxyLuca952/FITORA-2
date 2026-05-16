@@ -8,7 +8,7 @@
   box-sizing: border-box;
 }
 
-button{
+button {
   cursor: pointer !important;
 }
 
@@ -251,9 +251,9 @@ body::after {
   border-radius: 1000px;
 }
 
-.close-modal:hover{
+.close-modal:hover {
   color: var(--cyan);
-  background-color: rgba(128, 128, 128, 0.2 );
+  background-color: rgba(128, 128, 128, 0.2);
 }
 
 .profile-avatar-edit {
@@ -269,7 +269,7 @@ body::after {
   height: 80px;
   border-radius: 50%;
   border: 2px solid var(--cyan);
-  object-fit:cover;
+  object-fit: cover;
 }
 
 .edit-avatar-btn {
@@ -340,6 +340,30 @@ body::after {
   animation: liquidShift 5s ease infinite;
   position: relative;
   overflow: hidden;
+}
+
+
+.nd {
+  background-color: #f4f6f1;
+  color: #3a5a40;
+  background-size: 250% 100%;
+  font-family: 'Public Sans', sans-serif;
+  font-weight: 700;
+  font-size: 0.8rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 10px 24px;
+  border-radius: 40px;
+  border: none;
+  transition: 0.2s ease-in-out;
+  animation: liquidShift 5s ease infinite;
+  position: relative;
+  overflow: hidden;
+}
+
+.nd:hover {
+  background-color: #3a5a40;
+  color: #f4f6f1;
 }
 
 .nav-cta-btn:hover {
@@ -580,7 +604,6 @@ body::after {
   position: relative;
   z-index: 10;
   padding: clamp(40px, 6vw, 80px) clamp(20px, 5vw, 60px);
-  max-width: min(620px, 90vw);
   animation: heroIn 1s cubic-bezier(0.22, 1, 0.36, 1) 0.1s both;
 }
 
@@ -629,7 +652,7 @@ body::after {
 
 .hero-btns {
   display: flex;
-  gap: 14px;
+  gap: 10px;
   flex-wrap: wrap;
   align-items: center;
 }
@@ -1511,7 +1534,7 @@ body::after {
   justify-content: center;
   position: relative;
   animation: rotRing 18s linear infinite;
-} 
+}
 
 @keyframes rotRing {
   to {
