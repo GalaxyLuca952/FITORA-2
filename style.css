@@ -31,21 +31,21 @@ html {
 
 :root {
   --cyan: #3a5a40;
-  /* hunter green — primary accent */
+  /* hunter green,primary accent */
   --green: #517751;
-  /* fern — secondary accent */
+  /* fern,secondary accent */
   --yellow: #a3b18a;
-  /* dry sage — tertiary accent */
+  /* dry sage,tertiary accent */
   --grad: linear-gradient(90deg, #3a5a40);
   --grad-text: linear-gradient(100deg, var(--white));
   --dark: #f4f6f1;
-  /* main bg — warm off-white */
+  /* main bg,warm off-white */
   --dark2: #eaede5;
   /* section alt bg */
   --dark3: #dde2d8;
   /* card/panel bg */
   --white: #1a2e1f;
-  /* body text — deep pine */
+  /* body text,deep pine */
   --nav-h: 68px;
 }
 
