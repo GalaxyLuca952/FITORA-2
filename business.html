@@ -12,6 +12,9 @@
 
 <body>
 
+  <!-- SCROLL PROGRESS -->
+  <div class="scroll-progress" id="scrollBar"></div>
+
   <!-- NAV -->
   <nav class="biz-nav">
     <a href="index.html" class="biz-nav-back"><i class="fa-solid fa-arrow-left"></i> &nbsp;Home</a>
@@ -21,41 +24,45 @@
 
   <!-- ══ HERO ══ -->
   <section class="biz-hero">
-    <h1 class="biz-hero-title">
+    <span class="biz-tag hero-anim-0">Presentazione Investitori</span>
+    <h1 class="biz-hero-title hero-anim-1">
       Allena Milioni,<br>
       <span class="grad-text">Scala il Mondo.</span>
     </h1>
-    <p class="biz-hero-sub">
-      Un'opportunità di investimento nel fitness AI,break-even al primo anno, €4.5M di ricavi proiettati al terzo.
+    <p class="biz-hero-sub hero-anim-2">
+      Un'opportunità di investimento nel fitness AI, break-even al primo anno, €4.5M di ricavi proiettati al terzo.
     </p>
+    <div class="hero-scroll-hint hero-anim-3">
+      <i class="fa-solid fa-chevron-down"></i>
+    </div>
   </section>
 
   <!-- ══ KPI STRIP ══ -->
   <div class="kpi-strip-wrapper">
     <div class="kpi-strip">
-      <div class="kpi-card">
+      <div class="kpi-card reveal d1">
         <div class="kpi-icon"><i class="fa-solid fa-chart-line"></i></div>
-        <div class="kpi-val">€55K</div>
+        <div class="kpi-val" data-prefix="€" data-target="55" data-suffix="K">€55K</div>
         <div class="kpi-label">Fatturato Anno 1</div>
       </div>
-      <div class="kpi-card">
+      <div class="kpi-card reveal d2">
         <div class="kpi-icon"><i class="fa-solid fa-coins"></i></div>
-        <div class="kpi-val">€10K</div>
+        <div class="kpi-val" data-prefix="€" data-target="10" data-suffix="K">€10K</div>
         <div class="kpi-label">Utile Lordo</div>
       </div>
-      <div class="kpi-card">
+      <div class="kpi-card reveal d3">
         <div class="kpi-icon"><i class="fa-solid fa-percent"></i></div>
-        <div class="kpi-val">15%</div>
+        <div class="kpi-val" data-target="15" data-suffix="%">15%</div>
         <div class="kpi-label">ROI Atteso</div>
       </div>
-      <div class="kpi-card">
+      <div class="kpi-card reveal d4">
         <div class="kpi-icon"><i class="fa-solid fa-users"></i></div>
-        <div class="kpi-val">500</div>
+        <div class="kpi-val" data-target="500">500</div>
         <div class="kpi-label">Utenti Paganti</div>
       </div>
-      <div class="kpi-card">
+      <div class="kpi-card reveal d5">
         <div class="kpi-icon"><i class="fa-solid fa-rocket"></i></div>
-        <div class="kpi-val">€4.5M</div>
+        <div class="kpi-val" data-prefix="€" data-target="4.5" data-suffix="M">€4.5M</div>
         <div class="kpi-label">Ricavi Anno 3</div>
       </div>
     </div>
@@ -65,23 +72,24 @@
 
   <!-- ══ PERCHÉ ORA ══ -->
   <section class="biz-section">
-    <span class="section-tag">00 · Opportunità</span>
-    <h2 class="section-title">Perché adesso?</h2>
+    <div class="slide-bg-num">00</div>
+    <span class="section-tag reveal">00 · Opportunità</span>
+    <h2 class="section-title reveal">Perché adesso?</h2>
     <div class="why-grid">
-      <div class="why-card">
+      <div class="why-card reveal-scale d1">
         <div class="why-icon"><i class="fa-solid fa-mobile-screen-button"></i></div>
         <div class="why-title">Smartphone ovunque</div>
         <div class="why-desc">Oltre 6 miliardi di dispositivi con fotocamera avanzata. Il sensore è già in tasca a ogni potenziale utente.</div>
       </div>
-      <div class="why-card">
+      <div class="why-card reveal-scale d2">
         <div class="why-icon"><i class="fa-solid fa-brain"></i></div>
         <div class="why-title">AI accessibile</div>
         <div class="why-desc">MediaPipe e OpenPose hanno reso la pose estimation open-source e stabile. Il costo di sviluppo è crollato del 70% negli ultimi 3 anni.</div>
       </div>
-      <div class="why-card">
+      <div class="why-card reveal-scale d3">
         <div class="why-icon"><i class="fa-solid fa-earth-europe"></i></div>
         <div class="why-title">Mercato vergine in Italia</div>
-        <div class="why-desc">Il mercato italiano delle fitness app vale $142M e cresce del 7% l'anno,ma nessun player locale offre ancora correzione AI del movimento.</div>
+        <div class="why-desc">Il mercato italiano delle fitness app vale $142M e cresce del 7% l'anno, ma nessun player locale offre ancora correzione AI del movimento.</div>
       </div>
     </div>
   </section>
@@ -90,10 +98,11 @@
 
   <!-- ══ PRODOTTO ══ -->
   <section class="biz-section">
-    <span class="section-tag">01 · Prodotto</span>
-    <h2 class="section-title">Cosa facciamo</h2>
+    <div class="slide-bg-num">01</div>
+    <span class="section-tag reveal">01 · Prodotto</span>
+    <h2 class="section-title reveal">Cosa facciamo</h2>
     <div class="two-col">
-      <div class="info-card">
+      <div class="info-card reveal d1">
         <h4><i class="fa-solid fa-unlock" style="margin-right:6px"></i>Free</h4>
         <ul>
           <li><i class="fa-solid fa-circle"></i>Schede di allenamento base</li>
@@ -102,7 +111,7 @@
           <li><i class="fa-solid fa-circle"></i>Community e progressi base</li>
         </ul>
       </div>
-      <div class="info-card">
+      <div class="info-card reveal d2">
         <h4><i class="fa-solid fa-star" style="margin-right:6px"></i>Premium · Computer Vision AI</h4>
         <ul>
           <li><i class="fa-solid fa-check"></i>Rilevamento esoscheletro in tempo reale</li>
@@ -116,7 +125,7 @@
 
   <!-- ══ FONTI DI MERCATO ══ -->
   <div style="background:var(--dark3);padding:48px 0;">
-    <div style="text-align:center;font-size:.65rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--cyan);margin-bottom:24px;padding:0 24px;">
+    <div class="reveal" style="text-align:center;font-size:.65rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--cyan);margin-bottom:24px;padding:0 24px;">
       Dati di Mercato · Fonti
     </div>
     <div class="sources-viewport">
@@ -182,23 +191,24 @@
 
   <!-- ══ MODELLO DI BUSINESS ══ -->
   <section class="biz-section">
-    <span class="section-tag">02 · Modello di Business</span>
-    <h2 class="section-title">Doppio canale,<br>ricavi ricorrenti</h2>
+    <div class="slide-bg-num">02</div>
+    <span class="section-tag reveal">02 · Modello di Business</span>
+    <h2 class="section-title reveal">Doppio canale,<br>ricavi ricorrenti</h2>
     <div class="pricing-grid">
-      <div class="price-card">
+      <div class="price-card reveal d1">
         <div class="price-icon"><i class="fa-solid fa-door-open"></i></div>
         <div class="price-name">Free B2C</div>
         <div class="price-val">0€</div>
         <div class="price-note">Top of funnel · acquisizione</div>
       </div>
-      <div class="price-card featured">
+      <div class="price-card featured reveal d2">
         <div class="price-icon"><i class="fa-solid fa-bolt"></i></div>
         <div class="price-name">Premium B2C</div>
         <div class="price-val">19,99€</div>
         <div class="price-period">/ mese</div>
-        <div class="price-note">99€/anno,fidelizzazione</div>
+        <div class="price-note">99€/anno, fidelizzazione</div>
       </div>
-      <div class="price-card featured">
+      <div class="price-card featured reveal d3">
         <div class="price-icon"><i class="fa-solid fa-briefcase"></i></div>
         <div class="price-name">SaaS Personal Trainer</div>
         <div class="price-val">49€</div>
@@ -212,9 +222,10 @@
 
   <!-- ══ PROIEZIONI ══ -->
   <section class="biz-section">
-    <span class="section-tag">03 · Finanza</span>
-    <h2 class="section-title">Proiezioni a 3 anni</h2>
-    <div class="info-card" style="padding:0;overflow:hidden">
+    <div class="slide-bg-num">03</div>
+    <span class="section-tag reveal">03 · Finanza</span>
+    <h2 class="section-title reveal">Proiezioni a 3 anni</h2>
+    <div class="info-card reveal" style="padding:0;overflow:hidden">
       <table class="proj-table">
         <thead>
           <tr>
@@ -264,33 +275,34 @@
 
   <!-- ══ INVESTIMENTO ══ -->
   <section class="biz-section">
-    <span class="section-tag">04 · Investimento</span>
-    <h2 class="section-title">Utilizzo dei fondi</h2>
-    <div class="info-card">
+    <div class="slide-bg-num">04</div>
+    <span class="section-tag reveal">04 · Investimento</span>
+    <h2 class="section-title reveal">Utilizzo dei fondi</h2>
+    <div class="info-card reveal">
       <div class="fund-list">
-        <div class="fund-item">
+        <div class="fund-item reveal d1">
           <span class="fund-label">Sviluppo prodotto (App + AI)</span>
-          <div class="fund-bar-wrap"><div class="fund-bar-fill" style="width:40%"></div></div>
+          <div class="fund-bar-wrap"><div class="fund-bar-fill" style="width:0" data-w="40%"></div></div>
           <span class="fund-pct">40%</span>
         </div>
-        <div class="fund-item">
+        <div class="fund-item reveal d2">
           <span class="fund-label">Marketing &amp; acquisizione utenti</span>
-          <div class="fund-bar-wrap"><div class="fund-bar-fill" style="width:30%"></div></div>
+          <div class="fund-bar-wrap"><div class="fund-bar-fill" style="width:0" data-w="30%"></div></div>
           <span class="fund-pct">30%</span>
         </div>
-        <div class="fund-item">
+        <div class="fund-item reveal d3">
           <span class="fund-label">Infrastruttura cloud + tooling</span>
-          <div class="fund-bar-wrap"><div class="fund-bar-fill" style="width:10%"></div></div>
+          <div class="fund-bar-wrap"><div class="fund-bar-fill" style="width:0" data-w="10%"></div></div>
           <span class="fund-pct">10%</span>
         </div>
-        <div class="fund-item">
+        <div class="fund-item reveal d4">
           <span class="fund-label">Spese societarie &amp; operative</span>
-          <div class="fund-bar-wrap"><div class="fund-bar-fill" style="width:10%"></div></div>
+          <div class="fund-bar-wrap"><div class="fund-bar-fill" style="width:0" data-w="10%"></div></div>
           <span class="fund-pct">10%</span>
         </div>
-        <div class="fund-item">
+        <div class="fund-item reveal d5">
           <span class="fund-label">Riserva strategica / pivot</span>
-          <div class="fund-bar-wrap"><div class="fund-bar-fill" style="width:10%"></div></div>
+          <div class="fund-bar-wrap"><div class="fund-bar-fill" style="width:0" data-w="10%"></div></div>
           <span class="fund-pct">10%</span>
         </div>
       </div>
@@ -301,45 +313,46 @@
 
   <!-- ══ RISCHI ══ -->
   <section class="biz-section">
-    <span class="section-tag">05 · Rischi &amp; Mitigazioni</span>
-    <h2 class="section-title">Cosa abbiamo<br>già considerato</h2>
+    <div class="slide-bg-num">05</div>
+    <span class="section-tag reveal">05 · Rischi &amp; Mitigazioni</span>
+    <h2 class="section-title reveal">Cosa abbiamo<br>già considerato</h2>
     <div class="risk-grid">
-      <div class="risk-item">
+      <div class="risk-item reveal d1">
         <div class="risk-icon"><i class="fa-solid fa-shield-halved"></i></div>
         <div>
           <div class="risk-title">Conversione free→premium lenta</div>
           <div class="risk-fix">A/B test prezzi · trial 7 giorni</div>
         </div>
       </div>
-      <div class="risk-item">
+      <div class="risk-item reveal d2">
         <div class="risk-icon"><i class="fa-solid fa-shield-halved"></i></div>
         <div>
           <div class="risk-title">Accuratezza AI insufficiente</div>
           <div class="risk-fix">Open-source affidabili + training continuo</div>
         </div>
       </div>
-      <div class="risk-item">
+      <div class="risk-item reveal d3">
         <div class="risk-icon"><i class="fa-solid fa-shield-halved"></i></div>
         <div>
           <div class="risk-title">Aumento costi cloud in scala</div>
           <div class="risk-fix">Architettura asincrona + reserved instances</div>
         </div>
       </div>
-      <div class="risk-item">
+      <div class="risk-item reveal d4">
         <div class="risk-icon"><i class="fa-solid fa-shield-halved"></i></div>
         <div>
           <div class="risk-title">Big player (Apple Fitness, Nike)</div>
           <div class="risk-fix">Verticalizzazione + canale B2B difensivo</div>
         </div>
       </div>
-      <div class="risk-item">
+      <div class="risk-item reveal d5">
         <div class="risk-icon"><i class="fa-solid fa-shield-halved"></i></div>
         <div>
           <div class="risk-title">Churn elevato B2C mensile</div>
           <div class="risk-fix">Push piano annuale · gamification</div>
         </div>
       </div>
-      <div class="risk-item">
+      <div class="risk-item reveal d6">
         <div class="risk-icon"><i class="fa-solid fa-shield-halved"></i></div>
         <div>
           <div class="risk-title">Commissioni store 15-30%</div>
@@ -351,12 +364,12 @@
 
   <!-- ══ CTA ══ -->
   <div class="biz-cta">
-    <span class="section-tag" style="display:block;margin-bottom:16px">Prossimi passi</span>
-    <h2 class="section-title" style="margin-bottom:12px">Pronto a costruire<br><span class="grad-text">il futuro del fitness?</span></h2>
-    <p style="max-width:480px;margin:0 auto 32px;opacity:.7;font-size:.95rem">
+    <span class="section-tag reveal" style="display:block;margin-bottom:16px">Prossimi passi</span>
+    <h2 class="section-title reveal" style="margin-bottom:12px">Pronto a costruire<br><span class="grad-text">il futuro del fitness?</span></h2>
+    <p class="reveal" style="max-width:480px;margin:0 auto 32px;opacity:.7;font-size:.95rem">
       MVP in 6-12 mesi · Break-even Anno 1 · Exit naturale Anno 3 tramite acquisizione strategica o IPO wellness.
     </p>
-    <div class="cta-btns">
+    <div class="cta-btns reveal">
       <a href="index.html" class="btn-cta"><i class="fa-solid fa-house" style="margin-right:8px"></i>Vai alla Home di FITORA</a>
       <a href="https://alecode25.github.io/skeleton" target="_blank" rel="noopener" class="btn-ghost"><i class="fa-solid fa-camera" style="margin-right:8px"></i>Testa l'AI adesso</a>
     </div>
@@ -365,6 +378,72 @@
   <footer style="background:var(--dark2);padding:24px;text-align:center;font-size:.65rem;opacity:.4;letter-spacing:2px;">
     © 2026 FITORA — Documento riservato · Non distribuire
   </footer>
+
+  <script>
+    /* ── Scroll progress bar ── */
+    const scrollBar = document.getElementById('scrollBar');
+    window.addEventListener('scroll', () => {
+      const pct = window.scrollY / (document.documentElement.scrollHeight - window.innerHeight) * 100;
+      scrollBar.style.width = pct + '%';
+    }, { passive: true });
+
+    /* ── Reveal on scroll ── */
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          revealObserver.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll('.reveal, .reveal-scale').forEach(el => revealObserver.observe(el));
+
+    /* ── KPI number counters ── */
+    function animateCount(el) {
+      const target = parseFloat(el.dataset.target);
+      const prefix = el.dataset.prefix || '';
+      const suffix = el.dataset.suffix || '';
+      const isInt = Number.isInteger(target);
+      const duration = 1400;
+      const start = performance.now();
+
+      function tick(now) {
+        const p = Math.min((now - start) / duration, 1);
+        const eased = 1 - Math.pow(1 - p, 3);
+        const val = target * eased;
+        el.textContent = prefix + (isInt ? Math.round(val) : val.toFixed(1)) + suffix;
+        if (p < 1) requestAnimationFrame(tick);
+      }
+      requestAnimationFrame(tick);
+    }
+
+    const kpiObserver = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting && !e.target.dataset.counted) {
+          e.target.dataset.counted = '1';
+          animateCount(e.target);
+        }
+      });
+    }, { threshold: 0.6 });
+
+    document.querySelectorAll('[data-target]').forEach(el => kpiObserver.observe(el));
+
+    /* ── Fund bars animation ── */
+    const barObserver = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          const fill = e.target.querySelector('.fund-bar-fill');
+          if (fill && fill.dataset.w) {
+            setTimeout(() => { fill.style.width = fill.dataset.w; }, 200);
+          }
+          barObserver.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.4 });
+
+    document.querySelectorAll('.fund-item').forEach(el => barObserver.observe(el));
+  </script>
 
 </body>
 
