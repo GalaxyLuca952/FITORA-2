@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,100..900;1,100..900&family=Sansation:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap');
+
 :root {
     --cyan: #00d4d4;
     --green: #00d4ff;
@@ -33,7 +35,7 @@ html {
 body {
     background: var(--dark);
     color: var(--white);
-    font-family: 'Barlow', sans-serif;
+    font-family: 'Public Sans', sans-serif;
     min-height: 100vh;
     overflow-x: hidden;
     -webkit-font-smoothing: antialiased;
@@ -77,7 +79,7 @@ nav {
 }
 
 .nav-logo {
-    font-family: 'Barlow Condensed', sans-serif;
+    font-family: 'Public Sans', sans-serif;
     font-weight: 900;
     font-size: 1.45rem;
     letter-spacing: 6px;
@@ -135,7 +137,7 @@ nav {
 }
 
 .page-title {
-    font-family: 'Barlow Condensed', sans-serif;
+    font-family: 'Public Sans', sans-serif;
     font-weight: 900;
     font-size: clamp(2.2rem, 8vw, 4.2rem);
     line-height: .9;
@@ -171,7 +173,7 @@ nav {
 }
 
 .form-head-title {
-    font-family: 'Barlow Condensed', sans-serif;
+    font-family: 'Public Sans', sans-serif;
     font-weight: 700;
     font-size: .88rem;
     letter-spacing: 2.5px;
@@ -218,7 +220,7 @@ nav {
     color: var(--white);
     padding: 11px 14px;
     font-size: .9rem;
-    font-family: 'Barlow', sans-serif;
+    font-family: 'Public Sans', sans-serif;
     outline: none;
     transition: border-color .2s;
     -webkit-appearance: none;
@@ -235,7 +237,7 @@ nav {
     color: var(--white);
     padding: 11px 14px;
     font-size: .88rem;
-    font-family: 'Barlow', sans-serif;
+    font-family: 'Public Sans', sans-serif;
     outline: none;
     cursor: pointer;
     transition: border-color .2s;
@@ -322,7 +324,7 @@ nav {
     background: linear-gradient(90deg, #00d4d4, #00d4ff, #0066ff, #00d4d4);
     background-size: 250% 100%;
     color: #000;
-    font-family: 'Barlow Condensed', sans-serif;
+    font-family: 'Public Sans', sans-serif;
     font-weight: 900;
     font-size: 1.05rem;
     letter-spacing: 4px;
@@ -404,7 +406,7 @@ nav {
 }
 
 .cal-number {
-    font-family: 'Barlow Condensed', sans-serif;
+    font-family: 'Public Sans', sans-serif;
     font-weight: 900;
     font-size: clamp(3.5rem, 12vw, 6rem);
     line-height: 1;
@@ -441,7 +443,7 @@ nav {
 }
 
 .cb-val {
-    font-family: 'Barlow Condensed', sans-serif;
+    font-family: 'Public Sans', sans-serif;
     font-weight: 900;
     font-size: 1.2rem;
     line-height: 1;
@@ -468,7 +470,7 @@ nav {
 }
 
 .macro-title {
-    font-family: 'Barlow Condensed', sans-serif;
+    font-family: 'Public Sans', sans-serif;
     font-weight: 700;
     font-size: .88rem;
     letter-spacing: 2.5px;
@@ -530,7 +532,7 @@ nav {
 }
 
 .macro-grams {
-    font-family: 'Barlow Condensed', sans-serif;
+    font-family: 'Public Sans', sans-serif;
     font-weight: 900;
     font-size: 1.3rem;
     text-align: right;
@@ -560,7 +562,7 @@ nav {
 }
 
 .meal-title {
-    font-family: 'Barlow Condensed', sans-serif;
+    font-family: 'Public Sans', sans-serif;
     font-weight: 700;
     font-size: .88rem;
     letter-spacing: 2.5px;
@@ -608,7 +610,7 @@ nav {
 }
 
 .mi-kcal {
-    font-family: 'Barlow Condensed', sans-serif;
+    font-family: 'Public Sans', sans-serif;
     font-weight: 700;
     font-size: .95rem;
     color: var(--yellow);
@@ -646,7 +648,7 @@ nav {
     text-align: center;
     background: rgba(255, 255, 255, .04);
     color: var(--dim);
-    font-family: 'Barlow Condensed', sans-serif;
+    font-family: 'Public Sans', sans-serif;
     font-weight: 700;
     font-size: .85rem;
     letter-spacing: 3px;
@@ -675,7 +677,7 @@ nav {
     background: linear-gradient(90deg, #00d4d4, #00d4ff, #0066ff, #00d4d4);
     background-size: 250% 100%;
     color: #000;
-    font-family: 'Barlow Condensed', sans-serif;
+    font-family: 'Public Sans', sans-serif;
     font-weight: 900;
     font-size: 1rem;
     letter-spacing: 4px;

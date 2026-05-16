@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,100..900;1,100..900&family=Sansation:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap');
+
 :root {
     --cyan: #00d4d4;
     --green: #00d4ff;
@@ -34,7 +36,7 @@ html {
 body {
     background: var(--dark);
     color: var(--white);
-    font-family: 'Barlow', sans-serif;
+    font-family: 'Public Sans', sans-serif;
     height: 100vh;
     overflow: hidden;
     -webkit-font-smoothing: antialiased;
@@ -90,7 +92,7 @@ body::after {
 }
 
 .nav-logo {
-    font-family: 'Barlow Condensed', sans-serif;
+    font-family: 'Public Sans', sans-serif;
     font-weight: 900;
     font-size: 1.45rem;
     letter-spacing: 6px;
@@ -222,7 +224,7 @@ body::after {
 }
 
 .card-title {
-    font-family: 'Barlow Condensed', sans-serif;
+    font-family: 'Public Sans', sans-serif;
     font-weight: 700;
     font-size: clamp(.8rem, 1.5vw, .9rem);
     text-transform: uppercase;
@@ -274,7 +276,7 @@ body::after {
 }
 
 .greeting-title {
-    font-family: 'Barlow Condensed', sans-serif;
+    font-family: 'Public Sans', sans-serif;
     font-weight: 900;
     font-size: clamp(1.6rem, 5vw, 2.4rem);
     text-transform: uppercase;
@@ -291,7 +293,7 @@ body::after {
 .greeting-time {
     text-align: right;
     flex-shrink: 0;
-    font-family: 'Barlow Condensed', sans-serif;
+    font-family: 'Public Sans', sans-serif;
     font-weight: 900;
     font-size: clamp(2rem, 6vw, 3rem);
     line-height: 1;
@@ -318,7 +320,7 @@ body::after {
 }
 
 .ci-level {
-    font-family: 'Barlow Condensed', sans-serif;
+    font-family: 'Public Sans', sans-serif;
     font-weight: 900;
     font-size: 1rem;
     text-transform: uppercase;
@@ -333,7 +335,7 @@ body::after {
 }
 
 .ci-score {
-    font-family: 'Barlow Condensed', sans-serif;
+    font-family: 'Public Sans', sans-serif;
     font-weight: 900;
     font-size: 1.8rem;
     flex-shrink: 0;
@@ -375,7 +377,7 @@ body::after {
 }
 
 .qs-val {
-    font-family: 'Barlow Condensed', sans-serif;
+    font-family: 'Public Sans', sans-serif;
     font-weight: 900;
     font-size: clamp(1.5rem, 4vw, 2rem);
     line-height: 1;
@@ -397,7 +399,7 @@ body::after {
     background: linear-gradient(90deg, #00d4d4, #00d4ff, #0066ff, #00d4d4);
     background-size: 250% 100%;
     color: #000;
-    font-family: 'Barlow Condensed', sans-serif;
+    font-family: 'Public Sans', sans-serif;
     font-weight: 900;
     font-size: 1.1rem;
     letter-spacing: 4px;
@@ -458,7 +460,7 @@ body::after {
     background: linear-gradient(90deg, #00d4d4, #00d4ff, #0066ff, #00d4d4);
     background-size: 250% 100%;
     color: #000;
-    font-family: 'Barlow Condensed', sans-serif;
+    font-family: 'Public Sans', sans-serif;
     font-weight: 900;
     font-size: .85rem;
     letter-spacing: 2px;
@@ -551,7 +553,7 @@ body::after {
 }
 
 .comm-hero-title {
-    font-family: 'Barlow Condensed', sans-serif;
+    font-family: 'Public Sans', sans-serif;
     font-weight: 900;
     font-size: clamp(1.8rem, 6vw, 3rem);
     text-transform: uppercase;
@@ -615,7 +617,7 @@ body::after {
     background: linear-gradient(90deg, #00d4d4, #00d4ff, #0066ff, #00d4d4);
     background-size: 250% 100%;
     color: #000;
-    font-family: 'Barlow Condensed', sans-serif;
+    font-family: 'Public Sans', sans-serif;
     font-weight: 900;
     font-size: 1rem;
     letter-spacing: 3px;
@@ -745,7 +747,7 @@ body::after {
 }
 
 .cal-day-num {
-    font-family: 'Barlow Condensed', sans-serif;
+    font-family: 'Public Sans', sans-serif;
     font-weight: 900;
     font-size: .7rem;
     line-height: 1;
@@ -782,7 +784,7 @@ body::after {
 }
 
 .cal-pct-txt {
-    font-family: 'Barlow Condensed', sans-serif;
+    font-family: 'Public Sans', sans-serif;
     font-weight: 900;
     font-size: .58rem;
     text-align: center;
@@ -985,7 +987,7 @@ body::after {
 }
 
 .pdb-day {
-    font-family: 'Barlow Condensed', sans-serif;
+    font-family: 'Public Sans', sans-serif;
     font-weight: 900;
     font-size: 1.1rem;
     line-height: 1;
@@ -1143,7 +1145,7 @@ body::after {
     text-align: center;
     background: rgba(0, 212, 212, .08);
     color: var(--cyan);
-    font-family: 'Barlow Condensed', sans-serif;
+    font-family: 'Public Sans', sans-serif;
     font-weight: 900;
     font-size: .9rem;
     letter-spacing: 3px;
@@ -1170,7 +1172,7 @@ body::after {
     background: linear-gradient(90deg, #00d4d4, #00d4ff, #0066ff, #00d4d4);
     background-size: 250% 100%;
     color: #000;
-    font-family: 'Barlow Condensed', sans-serif;
+    font-family: 'Public Sans', sans-serif;
     font-weight: 900;
     font-size: .9rem;
     letter-spacing: 3px;
@@ -1245,7 +1247,7 @@ body::after {
 }
 
 .log-entry-pct {
-    font-family: 'Barlow Condensed', sans-serif;
+    font-family: 'Public Sans', sans-serif;
     font-weight: 900;
     font-size: 1.4rem;
     flex-shrink: 0;

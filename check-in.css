@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,100..900;1,100..900&family=Sansation:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap');
+
 :root {
     --cyan: #00d4d4;
     --green: #00d4ff;
@@ -32,7 +34,7 @@ html {
 body {
     background: var(--dark);
     color: var(--white);
-    font-family: 'Barlow', sans-serif;
+    font-family: 'Public Sans', sans-serif;
     min-height: 100vh;
     overflow-x: hidden;
     -webkit-font-smoothing: antialiased;
@@ -64,7 +66,7 @@ nav {
     justify-content: space-between;
     padding: 0 clamp(16px, 5vw, 40px);
     height: 68px;
-    background: rgba(8, 8, 8, 0.8);
+    background: rgba(244, 246, 241, 0.92);
     backdrop-filter: blur(12px);
     border-bottom: 1px solid rgba(0, 212, 212, 0.15);
     position: sticky;
@@ -73,7 +75,7 @@ nav {
 }
 
 .nav-logo {
-    font-family: 'Barlow Condensed', sans-serif;
+    font-family: 'Public Sans', sans-serif;
     font-weight: 900;
     font-size: 1.5rem;
     letter-spacing: 6px;
@@ -126,7 +128,7 @@ nav {
 }
 
 .checkin-title {
-    font-family: 'Barlow Condensed', sans-serif;
+    font-family: 'Public Sans', sans-serif;
     font-weight: 900;
     font-size: clamp(2.8rem, 9vw, 5rem);
     line-height: 0.9;
@@ -215,7 +217,7 @@ nav {
 }
 
 .q-label {
-    font-family: 'Barlow Condensed', sans-serif;
+    font-family: 'Public Sans', sans-serif;
     font-weight: 700;
     font-size: clamp(1.1rem, 3vw, 1.4rem);
     text-transform: uppercase;
@@ -422,7 +424,7 @@ nav {
     background: linear-gradient(90deg, #00d4d4, #00d4ff, #0066ff, #00d4d4);
     background-size: 250% 100%;
     color: #000;
-    font-family: 'Barlow Condensed', sans-serif;
+    font-family: 'Public Sans', sans-serif;
     font-weight: 900;
     font-size: 1rem;
     letter-spacing: 3px;
@@ -465,7 +467,7 @@ nav {
 .btn-prev {
     background: rgba(255, 255, 255, .04);
     color: var(--text-muted);
-    font-family: 'Barlow Condensed', sans-serif;
+    font-family: 'Public Sans', sans-serif;
     font-weight: 700;
     font-size: 0.85rem;
     letter-spacing: 2px;
@@ -554,7 +556,7 @@ nav {
 }
 
 .result-level {
-    font-family: 'Barlow Condensed', sans-serif;
+    font-family: 'Public Sans', sans-serif;
     font-weight: 900;
     font-size: clamp(2rem, 7vw, 3.2rem);
     text-transform: uppercase;
@@ -587,7 +589,7 @@ nav {
 }
 
 .rm-val {
-    font-family: 'Barlow Condensed', sans-serif;
+    font-family: 'Public Sans', sans-serif;
     font-weight: 900;
     font-size: 1.6rem;
     line-height: 1;
@@ -609,7 +611,7 @@ nav {
 }
 
 .tips-title {
-    font-family: 'Barlow Condensed', sans-serif;
+    font-family: 'Public Sans', sans-serif;
     font-weight: 700;
     font-size: 0.8rem;
     letter-spacing: 3px;
@@ -648,7 +650,7 @@ nav {
     background: linear-gradient(90deg, #00d4d4, #00d4ff, #0066ff, #00d4d4);
     background-size: 250% 100%;
     color: #000;
-    font-family: 'Barlow Condensed', sans-serif;
+    font-family: 'Public Sans', sans-serif;
     font-weight: 900;
     font-size: 1.15rem;
     letter-spacing: 4px;
