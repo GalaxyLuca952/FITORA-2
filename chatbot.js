@@ -369,7 +369,7 @@
   }
 
   /* ══════════════════════════════════════════════════════
-     LOGICA RISPOSTE — solo argomenti FITORA
+     LOGICA RISPOSTE, solo argomenti FITORA
   ══════════════════════════════════════════════════════ */
   async function generateResponse(userMessage) {
     await new Promise(r => setTimeout(r, Math.random() * 600 + 300));
@@ -424,7 +424,7 @@
     /* ── Come funziona ── */
     if (/come funziona|funzionalit|cosa offre|cosa fa fitora|spiegami|dimmi di fitora/.test(msg)) {
       updateChips(CHIPS_AFTER_FEATURES);
-      return 'FITORA è un\'app fitness all-in-one basata su **AI** <i class="fa-solid fa-robot" style="color: #9c27b0;"></i>\n\n**01 Lo Sport Perfetto** — Analizza i tuoi dati e suggerisce lo sport ideale per te.\n\n**02 Allenamento AI** — Schede personalizzate che cambiano ogni giorno in base al tuo stato.\n\n**03 Computer Vision** — La fotocamera analizza la postura e conta le reps in tempo reale.\n\n**04 Adattabilità** — Il piano si adatta al tuo umore e stanchezza quotidiana.\n\n**05 Nutrizione Intelligente** — Piano alimentare su misura basato sui tuoi parametri reali.\n\n**06 Community** — Sfide, badge e compagni di allenamento.\n\nVuoi saperne di più su una funzione specifica?';
+      return 'FITORA è un\'app fitness all-in-one basata su **AI** <i class="fa-solid fa-robot" style="color: #9c27b0;"></i>\n\n**01 Lo Sport Perfetto**, Analizza i tuoi dati e suggerisce lo sport ideale per te.\n\n**02 Allenamento AI**, Schede personalizzate che cambiano ogni giorno in base al tuo stato.\n\n**03 Computer Vision**, La fotocamera analizza la postura e conta le reps in tempo reale.\n\n**04 Adattabilità**, Il piano si adatta al tuo umore e stanchezza quotidiana.\n\n**05 Nutrizione Intelligente**, Piano alimentare su misura basato sui tuoi parametri reali.\n\n**06 Community**, Sfide, badge e compagni di allenamento.\n\nVuoi saperne di più su una funzione specifica?';
     }
 
     /* ── Navigazione ── */
@@ -457,7 +457,7 @@
     /* ── Computer Vision ── */
     if (/computer vision|telecamera|fotocamera|postura|ripetizioni|\brep\b|movimento.*reale|reale.*movimento/.test(msg)) {
       updateChips(CHIPS_AFTER_FEATURES);
-      return '**Computer Vision di FITORA** <i class="fa-solid fa-camera" style="color: #607d8b;"></i>\n\nUsa la fotocamera del tuo smartphone per:\n\n- **Analizzare i movimenti** in tempo reale\n- **Correggere la postura** con feedback visivo immediato\n- **Contare le ripetizioni** automaticamente\n- **Rilevare rischi di infortuni** prima che accadano\n\nNon servono sensori o device aggiuntivi — basta il tuo telefono! <i class="fa-solid fa-mobile" style="color: #607d8b;"></i>';
+      return '**Computer Vision di FITORA** <i class="fa-solid fa-camera" style="color: #607d8b;"></i>\n\nUsa la fotocamera del tuo smartphone per:\n\n- **Analizzare i movimenti** in tempo reale\n- **Correggere la postura** con feedback visivo immediato\n- **Contare le ripetizioni** automaticamente\n- **Rilevare rischi di infortuni** prima che accadano\n\nNon servono sensori o device aggiuntivi, basta il tuo telefono! <i class="fa-solid fa-mobile" style="color: #607d8b;"></i>';
     }
 
     /* ── GPS / Corsa (non disponibile nel chatbot) ── */
@@ -481,19 +481,19 @@
     /* ── Allenamento con AI ── */
     if (/allenament.*ai|ai.*allenament|scheda.*ai|ai.*scheda|workout.*inteligent/.test(msg)) {
       updateChips(CHIPS_AFTER_FEATURES);
-      return '**Allenamento con l\'AI** <i class="fa-solid fa-bolt" style="color: #facc15;"></i>\n\nFITORA genera schede personalizzate basate su:\n\n- Il tuo **profilo clinico** (peso, altezza, parametri medici)\n- Il **check-in giornaliero** (come stai oggi)\n- I tuoi **obiettivi** (forza, dimagrimento, resistenza...)\n- Lo **sport che pratichi**\n\nLa scheda si adatta automaticamente ogni giorno — mai lo stesso workout generico!';
+      return '**Allenamento con l\'AI** <i class="fa-solid fa-bolt" style="color: #facc15;"></i>\n\nFITORA genera schede personalizzate basate su:\n\n- Il tuo **profilo clinico** (peso, altezza, parametri medici)\n- Il **check-in giornaliero** (come stai oggi)\n- I tuoi **obiettivi** (forza, dimagrimento, resistenza...)\n- Lo **sport che pratichi**\n\nLa scheda si adatta automaticamente ogni giorno, mai lo stesso workout generico!';
     }
 
     /* ── Nutrizione ── */
     if (/nutrizi|calorie|caloric|macro|dieta|alimentaz|pasto|cibo|bmr|tdee|fabbisogno/.test(msg)) {
       updateChips(['Dove trovo il Piano Alimentare?', 'Come funziona FITORA?', 'Allenamento con l\'AI', 'Community e sfide']);
-      return '**Nutrizione Intelligente** <i class="fa-solid fa-bowl-food" style="color: #4caf50;"></i>\n\nFITORA calcola:\n\n- **BMR** (metabolismo basale) + **TDEE** (fabbisogno totale)\n- Suddivisione ottimale in **macronutrienti** (proteine, carbo, grassi)\n- **Piano pasti giornaliero** su misura\n\nTutto basato sui tuoi parametri reali — non una dieta generica, ma una dieta *tua*.\n\nVuoi aprire il Piano Alimentare?';
+      return '**Nutrizione Intelligente** <i class="fa-solid fa-bowl-food" style="color: #4caf50;"></i>\n\nFITORA calcola:\n\n- **BMR** (metabolismo basale) + **TDEE** (fabbisogno totale)\n- Suddivisione ottimale in **macronutrienti** (proteine, carbo, grassi)\n- **Piano pasti giornaliero** su misura\n\nTutto basato sui tuoi parametri reali, non una dieta generica, ma una dieta *tua*.\n\nVuoi aprire il Piano Alimentare?';
     }
 
     /* ── Community / Sfide ── */
     if (/community|amici|sfid|classifica|social|gruppo|badge|gamification|compagno/.test(msg)) {
       updateChips(['Dove trovo la Community?', 'Allenamento con l\'AI', 'Come mi registro?', 'Come funziona FITORA?']);
-      return '**Community FITORA** <i class="fa-solid fa-users" style="color: #03a9f4;"></i>\n\nNella Community puoi **sfidare i tuoi amici**:\n\n- **Invita un amico** e mettiti alla prova insieme\n- **Sfide dirette** — chi si allena di più questa settimana?\n- **Classifica amici** — confronta i tuoi progressi con chi conosci\n\nCondividi i tuoi risultati e spingi i tuoi amici a fare meglio! <i class="fa-solid fa-trophy" style="color: #ffc107;"></i>';
+      return '**Community FITORA** <i class="fa-solid fa-users" style="color: #03a9f4;"></i>\n\nNella Community puoi **sfidare i tuoi amici**:\n\n- **Invita un amico** e mettiti alla prova insieme\n- **Sfide dirette**, chi si allena di più questa settimana?\n- **Classifica amici**, confronta i tuoi progressi con chi conosci\n\nCondividi i tuoi risultati e spingi i tuoi amici a fare meglio! <i class="fa-solid fa-trophy" style="color: #ffc107;"></i>';
     }
 
     /* ── Musica / Spotify ── */
@@ -511,13 +511,13 @@
     /* ── Futuro / FITORA 2.0 ── */
     if (/futuro|prossimamente|2\.0|telemedicina|partnership|in arrivo|novit/.test(msg)) {
       updateChips(['Come funziona FITORA?', 'Wearable e integrazioni', 'Community e sfide', 'Allenamento con l\'AI']);
-      return '**Il Futuro di FITORA** <i class="fa-solid fa-rocket" style="color: #ff5722;"></i>\n\n**Integrazione Wearable** — Sync automatico con Apple Watch, Fitbit, Garmin.\n\n**Partnership Mediche** — Collaborazioni con palestre, centri medici e assicurazioni.\n\n**Telemedicina** — I medici potranno monitorare i progressi dei pazienti a distanza.\n\nFITORA è una piattaforma in continua evoluzione!';
+      return '**Il Futuro di FITORA** <i class="fa-solid fa-rocket" style="color: #ff5722;"></i>\n\n**Integrazione Wearable**, Sync automatico con Apple Watch, Fitbit, Garmin.\n\n**Partnership Mediche**, Collaborazioni con palestre, centri medici e assicurazioni.\n\n**Telemedicina**, I medici potranno monitorare i progressi dei pazienti a distanza.\n\nFITORA è una piattaforma in continua evoluzione!';
     }
 
     /* ── App mobile ── */
     if (/app mobile|scarica|download|android|ios|iphone|google play|app store/.test(msg)) {
       updateChips(CHIPS_AFTER_FEATURES);
-      return '**App FITORA** <i class="fa-solid fa-mobile-screen" style="color: #4caf50;"></i>\n\nDisponibile su:\n- **App Store** (iOS / iPhone)\n- **Google Play** (Android)\n\nScaricala gratuitamente! Puoi anche usare FITORA direttamente dal **browser** — prova subito la Dashboard!';
+      return '**App FITORA** <i class="fa-solid fa-mobile-screen" style="color: #4caf50;"></i>\n\nDisponibile su:\n- **App Store** (iOS / iPhone)\n- **Google Play** (Android)\n\nScaricala gratuitamente! Puoi anche usare FITORA direttamente dal **browser**, prova subito la Dashboard!';
     }
 
     /* ── Registrazione ── */

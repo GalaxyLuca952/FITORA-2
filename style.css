@@ -2104,13 +2104,20 @@ footer {
     align-items: center;
   }
 
+  .btn-ghost{
+    background-color: #d6e4d8;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+  }
+
   .btn-ghost {
     width: 100%;
     text-align: center;
   }
 
   .hero-quote {
-    max-width: 90vw;
+    max-width: 50%;
   }
 
   .qr-img {
