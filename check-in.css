@@ -14,8 +14,8 @@
     --border: rgba(26, 46, 31, .07);
     --border-cyan: rgba(58, 90, 64, .2);
     --white: #1a2e1f;
-    --text-muted: rgba(26, 46, 31, .35);
-    --text-dim: rgba(26, 46, 31, .55);
+    --text-muted: rgba(26, 46, 31, .9);
+    --text-dim: rgba(26, 46, 31, 0.9);
 }
 
 *,
@@ -85,7 +85,7 @@ nav {
 .btn-back {
     text-decoration: none;
     color: var(--text-muted);
-    font-size: 0.7rem;
+    font-size: clamp(1rem, 2vw, 1.2rem);
     font-weight: 600;
     letter-spacing: 2px;
     border: 1px solid var(--border);
@@ -117,7 +117,7 @@ nav {
 
 .checkin-tag {
     display: inline-block;
-    font-size: 0.65rem;
+    font-size: clamp(1rem, 2vw, 1.2rem);
     font-weight: 600;
     letter-spacing: 5px;
     text-transform: uppercase;
@@ -138,7 +138,7 @@ nav {
 }
 
 .checkin-sub {
-    font-size: clamp(0.85rem, 2vw, 0.95rem);
+    font-size: clamp(1rem, 2vw, 1.2rem);
     color: var(--text-dim);
     line-height: 1.7;
     max-width: 460px;
@@ -169,7 +169,7 @@ nav {
 }
 
 .progress-label {
-    font-size: 0.65rem;
+    font-size: clamp(1rem, 2vw, 1.2rem);
     font-weight: 700;
     letter-spacing: 3px;
     color: var(--text-muted);
@@ -226,7 +226,7 @@ nav {
 }
 
 .q-hint {
-    font-size: 0.78rem;
+    font-size: clamp(1rem, 2vw, 1.2rem);
     color: var(--text-muted);
     margin-bottom: 24px;
     line-height: 1.5;
@@ -272,7 +272,7 @@ nav {
 }
 
 .emoji-btn .label {
-    font-size: 0.58rem;
+    font-size: clamp(1rem, 2vw, 1rem);
     font-weight: 600;
     letter-spacing: 1.5px;
     text-transform: uppercase;
@@ -331,7 +331,7 @@ nav {
 }
 
 .option-card .opt-desc {
-    font-size: 0.72rem;
+    font-size: clamp(1rem, 2vw, 1.2rem);
     color: var(--text-muted);
 }
 
@@ -396,7 +396,7 @@ nav {
 }
 
 .check-card .cc-text {
-    font-size: 0.82rem;
+    font-size: clamp(1rem, 2vw, 1.1rem);
     font-weight: 500;
 }
 
@@ -490,7 +490,7 @@ nav {
     display: block;
     text-align: center;
     margin-top: 18px;
-    font-size: 0.7rem;
+    font-size: clamp(1rem, 2vw, 1.2rem);
     letter-spacing: 2px;
     color: var(--text-muted);
     text-transform: uppercase;
@@ -564,7 +564,7 @@ nav {
 }
 
 .result-desc {
-    font-size: clamp(0.85rem, 2vw, 0.95rem);
+    font-size: clamp(1rem, 2vw, 1.2rem);
     color: var(--text-dim);
     line-height: 1.7;
     max-width: 480px;
@@ -611,7 +611,7 @@ nav {
 .tips-title {
     font-family: 'Public Sans', sans-serif;
     font-weight: 700;
-    font-size: 0.8rem;
+    font-size: 1rem;
     letter-spacing: 3px;
     text-transform: uppercase;
     color: var(--cyan);
@@ -629,7 +629,7 @@ nav {
     display: flex;
     align-items: flex-start;
     gap: 10px;
-    font-size: 0.85rem;
+    font-size: 1rem;
     color: var(--text-dim);
     line-height: 1.5;
 }
