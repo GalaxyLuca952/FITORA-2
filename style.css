@@ -958,7 +958,7 @@ body::after {
 
 .features-head p {
   font-size: clamp(0.88rem, 1.5vw, 1rem);
-  color: rgba(26, 46, 31, 0.5);
+  color: rgba(26, 46, 31, 0.85);
   line-height: 1.7;
   margin-top: 14px;
 }
@@ -1297,7 +1297,7 @@ body::after {
 }
 
 .how-head p {
-  color: rgba(26, 46, 31, 0.5);
+  color: rgba(26, 46, 31, 0.85);
   font-size: clamp(0.88rem, 1.4vw, 1rem);
   line-height: 1.7;
   margin-top: 14px;
@@ -1385,7 +1385,7 @@ body::after {
 
 .tl-desc {
   font-size: clamp(0.78rem, 1.2vw, 0.88rem);
-  color: rgba(26, 46, 31, 0.5);
+  color: rgba(26, 46, 31, 0.85);
   line-height: 1.7;
 }
 
@@ -1403,7 +1403,7 @@ body::after {
 }
 
 .comm-head p {
-  color: rgba(26, 46, 31, 0.5);
+  color: rgba(26, 46, 31, 0.85);
   font-size: clamp(0.88rem, 1.4vw, 1rem);
   line-height: 1.7;
   margin-top: 14px;
@@ -1525,7 +1525,7 @@ body::after {
 
 .future-card-desc {
   font-size: clamp(0.78rem, 1.2vw, 0.88rem);
-  color: rgba(26, 46, 31, 0.5);
+  color: rgba(26, 46, 31, 0.85);
   line-height: 1.65;
 }
 
@@ -1635,7 +1635,7 @@ body::after {
 
 .cta-sub {
   font-size: clamp(0.9rem, 1.5vw, 1.05rem);
-  color: rgba(26, 46, 31, 0.5);
+  color: rgba(26, 46, 31, 0.85);
   max-width: 480px;
   margin: 0 auto clamp(40px, 6vw, 60px);
   line-height: 1.75;
@@ -1777,7 +1777,7 @@ footer {
 
 .qr-sub {
   font-size: clamp(0.85rem, 1.4vw, 1rem);
-  color: rgba(26, 46, 31, 0.5);
+  color: rgba(26, 46, 31, 0.85);
   max-width: 400px;
   margin: 0 auto 36px;
   line-height: 1.75;
