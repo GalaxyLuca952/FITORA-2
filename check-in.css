@@ -272,7 +272,7 @@ nav {
 }
 
 .emoji-btn .label {
-    font-size: clamp(1rem, 2vw, 1rem);
+    font-size: clamp(0.5rem, 2vw, 1rem);
     font-weight: 600;
     letter-spacing: 1.5px;
     text-transform: uppercase;
