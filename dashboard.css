@@ -15,8 +15,8 @@
     --border: rgba(26, 46, 31, .07);
     --bc: rgba(58, 90, 64, .2);
     --white: #1a2e1f;
-    --muted: rgba(26, 46, 31, .3);
-    --dim: rgba(26, 46, 31, .55);
+    --muted: rgba(26, 46, 31, .9);
+    --dim: rgba(26, 46, 31, .9);
     --nav-h: 64px;
     --tab-h: 68px;
 }
@@ -384,7 +384,7 @@ body::after {
 }
 
 .qs-label {
-    font-size: .58rem;
+    font-size: 0.8rem;
     letter-spacing: 2px;
     text-transform: uppercase;
     color: var(--muted);
