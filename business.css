@@ -852,7 +852,6 @@ hr.biz-divider {
     font-weight: 800;
     color: #fff;
     flex-shrink: 0;
-    overflow: hidden;
 }
 
 .reddit-user {
