@@ -689,8 +689,8 @@ hr.biz-divider {
 .tam-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 48px 32px;
-    margin-top: 16px;
+    gap: 56px 40px;
+    margin-top: 24px;
 }
 
 .tam-item {
@@ -698,16 +698,16 @@ hr.biz-divider {
 }
 
 .tam-circle {
-    width: 200px;
-    height: 200px;
+    width: 240px;
+    height: 240px;
     border-radius: 50%;
-    margin: 0 auto 28px;
+    margin: 0 auto 32px;
     display: flex;
     align-items: center;
     justify-content: center;
     font-family: 'Public Sans', sans-serif;
     font-weight: 900;
-    font-size: 1.9rem;
+    font-size: 2.2rem;
     color: var(--white);
     background: rgba(58, 90, 64, .18);
     border: 2px solid rgba(58, 90, 64, .35);
@@ -717,50 +717,55 @@ hr.biz-divider {
 .tam-circle:hover { transform: scale(1.05); }
 
 .tam-circle-mid {
-    width: 160px;
-    height: 160px;
-    font-size: 1.5rem;
+    width: 190px;
+    height: 190px;
+    font-size: 1.8rem;
     background: rgba(58, 90, 64, .28);
     border-color: rgba(58, 90, 64, .55);
 }
 
 .tam-circle-focus {
-    width: 120px;
-    height: 120px;
-    font-size: 1.1rem;
+    width: 150px;
+    height: 150px;
+    font-size: 1.35rem;
     background: linear-gradient(135deg, #2a5a32, #1a3d22);
     border-color: var(--cyan);
     box-shadow: 0 0 32px rgba(58, 90, 64, .4);
 }
 
 .tam-item-title {
-    font-size: 1.1rem;
+    font-size: 1.25rem;
     font-weight: 800;
     letter-spacing: 1px;
     color: var(--cyan);
-    margin-bottom: 12px;
+    margin-bottom: 14px;
     text-transform: uppercase;
 }
 
 .tam-item-desc {
-    font-size: 1rem;
+    font-size: 1.1rem;
     color: var(--white);
     line-height: 1.75;
-    max-width: 280px;
-    margin: 0 auto 12px;
+    max-width: 300px;
+    margin: 0 auto 14px;
 }
 
 .tam-source {
-    font-size: .72rem;
+    font-size: .82rem;
     color: var(--cyan);
     opacity: .65;
-    max-width: 280px;
+    max-width: 300px;
     margin: 0 auto;
-    line-height: 1.5;
+    line-height: 1.6;
 }
 
 @media (max-width: 768px) {
-    .tam-grid { grid-template-columns: 1fr; }
+    .tam-grid { grid-template-columns: 1fr; gap: 40px; }
+    .tam-circle { width: 200px; height: 200px; font-size: 2rem; }
+    .tam-circle-mid { width: 160px; height: 160px; font-size: 1.6rem; }
+    .tam-circle-focus { width: 130px; height: 130px; font-size: 1.2rem; }
+
+    .biz-section { padding: 64px 20px; }
 
     .biz-nav {
         padding: 0 16px;
@@ -803,26 +808,27 @@ hr.biz-divider {
 
 /* ── TRACTION / REDDIT ── */
 .traction-sub {
-    font-size: 1rem;
-    color: rgba(255,255,255,.5);
-    margin-bottom: 48px;
-    max-width: 500px;
+    font-size: 1.15rem;
+    color: rgba(26,46,31,.55);
+    margin-bottom: 52px;
+    max-width: 560px;
+    line-height: 1.6;
 }
 
 .reddit-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 24px;
+    gap: 28px;
 }
 
 .reddit-card {
     background: var(--dark2);
-    border-radius: 20px;
-    padding: 28px;
+    border-radius: 24px;
+    padding: 36px 32px;
     border: 1px solid rgba(255,255,255,.07);
     display: flex;
     flex-direction: column;
-    gap: 16px;
+    gap: 20px;
     transition: transform .2s;
 }
 
@@ -831,88 +837,91 @@ hr.biz-divider {
 .reddit-header {
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 14px;
 }
 
 .reddit-avatar {
-    width: 40px;
-    height: 40px;
+    width: 52px;
+    height: 52px;
     border-radius: 50%;
     background: var(--cyan);
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: .75rem;
+    font-size: .8rem;
     font-weight: 800;
     color: #fff;
     flex-shrink: 0;
+    overflow: hidden;
 }
 
 .reddit-user {
-    font-size: .8rem;
+    font-size: .95rem;
     font-weight: 700;
     color: var(--white);
 }
 
 .reddit-sub {
-    font-size: .7rem;
+    font-size: .8rem;
     color: var(--cyan);
     font-weight: 600;
+    margin-top: 2px;
 }
 
 .reddit-quote {
-    font-size: 1rem;
-    color: var(--white);
-    line-height: 1.7;
+    font-size: 1.1rem;
+    color: rgba(26,46,31,.85);
+    line-height: 1.75;
     flex: 1;
     font-style: italic;
 }
 
 .reddit-footer {
     border-top: 1px solid rgba(255,255,255,.07);
-    padding-top: 12px;
+    padding-top: 14px;
 }
 
 .reddit-upvote {
-    font-size: .8rem;
+    font-size: .9rem;
     font-weight: 700;
     color: var(--cyan);
     display: flex;
     align-items: center;
-    gap: 5px;
+    gap: 6px;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 900px) {
     .reddit-grid { grid-template-columns: 1fr; }
+    .reddit-card { padding: 28px 24px; }
 }
 
 /* ── COME FAI I SOLDI ── */
 .money-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 24px;
+    gap: 28px;
 }
 
 .money-item {
     background: var(--dark2);
-    border-radius: 20px;
-    padding: 36px 28px;
+    border-radius: 24px;
+    padding: 44px 32px;
     border: 1px solid rgba(255,255,255,.07);
     display: flex;
     flex-direction: column;
-    gap: 14px;
+    gap: 18px;
     transition: transform .2s;
 }
 
-.money-item:hover { transform: translateY(-5px); }
+.money-item:hover { transform: translateY(-6px); }
 
 .money-icon {
-    font-size: 2rem;
+    font-size: 2.4rem;
     color: var(--cyan);
 }
 
 .money-channel {
-    font-size: .7rem;
+    font-size: .82rem;
     font-weight: 800;
     letter-spacing: 3px;
     text-transform: uppercase;
@@ -922,60 +931,57 @@ hr.biz-divider {
 .money-price {
     font-family: 'Public Sans', sans-serif;
     font-weight: 900;
-    font-size: 2.4rem;
+    font-size: 2.8rem;
     color: var(--white);
     line-height: 1;
 }
 
 .money-price span {
-    font-size: 1rem;
+    font-size: 1.1rem;
     font-weight: 400;
     color: rgba(26,46,31,.45);
 }
 
 .money-desc {
-    font-size: .9rem;
+    font-size: 1rem;
     color: rgba(26,46,31,.65);
-    line-height: 1.7;
+    line-height: 1.75;
     flex: 1;
 }
 
 .money-math {
-    font-size: .85rem;
-    color: var(--white);
-    background: rgba(58,90,64,.12);
+    font-size: .95rem;
+    color: rgba(26,46,31,.8);
+    background: rgba(58,90,64,.1);
     border-left: 3px solid var(--cyan);
-    padding: 10px 14px;
+    padding: 12px 16px;
     border-radius: 0 8px 8px 0;
+    line-height: 1.5;
 }
 
 .money-math strong { color: var(--cyan); }
 
-@media (max-width: 900px) {
+@media (max-width: 1000px) {
     .money-grid { grid-template-columns: repeat(2, 1fr); }
 }
 
 @media (max-width: 560px) {
     .money-grid { grid-template-columns: 1fr; }
-
-    .money-item {
-        padding: 24px 20px;
-    }
-
-    .money-price {
-        font-size: 1.8rem;
-    }
+    .money-item  { padding: 32px 24px; }
+    .money-price { font-size: 2.2rem; }
 }
 
 /* ── COMPETIZIONE ── */
 .comp-table-wrap {
     overflow-x: auto;
+    border-radius: 16px;
 }
 
 .comp-table {
     width: 100%;
     border-collapse: collapse;
-    font-size: .9rem;
+    font-size: 1rem;
+    min-width: 640px;
 }
 
 .comp-table thead tr {
@@ -983,28 +989,31 @@ hr.biz-divider {
 }
 
 .comp-table th {
-    padding: 14px 18px;
+    padding: 18px 22px;
     text-align: center;
-    font-size: .7rem;
+    font-size: .8rem;
     font-weight: 800;
     letter-spacing: 2px;
     text-transform: uppercase;
     color: var(--white);
+    white-space: nowrap;
 }
 
 .comp-table th:first-child { text-align: left; }
 
 .comp-table td {
-    padding: 14px 18px;
+    padding: 18px 22px;
     border-bottom: 1px solid rgba(26,46,31,.08);
     color: rgba(26,46,31,.75);
     text-align: center;
+    font-size: 1rem;
 }
 
 .comp-table td:first-child {
     text-align: left;
     font-weight: 600;
     color: var(--white);
+    font-size: 1rem;
 }
 
 .comp-table tbody tr:hover { background: var(--dark3); }
@@ -1017,17 +1026,17 @@ hr.biz-divider {
 
 .comp-yes {
     color: var(--cyan) !important;
-    font-size: 1.1rem;
+    font-size: 1.25rem;
 }
 
 .comp-no {
-    color: rgba(26,46,31,.3) !important;
-    font-size: 1.1rem;
+    color: rgba(26,46,31,.25) !important;
+    font-size: 1.25rem;
 }
 
 .comp-partial {
     color: rgba(26,46,31,.55) !important;
-    font-size: .8rem;
+    font-size: .9rem;
 }
 
 /* ── TEAM ── */
@@ -1039,40 +1048,41 @@ hr.biz-divider {
 
 .team-card {
     background: var(--dark2);
-    border-radius: 20px;
-    padding: 36px 28px;
+    border-radius: 24px;
+    padding: 40px 28px;
     text-align: center;
     border: 1px solid rgba(26,46,31,.08);
     transition: transform .2s;
 }
 
-.team-card:hover { transform: translateY(-5px); }
+.team-card:hover { transform: translateY(-6px); }
 
 .team-avatar {
-    width: 72px;
-    height: 72px;
+    width: 100px;
+    height: 100px;
     border-radius: 50%;
     background: var(--cyan);
     color: #fff;
     font-family: 'Public Sans', sans-serif;
     font-weight: 900;
-    font-size: 1.1rem;
+    font-size: 1.3rem;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 0 auto 20px;
+    margin: 0 auto 24px;
+    overflow: hidden;
 }
 
 .team-name {
     font-family: 'Public Sans', sans-serif;
     font-weight: 800;
-    font-size: 1.15rem;
+    font-size: 1.25rem;
     color: var(--white);
-    margin-bottom: 6px;
+    margin-bottom: 8px;
 }
 
 .team-role {
-    font-size: .7rem;
+    font-size: .75rem;
     font-weight: 700;
     letter-spacing: 3px;
     text-transform: uppercase;
@@ -1081,11 +1091,128 @@ hr.biz-divider {
 }
 
 .team-bio {
-    font-size: .9rem;
+    font-size: 1rem;
     color: rgba(26,46,31,.6);
     line-height: 1.65;
 }
 
-@media (max-width: 768px) {
-    .team-grid { grid-template-columns: 1fr; }
+@media (max-width: 900px) {
+    .team-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 480px) {
+    .team-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
+    .team-card  { padding: 28px 16px; }
+    .team-avatar { width: 80px; height: 80px; }
+    .team-name  { font-size: 1.05rem; }
+}
+
+/* ── QR SECTION ── */
+#qr-section {
+    background: var(--dark2);
+    padding: 100px 32px;
+}
+
+.qr-inner {
+    max-width: 680px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.qr-eyebrow {
+    font-size: .82rem;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--cyan);
+    margin-bottom: 16px;
+}
+
+.qr-title {
+    font-size: clamp(2.4rem, 6vw, 5rem);
+    font-weight: 900;
+    color: var(--white);
+    line-height: 1;
+    margin-bottom: 20px;
+    letter-spacing: -1px;
+}
+
+.qr-sub {
+    font-size: clamp(1rem, 2.5vw, 1.3rem);
+    color: rgba(255,255,255,.55);
+    line-height: 1.65;
+    max-width: 480px;
+    margin: 0 auto 48px;
+}
+
+.qr-box {
+    display: inline-block;
+    background: #fff;
+    border-radius: 24px;
+    padding: 24px;
+    box-shadow: 0 24px 64px rgba(0,0,0,.3);
+}
+
+.qr-img {
+    width: clamp(180px, 40vw, 260px);
+    height: clamp(180px, 40vw, 260px);
+    display: block;
+}
+
+@media (max-width: 480px) {
+    #qr-section { padding: 72px 20px; }
+    .qr-box     { padding: 16px; border-radius: 16px; }
+}
+
+/* ── PRESENTAZIONE GRANDE SCHERMO ── */
+@media (min-width: 1400px) {
+    .biz-section        { padding: 110px 48px; max-width: 1300px; }
+    .kpi-strip-wrapper  { padding: 88px 48px; }
+    .kpi-card           { padding: 44px 52px; max-width: 260px; }
+    .kpi-val            { font-size: 3.4rem; }
+    .kpi-label          { font-size: .85rem; }
+    .kpi-icon           { font-size: 2rem; }
+    .tam-circle         { width: 280px; height: 280px; font-size: 2.6rem; }
+    .tam-circle-mid     { width: 230px; height: 230px; font-size: 2.2rem; }
+    .tam-circle-focus   { width: 185px; height: 185px; font-size: 1.7rem; }
+    .tam-item-title     { font-size: 1.45rem; }
+    .tam-item-desc      { font-size: 1.2rem; }
+    .tam-source         { font-size: .92rem; }
+    .reddit-card        { padding: 44px 40px; }
+    .reddit-quote       { font-size: 1.25rem; }
+    .reddit-user        { font-size: 1.05rem; }
+    .reddit-avatar      { width: 64px; height: 64px; }
+    .money-grid         { gap: 18px; }
+    .money-item         { padding: 32px 22px; gap: 12px; }
+    .money-icon         { font-size: 1.9rem; }
+    .money-price        { font-size: 2rem; }
+    .money-price span   { font-size: .95rem; }
+    .money-desc         { font-size: .88rem; line-height: 1.6; }
+    .money-math         { font-size: .82rem; padding: 9px 12px; }
+    .comp-table         { font-size: 1.1rem; }
+    .comp-table th      { padding: 22px 26px; font-size: .9rem; }
+    .comp-table td      { padding: 22px 26px; }
+    .team-avatar        { width: 120px; height: 120px; }
+    .team-name          { font-size: 1.4rem; }
+    .team-bio           { font-size: 1.05rem; }
+    .team-card          { padding: 48px 32px; }
+    hr.biz-divider      { max-width: 1300px; }
+    .slide-bg-num       { font-size: 16rem; }
+    .qr-box             { padding: 32px; }
+}
+
+/* ── GLOBAL MOBILE FIXES ── */
+@media (max-width: 480px) {
+    .biz-hero     { padding: 100px 20px 60px; }
+    .biz-hero-title { font-size: clamp(2.4rem, 10vw, 3.4rem); }
+    .biz-hero-sub   { font-size: 1.05rem; }
+    .section-title  { font-size: clamp(1.8rem, 7vw, 2.5rem) !important; }
+    .section-tag    { font-size: .7rem; }
+    .slide-bg-num   { font-size: 7rem; }
+    .kpi-strip-wrapper { padding: 48px 16px; }
+    .kpi-card       { padding: 24px 16px; max-width: 48%; }
+    .kpi-val        { font-size: 1.8rem; }
+    hr.biz-divider  { margin: 0 20px; }
+    .info-card      { padding: 24px 20px; }
+    .fund-label     { min-width: 100px; font-size: .8rem; }
 }

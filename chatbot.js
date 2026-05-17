@@ -405,14 +405,14 @@
         return 'Bentornato! Sono di nuovo qui per aiutarti con **FITORA**. Come posso esserti utile oggi?';
       } else {
         localStorage.setItem('fitora_has_chatted', 'true');
-        return 'Ciao! Sono l\'assistente di **FITORA**.\n\nPosso aiutarti su: funzionalità dell\'app, Computer Vision AI, GPS, nutrizione, community e molto altro. Da dove vuoi iniziare?';
+        return 'Ciao! Sono l\'assistente di **FITORA**.\n\nPosso aiutarti su: funzionalità dell\'app, Computer Vision AI, nutrizione, community e molto altro. Da dove vuoi iniziare?';
       }
     }
 
     /* ── Chi sei ── */
     if (/chi sei|cosa fai|presentati|come ti chiami/.test(msg)) {
       updateChips(CHIPS_DEFAULT);
-      return 'Sono l\'assistente virtuale di **FITORA** <i class="fa-solid fa-robot" style="color: #9c27b0;"></i>\n\nPosso:\n- Rispondere a domande sulle **funzionalità** dell\'app\n- Portarti nelle **sezioni** del sito con un click\n- Spiegarti la **Computer Vision AI** e il tracking GPS\n- Aiutarti con **nutrizione, allenamento e community**\n\nChiedimi pure qualsiasi cosa su FITORA!';
+      return 'Sono l\'assistente virtuale di **FITORA** <i class="fa-solid fa-robot" style="color: #9c27b0;"></i>\n\nPosso:\n- Rispondere a domande sulle **funzionalità** dell\'app\n- Portarti nelle **sezioni** del sito con un click\n- Spiegarti la **Computer Vision AI** e come funziona\n- Aiutarti con **nutrizione, allenamento e community**\n\nChiedimi pure qualsiasi cosa su FITORA!';
     }
 
     /* ── Contatti / Supporto ── */
@@ -559,7 +559,7 @@
     /* ── Off-topic ── */
     if (/politic|notizie|matematica|storia|meteo|covid|guerra|film|ricette di cucina|personal trainer|pt\b|\bcoach\b|allenatore|\bgps\b|storico.*cors/.test(msg)) {
       updateChips(CHIPS_DEFAULT);
-      return 'Mi dispiace, posso rispondere solo a domande su **FITORA** e le sue funzionalità <i class="fa-solid fa-dumbbell" style="color: #9c27b0;"></i>\n\nHai domande sull\'app, la Computer Vision, il GPS, la nutrizione o la community?';
+      return 'Mi dispiace, posso rispondere solo a domande su **FITORA** e le sue funzionalità <i class="fa-solid fa-dumbbell" style="color: #9c27b0;"></i>\n\nHai domande sull\'app, la Computer Vision, la nutrizione o la community?';
     }
 
     /* ── Fallback ── */

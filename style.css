@@ -29,6 +29,15 @@ html {
   font-size: 16px;
 }
 
+/* ── PRESENTAZIONE SU GRANDE SCHERMO ── */
+@media (min-width: 1400px) {
+  html { font-size: 19px; }
+}
+
+@media (min-width: 1700px) {
+  html { font-size: 22px; }
+}
+
 :root {
   --cyan: #3a5a40;
   /* hunter green,primary accent */

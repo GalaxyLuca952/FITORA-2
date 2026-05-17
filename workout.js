@@ -276,7 +276,7 @@ const DB = {
         ],
         main: {
             beginner: [
-                { n: 'Colpi di diritto e rovescio da fermo', d: 'Preparazione raquet, punto di impatto', spec: '20 min' },
+                { n: 'Colpi di diritto e rovescio da fermo', d: 'Preparazione racchetta, punto di impatto', spec: '20 min' },
                 { n: 'Servizio base', d: 'Solo movimento, senza potenza', spec: '30 servizi' },
                 { n: 'Gioco libero con punto', d: 'Sets brevi per applicare i fondamentali', spec: '20 min' },
             ],
@@ -345,7 +345,7 @@ const DB = {
             ],
             mid: [
                 { n: 'Trail con dislivello moderato', d: '200–400m D+, ritmo regolare in salita', spec: '50–60 min' },
-                { n: 'Nordisk walking con bastoncini', d: 'Coinvolge anche il treno superiore', spec: '30 min' },
+                { n: 'Nordic walking con bastoncini', d: 'Coinvolge anche il treno superiore', spec: '30 min' },
             ],
             advanced: [
                 { n: 'Trail running su sentiero', d: 'Corsa sui tratti pianeggianti e in discesa', spec: '60–90 min' },
