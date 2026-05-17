@@ -24,7 +24,8 @@
     <a href="index.html"
       style="font-size:.62rem;font-weight:700;letter-spacing:2px;color:var(--muted);border:1px solid var(--border);padding:5px 10px;transition:color .2s"
       onmouseover="this.style.color='var(--cyan)'" onmouseout="this.style.color='var(--muted)'">← HOME</a>
-    <div class="nav-logo gt" style="display:flex;align-items:center;gap:7px;"><img src="icon (3).png" style="height:120px;width:auto;">FITORA</div>
+    <div class="nav-logo gt" style="display:flex;align-items:center;gap:7px;"><img src="  "
+        style="height:120px;width:auto;">FITORA</div>
     <div style="display:flex;align-items:center;gap:14px">
       <div class="nav-date" id="navDate"></div>
     </div>
@@ -56,7 +57,7 @@
         <div id="checkinCard" style="display:none">
           <div class="section-label">Stato di oggi</div>
           <div class="checkin-result">
-            <div class="ci-icon" id="ciIcon"><i class="fa-solid fa-bolt" style="color: #facc15;"></i></div>
+            <div class="ci-icon" id="ciIcon"><i class="fa-solid fa-bolt" style="color: #faa615;"></i></div>
             <div class="ci-body">
               <div class="ci-level gt" id="ciLevel">-</div>
               <div class="ci-desc" id="ciDesc">Completa il check-in per vedere la raccomandazione</div>
@@ -175,7 +176,7 @@
 
         <!-- CTA workout -->
         <a href="workout.html" class="btn-start-cta" style="display:block;text-decoration:none;text-align:center;">
-          <i class="fa-solid fa-bolt" style="color: #facc15;"></i> Genera Allenamento di Oggi
+          <i class="fa-solid fa-bolt" style="color: #faae15;"></i> Genera Allenamento di Oggi
         </a>
 
         <!-- Tool Cards -->
@@ -190,7 +191,7 @@
               onmouseout="this.style.background='linear-gradient(135deg,rgba(58,90,64,.07),rgba(58,90,64,.02))';this.style.boxShadow='none'">
               <div
                 style="width:46px;height:46px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:1.6rem;background:rgba(58,90,64,.1);border:1px solid rgba(58,90,64,.3);">
-                <i class="fa-solid fa-bolt" style="color: #facc15;"></i>
+                <i class="fa-solid fa-bolt" style="color: #fab115;"></i>
               </div>
               <div style="flex:1">
                 <div
@@ -265,7 +266,7 @@
         <div id="noPlanState" class="card">
           <div class="card-body" style="text-align:center;padding:36px 20px">
             <div style="font-size:2.5rem;margin-bottom:12px;opacity:.2"><i class="fa-solid fa-clipboard-list"
-                style="color: #ffeb3b;"></i></div>
+                style="color: #ffc73b;"></i></div>
             <div
               style="font-size:.68rem;letter-spacing:3px;text-transform:uppercase;color:var(--muted);line-height:1.9">
               Nessun allenamento nel piano<br>Genera e salva il tuo primo workout
@@ -361,7 +362,7 @@
         <!-- Tips -->
         <div class="card">
           <div class="card-head">
-            <div class="card-title"><i class="fa-solid fa-lightbulb" style="color: #ffeb3b;"></i> Suggerimento</div>
+            <div class="card-title"><i class="fa-solid fa-lightbulb" style="color: #ffc73b;"></i> Suggerimento</div>
           </div>
           <div class="card-body">
             <p style="font-size:.78rem;color:var(--dim);line-height:1.7">
@@ -547,7 +548,7 @@
       try {
         const ci = JSON.parse(raw);
         const score = ci.score || 0;
-        const icons = { 0: '<i class="fa-solid fa-shield" style="color: #03a9f4;"></i>', 40: '<i class="fa-solid fa-triangle-exclamation" style="color: #ff9800;"></i>', 60: '<i class="fa-solid fa-bolt" style="color: #facc15;"></i>', 80: '<i class="fa-solid fa-fire" style="color: #ff5722;"></i>' };
+        const icons = { 0: '<i class="fa-solid fa-shield" style="color: #03a9f4;"></i>', 40: '<i class="fa-solid fa-triangle-exclamation" style="color: #ff9800;"></i>', 60: '<i class="fa-solid fa-bolt" style="color: #fac115;"></i>', 80: '<i class="fa-solid fa-fire" style="color: #ff5722;"></i>' };
         const colors = { 0: 'var(--orange)', 40: 'var(--yellow)', 60: 'var(--cyan)', 80: 'var(--green)' };
         const descs = {
           0: 'Giorno di recupero - allenamento leggero',
@@ -827,7 +828,7 @@
       if (!plan.length) {
         container.innerHTML = `<div class="section-label">// I tuoi piani (0 / 3)</div>
       <div class="card"><div class="card-body" style="text-align:center;padding:28px 20px">
-        <div style="font-size:2rem;margin-bottom:10px;opacity:.2"><i class="fa-solid fa-clipboard-list" style="color: #ffeb3b;"></i></div>
+        <div style="font-size:2rem;margin-bottom:10px;opacity:.2"><i class="fa-solid fa-clipboard-list" style="color: #ffc73b;"></i></div>
         <div style="font-size:.68rem;letter-spacing:3px;text-transform:uppercase;color:var(--muted);line-height:1.9">Nessun piano salvato<br>Genera e salva il tuo workout</div>
         <a href="workout.html" style="display:inline-block;margin-top:16px;background:var(--grad);color:#fff;font-family:'Public Sans',sans-serif;font-weight:900;font-size:.85rem;letter-spacing:3px;text-transform:uppercase;padding:11px 28px;border-radius:8px;text-decoration:none"><i class="fa-solid fa-bolt" style="color: #facc15;"></i> Genera ora</a>
       </div></div>`;
@@ -1114,7 +1115,7 @@
       { icon: '<i class="fa-solid fa-dumbbell" style="color: #9c27b0;"></i>', name: 'Primo WO', req: (r) => r >= 1 },
       { icon: '<i class="fa-solid fa-fire" style="color: #ff5722;"></i>', name: '5 WO', req: (r) => r >= 5 },
       { icon: '<i class="fa-solid fa-medal" style="color: #ffc107;"></i>', name: '10 WO', req: (r) => r >= 10 },
-      { icon: '<i class="fa-solid fa-star" style="color: #ffeb3b;"></i>', name: '25 WO', req: (r) => r >= 25 },
+      { icon: '<i class="fa-solid fa-star" style="color: #ffcb3c;"></i>', name: '25 WO', req: (r) => r >= 25 },
       { icon: '<i class="fa-solid fa-bolt" style="color: #facc15;"></i>', name: '500 kcal', req: (r, k) => k >= 500 },
       { icon: '<i class="fa-solid fa-rocket" style="color: #ff5722;"></i>', name: '2000 kcal', req: (r, k) => k >= 2000 },
       { icon: '<i class="fa-solid fa-trophy" style="color: #ffc107;"></i>', name: '5000 kcal', req: (r, k) => k >= 5000 },
